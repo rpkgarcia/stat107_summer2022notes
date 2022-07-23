@@ -1,0 +1,198 @@
+# Practice Questions 
+
+These are additional "Practice Questions". These are not worth any points. 
+
+
+Recall the `Starbucks.csv` data set on ELearn from Homework 5. This data set comes from [Kaggle.com](https://www.kaggle.com/starbucks/store-locations) and contains general information about all the Starbucks locations worldwide as of February 2017.
+
+```{r}
+the_url = "https://raw.githubusercontent.com/rpkgarcia/LearnRBook/main/data_sets/Starbucks.csv"
+starbucks = read.csv(the_url)
+
+```
+
+
+
+1) Create a subset of all the Starbucks locations in California as you did in Hwk5 Q1b. Show how to do this using TWO different techniques (i.e. indexing, tidyverse, apply functions, loops, subset(), etc.). HINT: Check the columns `Brand`, `State.Province`, AND `Country`.  
+```{r}
+ca_index = which(starbucks$State.Province == "CA" & 
+                   starbucks$Country == "US" & starbucks$Brand == "Starbucks")
+ca_Starbucks = starbucks[ca_index, ]
+```
+
+
+2) The phone numbers in the Starbucks data set are not standardized, even when we only consider the Starbucks stores in California.  Phone numbers typically have ten digits.  Standardize the phone number column for the California Starbucks' data set so the structure is the same for the whole column.  Phone numbers should be in the following form: (123) 456-7890. If there is no phone number replace it with NA. Display the first 40 values of this corrected column. 
+```{r}
+phone_num = ca_Starbucks$Phone.Number
+phone_num = gsub("-", "", phone_num)
+phone_num = gsub("\\(", "", phone_num)
+phone_num = gsub("\\)", "", phone_num)
+phone_num = gsub(" ", "", phone_num)
+part1 = substr(phone_num, 1, 3)
+part2 = substr(phone_num, 4, 6)
+part3 = substr(phone_num, 7, 10)
+new_phone_num = paste("(", part1, ") ", part2, "-", part3, sep = "")
+new_phone_num = gsub("\\(\\) -", NA, new_phone_num)
+
+new_phone_num[1:100]
+```
+
+
+3) The postal codes in the Starbucks data set are also not standardized, even when we only consider the Starbucks stores in California.  Postal codes are generally are five digits, or they are five digits with a dash and four additional digits.  For example: 12345, 12345-6789.  Standardize the postal code column for the California Starbucks' data set. If there is no phone number replace it with NA. Display the first 40 values of this corrected column. 
+
+```{r}
+fix_post_code = function(post_code){
+  if(nchar(post_code)==9){
+    part1 = substr(post_code, 1, 5)
+    part2 = substr(post_code, 6, 9)
+    new_code = paste( part1, "-", part2, sep = "")
+  }
+  else {
+    new_code = post_code
+  }
+  return(new_code)
+}
+
+new_post_code = sapply(ca_Starbucks$Postcode, fix_post_code)
+head(unname(new_post_code))
+```
+
+
+4) * Each Starbucks location has a store name, stored in the `Store.Name` column.  Using the California Starbucks locations, find the number of locations that have the name of their city in the store name.
+
+```{r}
+ca_index2 <- ca_Starbucks[, c("City", "Store.Name")]
+
+
+
+# OPTION 1: apply()
+
+# ARGUMENT: vector, a character vector of length 2.  Contains the city (1) and 
+#                  store.name (2) for a given starbucks location
+# RETURNS: result, a logical vector of length 1.  TRUE if city is in store location name. 
+check_name <- function(vector){
+  city <- vector[1]
+  store.name <- vector[2]
+  result <- grepl(city, store.name)
+  return(result)
+}
+
+ContainsName <- apply(ca_index2, 1, check_name)
+table(ContainsName)
+
+
+
+# OPTION 2: mapply()
+results = mapply(grepl, 
+                 pattern = ca_Starbucks$City,
+                 x = ca_Starbucks$Store.Name)
+
+# Actual counts 
+table(results)
+
+
+# OPTION 3: loops. 
+```
+
+
+5) * Create a word cloud for the all the cities that contain Starbucks' in California where the size of the city name is proportional to the amount of Starbucks in that city. 
+
+```{r}
+library(wordcloud)
+wc <- table(ca_Starbucks$City)
+
+# Need to take a subset because the data set is too big. 
+set.seed(21)
+index <- sample(1:length(wc), 70)
+
+wordcloud(names(wc)[index], 
+          wc[index])
+```
+
+
+6) * Word count table of all the words in the Street address column. Do not consider capitalization or punctuation. For example: "year", "year," and "Year", should all be counted as the same word (i.e. "year"). Also, do not include instances of numbers  
+
+```{r}
+StreetAddress <- gsub("[[:punct:]]", "", ca_Starbucks$Street.Address)
+StreetAddress <- gsub("[[:digit:]]", "", StreetAddress)
+StreetAddress <- tolower(StreetAddress)
+StreetAddress <- strsplit(StreetAddress, " ")
+StreetAddress <- unlist(StreetAddress)
+
+wc <- table(StreetAddress)
+
+# Remove instances of accidental whitespace, or non-words
+keep <- grepl("[[:alpha:]]", names(wc))
+wc <- wc[unlist(keep)]
+
+# Just see a few at random since its so big
+set.seed(2)
+index <- sample(1:length(wc), 25)
+wc[index]
+```
+
+
+7) * Notice that the Starbucks data set has a `Timezone` column.  This column is contains the timezone and lists the continent/ocean-region/etc the Starbucks is located at, followed by a slash and then a major city within the timezone. Create a new factor column and add it to the data set. The new column should be called `Timezone_Continent`, and should contain only the continent/ocean-region/etc information the Starbucks is on. For example, if `Timezone = "GMT+1:00 Europe/Andorra"`, then `Timezone_Continent = "Europe"`. Display the first few lines of the full data set with this new variable. 
+
+```{r}
+# OPTION 1: Custom Function and sapply()
+
+continent = function(timezone){
+  if(grepl("America", timezone)){
+    the_contient = "America"
+  } else if (grepl("Europe", timezone)){
+    the_contient = "Europe"
+  } else if (grepl("Asia", timezone)){
+    the_contient = "Asia"
+  } else if (grepl("Australia", timezone)){
+    the_contient = "Australia"
+  } else if( grepl("Africa", timezone)){
+    the_contient = "Africa"
+  } else if(grepl("Atlantic", timezone)){
+    the_contient = "Atlantic"
+  } else if(grepl("Pacific", timezone)){
+    the_contient = "Pacific"
+  } else if(grepl("Etc", timezone)){
+    the_contient = "Etc"
+  } else {
+    the_contient = NA
+  }
+  return(the_contient)
+}
+
+Timezone_Continent1  <- sapply(starbucks$Timezone, continent)
+head(Timezone_Continent1)
+
+# OPTION 2: Regular Expressions
+library(tidyverse)  # Needed for str_extract_all 
+continent_regex <- "[[:digit:]]{2} [[:alpha:]]*/"
+Timezone_Continent2 <- str_extract_all(starbucks$Timezone, continent_regex)
+Timezone_Continent2 <- gsub("[[:digit:]]{2} |/", "", Timezone_Continent2)
+head(Timezone_Continent2)
+```
+
+
+8) Create a function that reads in a pair of longitude and latitude values (`Long`, `Lat`) and calculates the distance between that point and all the Starbucks in the data set. Return a 2D object (data frame or tibble) that has all Starbucks locations within a distance less than `max_dist`, a function argument. 
+
+$$\text{distance}(location_1, location_2) = \sqrt{(lat_1 - lat_2)^2 + (long_1 - long_2)^2}$$
+
+```{r}
+get_subset <- function(Lat, Long, max_dist = 0.05){
+  the_dists <- sqrt((starbucks$Latitude - Lat)^2 + (starbucks$Longitude - Long)^2) 
+  keep <- which(the_dists< max_dist)
+  the_subset <- starbucks[keep, ]
+  return(the_subset)
+}
+
+# Coordinates of UCR: Lat = 33.9737, Long= -117.3281
+
+get_subset(Lat = 33.9737, Long= -117.3281)[, 5:7]
+
+# Coordinates of Disney Land: Lat = 33.8121, Long =  -117.9190
+get_subset(Lat = 33.8121, Long =  -117.9190)[, 5:7]
+
+# Coordinates of UCSD: Lat = 32.8801, Long= -117.2340
+get_subset(Lat = 32.8801, Long= -117.2340)[, 5:7]
+
+```
+

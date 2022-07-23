@@ -1,0 +1,273 @@
+# Text Data
+
+In this section we give an introduction to strings and string operations, how to extracting and manipulating string objects, and an introduction to general search methods. 
+
+We have focus on character objects in particular because a lot of the "messy" data comes in character form. For example, web pages can be scraped, email can be analyzed for network properties and survey responses must be processed and compared. Even if you only care about numbers, it helps to be able to extract them from text and manipulate them easily.
+
+In general we will try to stick to the following distinction. However, many people will use the term "character" and "string" interchangeably. 
+
+- ***Character***: a symbol in a written language, specifically what you can enter at a keyboard: letters, numerals, punctuation, space, newlines, etc.
+
+```
+'L', 'i', 'n', 'c', 'o', 'l'
+```
+
+- ***String***: a sequence of characters bound together
+```
+Lincoln
+```
+
+Note: R does not have a separate type for characters and strings
+
+```{r}
+class("L")
+class("Lincoln")
+```
+
+
+## Making Strings
+
+Use single or double quotes to construct a string, but in general its recommeded to use double quotes. This is because the R console showcases character strings in double quotes regardless of how the string was created, and sometimes we might have single or double quotes in the string itself.
+
+```{r}
+'Lincoln'
+"Lincoln"
+"Abraham Lincoln's Hat"
+"As Lincoln never said, 'Four score and seven beers ago'"
+'As Lincoln never said, "Four score and seven beers ago"'
+```
+
+The space, `" "` is a character; so are multiple spaces `"   "` and the empty string, `""`.
+
+Some characters are special, so we have "escape characters" to specify them in strings.
+- quotes within strings: `\"`
+- tab: `\t`
+- new line `\n` and carriage return `\r` -- use the former rather than the latter when possible.
+
+
+Recall that strings (or character objects) are one of the atomic data types, like `numeric` or `logical`. Thus strings can go into scalars, vectors, arrays, lists, or be the type of a column in a data frame. We can use the `nchar()` to get the length of a single string. 
+
+```{r}
+length("Abraham Lincoln's beard")
+length(c("Abraham", "Lincoln's", "beard"))
+nchar("Abraham")
+nchar("Abraham Lincoln's beard")
+nchar(c("Abraham", "Lincoln's", "beard"))
+```
+
+
+We can use `print()` to display the string, and `cat()` is used to write the string directly to the console. If you're debugging, `message()` is R's preferred syntax.
+
+```{r}
+presidents = c("Fillmore","Pierce","Buchanan","Davis","Johnson")
+
+print("Abraham Lincoln")
+
+cat("Abraham Lincoln")
+
+cat(presidents)
+
+message(presidents)
+```
+
+
+## Substring Operations
+
+
+***Substring***: a smaller string from the big string, but still a string in its own right. 
+
+A string is not a vector or a list, so we ***cannot*** use subscripts like `[[ ]]` or `[ ]` to extract substrings; we use `substr()` instead.
+
+```{r}
+phrase <- "Christmas Bonus"
+substr(phrase, start=8, stop=12)
+```
+
+We can also use `substr` to replace elements:
+
+```{r}
+substr(phrase, 13, 13) = "g"
+phrase
+```
+
+
+The function `substr()` can also be used for vectors.
+
+
+`substr()` vectorizes over all its arguments:
+
+```{r}
+presidents
+
+substr(presidents,1,2)   # First two characters
+
+substr(presidents,nchar(presidents)-1,nchar(presidents))   # Last two
+
+substr(presidents,20,21)    # No such substrings so return the null string
+
+substr(presidents,7,7)      # Explain!
+```
+
+
+## Dividing Strings into Vectors
+
+
+`strsplit()` divides a string according to key characters, by splitting each element of the character vector `x` at appearances of the pattern `split`.
+
+```{r}
+scarborough.fair = "parsley, sage, rosemary, thyme"
+strsplit(scarborough.fair, ",")
+strsplit(scarborough.fair, ", ")
+```
+
+Pattern is recycled over elements of the input vector:
+
+```{r}
+strsplit (c(scarborough.fair, "Garfunkel, Oates", "Clement, McKenzie"), ", ")
+```
+
+Note that it outputs a `list` of character vectors.
+
+
+## Converting Objects into Strings
+
+
+Explicitly converting one variable type to another is called ***casting***. Notice that the number "7.2e12" is printed as supplied, but "7.2e5" is not.  This is because if a number is exceeding large, small, or close to zero, then R will by default use scientific notation for that number. 
+
+```{r}
+as.character(7.2)            # Obvious
+as.character(7.2e12)         # Obvious
+as.character(c(7.2,7.2e12))  # Obvious
+as.character(7.2e5)          # Not quite so obvious
+```
+
+## Versatility of the paste() Function
+
+The `paste()` function is very flexible. With one vector argument, works like `as.character()`.
+
+```{r}
+paste(41:45)
+```
+
+With 2 or more vector arguments, it combines them with recycling.
+```{r}
+paste(presidents,41:45)
+paste(presidents,c("R","D"))  # Not historically accurate!
+paste(presidents,"(",c("R","D"),41:45,")")
+```
+
+We can changing the separator between pasted-together terms. 
+
+```{r}
+paste(presidents, " (", 41:45, ")", sep="_")
+paste(presidents, " (", 41:45, ")", sep="")
+```
+
+
+We can also condense multiple strings together using the `collapse` argument.
+
+```{r}
+paste(presidents, " (", 41:45, ")", sep="", collapse="; ")
+```
+
+Default value of `collapse` is `NULL` -- that is, it won't use it. 
+
+## gsub , sub
+
+gsub is all occurances, and sub is first occurance. 
+
+
+## Text of Some Importance
+
+Consider the following quote from Abraham Lincoln.  Often times we will want to study or analyze a block of text.  To 
+
+  >"If we shall suppose that American slavery is one of those
+  >offenses which, in the providence of God, must needs come, but which, having
+  continued through His appointed time, He now wills to remove, and that He
+  gives to both North and South this terrible war as the woe due to those by
+  whom the offense came, shall we discern therein any departure from those
+  divine attributes which the believers in a living God always ascribe to Him?
+  Fondly do we hope, fervently do we pray, that this mighty scourge of war may
+  speedily pass away.  Yet, if God wills that it continue until all the wealth
+  piled by the bondsman's two hundred and fifty years of unrequited toil shall
+  be sunk, and until every drop of blood drawn with the lash shall be paid by
+  another drawn with the sword, as was said three thousand years ago, so still
+  it must be said "the judgments of the Lord are true and righteous
+  altogether."
+
+
+We can read in the file with the following commands. 
+
+```{r}
+the_url <- "https://raw.githubusercontent.com/rpkgarcia/LearnRBook/main/data_sets/al1.txt"
+al1 <- readLines(the_url, warn = FALSE)
+
+# How many lines in the file 
+length(al1)
+
+# See the object
+al1
+```
+
+Lets create a new vector where each element is a portion of text seperated by a comman ",". 
+
+```{r}
+al1.phrases <- strsplit(al1, ",")[[1]]
+al1.phrases 
+```
+
+
+
+## Search
+
+We can search through text strings for certain patterns.  Some particularly helpful functions for doing this are `grep()` and `grepl()`.  The `grep()` function 
+
+Narrowing down entries: use `grep()` to find which strings have a matching search term
+
+```{r}
+# Returns indices for which element in al1 has the term "God"
+grep("God", al1.phrases)
+
+# Returns T/F values for which indices have the term "God" 
+grepl("God", al1.phrases)
+
+# Returns the the elements in al1 that have the term "God" 
+al1.phrases[grep("God", al1.phrases)]
+```
+
+
+## Word Count Tables 
+
+Now lets break up the data set by spaces.  We do this in hopes that it will separate each word as an element. 
+
+```{r}
+al1.words <- strsplit(al1, split=" ")[[1]]
+head(al1.words)
+```
+
+
+We can now tabulate how often each word appears using the `table()` function.  Then we can sort the frequencies in order using `sort()`.
+
+```{r}
+wc <- table(al1.words)
+wc <- sort(wc, decreasing=TRUE)
+head(wc, 250)
+```
+
+Notice that punctuation using these methods is still present. 
+
+```{r}
+# These are different
+wc["He"] # exists
+wc["he"] # does not exist
+```
+
+In addition, all our words and string subsets are case sensitive. 
+```{r}
+# What happens when we look for a word that is not in our 
+# word count table? 
+
+which(names(wc)  == "That")
+wc["That"]
+```
+

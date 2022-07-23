@@ -1,0 +1,381 @@
+# Factors and Lists
+
+Factor objects and lists are vectors with special properties.  Factors and lists are vectors because they a 1-dimensional sequence of elements.  Factors are primarily used for categorical data, and are technically a special form of an integer type vector.  However, we will simply refer to a factor vector a as a factor object.  Lists are vectors where type of each element can differ. In this chapter we introduce some of the unique properties of factors and lists. 
+
+## Factors 
+
+In real-world problems, you often encounter data that can be classified in categories. For example, suppose a survey was conducted of a group of seven individuals, who were asked to identify their hair color and if they own a pet.
+
+```{r}
+hair = c("Blonde", "Black", "Black", "Red", "Blonde", "Brown", "Black")
+```
+
+
+Here, the hair color and pet ownership are examples of categorical data. For the hair color variable we will typically want to store it as a factor, as opposed to a character vector. The different values that the factor can take are called levels. In R, you can create a factor with the `factor()`, or the `as.factor()` functions. 
+
+```{r}
+f = factor(hair)
+f
+```
+
+### Levels
+
+Levels are one of the special properties of a factor object. Notice that when you print the factor, R displays the distinct levels below the factor. R keeps track of all the possible values in a vector, and each value is called a level of the associated factor. The `levels()` function shows all the levels from a factor.
+
+```{r}
+levels(f)
+```
+
+
+If your vector contains only a subset of all the possible levels, then R will have an incomplete picture of the possible levels. Consider the following example of a vector consisting of directions.  Notice that "South" is noticeably missing. 
+
+```{r}
+directions = c("North", "West", "North", "East", "North", "West", "East")
+f = factor(directions)
+f
+```
+
+Notice that the levels of your new factor do not contain the value “South”. R thinks that North, West, and East are the only possible levels. However, in practice, it makes sense to have all the possible directions as levels of your factor. To add all the possible levels explicitly, you specify the `levels` argument of the function `factor()`.
+
+```{r}
+directions = c("North", "West", "North", "East", "North", "West", "East")
+
+# Make sure all possible categories are listed using the levels argument
+f = factor(directions,
+            levels = c("North", "East", "South", "West"))
+f
+```
+
+R lets you assign abbreviated names for the levels. You can do this by specifying the `labels` argument of `factor()`.
+
+```{r}
+directions = c("North", "West", "South", "East", "West", "North", "South")
+f = factor(directions,
+            levels = c("North", "East", "South", "West"),
+            labels = c("N", "E", "S", "W"))
+f
+```
+
+### Ordered Factor
+
+Sometimes data has some kind of natural order between elements. For example, sports analysts use a three-point scale to determine how well a sports team is competing: 
+
+**loss < tie < win**.
+
+In market research, it’s very common to use a five point scale to measure perceptions: 
+
+**strongly disagree < disagree < neutral < agree < strongly agree**.
+
+Such kind of data that is possible to place in order or scale is known as **ordinal data**. We can store ordinal data as an ordered factor. To create an ordered factor, use the `factor()` function with the argument `ordered=TRUE`.  
+
+```{r}
+record = c("win", "tie", "loss", "tie", "loss", "win", "win")
+f = factor(record, 
+            ordered = TRUE)
+f
+```
+
+
+You can manually change which levels are lower and higher based on the order that the levels are listed. 
+
+```{r}
+record = c("win", "tie", "loss", "tie", "loss", "win", "win")
+f = factor(record, 
+           ordered = TRUE, 
+           levels = c("win", "tie", "loss"))
+f
+
+```
+
+
+If you have no observations in one of the levels, you can drop it using the `droplevels()` function.
+
+```{r}
+record = c("win", "loss", "loss", "win", "loss", "win")
+f = factor(record,
+           levels = c("loss", "tie", "win"))
+
+droplevels(f)
+
+```
+
+## Factors - Basic Features 
+
+### Length 
+
+Factor objects have a lot of the same features as atomic vectors.  In general, most of the features and functions we had for atomic vectors work with factors.  For example, we still use the `length()` function to see how many elements are in a factor. 
+
+```{r}
+record <- c("win", "loss", "loss", "win", "loss", "win")
+f <- factor(record)
+
+length(f)
+```
+
+
+
+### Coercion 
+
+Coercion also works similarly.  We can use `as.factor()` to create a factor object from a pre-existing vector.  As we have seen in the previous examples, the `factor()` function also works. 
+
+```{r}
+record <- c("win", "loss", "loss", "win", "loss", "win")
+f <- as.factor(record)
+f
+```
+
+To convert a factor object to a non-factor object we still use the `as.*()` function.  In general, it is usually easiest to convert character vectors to factor vectors, and vice versa.  When we convert a factor to an integer or double vector the different levels of the factor are converted to integers in order for each level. That is, the first level listed is converted to a 1, the second level listed is converted to a 2, and so on. 
+
+```{r}
+
+# Convert to a character vector 
+as.character(f)
+
+# Convert to an integer vector 
+as.integer(f)
+```
+
+
+### Testing/Class
+
+We can also test if we have factor or an ordered factor using `is.*()` as we did before. 
+
+```{r}
+record = c("win", "loss", "loss", "win", "loss", "win")
+f = factor(record, ordered = T)
+
+
+# Test if the character vector is a factor
+is.factor(record)
+
+# Test if we have a factor (includes both ordered and not ordered factors)
+is.factor(f)
+
+# Test if we have an ordered factor (only includes ordered factors)
+is.ordered(f)
+```
+
+With all types of objects we can use the `class()` function. As mentioned in the previous section, this function returns the name of the type of object that you have, unlike `typeof()` which returns the storage mode.  The output of `class()` returns name of a object with particular properties.  For instance, a factor object.  A factor object is stored like an integer vector but it has "levels" which can be utilized in special ways. 
+
+```{r}
+# Returns storage mode (not recommended)
+typeof(f)
+
+# Returns class, which is the name of a collection of objects with similar properties 
+# (Recommended)
+class(f)
+```
+
+### Names 
+
+Like standard vectors, we can name the elements in a factor using the same three techniques discussed in \@ref(names). 
+
+```{r}
+# Using Technique 1 for creating a named vector. 
+named1 <- c(sally = "win", tom = "win", ed = "lost", jane = "tie")
+named1 <- factor(named1)
+named1
+```
+
+
+### Accessing Elements
+
+We can also access elements of a factor object using the same standard techniques described for accessing elements in a vector \@ref(index). 
+
+```{r}
+# Obtain the first element
+named1[1]
+
+# Obtain the forth and second elements
+named1[c(4, 2)]
+```
+
+
+### Frequency Tables 
+
+The `summary()` function will give you a quick overview of the contents of a factor.
+
+
+```{r}
+hair <- c("Blonde", "Black", "Black", "Red", "Blonde", "Brown", "Black")
+hair <- factor(hair)
+summary(hair)
+```
+
+
+The function `table()` tabulates observations.
+
+```{r}
+table(hair)
+```
+
+We can also use the `table()` and `summary()` functions on atomic vectors, and they will operate in a similar way.  However, these functions are particularly utilized for factor objects. 
+
+
+The `table()` function can also tabulate two-way frequency tables. 
+
+```{r}
+hair <- c("Blonde", "Black", "Black", "Red", "Blonde", "Brown", "Black")
+own_pets <- c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE)
+
+hair <- factor(hair)
+own_pets <- factor(own_pets)
+
+table(hair, own_pets)
+```
+
+
+
+
+
+## Lists 
+
+A *list* is an array of objects. Unlike other types of vectors, the elements in a list can belong to different classes. Lists are useful for packaging together a set of related objects. We can create a list of objects in our environment by using the `list()` function.
+
+```{r}
+# A list of mixed datatypes
+lst = list(1L, c("abc", "ABC"), 1.23, TRUE)
+lst
+```
+Looking at the output above we can see that this output is structured differently than a standard vector.  The location of each element of a list is denoted by [[]] instead of [].  
+
+
+The best way to understand the contents of a list is to use the structure function `str()`. It provides a compact display of the internal structure of a list.
+
+```{r}
+lst = list(1, c("abc", "ABC"), 1.23, TRUE)
+str(lst)
+```
+
+Above we see that we have a list with 4 elements.  The first element is of class "numeric" and contains a single number, 1.  The second element is of "character" and contains two elements, which is indicated by [1:2].  The third and fourth elements are of class "numeric" and "logical", and each contain a single element. 
+
+To see the class of each indivdiual element of a list we can use the following command. 
+
+```{r}
+sapply(lst, class)
+```
+
+
+### Nested Lists 
+
+
+A list can contain sublists, which in turn can contain sublists themselves, and so on. This is known as *nested list* or *recursive vectors*.
+
+```{r}
+lst = list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
+str(lst)
+```
+
+
+## List - Basic Features 
+
+### Length 
+
+Despite looking different and being stored differently than atomic vectors and factors, lists have many of the same properties and features.  For example, we still can use the `length()` function to determine how many elements are in a list. 
+
+
+```{r}
+lst = list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
+length(lst)
+```
+
+In the example of both there are 5 items in a list.  The first two elements are double vectors of length 1, the third element is a character vector of length two, the fourth element is  a list of length three, and the fifth element is a logical vector of length 1. 
+Add elements to a list using `c()` as we did before with atomic vectors. 
+
+```{r}
+lst_char <-  list("a", "b", "c")
+lst_num <- list(100, 99, 0)
+lst <- c(lst_num, lst_char)
+str(lst)
+```
+
+
+### Coercion 
+
+
+We can convert atomic vectors and factors into lists by simply using the `as.list()` function. The `as.list()` function lets each element in a vector correspond to each element in the list.  So the first element of the vector becomes the first element of the list, the second element of the vector becomes the second element of the list, and so on. We could also use the `list()` function but this will convert a vector into a list in a different way.  
+
+```{r}
+num_vec <- c(1, 2, 3)
+num_lst <- as.list(num_vec)
+str(num_lst)
+```
+
+
+We can convert lists to one of the other types of vectors using the `as.*()` function with the desired vector type as we did earlier.  However, if we do not have a desired type in mind we can also use the `unlist()` function.  The `unlist()` function takes all atomic objects in a list and creates an atomic vector. In this case R will "guess" which type of atomic vector you would like.
+
+```{r}
+unlist(num_lst)
+```
+
+
+### Testing/Class
+
+We can determine if an object is a list or not by using `is.list()` or the `class()` functions. 
+
+```{r}
+is.list(num_lst)
+
+class(num_lst)
+```
+
+
+### Names
+
+
+Lists can also be named, and often are.  It is very common to created named lists because lists can have a mix of different types objects.  We can create a named list using all the same techniques that we used for creating named vectors (\@ref(names)) . Notice, we do not have to create a name for every element in a list.  Below we see the first two elements are named, and the last is not. 
+
+```{r}
+lst <- list(first = "Abraham", last = "Lincoln", 1860)
+lst
+```
+
+
+### Accessing Elements
+
+Accessing elements in a list is a little different than accessing elements in a vector.  As you may have already noticed, when a list is outputted into our console the elements in the list are denoted by their index number inside of double brackets, i.e. [[2]].  To access this individual element in a list we use double brackets.  This isolates that individual element, and the class of this element is no longer a list but the class of the original element. 
+
+```{r}
+lst[[1]]
+class(lst[[1]])
+```
+
+We can still use single brackets to access elements in a list, but this method of indexing simply subsets the list.  That is, it still returns us a list, just a smaller one based on the indices called. 
+
+```{r}
+lst[1]
+class(lst[1])
+
+lst = list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
+lst[c(3, 1)]
+class(lst[c(3,1)])
+```
+
+
+
+## Summary {-}
+
+- Factors are special types of vectors which are primarily used for categorical data. 
+
+- Factors can be ordered or unordered. 
+
+- We create factor objects using the `factor()` function. 
+
+- Lists are vectors which can have a mix of classes/types of objects. 
+
+- We create a factor or list using the functions `factor()` or `list()` 
+
+- We can use the same basic functions with factors and lists as we do with atomic vectors: `length()`, `as.*()`, `is.*()`, `class()`
+
+- We have the same basic properties with factors and lists as we do with atomic vectors: 
+
+    + `length()` determine how long an object is
+    
+    + `c()` combine two objects of the same class together
+    
+    + same naming techniques
+    
+    + same indexing strategies
+    
+- We can also access individual elements of a list using [[]], which isolates an element and takes it out of the list structure. 
+

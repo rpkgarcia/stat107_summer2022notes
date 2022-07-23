@@ -1,0 +1,186 @@
+# Matrices, Data Frames, and More 
+
+## Matrices
+
+A matrix is a two dimensional array of data of **the same type**. The matrix function, `matrix()`, can be used to create a new matrix.
+
+```{r}
+m = matrix(c(1, 9, 2, 0, 5, 7, 3, 8, 4), 
+           nrow=3, ncol=3)
+m
+```
+
+R labels the rows and columns for us in the output. The matrix is filled column-by-column using the elements of the vector created by the concatenate function. The matrix `m` above is a matrix composed of doubles (the atomic object).  This is the default type of matrix R creates, and it is by far the most common matrix used. However, we can also create integer matrices, logical matrices, and character matrices. 
+
+```{r}
+# Example of a matrix with logical values
+m_logical <- matrix(c(T, T, T, F, F, F, T, T), 
+                    nrow = 4, ncol = 2)
+m_logical 
+```
+
+### Vectorized Operations 
+
+As with vectors, matrices can be used in arithmetic operations with scalars and other matrices of the same size. We still have all the same basic vectorized operations. 
+
+```{r}
+m2 = m/2
+m2
+m *m2
+```
+
+
+## Data Frames 
+
+
+Like a matrix, a data frame is a rectangular array of values where each column is a vector. However, unlike a matrix, the columns can be different data types. We can create a set of vectors of the same length and use the `data.frame()` function to make a data frame object.
+
+```{r}
+age <- c(1, 8, 10, 30, 31)
+gender <- c("Female", "Female", "Male","Female","Male")
+married <- c(FALSE, FALSE, FALSE, TRUE, TRUE)
+simpsons <- data.frame(age, gender, married)
+simpsons
+class(simpsons)
+```
+
+To see all the class of each column in a data frame we can use the following command. 
+
+```{r}
+sapply(simpsons, class)
+```
+
+
+
+### Column Names
+
+Data frames always have column names.  In the example above we used vectors to create a data frame.  When we use this technique then the name of the vector is automatically selected as the column name.  If we have inputted a vector like `c(1, 2, 3, 4, 5)` as an argument in the `data.frame()` function instead of an object name, then R would have guessed what to name the column.  Matrices do not have this property.  Matrices do not usually have column or row names (but they can, as we will see below).  In contrast, data frames always have column names, and often have row names too.  In the following section we discuss how to change the row and column names of both matrices and data frames explicitly. 
+
+## Basic Features of Matrices/Data-Frames
+
+### Dimensions 
+
+To access and determine the size or dimensions of a matrix and data frame there are three important functions.  We no longer would want to use the `length()` function because that is for 1-dimsional objects.  Since matrices and data frames are 2-dimensional objects we now must consider both dimensions.  The three functions we can use to do this are `dim()`, `nrow()`, and `ncol()`.  The `dim()` function returns the number of rows and the number of columns.  The `nrow()` just returns the number of rows, and `ncol()` just returns the number of columns. 
+
+```{r}
+dim(simpsons)
+
+nrow(simpsons)
+
+ncol(simpsons)
+```
+
+### Accesing Elements 
+
+Indices can be used to obtain the elements of a matrix and data frame, but now we must consider both the row and column.  We can access an individual point in a matrix or data frame using `[row, colum]`, where `row` is the row index and `column` is the column index.
+
+```{r}
+m = matrix(c(1, 9, 2, 0, 5, 7, 3, 8, 4), 
+           nrow=3, ncol=3)
+m[2,2]
+```
+
+We can access multiple elements using the `c()` function.  Note we must use the `c()` function to separate the rows and columns we are trying isolate because the common inside the single brackets separates the dimensions. 
+
+```{r}
+
+# Isolate multiple individual points. 
+m[c(1,3), c(1,3)]
+```
+
+We can also isolate entire rows or columns by leaving one of the dimensions blank. 
+
+```{r}
+
+# Isolate the second row
+m[2,]
+
+# Isolate the third column 
+m[,3]
+```
+
+We can think of these individual rows or columns as an individual vector. 
+
+```{r}
+vec = simpsons[,2]
+vec
+```
+
+
+### Coercion 
+
+We often do not need to convert matrices and data frames, but if we do we can use the `as.matrix()` or `as.data.frame()` on a pre-existing object to convert it into a matrix or data frame.  The most common type of coercion that we have for 2-dimensional objects is changing the class of a column in a data frame.  To do this we can redefine this class explicitly using indexing. 
+
+```{r}
+# Changing the class of a single column 
+simpsons[, 1] <- as.factor(simpsons[, 1])
+
+sapply(simpsons, class)
+
+simpsons
+
+```
+
+
+### Testing/Class
+
+We can test or determine what type of object we have using the `class()` function.  Again, this function will always return something for a given object.  If we have a data frame or matrix it will return "data.frame" or "matrix", respectively.  We can also use the `is.matrix()` or `is.data.frame()` functions which will return `TRUE/FALSE` values. 
+
+### Names 
+
+With both matrices and data frames we can name the rows and columns.  Data frames will always have column names, but matrices do not have to have them.  It is very commmon to name the rows and columns for a data frame, but not as common for matrices.  Matrices are most often used for linear algebra calculations.  To see the row or column names of a 2-dimensional object we can use the `rownames()` and `colnames()` functions. 
+
+```{r}
+rownames(simpsons)
+
+colnames(simpsons)
+```
+
+To change these names we use the same functions, and just manually reassign the values for them. 
+
+```{r}
+rownames(simpsons) <- c("Maggie", "Lisa", "Bart", "Marge", "Homer")
+simpsons
+
+colnames(simpsons) <- c("Age", "Gender", "Married")
+simpsons
+```
+
+
+
+## Other Object Types and the Global Environment
+
+There are more objects then what we have discussed above. For example, many of the advanced functions create specific objects generated by that specific function.  There are hundreds, and possibly thousands, of such objects.  These objects generally are special cases of lists, factors, and other various types of objects that we have defined in this section.  The objects we have described here are the building blocks of most values we will be working with. Functions like `class()` and `length()` are also considered as objects, but are of a different type.  We discuss functions in more detail in section \@ref(functions).  
+
+There are also built-in, or special objects in R.  For example, the object `pi` is an object already defined. These built-in values and functions can be written over, but that is not advised.
+
+```{r}
+pi
+```
+
+Every time we create an object we see that the Global Environment tab in the top right pane updates.  The object we have created is now listed in the Global Environment. This is a collection of all *user created* objects in R, that R knows about, and that R can easily call.  Built-in objects, such as `pi`, will not be listed here. 
+
+## Summary {-}
+
+- The basic and most common 2-dimensional objects are matrices and data frames. 
+
+- Matrices must contain all data of the same type. 
+
+- Data frames can have different classes between columns, and always have column names.
+
+- We can create a matrix or data frame using the `matrix()` and `data.frame()` functions. 
+
+- Many vectorized operations still work for 2-dimensional objects. 
+
+- We can look at and name both rows and columns using `rownames()` and `colnames()`.
+
+- To see the dimensions of a 2-dimensional object we use `dim()`, `nrow()` and `ncol()`. 
+
+- We can check if we have a matrix or data frame by using `class()` or `is.*()`. 
+
+- To access elements of a 2-dimsional object we use `[row, column]`. 
+
+
+
+
+

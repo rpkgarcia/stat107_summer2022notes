@@ -1,0 +1,273 @@
+# Tidyverse 
+
+For this document you will need to install and load the family of packages `tidyverse` functions. To install the package refer to Section \@ref(packages). 
+
+```{r warning=FALSE, message=F}
+library(tidyverse)
+```
+
+
+The tidyverse is a collection of packages that share a unique underlying philosophy, frame work, and syntax.  There are approximately 20 tidyverse packages, but the core ones are `ggplot2`, `dplyr`, `tidyr`, `readr`, `purr`, `tibble`, `stringr`, and `forcats`.  You can install these packages individually or all at once using by simply using the command `install.packages("tidyverse")`. 
+
+In general, the tidyverse syntax is structured in a way where we think about "actions" instead of "objects".  In other words, we think about coding in terms of verbs instead of nouns. 
+
+The overall tidyverse structure and syntax is unique.  Some believe that this method of coding is more user friendly to beginners.  Beginners can do more complex things faster.  The major criticisms of tidyverse is that the help files, structure, and syntax is too much of a deviation from base R. It is also sometimes not flexible enough for unique high level commands. Base R (or traditional R) is very similar to a variety of the other languages like Python or C.  Techniques learned used based R can be much more versatile depending on your needs. 
+
+
+## Piping Operator 
+
+The tidyverse syntax structure and form can sometimes be used like traditional base R functions, but were designed to use a "piping" operator. This operator is not in base R, so you will either need to define it yourself, or load it as a package. The piping operator feeds what ever is on the left of the operator as the first argument for the function on the right side of the operator. For example, here we feed the vector `vec` into the first argument of the base R function `mean()`
+
+```{r}
+vec <- 1:10 
+vec %>% mean()
+```
+
+This operator was designed to be used when we have a sequence of multiple operations.  With this operator we "pipe" the output of one function into the next using '%>%'.  The idea is to focus on actions and not objects. 
+
+## Tibbles vs Data Frames
+
+We also have a new type of object with tidyverse called a **tibble**.  A tibble is a new type of 2D object, and is very similar to a data frame.  We have actually already used tibbles and tidyverse a little bit when we were loading data. In section \@ref(LoadData) we discussed how to load a csv file using the `read_csv()` which required the `readr` package, a package in the tidyverse suite.  When we load a csv file using `read_csv()` we are actually loading in a tibble object, not a data frame. 
+
+Tibbles and data frames are very similar.  There is one main difference. Consider the `diamonds` data set below.  This is a data set that is part of the `tidyverse` packages.  When the packages are loaded we can call this data set at any time, just as we do for a built in base R data set. The `diamonds` data set is a tibble, and not a data frame.  When we print it, or type its name to display it, only the first 10 rows will be displayed and all columns that fit on the screen or output space. The other thing that we notice is that the column type is displayed, `<type>`.  Below each row we can see if the column has doubles `<dbl>`, ordered factors `<ord>`, integers `<int>`, characters `<chr>`, logical values `<logi>`, etc. 
+
+```{r}
+# The tidyverse data set diamonds is a tibble
+class(diamonds) 
+dim(diamonds)  # 53940 rows, 10 columns 
+
+# Tibbles only show first ten rows, and however many columns fill up the screen
+diamonds
+```
+In contrast if we type the name of the data set in a data frame format then all the rows, and all the columns will be displayed.  If the data set does not fit in the print space the format will just be manipulated.  We also do not have column types displayed below the column names for a data frame. 
+
+```{r}
+diamonds_df <- data.frame(diamonds)
+diamonds_df[1:10,]
+```
+
+## Key Functions 
+
+There are a few key functions and operations that we will focus on in the tidyverse suite.  Tidyverse is a gigantic collections of functions and objects, but these are a few of the main ones to help you get started. 
+
+Note, in general, for tidyverse help files arguments typically start with a ".", this in contrast to many of the base R help files where arguments are in all caps. 
+
+- `select()`: Select variables in a data frame. 
+
+- `filter()`: Subset a data frame, retaining all rows that satisfy your conditions.
+
+- `arrange()`: Orders the rows of a data frame by the values of selected columns.
+
+- `rename()`: Changes the names of individual variables using `new_name = old_name` syntax
+
+- `mutate()`: Adds new variables and preserves existing ones. 
+
+- `group_by()`: Takes an existing tibble and converts it into a grouped tibble where operations can then be performed "by group". 
+
+- `summarize()/summarise()`: Summarizes results for each group (rows), and summary statistics (columns). 
+
+### General properties 
+
+In general, all the functions above have the following properties: 
+
+- The first argument is a data frame or a tibble. 
+
+- The subsequent arguments are used to determine what to do with the data-frame/tibble in the first argument.
+
+- The returned value is a data frame or a tibble. 
+
+- The inputted data-frames/tibbles should be well formatted to start off with.  Each row should be an observation, and each column should be a variable. 
+
+- When we refer to column names for the data frame or tibble in the first argument we do not need to use quotes around the column names. 
+
+### select()
+
+We use this function to isolate particular columns that we isolate. 
+
+
+```{r}
+diamonds %>% select(price, cut)
+```
+
+To store the output we need to use an assignment operator. 
+
+```{r}
+PriceCut <- diamonds %>% select(price, cut)
+PriceCut
+```
+
+You can also use the operator ":", and negative signs with the `select()` function. With the "name1:name2" operator we can select all columns between the column named "name1" and "name2".  With negative signs we can omit all variables that are preceeded with a negative sign. These methods are typically not allowed in standard indexing when using names, as covered in \@ref(VectorIndex).  
+
+
+```{r}
+# Select all columns between cut and price. 
+PriceCut <- diamonds %>% select(cut:price)
+PriceCut
+
+# Select all but price and cut
+NotPriceCut <- diamonds %>% select(-price, -cut)
+NotPriceCut
+```
+
+### filter()
+
+The function `filter()` is like `select()` but we focus on the rows we wish to keep instead of the columns.  The arguments inside the `filter()` function correspond to conditions we wish to keep.  Again, when referring to columns inside of the tidyverse functions we do not need to put the column names in quotes. 
+
+```{r}
+# What is the mean value for the depth column?
+mean(diamonds$depth)
+diamondsFiltered <- diamonds %>% filter(depth> mean(depth))
+diamondsFiltered
+```
+We can filter on multiple conditions. 
+
+```{r}
+diamondsFiltered <- diamonds %>% filter(depth> mean(depth),
+                                        cut == "Good",
+                                        price > 350)
+diamondsFiltered
+```
+
+
+### arrange()
+
+The `arrange()` function is much like `sort()` or `order()` in base R.     
+
+### rename()
+
+The `rename()` is used to replace the `colnames()` function. Every argument in the `rename()` function should have the structure `NewName = OldName`.  That is, we should have the new column name on the left and original column name on the right.  For example lets say we want rename the column `cut` to `Cut`. 
+
+```{r}
+diamonds %>% rename(Cut = cut)
+```
+We can do this as many columns as we would like.  Now lets try renaming the `cut` and the `color` columns. 
+
+```{r}
+diamonds %>% rename(Cut = cut, 
+                    Color = color)
+```
+
+
+Remember, to save your results, you still need to use the assignment operator and rename the object. 
+
+```{r}
+diamonds_new <- diamonds %>% rename(Cut = cut, 
+                                    Color = color)
+```
+
+### mutate()
+
+We use the `mutate()` function to add or change a variable.  Like the preceeds functions before it, you still do not need quotes around the column names to refer to them.  Suppose to change the `price` column to be in hundreds of dollars (instead of dollars).  
+
+```{r}
+diamonds %>% mutate(price = price/100)
+```
+
+We can adjust multiple columns at once, and even add columns. 
+
+```{r}
+diamondsNEW <- diamonds %>% mutate(price = price/100,
+                                   depthNEW = 10*depth + price)
+diamondsNEW
+```
+
+In addition, there is also the `transmute()` function which does the same thing as `mutate()` but *drops all other variables*. 
+
+```{r}
+diamondsNEW <- diamonds %>% transmute(price = price/100,
+                                      depthNEW = 10*depth + price)
+diamondsNEW
+```
+
+
+### group_by()
+
+The `group_by()` function is typically used with the `sumarize()/summarise()` function.  We use `group_by()` to group sets of observations all together. The arguments dictate the groups to create by specify columns, which are typically factor or character columns. 
+
+
+### summarize()/summarise()
+
+The functions `summarize()` and `summarise()` are the same.  The arguments inside this function specify the summary statistics to create useing `NewColumnName = <statistic>`.  We use this function with `group_by()`, so that way we can create summary statistics for each group. When we go from one function to another we still use the piping operator, `%>%`.
+
+Here is an example where we group by cut, and then calculate the mean price for each cut. This results in a new data frame with a new column called `PriceMean`.  
+
+```{r}
+diamonds %>%
+  group_by(cut) %>%
+  summarise(PriceMean = mean(price))
+
+```
+
+We can also do this by multiple groups and summary statistics. 
+
+```{r}
+diamonds %>%
+  group_by(cut, color) %>%
+  summarise(PriceMean = mean(price), 
+            PriceMedian = median(price))
+
+```
+
+We can do several summary statistics at once. 
+
+```{r}
+diamonds %>%
+  group_by(cut) %>%
+  summarise(PriceMean = mean(price), 
+            PriceMedian = median(price))
+
+```
+
+## Examples 
+
+### Example 1
+
+Get a new column which is the product of `depth` and `carat`, call it `DxC`. Calculate the (arithmetic) mean of this new variable, and the (arithmetic) mean of `price` by each `cut`.  
+
+```{r}
+diamonds %>%
+  mutate(DxC = depth*carat) %>%
+  group_by(cut) %>%
+  summarise(AvgDxC = mean(DxC), 
+            AvgCut = mean(price))
+```
+
+
+
+### Example 2
+
+Isolate the observations that have `cut` as "Ideal".  Only keep  the cut, carat, depth, and price columns. 
+
+```{r}
+diamonds %>%
+  filter(cut == "Ideal") %>%
+  select(cut, carat, depth, price)
+```
+
+### Example 3
+
+Consider only the observations where `price` is larger than the median `price`.  Determine the (arithmetic) mean and min value for the `depth` variable by `color`.  Sort the results in order from smallest to largest value for (arithmetic) mean `depth` for each group.  Display only the first 15 rows of the resulting matrix. 
+
+```{r}
+diamonds %>%
+  filter(price >median(price)) %>%
+  group_by(color) %>%
+  summarize(mean_depth = mean(depth),
+            min_depth = min(depth)) %>%
+  arrange(mean_depth)%>%
+  head(n = 10)
+```
+
+
+
+## Additional Resources {-}
+
+To learn more about Tidyverse, check out the official website, a book on helpful information, and the official cheat sheets. 
+
+- https://www.tidyverse.org/
+
+- https://r4ds.had.co.nz/index.html
+
+- Cheatsheets! 
+
+- https://cfss.uchicago.edu/notes/pipes/

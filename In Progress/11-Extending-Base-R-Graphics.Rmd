@@ -1,0 +1,105 @@
+# Extending Base R Graphics
+
+Base R Graphics can be greatly extended.  There are several packages, functions, and features that we can add to our standard graphics. 
+
+## The "maps" Package
+
+Base R plotting is very powerful and has many features.  However, sometimes you want to create something specialized or create a more unique type of plot.  There are a lot of plotting tools that can be added to base R plots by using packages. Packages are covered in more detail in Section \@ref(packages). 
+
+We specifically consider the `maps` package which lets us create different types of maps in R.  The most important function in this package is the function `map()`.  This function generates various types of maps depending on the inputted values.  If we input nothing, then the function defaults to creating a map of the world with lines dividing the different countries. 
+
+```{r}
+library(maps)
+map()
+```
+
+The first argument for the function `map()` is called `database`. This argument is expecting a character vector of length 1. The element in this vector corresponds to the map you want to create. As we saw above, the default for this package is to create a world map, this corresponds to when argument is `database= "world"`.  The values this argument can support are: "world", "usa", "state", and "county". 
+
+```{r}
+par(mfrow = c(2, 2))
+# world map 
+map("world")
+
+# USA map 
+map("usa")
+map("state")
+map("county")
+par(mfrow = c(1,1))
+```
+
+Within these maps we can specify specific regions that we may want plotted. In general, it supports the names of countries, and states in the US. To specify a region to be plotted we use the `region` argument, which is the second argument of the function. 
+
+```{r}
+par(mfrow = c(1,2))
+map("world", regions = "Switzerland")
+map("state", regions = "oklahoma")
+par(mfrow = c(1,1))
+```
+
+These functions have some of the same features of our normal Base R functions.  For example, we can still add points and lines to these graphs, but now we have to do it in the correct coordinate system.  
+
+
+For example, we can plot the locations of world cities that are capitals using the data set `world.cities` which is part of the `maps` package using the base R plot function `points()`. 
+
+```{r}
+map("world")
+captial_cities = world.cities[world.cities$capital==1, ]
+points(captial_cities$long, captial_cities$lat, col = "red")
+```
+
+The maps package does not use the standard base R label arguments like `main, xlab, ylab`.  However, if we wish to have a map with labels we can use the function `map.text()` instead of `map()`. This is essentially the same function as `map()`, but it defaults to labeling the graph for us.  If we want to add our own custom label we use the `labels` argument. 
+
+```{r}
+par(mfrow = c(1,2))
+# Default Label 
+map.text("world", regions = "Switzerland")
+
+# Custom Label 
+map.text("state", regions = "oklahoma", labels = "Custom Label Here")
+par(mfrow = c(1,1))
+```
+
+## Some additional Packages to consider
+
+Extend Fonts and Colors
+
+- [showtext](https://cran.r-project.org/web/packages/showtext/): Extend the fonts of R
+
+- [emojis](https://cran.r-project.org/web/packages/emojifont/): Add emojis to plots. 
+
+- [viridis](https://cran.r-project.org/web/packages/viridis/index.html): Color palettes for common forms of color blindness and/or color vision deficiency. 
+
+- [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html): Color palettes particularly common for maps. 
+
+- [wesanderson](https://cran.r-project.org/web/packages/wesanderson/index.html): Color palettes generated mostly from 'Wes Anderson' movies.
+
+
+More Plot Formats 
+
+- [corrplot](https://cran.r-project.org/web/packages/corrplot/): Provides a visual exploratory tool on correlation matrix that supports automatic variable reordering to help detect hidden patterns among variables.
+
+- [heatmp](https://cran.r-project.org/web/packages/heatmap3/): Create heat maps. 
+
+- [riverplot](https://cran.r-project.org/web/packages/riverplot/): Implements Sankey or Ribbon plots. 
+
+- [sinaplot](https://cran.r-project.org/web/packages/sinaplot/): Creates enhanced jitter strip chart, where the width of the jitter is controlled by the density distribution of the data within each class. 
+
+- [vcd](https://cran.r-project.org/web/packages/vcd/): Visualization techniques, data sets, summary and inference procedures aimed particularly at categorical data. 
+
+- [visreg](https://cran.r-project.org/web/packages/visreg/): If you know about linear regression, you can use this make advanced linear regression plots. 
+
+- [vioplot](https://cran.r-project.org/web/packages/vioplot/index.html): Creates violin plots which are a combination of a box plot and a density plot (density plots look kinda like histograms). 
+
+For even more packages that extend Base R graphics: https://blog.insileco.io/wiki/rgraphpkgs/
+
+
+```{r, eval = F, include = F}
+library("emojifont")
+set.seed(123)
+x <- rnorm(10)
+set.seed(321)
+y <- rnorm(10)
+plot(x, y, pch=emoji("cat"), col = "red", family = 'EmojiOne', cex =3 )
+#text(x, y, labels=emoji('smiley'), cex=1.5, col='black', family='EmojiOne')
+```
+

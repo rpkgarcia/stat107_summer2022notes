@@ -1,0 +1,251 @@
+# Loops {#loops}
+Loops are another type of control flow structure.  They dictate how many times a series of commands should be run.  There are two type of loops, a `while` loop and a `for` loop.  These two loops operate similarly and are found in other programming languages such as `C` and `Python`. 
+
+
+## While Loop
+
+A `while` loop is used when you want to perform a task indefinitely, until a particular condition is met. It’s a condition-controlled loop. 
+
+
+```{r, echo = F, message=FALSE, warning=FALSE, fig.align='center'}
+library(knitr)
+knitr::include_graphics("images/WhileLoop.png")
+```
+
+The loop will continue until the condition is `FALSE`. 
+
+
+```{r}
+x = 5
+
+# If statement is true, keep running the loop 
+while (x != 0 ) {
+  print(x)
+  x = x - 1
+}
+```
+
+
+If the condition is false at the start, the while loop will never be executed at all.
+
+```{r}
+x = 0
+
+# If statement starts as TRUE,  the loop will never run 
+while (x != 0 ) {
+  print(x)
+  x = x - 1
+}
+```
+
+
+## For Loops
+The `for` statement in R is a bit different from what you usually use in other programming languages. Rather than iterating over a numeric progression, R’s `for` statement iterates over the items of a vector or a list. The items are iterated in the order that they appear in the vector.
+
+
+```{r, echo = F, message=FALSE, warning=FALSE, fig.align='center'}
+library(knitr)
+knitr::include_graphics("images/ForLoop.png")
+```
+
+
+
+```{r}
+# Iterate through a vector
+colors <- c("red","green","blue","yellow")
+
+for (x in colors) {
+  print(x)
+}
+```
+
+```{r}
+lst <- list(3.14, "Hi", c(1,2,3))
+
+for (i in lst) {
+  print(i)
+}
+```
+
+If you need to execute a group of statements for a specified number of times, use sequence operator : or built-in function `seq()`.
+
+```{r}
+# Print 'Hello!' 3 times
+for (x in 1:3) {
+  print("Hello!")
+}
+```
+
+
+```{r}
+for (x in seq(from=2,to=8,by=2)) {
+  print(x^2)
+}
+```
+
+
+## Break 
+
+The `break` statement is used to exit the loop immediately. It simply jumps out of the loop altogether, and the program continues after the loop.
+
+```{r}
+x <- 5
+
+# If statement starts as TRUE,  the loop will never run 
+while (x != 0 ) {
+  print(x)
+  x = x - 1
+  
+  if(x == 2){
+    print("Entered IF statement, stop loop")
+    break 
+  }
+  
+}
+```
+
+**If not given an adequate stopping criteria or break statement the loop will continue forever.** For example, if we started the above examples at `x = -2`. The `break` statement is particularly important for the `while` loop. 
+
+
+The `break` statement can also be used in a `for` loop. It simply jumps out of the loop altogether, and the program continues after the loop.
+
+```{r}
+colors <- c("red","green","blue","yellow")
+for (x in colors) {
+  if (x == "blue"){
+       break 
+  }
+  print(x)
+}
+```
+
+The `for` loops do not have the same risk of "running forever", like `while` loops have. 
+
+## Next 
+
+We can also use the `next` command in both `for` loops and `while` loops in order to skip executing a command. 
+
+
+
+```{r}
+for(i in 1:10){
+  
+  i <- i^2
+  
+  if(i <5){
+    next
+  }
+  
+  print(i)
+}
+```
+
+The code inside the loop will run until it reaches the `next` statement.  Once 
+
+## Nested Loops
+
+We can also create loops within loops.  We refer to creating loops within other loops as a nested loop. 
+
+
+```{r}
+for(i in 1:10){
+  for(j in 1:3){
+    statement = paste("i=", i, ", j=", j)
+    print(statement)
+  }
+}
+```
+
+Here is an example of a nested loop which changes the elements of matrix to be the product of the row and column location. 
+
+```{r}
+my_matrix <- matrix(NA, nrow = 5, ncol = 5)
+
+for(i in 1:nrow(my_matrix)){
+  for(j in 1:nrow(my_matrix)){
+    my_matrix[i,j] = i*j
+  }
+}
+
+my_matrix
+```
+
+
+## Examples 
+
+A few more examples. 
+
+
+### Example 1
+
+Below we create a function that has only one argument, `vec`, an arbitrary numeric vector. This function create a new vector containing all elements in `vec` whole numbers, and returns this new vector. If there are no whole numbers in `vec`, then it returns `NA`.
+
+
+```{r}
+# Create a subset of x which only contains whole numbers
+# ARGUMENTS: vec, a numeric vector 
+# RETURNS: whole_vec, a vector containing all whole numbers
+#                   will equal NA if there are no whole numbers
+whole_num <- function(vec){
+  
+  # Initialize whole_vec
+  whole_vec <-NULL
+  
+  # For loop, go through each element in vec 
+  for(i in vec){
+    if( i == round(i)){
+      whole_vec <- c(whole_vec, i)
+    } 
+  }
+  
+  # Check to make sure there was at least one whole number
+  if(length(whole_vec)==0){
+    whole_vec = NA
+  }
+  
+  return(whole_vec)
+}
+
+
+# Test case 
+tester <- c(1, 3, 5.5, 10.8, pi, 62)
+whole_num(tester)  # Should return 1, 3, 62
+
+```
+
+
+### Example 2
+
+Below we create a function that has only one argument, `bound`, a numeric object of length one. This function returns the minimum number of subsequent whole numbers (starting from 1) that must be added together in order to reach (or surpass) `bound`.  For example, suppose `bound=16`.  Then `1+2+3+4+5 = 15`, and `1+2+3+4+5+6 = 21`.  Thus, the function would return `6`. 
+
+
+```{r}
+get_num <- function(bound = 16){
+  
+  # Initialize values
+  total <- 0 
+  i <- 0
+  
+  # Use while loop to reach bound 
+  while(total <= bound){
+    i <- i + 1
+    total <- total + i 
+  }
+  return(i)
+}
+
+get_num(15)
+```
+
+
+## Additional Resources
+
+- [Chapter 13 of "R for Programming in Data Science"](https://bookdown.org/rdpeng/rprogdatascience/functions.html#the-...-argument) 
+- Videos:
+    + [Control Flow 6 | while loops](https://ucr.yuja.com/V/Video?v=2369000&node=8488272&a=151697133&autoplay=1)
+    + [Control Flow 7 | while loops Bisection Method](https://ucr.yuja.com/V/Video?v=2368999&node=8488271&a=621919520&autoplay=1)
+    + [Control Flow 8 | infinite while loops](https://ucr.yuja.com/V/Video?v=2368998&node=8488270&a=1160986069&autoplay=1)
+    + [Control Flow 9 | for loop Intro](https://ucr.yuja.com/V/Video?v=2368997&node=8488269&a=148930850&autoplay=1)
+    + [Control Flow 10 | break and next](https://ucr.yuja.com/V/Video?v=2368996&node=8488268&a=160173707&autoplay=1)
+    + [Control Flow 11 | nested for loops](https://ucr.yuja.com/V/Video?v=2368995&node=8488267&a=316843892&autoplay=1)
+    + [Programming Loops vs. Recursion - Computerphile](https://www.youtube.com/watch?v=HXNhEYqFo0o)

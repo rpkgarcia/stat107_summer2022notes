@@ -1,0 +1,431 @@
+# Indexing
+
+
+When we wish to extract elements of an object like a vector, list, data frame, or matrix, we use a process called *indexing*.  The process of indexing, is also sometimes called *subsetting*. In R the *index* of an object is the numeric location of that object.  For example, consider the vector `vec <- c(100, 20, 3)`.  The index of the first element is 1, the index of the second element is 2, and the so on.  We have already seen a few examples of indexing for vectors and factors, lists, and 2D objects.  In this section we more formally describe a plethora of indexing techniques.  Indexing can be hard to master in R because of the many options, and the different types of objects.  In this section we will describe the basic indexing techniques for atomic vector and factors, lists, matrices, and data frames.  The indexing between the methods are all related, so it useful to talk about them all together. At the end of this section we give examples of a few features and applications we can do with indexing. 
+
+## Atomic Vectors and Factors {#VectorIndex}
+
+We have already seen a little big of indexing with vectors (atomic, factors, and lists).  Now we will discuss indexing in more detail for 1D Objects.  We will focus specifically on atomic vectors.  The techniques here can be used with other types and classes of vectors though.  For indexing with vectors we only have one indexing operator, `[]`.  We also have four general strategies that we will focus on. Suppose we wish to preform indexing on a vector `vec`. 
+
+```{r}
+# Generate a random vector with the following code 
+set.seed(10)
+vec <- sample(1:100, 10)  # numeric vector with 10 values
+vec
+```
+
+- Four basic strategies: 
+    + **positive integer**: When using the positive integer strategy we use a vector `index` which only contains positive integers of the indexes.  This vector can be of any positive finite length.  That means it can be of length 1, length 10, or even length 10000.  We use this operator by calling `vec[index]`, which will return the elements of `vec` by their indices as ordered from `index`. 
+    + **negative integer**: The negative integer strategy works similarly.  This time we consider a vector `index` which only contains negative integers, and must have a positive length between 1 and the length of `vec`.  These correspond to the elements of `vec` you would like to exclude.  
+    + **logical elements**: When using the logical strategy we use a vector `index` which contains only logical (`TRUE/FALSE`) values.  In this strategy `index` must be the same length as the vector `vec`.  If it is not, R will use *recycling* to complete the command. The `TRUE` values in `index` represent the elements of `vec` you wish to keep, and `FALSE` values represent the elements you wish to exclude. 
+    + **names**:  If `vec` is a named vector we can also use the names to preform indexing.  In this case the vector `index` should be a character vector where each element of the vector is the name of an element in `vec` that we wish to keep.  We can not use a negative operator, or a negative sign with this strategy to exclude variables.  
+  
+We can not mix and max these strategies within a command. We can only use one strategy at a time. 
+    
+### Example: Positive Integers {-}
+
+```{r}
+# Obtaining a single element 
+vec[1]
+
+# Obtaining several elements: Get 1st, 2nd, 3rd element
+vec[c(1, 2, 3)]
+
+# Get mutliples of the same element
+index <- c(3, 2, 1, 1, 1, 2, 3)
+vec[index]
+```
+
+
+### Example: Negative Integers {-}
+
+```{r}
+# Remove first element
+vec[1]
+
+# Remove several elements: 1st, 2nd, 3rd 
+vec[-c(1, 2, 3)]
+
+# Equivalent to above 
+index <- c(-1, -2, -3)
+vec[index]
+```
+
+### Example: Logical Values {-}
+
+```{r}
+
+
+# `index` should be the same length as `vec`
+index <- c(T, T, T, T, F, 
+           F, F, F, F, T)
+vec[index]
+
+# When `index` is not of the same length as `vec`, we have recycling
+# Keeps every other element 
+index <- c(T, F)
+vec[index]
+```
+
+
+### Example: Names {-}
+```{r}
+# Give names to each element in `vec`
+names(vec) = LETTERS[1:10]
+
+# Return Elements: A, B, D
+index = c("A", "B", "D")
+vec[index]
+
+```
+
+
+## Lists 
+
+Although lists are 1D objects, they have three different operators: `[]`, `[[]]`, and `$`.  The first operator works the same way as we saw above for atomic vectors.  We can use all four strategies we used in the prior section, and a new list will appear according to the indexing order. The new operators are `[[]]` and `$`, these operators are very similar.  They both can only isolate one element in the list, and they return this element in its particular class.  That is, if the second element in the list is data frame, then a data frame is returned with the `[[]]` and `$` operators. 
+
+### Double Brackets
+
+With the double brackets operator `[[index]]` we can put the index number for the element we want returned, or if we have a named list, we can put the name of the element we desire.  Remember, you can only isolate one element in the list using this operator, so `index` must be of length 1.  
+
+```{r}
+# Create a named list
+# Recall: name = value 
+lst1 = list(first = c("Hello", "Goodbye"), second = c(1, 2, 3), third = c(T, F, T))
+
+# Create a nested list with names 
+lst2 = list(e1 = lst1, e2 = "Stat 107 Rules")
+
+# See structure of the list 
+str(lst2)
+
+# Isolate second element by name (maintains class of the element)
+lst2[["e2"]]
+class(lst2[["e2"]])
+
+# Isolate second element by integer (maintains class of the element) 
+lst2[[2]]
+class(lst2[[2]])
+
+# Isolate nested elements
+lst2[[1]][[2]]
+```
+
+
+### Dollar Sign 
+
+After the dollar sign operator `$` we put the name of the desired element.  You can only isolate one element in the list using this operator, and you can only access elements using their names. However, if you have 
+
+```{r}
+
+# Isolate second element by name (maintains class of the element)
+lst2$e2
+
+# Isolate nested elements
+lst2$e1$second
+```
+
+
+You can also mix and match indexing methods for lists.
+
+```{r}
+lst1$second[2]
+```
+
+
+## Matrices
+
+For matrices we will only consider three indexing techniques, these are by far the most popular. There is only one operator we need to consider for matrices, and it is the same one we use for vectors `[]`. Inside this operator you can put in two vectors, or a single vector. 
+
+### Two Vectors 
+
+Using two vectors when indexing a list is by far the most common, and the recommended way to index a matrix.  It is easy to read, and standard practice.  For this technique you use `[row, column]`, where `row` is a vector of index values of the rows you wish to isolate, and `column` is a vector of the index values of the columns you wish to isolate.  The vectors `row` and `column` support positive integers, negative integers, logical vectors, and character vectors with row and column names.  That is, we can index the rows and columns of a matrix in the same way we did before with standard vectors, but now we have two dimensions to consider. Like before, the vectors `row` and `column` must be all positive values, all negative values, all logical, or only contain the respective names. However, the values between vectors can differ.  For example, `row` can be a vector of positive integers, and `column` can be a vector of logical values. In general, a matrix returns another matrix, or it returns a vector. 
+
+```{r}
+
+my_m = matrix(1:9, nrow = 3, ncol = 3)
+colnames(my_m) = c("C1", "C2", "C3")
+my_m
+
+# Obtain a full row 
+my_m[1,]
+
+# Obtain a full column 
+my_m[,2]
+
+# All rows but the first, and get the last two columns 
+my_m[-1, c("C2", "C3")]
+```
+
+ 
+### Single Vector
+
+Matrices can be thought of as a special shaped atomic vector where the first elements of the vector are the first column (from top to bottom), the next elements are the second column (top to bottom), and so on.  In fact, R supports indexing matrices using this idea.  If attempt to subset a matrix using `[index]`, where `index` is a single vector, then the values of `index` will correspond register the values of the matrix in this order.  
+
+It is not particularly common to index in this way, and not recommended because it is not particularly clear. 
+
+```{r}
+my_m[1]
+
+my_m[c(1, 9)]
+
+my_m[-c(1, 9)]
+```
+
+
+## Data frames 
+
+Data frames can be indexed in all the ways that matrices can be indexed above.  They also have a few more techniques.  At its core, can think of data frames as a special type of list in which each element of the list is a vector of the same length. Data frames have three indexing operators `[]`, `[[]]`, and `$`.  The `[]` operator works identically for data frames, as it does matrices, that is we can supply this operator two vectors `[row, column]` or one `[index]`. Thus, we will focus on the other two operators.  Recall from indexing lists that `[[]]` and `$` can only access one element of a list.  When using `[[]]` and `$` on data frames these operators can only access one *column*. 
+
+### Example: Double brackets {-}
+```{r}
+# Use Built In Data Set: Iris
+head(iris)           # Preview Data Set
+sapply(iris, class)  # Class of Each Column 
+summary(iris)        # Summary Statistics of Each Column 
+
+
+# Isolate column with positive integer
+# Returns a vector, not a data frame with one column 
+iris[[1]]
+
+# Isolate column with name (Same as above)
+# Returns a vector, not a data frame with one column
+iris[["Sepal.Length"]]
+
+```
+
+
+
+### Example: Dollar Sign {-}
+
+```{r}
+# Isolate column with name (Same as above)
+# Returns a vector, not a data frame with one column
+iris$Sepal.Length
+```
+
+
+## Features and Applications 
+
+In this section we will go over some features and applications of using indexing techniques. These are special functions and things that we can do with the indexing we dicussed so far. 
+
+
+### Indexing and Reassignment 
+
+Recall the vector `vec` we created above. With all of the indexing techniques we discussed before, we can combine indexing with reassignment.  We can reassign values inside of a vector via their index number.  This can be done with all the objects and techniques we have learned. For example, recall the vector `vec` we created above.  We can reassign the first three elements of `vec` to be 62. 
+
+```{r}
+# `vec` from above
+# Generate a random vector with the following code 
+set.seed(10)
+vec <- sample(1:100, 10)  # numeric vector with 10 values
+vec
+
+# reassign first three values of vec using index
+vec[1:3] <- 62
+vec 
+```
+
+The only values that are changed are the ones we isolated via indexing.  Lets see another example with logical values. In this example we use the logical indexing technique to isolate only values that meet a certain condition.  So the vector `index_to_change` contains logical values where `TRUE` indicates that the values in `vec` are greater than 50, and `FALSE` if otherwise.  So when we use `vec_chr[index_to_change]` it changes all elements which correspond to `TRUE` to be equal to `Big`.  It does not update any other elements in the vector `vec_chr`.
+
+
+```{r}
+# Make a character vector  
+vec_chr <- as.character(vec)
+
+# Reassign elements to "Big" if they are a big number
+# Do not change other elements
+index_to_change <- vec>50
+vec_chr[index_to_change] <- "Big"
+vec_chr
+```
+
+
+
+
+Here is another example where we reassign a column name of the matrix `my_m` to be "my_c2". 
+```{r}
+# Recall matrix 
+my_m
+
+# Reassign just one column name 
+colnames(my_m)[2] <- "my_c2"
+```
+
+Now lets reassign the value in the second row, second column to be `NA`. 
+
+```{r}
+my_m[2, "my_c2"] <- NA
+my_m
+```
+
+### Ordering/Integer Indexing
+
+As we saw above, we can also using indexing with positive integers and names to rearrange values in an object.  If we want to do a rearrangement based on smallest to largest value (or vice versa), or alphabetical (or reverse alphabetical), we can do this directly with the `order()` function. This function returns the ranks of the variable being sorted. 
+
+```{r}
+# Example data frame 
+group = c("G1", "G2", "G1", "G1", "G2")
+age = c(35, 30, 31, 28, 40)
+height = c(65, 70, 60, 72, 68)
+pets = c(TRUE, TRUE, FALSE, FALSE, TRUE)
+mydata = data.frame(group, age, height, pets)
+mydata
+
+# Indices in smallest to largest order
+order(mydata$age)
+
+# Rearrange data frame to be from shortest to tallest
+mydata[order(mydata$age),]
+
+
+mydata[order(mydata$group, mydata$age),]
+```
+
+We can sort by more than one variable. Including more than one variable allows a "nested sort," where the second variable, third variable, etc., is used when there are ties in the sorting based on the previous variables. Let’s first sort by `group` alone, and then by `group` followed by `age` and see what we get.
+
+
+```{r}
+# Sort just by "group" 
+mydata[order(mydata$group), ]
+
+# Rearrange data frame FIRST by "group", SECOND by "age"
+mydata[order(mydata$group, mydata$age), ]
+
+```
+
+To reorder a vector from smallest to largest we can also consider the `sort()` function. 
+
+```{r}
+sort(mydata$age)
+```
+
+
+### Adding Elements/Rows/Columns
+
+To add an element/row/column to an object we can also use indexing and the assignment operator.  To do so, we put the new index number or index name with our indexing operator, and assign a value.  This only works when the new index number is only one more then current length or dimensions.  
+
+```{r}
+# Adding an element to vec
+vec[length(vec)+1] <- 1000
+vec
+
+# Adding a column to data frame Iris 
+iris$new_column <- "Hello"
+iris[1:10,]  # Output first ten rows to preview 
+
+# Adding another new column to Iris 
+iris[, (ncol(iris)+1)] <- "Goodby"
+iris[1:10,]  # Output first ten rows to preview 
+```
+
+
+
+### Delete Elements/Rows/Columns
+
+If we wanted to completely delete a element in a vector we can use the assignment operator. 
+
+
+```{r}
+# Recall the vector 
+vec
+vec_copy <- vec
+
+# Strategy 2 - Redefine Object: Delete the third element of vec
+vec_copy <- vec_copy[-3]
+vec_copy
+
+```
+
+
+This method also works the same way with 2D objects and lists. In addition we can also use `NULL`. Recall that `NULL` is used to completely delete an object, in contrast to `NA`, which removes the value but saves the space. 
+
+```{r}
+# Strategy 1 - NULL: Delete a column 
+iris$new_column <- NULL
+iris[1:10, ] # Preview first 10 rows 
+
+# Strategy 2 - Redefine Object: Delete a column 
+iris <- iris[, -ncol(iris)]
+iris[1:10, ] # Preview first 10 rows 
+```
+
+
+
+### Select Based on Condition
+
+So far we have not used logical vectors to index that much yet.  Logical indexing is actually very helpful and common!  One of the big reasons we use logical vectors for indexing is to select elements that meet a certain condition.  For example, maybe we want only want to display elements of a vector that are larger than 50. 
+
+```{r}
+# diplays elements of vec that are larger than 50
+vec[vec > 50]
+```
+
+
+
+We can also reassignment elements of a vector that meet a certain condition. This uses ideas from 5.5.1. 
+
+```{r}
+# Reassign values in vec2 to be NA if they are greater than 50. 
+vec2 <- vec 
+vec2[vec2>50] <- NA
+vec2
+```
+
+
+
+We can of course also use this strategy on all other objects that support the `[]` operator, which is everything so far!
+
+```{r}
+# display rows of iris that have species == "setosa"
+iris[iris$Species=="setosa", ]
+```
+
+
+
+### Convert Indexing Techniques
+
+With all these methods it can sometimes be difficult to remember which is which.  However, we will often find ourselves naturally gravitating to one technique over another.  There are different operators and functions in R that help us convert the different techniques.  For example, the `which()` function helps us switch from logical indexing to positive integer indexing. 
+
+```{r}
+# Switch from logical strategy, to positive integer strategy 
+index = which(vec >50)
+index
+vec[index]
+```
+
+
+The `%in%` operator helps us make a check if elements in the object `values` are in the set `keep`, i.e. `values %in% keep`.  
+
+```{r}
+# Returns logical vector of column names to keep 
+keep <- c("species", "Sepal.Length")
+colnames(iris) %in% keep
+
+```
+
+
+
+## Summary {-}
+
+- Indexing operators `[]`, `[[]]`, `$`
+
+- `[]`: Used with 1d and 2d objects 
+  + Positive Integers
+  + Negative Integers
+  + Name 
+  + Logical
+      
+- `[[]]`: Used with lists or Data frames.  Can only isolate one element or column. 
+  + Positive Integers
+  + Name 
+  
+- `$`: Used with lists or Data frames.  Can only isolate one element or column. 
+  + Name 
+  
+- Indexing can be combined with reassignment. 
+
+- Some important functions and operators to remember: `order()`, `sort()`,  `which()`, `%in%`. 
+
+
