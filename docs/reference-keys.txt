@@ -1,5 +1,3 @@
-welcome
-learn-all-about-bookdown
 introduction-to-r
 download-and-install-r-and-rstudio
 the-rstudio-interface
