@@ -61,4 +61,3 @@ adding-elementsrowscolumns
 delete-elementsrowscolumns
 select-based-on-condition
 convert-indexing-techniques
-write
