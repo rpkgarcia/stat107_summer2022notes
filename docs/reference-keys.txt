@@ -1,0 +1,15 @@
+welcome
+learn-all-about-bookdown
+introduction-to-r
+download-and-install-r-and-rstudio
+the-rstudio-interface
+comments
+operators
+naming-conventions
+setup
+get-bookdown-tutorial-going-on-your-local-computer
+create-your-awesome-book-github-repo
+turn-bookdown-tutorial-into-awesome-book
+publish-awesome-book
+moving-forward
+write
