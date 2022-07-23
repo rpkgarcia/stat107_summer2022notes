@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Indexing | STAT 107 Outline of Class Notes</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Indexing | STAT 107 Outline of Class Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Indexing | STAT 107 Outline of Class Notes" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Rebecca Kurtz-Garcia" />
+
+
+<meta name="date" content="2022-07-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="matrices-data-frames-and-more.html"/>
+<link rel="next" href="write.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT 107 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#download-and-install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download and Install R and Rstudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-rstudio-interface"><i class="fa fa-check"></i><b>1.2</b> The <strong>RStudio</strong> Interface</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#bottom-left-pane"><i class="fa fa-check"></i>Bottom Left Pane</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#bottom-right-pane"><i class="fa fa-check"></i>Bottom Right Pane</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#top-right-pane"><i class="fa fa-check"></i>Top Right Pane</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#top-left-pane"><i class="fa fa-check"></i>Top Left Pane</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#comments"><i class="fa fa-check"></i><b>1.3</b> Comments</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#operators"><i class="fa fa-check"></i><b>1.4</b> Operators</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#arithmetic-operators"><i class="fa fa-check"></i>Arithmetic Operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#relational-operators"><i class="fa fa-check"></i>Relational Operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#logical-operators"><i class="fa fa-check"></i>Logical operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#assignment-operators"><i class="fa fa-check"></i>Assignment Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#naming-conventions"><i class="fa fa-check"></i><b>1.5</b> Naming Conventions</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#additional-resources"><i class="fa fa-check"></i>Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="atomic-vectors.html"><a href="atomic-vectors.html"><i class="fa fa-check"></i><b>2</b> Atomic Vectors</a><ul>
+<li class="chapter" data-level="2.1" data-path="atomic-vectors.html"><a href="atomic-vectors.html#examples"><i class="fa fa-check"></i><b>2.1</b> Examples</a><ul>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#double"><i class="fa fa-check"></i>Double</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#integer"><i class="fa fa-check"></i>Integer</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#logical"><i class="fa fa-check"></i>Logical</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#character"><i class="fa fa-check"></i>Character</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="atomic-vectors.html"><a href="atomic-vectors.html#basic-features"><i class="fa fa-check"></i><b>2.2</b> Basic Features</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="atomic-vectors.html"><a href="atomic-vectors.html#length"><i class="fa fa-check"></i><b>2.2.1</b> Length</a></li>
+<li class="chapter" data-level="2.2.2" data-path="atomic-vectors.html"><a href="atomic-vectors.html#vectorized-operations-and-recylcing"><i class="fa fa-check"></i><b>2.2.2</b> Vectorized Operations and Recylcing</a></li>
+<li class="chapter" data-level="2.2.3" data-path="atomic-vectors.html"><a href="atomic-vectors.html#coercion"><i class="fa fa-check"></i><b>2.2.3</b> Coercion</a></li>
+<li class="chapter" data-level="2.2.4" data-path="atomic-vectors.html"><a href="atomic-vectors.html#testing"><i class="fa fa-check"></i><b>2.2.4</b> Testing</a></li>
+<li class="chapter" data-level="2.2.5" data-path="atomic-vectors.html"><a href="atomic-vectors.html#names"><i class="fa fa-check"></i><b>2.2.5</b> Names</a></li>
+<li class="chapter" data-level="2.2.6" data-path="atomic-vectors.html"><a href="atomic-vectors.html#typeof-and-class"><i class="fa fa-check"></i><b>2.2.6</b> typeof() and class()</a></li>
+<li class="chapter" data-level="2.2.7" data-path="atomic-vectors.html"><a href="atomic-vectors.html#index"><i class="fa fa-check"></i><b>2.2.7</b> Accessing Elements of a Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#additional-resources-1"><i class="fa fa-check"></i>Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="factors-and-lists.html"><a href="factors-and-lists.html"><i class="fa fa-check"></i><b>3</b> Factors and Lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#factors"><i class="fa fa-check"></i><b>3.1</b> Factors</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#levels"><i class="fa fa-check"></i><b>3.1.1</b> Levels</a></li>
+<li class="chapter" data-level="3.1.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#ordered-factor"><i class="fa fa-check"></i><b>3.1.2</b> Ordered Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#factors---basic-features"><i class="fa fa-check"></i><b>3.2</b> Factors - Basic Features</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#length-1"><i class="fa fa-check"></i><b>3.2.1</b> Length</a></li>
+<li class="chapter" data-level="3.2.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#coercion-1"><i class="fa fa-check"></i><b>3.2.2</b> Coercion</a></li>
+<li class="chapter" data-level="3.2.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#testingclass"><i class="fa fa-check"></i><b>3.2.3</b> Testing/Class</a></li>
+<li class="chapter" data-level="3.2.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#names-1"><i class="fa fa-check"></i><b>3.2.4</b> Names</a></li>
+<li class="chapter" data-level="3.2.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements"><i class="fa fa-check"></i><b>3.2.5</b> Accessing Elements</a></li>
+<li class="chapter" data-level="3.2.6" data-path="factors-and-lists.html"><a href="factors-and-lists.html#frequency-tables"><i class="fa fa-check"></i><b>3.2.6</b> Frequency Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#nested-lists"><i class="fa fa-check"></i><b>3.3.1</b> Nested Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#list---basic-features"><i class="fa fa-check"></i><b>3.4</b> List - Basic Features</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#length-2"><i class="fa fa-check"></i><b>3.4.1</b> Length</a></li>
+<li class="chapter" data-level="3.4.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#coercion-2"><i class="fa fa-check"></i><b>3.4.2</b> Coercion</a></li>
+<li class="chapter" data-level="3.4.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#testingclass-1"><i class="fa fa-check"></i><b>3.4.3</b> Testing/Class</a></li>
+<li class="chapter" data-level="3.4.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#names-2"><i class="fa fa-check"></i><b>3.4.4</b> Names</a></li>
+<li class="chapter" data-level="3.4.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements-1"><i class="fa fa-check"></i><b>3.4.5</b> Accessing Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="factors-and-lists.html"><a href="factors-and-lists.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html"><i class="fa fa-check"></i><b>4</b> Matrices, Data Frames, and More</a><ul>
+<li class="chapter" data-level="4.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#matrices"><i class="fa fa-check"></i><b>4.1</b> Matrices</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#vectorized-operations"><i class="fa fa-check"></i><b>4.1.1</b> Vectorized Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#data-frames"><i class="fa fa-check"></i><b>4.2</b> Data Frames</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#column-names"><i class="fa fa-check"></i><b>4.2.1</b> Column Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#basic-features-of-matricesdata-frames"><i class="fa fa-check"></i><b>4.3</b> Basic Features of Matrices/Data-Frames</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#dimensions"><i class="fa fa-check"></i><b>4.3.1</b> Dimensions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#accesing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accesing Elements</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#coercion-3"><i class="fa fa-check"></i><b>4.3.3</b> Coercion</a></li>
+<li class="chapter" data-level="4.3.4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#testingclass-2"><i class="fa fa-check"></i><b>4.3.4</b> Testing/Class</a></li>
+<li class="chapter" data-level="4.3.5" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#names-3"><i class="fa fa-check"></i><b>4.3.5</b> Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#other-object-types-and-the-global-environment"><i class="fa fa-check"></i><b>4.4</b> Other Object Types and the Global Environment</a></li>
+<li class="chapter" data-level="" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>5</b> Indexing</a><ul>
+<li class="chapter" data-level="5.1" data-path="indexing.html"><a href="indexing.html#VectorIndex"><i class="fa fa-check"></i><b>5.1</b> Atomic Vectors and Factors</a><ul>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-positive-integers"><i class="fa fa-check"></i>Example: Positive Integers</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-negative-integers"><i class="fa fa-check"></i>Example: Negative Integers</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-logical-values"><i class="fa fa-check"></i>Example: Logical Values</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-names"><i class="fa fa-check"></i>Example: Names</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="indexing.html"><a href="indexing.html#lists-1"><i class="fa fa-check"></i><b>5.2</b> Lists</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="indexing.html"><a href="indexing.html#double-brackets"><i class="fa fa-check"></i><b>5.2.1</b> Double Brackets</a></li>
+<li class="chapter" data-level="5.2.2" data-path="indexing.html"><a href="indexing.html#dollar-sign"><i class="fa fa-check"></i><b>5.2.2</b> Dollar Sign</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="indexing.html"><a href="indexing.html#matrices-1"><i class="fa fa-check"></i><b>5.3</b> Matrices</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="indexing.html"><a href="indexing.html#two-vectors"><i class="fa fa-check"></i><b>5.3.1</b> Two Vectors</a></li>
+<li class="chapter" data-level="5.3.2" data-path="indexing.html"><a href="indexing.html#single-vector"><i class="fa fa-check"></i><b>5.3.2</b> Single Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="indexing.html"><a href="indexing.html#data-frames-1"><i class="fa fa-check"></i><b>5.4</b> Data frames</a><ul>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-double-brackets"><i class="fa fa-check"></i>Example: Double brackets</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-dollar-sign"><i class="fa fa-check"></i>Example: Dollar Sign</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indexing.html"><a href="indexing.html#features-and-applications"><i class="fa fa-check"></i><b>5.5</b> Features and Applications</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="indexing.html"><a href="indexing.html#indexing-and-reassignment"><i class="fa fa-check"></i><b>5.5.1</b> Indexing and Reassignment</a></li>
+<li class="chapter" data-level="5.5.2" data-path="indexing.html"><a href="indexing.html#orderinginteger-indexing"><i class="fa fa-check"></i><b>5.5.2</b> Ordering/Integer Indexing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="indexing.html"><a href="indexing.html#adding-elementsrowscolumns"><i class="fa fa-check"></i><b>5.5.3</b> Adding Elements/Rows/Columns</a></li>
+<li class="chapter" data-level="5.5.4" data-path="indexing.html"><a href="indexing.html#delete-elementsrowscolumns"><i class="fa fa-check"></i><b>5.5.4</b> Delete Elements/Rows/Columns</a></li>
+<li class="chapter" data-level="5.5.5" data-path="indexing.html"><a href="indexing.html#select-based-on-condition"><i class="fa fa-check"></i><b>5.5.5</b> Select Based on Condition</a></li>
+<li class="chapter" data-level="5.5.6" data-path="indexing.html"><a href="indexing.html#convert-indexing-techniques"><i class="fa fa-check"></i><b>5.5.6</b> Convert Indexing Techniques</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>6</b> Writing in Bookdown</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 107 Outline of Class Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="indexing" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Indexing</h1>
+<p>When we wish to extract elements of an object like a vector, list, data frame, or matrix, we use a process called <em>indexing</em>. The process of indexing, is also sometimes called <em>subsetting</em>. In R the <em>index</em> of an object is the numeric location of that object. For example, consider the vector <code>vec &lt;- c(100, 20, 3)</code>. The index of the first element is 1, the index of the second element is 2, and the so on. We have already seen a few examples of indexing for vectors and factors, lists, and 2D objects. In this section we more formally describe a plethora of indexing techniques. Indexing can be hard to master in R because of the many options, and the different types of objects. In this section we will describe the basic indexing techniques for atomic vector and factors, lists, matrices, and data frames. The indexing between the methods are all related, so it useful to talk about them all together. At the end of this section we give examples of a few features and applications we can do with indexing.</p>
+<div id="VectorIndex" class="section level2">
+<h2><span class="header-section-number">5.1</span> Atomic Vectors and Factors</h2>
+<p>We have already seen a little big of indexing with vectors (atomic, factors, and lists). Now we will discuss indexing in more detail for 1D Objects. We will focus specifically on atomic vectors. The techniques here can be used with other types and classes of vectors though. For indexing with vectors we only have one indexing operator, <code>[]</code>. We also have four general strategies that we will focus on. Suppose we wish to preform indexing on a vector <code>vec</code>.</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="indexing.html#cb284-1"></a><span class="co"># Generate a random vector with the following code </span></span>
+<span id="cb284-2"><a href="indexing.html#cb284-2"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb284-3"><a href="indexing.html#cb284-3"></a>vec &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">10</span>)  <span class="co"># numeric vector with 10 values</span></span>
+<span id="cb284-4"><a href="indexing.html#cb284-4"></a>vec</span></code></pre></div>
+<pre><code>##  [1]  9 74 76 55 72 54 39 83 88 15</code></pre>
+<ul>
+<li>Four basic strategies:
+<ul>
+<li><strong>positive integer</strong>: When using the positive integer strategy we use a vector <code>index</code> which only contains positive integers of the indexes. This vector can be of any positive finite length. That means it can be of length 1, length 10, or even length 10000. We use this operator by calling <code>vec[index]</code>, which will return the elements of <code>vec</code> by their indices as ordered from <code>index</code>.</li>
+<li><strong>negative integer</strong>: The negative integer strategy works similarly. This time we consider a vector <code>index</code> which only contains negative integers, and must have a positive length between 1 and the length of <code>vec</code>. These correspond to the elements of <code>vec</code> you would like to exclude.<br />
+</li>
+<li><strong>logical elements</strong>: When using the logical strategy we use a vector <code>index</code> which contains only logical (<code>TRUE/FALSE</code>) values. In this strategy <code>index</code> must be the same length as the vector <code>vec</code>. If it is not, R will use <em>recycling</em> to complete the command. The <code>TRUE</code> values in <code>index</code> represent the elements of <code>vec</code> you wish to keep, and <code>FALSE</code> values represent the elements you wish to exclude.</li>
+<li><strong>names</strong>: If <code>vec</code> is a named vector we can also use the names to preform indexing. In this case the vector <code>index</code> should be a character vector where each element of the vector is the name of an element in <code>vec</code> that we wish to keep. We can not use a negative operator, or a negative sign with this strategy to exclude variables.</li>
+</ul></li>
+</ul>
+<p>We can not mix and max these strategies within a command. We can only use one strategy at a time.</p>
+<div id="example-positive-integers" class="section level3 unnumbered">
+<h3>Example: Positive Integers</h3>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="indexing.html#cb286-1"></a><span class="co"># Obtaining a single element </span></span>
+<span id="cb286-2"><a href="indexing.html#cb286-2"></a>vec[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="indexing.html#cb288-1"></a><span class="co"># Obtaining several elements: Get 1st, 2nd, 3rd element</span></span>
+<span id="cb288-2"><a href="indexing.html#cb288-2"></a>vec[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [1]  9 74 76</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="indexing.html#cb290-1"></a><span class="co"># Get mutliples of the same element</span></span>
+<span id="cb290-2"><a href="indexing.html#cb290-2"></a>index &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb290-3"><a href="indexing.html#cb290-3"></a>vec[index]</span></code></pre></div>
+<pre><code>## [1] 76 74  9  9  9 74 76</code></pre>
+</div>
+<div id="example-negative-integers" class="section level3 unnumbered">
+<h3>Example: Negative Integers</h3>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="indexing.html#cb292-1"></a><span class="co"># Remove first element</span></span>
+<span id="cb292-2"><a href="indexing.html#cb292-2"></a>vec[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="indexing.html#cb294-1"></a><span class="co"># Remove several elements: 1st, 2nd, 3rd </span></span>
+<span id="cb294-2"><a href="indexing.html#cb294-2"></a>vec[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [1] 55 72 54 39 83 88 15</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="indexing.html#cb296-1"></a><span class="co"># Equivalent to above </span></span>
+<span id="cb296-2"><a href="indexing.html#cb296-2"></a>index &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">-2</span>, <span class="dv">-3</span>)</span>
+<span id="cb296-3"><a href="indexing.html#cb296-3"></a>vec[index]</span></code></pre></div>
+<pre><code>## [1] 55 72 54 39 83 88 15</code></pre>
+</div>
+<div id="example-logical-values" class="section level3 unnumbered">
+<h3>Example: Logical Values</h3>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="indexing.html#cb298-1"></a><span class="co"># `index` should be the same length as `vec`</span></span>
+<span id="cb298-2"><a href="indexing.html#cb298-2"></a>index &lt;-<span class="st"> </span><span class="kw">c</span>(T, T, T, T, F, </span>
+<span id="cb298-3"><a href="indexing.html#cb298-3"></a>           F, F, F, F, T)</span>
+<span id="cb298-4"><a href="indexing.html#cb298-4"></a>vec[index]</span></code></pre></div>
+<pre><code>## [1]  9 74 76 55 15</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="indexing.html#cb300-1"></a><span class="co"># When `index` is not of the same length as `vec`, we have recycling</span></span>
+<span id="cb300-2"><a href="indexing.html#cb300-2"></a><span class="co"># Keeps every other element </span></span>
+<span id="cb300-3"><a href="indexing.html#cb300-3"></a>index &lt;-<span class="st"> </span><span class="kw">c</span>(T, F)</span>
+<span id="cb300-4"><a href="indexing.html#cb300-4"></a>vec[index]</span></code></pre></div>
+<pre><code>## [1]  9 76 72 39 88</code></pre>
+</div>
+<div id="example-names" class="section level3 unnumbered">
+<h3>Example: Names</h3>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="indexing.html#cb302-1"></a><span class="co"># Give names to each element in `vec`</span></span>
+<span id="cb302-2"><a href="indexing.html#cb302-2"></a><span class="kw">names</span>(vec) =<span class="st"> </span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</span>
+<span id="cb302-3"><a href="indexing.html#cb302-3"></a></span>
+<span id="cb302-4"><a href="indexing.html#cb302-4"></a><span class="co"># Return Elements: A, B, D</span></span>
+<span id="cb302-5"><a href="indexing.html#cb302-5"></a>index =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb302-6"><a href="indexing.html#cb302-6"></a>vec[index]</span></code></pre></div>
+<pre><code>##  A  B  D 
+##  9 74 55</code></pre>
+</div>
+</div>
+<div id="lists-1" class="section level2">
+<h2><span class="header-section-number">5.2</span> Lists</h2>
+<p>Although lists are 1D objects, they have three different operators: <code>[]</code>, <code>[[]]</code>, and <code>$</code>. The first operator works the same way as we saw above for atomic vectors. We can use all four strategies we used in the prior section, and a new list will appear according to the indexing order. The new operators are <code>[[]]</code> and <code>$</code>, these operators are very similar. They both can only isolate one element in the list, and they return this element in its particular class. That is, if the second element in the list is data frame, then a data frame is returned with the <code>[[]]</code> and <code>$</code> operators.</p>
+<div id="double-brackets" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Double Brackets</h3>
+<p>With the double brackets operator <code>[[index]]</code> we can put the index number for the element we want returned, or if we have a named list, we can put the name of the element we desire. Remember, you can only isolate one element in the list using this operator, so <code>index</code> must be of length 1.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="indexing.html#cb304-1"></a><span class="co"># Create a named list</span></span>
+<span id="cb304-2"><a href="indexing.html#cb304-2"></a><span class="co"># Recall: name = value </span></span>
+<span id="cb304-3"><a href="indexing.html#cb304-3"></a>lst1 =<span class="st"> </span><span class="kw">list</span>(<span class="dt">first =</span> <span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;Goodbye&quot;</span>), <span class="dt">second =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">third =</span> <span class="kw">c</span>(T, F, T))</span>
+<span id="cb304-4"><a href="indexing.html#cb304-4"></a></span>
+<span id="cb304-5"><a href="indexing.html#cb304-5"></a><span class="co"># Create a nested list with names </span></span>
+<span id="cb304-6"><a href="indexing.html#cb304-6"></a>lst2 =<span class="st"> </span><span class="kw">list</span>(<span class="dt">e1 =</span> lst1, <span class="dt">e2 =</span> <span class="st">&quot;Stat 107 Rules&quot;</span>)</span>
+<span id="cb304-7"><a href="indexing.html#cb304-7"></a></span>
+<span id="cb304-8"><a href="indexing.html#cb304-8"></a><span class="co"># See structure of the list </span></span>
+<span id="cb304-9"><a href="indexing.html#cb304-9"></a><span class="kw">str</span>(lst2)</span></code></pre></div>
+<pre><code>## List of 2
+##  $ e1:List of 3
+##   ..$ first : chr [1:2] &quot;Hello&quot; &quot;Goodbye&quot;
+##   ..$ second: num [1:3] 1 2 3
+##   ..$ third : logi [1:3] TRUE FALSE TRUE
+##  $ e2: chr &quot;Stat 107 Rules&quot;</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="indexing.html#cb306-1"></a><span class="co"># Isolate second element by name (maintains class of the element)</span></span>
+<span id="cb306-2"><a href="indexing.html#cb306-2"></a>lst2[[<span class="st">&quot;e2&quot;</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;Stat 107 Rules&quot;</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="indexing.html#cb308-1"></a><span class="kw">class</span>(lst2[[<span class="st">&quot;e2&quot;</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="indexing.html#cb310-1"></a><span class="co"># Isolate second element by integer (maintains class of the element) </span></span>
+<span id="cb310-2"><a href="indexing.html#cb310-2"></a>lst2[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;Stat 107 Rules&quot;</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="indexing.html#cb312-1"></a><span class="kw">class</span>(lst2[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="indexing.html#cb314-1"></a><span class="co"># Isolate nested elements</span></span>
+<span id="cb314-2"><a href="indexing.html#cb314-2"></a>lst2[[<span class="dv">1</span>]][[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+</div>
+<div id="dollar-sign" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Dollar Sign</h3>
+<p>After the dollar sign operator <code>$</code> we put the name of the desired element. You can only isolate one element in the list using this operator, and you can only access elements using their names. However, if you have</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="indexing.html#cb316-1"></a><span class="co"># Isolate second element by name (maintains class of the element)</span></span>
+<span id="cb316-2"><a href="indexing.html#cb316-2"></a>lst2<span class="op">$</span>e2</span></code></pre></div>
+<pre><code>## [1] &quot;Stat 107 Rules&quot;</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="indexing.html#cb318-1"></a><span class="co"># Isolate nested elements</span></span>
+<span id="cb318-2"><a href="indexing.html#cb318-2"></a>lst2<span class="op">$</span>e1<span class="op">$</span>second</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<p>You can also mix and match indexing methods for lists.</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="indexing.html#cb320-1"></a>lst1<span class="op">$</span>second[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+</div>
+<div id="matrices-1" class="section level2">
+<h2><span class="header-section-number">5.3</span> Matrices</h2>
+<p>For matrices we will only consider three indexing techniques, these are by far the most popular. There is only one operator we need to consider for matrices, and it is the same one we use for vectors <code>[]</code>. Inside this operator you can put in two vectors, or a single vector.</p>
+<div id="two-vectors" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Two Vectors</h3>
+<p>Using two vectors when indexing a list is by far the most common, and the recommended way to index a matrix. It is easy to read, and standard practice. For this technique you use <code>[row, column]</code>, where <code>row</code> is a vector of index values of the rows you wish to isolate, and <code>column</code> is a vector of the index values of the columns you wish to isolate. The vectors <code>row</code> and <code>column</code> support positive integers, negative integers, logical vectors, and character vectors with row and column names. That is, we can index the rows and columns of a matrix in the same way we did before with standard vectors, but now we have two dimensions to consider. Like before, the vectors <code>row</code> and <code>column</code> must be all positive values, all negative values, all logical, or only contain the respective names. However, the values between vectors can differ. For example, <code>row</code> can be a vector of positive integers, and <code>column</code> can be a vector of logical values. In general, a matrix returns another matrix, or it returns a vector.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="indexing.html#cb322-1"></a>my_m =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb322-2"><a href="indexing.html#cb322-2"></a><span class="kw">colnames</span>(my_m) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)</span>
+<span id="cb322-3"><a href="indexing.html#cb322-3"></a>my_m</span></code></pre></div>
+<pre><code>##      C1 C2 C3
+## [1,]  1  4  7
+## [2,]  2  5  8
+## [3,]  3  6  9</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="indexing.html#cb324-1"></a><span class="co"># Obtain a full row </span></span>
+<span id="cb324-2"><a href="indexing.html#cb324-2"></a>my_m[<span class="dv">1</span>,]</span></code></pre></div>
+<pre><code>## C1 C2 C3 
+##  1  4  7</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="indexing.html#cb326-1"></a><span class="co"># Obtain a full column </span></span>
+<span id="cb326-2"><a href="indexing.html#cb326-2"></a>my_m[,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 4 5 6</code></pre>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="indexing.html#cb328-1"></a><span class="co"># All rows but the first, and get the last two columns </span></span>
+<span id="cb328-2"><a href="indexing.html#cb328-2"></a>my_m[<span class="op">-</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)]</span></code></pre></div>
+<pre><code>##      C2 C3
+## [1,]  5  8
+## [2,]  6  9</code></pre>
+</div>
+<div id="single-vector" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Single Vector</h3>
+<p>Matrices can be thought of as a special shaped atomic vector where the first elements of the vector are the first column (from top to bottom), the next elements are the second column (top to bottom), and so on. In fact, R supports indexing matrices using this idea. If attempt to subset a matrix using <code>[index]</code>, where <code>index</code> is a single vector, then the values of <code>index</code> will correspond register the values of the matrix in this order.</p>
+<p>It is not particularly common to index in this way, and not recommended because it is not particularly clear.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="indexing.html#cb330-1"></a>my_m[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="indexing.html#cb332-1"></a>my_m[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">9</span>)]</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="indexing.html#cb334-1"></a>my_m[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">9</span>)]</span></code></pre></div>
+<pre><code>## [1] 2 3 4 5 6 7 8</code></pre>
+</div>
+</div>
+<div id="data-frames-1" class="section level2">
+<h2><span class="header-section-number">5.4</span> Data frames</h2>
+<p>Data frames can be indexed in all the ways that matrices can be indexed above. They also have a few more techniques. At its core, can think of data frames as a special type of list in which each element of the list is a vector of the same length. Data frames have three indexing operators <code>[]</code>, <code>[[]]</code>, and <code>$</code>. The <code>[]</code> operator works identically for data frames, as it does matrices, that is we can supply this operator two vectors <code>[row, column]</code> or one <code>[index]</code>. Thus, we will focus on the other two operators. Recall from indexing lists that <code>[[]]</code> and <code>$</code> can only access one element of a list. When using <code>[[]]</code> and <code>$</code> on data frames these operators can only access one <em>column</em>.</p>
+<div id="example-double-brackets" class="section level3 unnumbered">
+<h3>Example: Double brackets</h3>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="indexing.html#cb336-1"></a><span class="co"># Use Built In Data Set: Iris</span></span>
+<span id="cb336-2"><a href="indexing.html#cb336-2"></a><span class="kw">head</span>(iris)           <span class="co"># Preview Data Set</span></span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="indexing.html#cb338-1"></a><span class="kw">sapply</span>(iris, class)  <span class="co"># Class of Each Column </span></span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
+##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="indexing.html#cb340-1"></a><span class="kw">summary</span>(iris)        <span class="co"># Summary Statistics of Each Column </span></span></code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="indexing.html#cb342-1"></a><span class="co"># Isolate column with positive integer</span></span>
+<span id="cb342-2"><a href="indexing.html#cb342-2"></a><span class="co"># Returns a vector, not a data frame with one column </span></span>
+<span id="cb342-3"><a href="indexing.html#cb342-3"></a>iris[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
+##  [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0
+##  [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5
+##  [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1
+##  [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5
+##  [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3
+## [109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2
+## [127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8
+## [145] 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="indexing.html#cb344-1"></a><span class="co"># Isolate column with name (Same as above)</span></span>
+<span id="cb344-2"><a href="indexing.html#cb344-2"></a><span class="co"># Returns a vector, not a data frame with one column</span></span>
+<span id="cb344-3"><a href="indexing.html#cb344-3"></a>iris[[<span class="st">&quot;Sepal.Length&quot;</span>]]</span></code></pre></div>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
+##  [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0
+##  [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5
+##  [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1
+##  [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5
+##  [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3
+## [109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2
+## [127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8
+## [145] 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+</div>
+<div id="example-dollar-sign" class="section level3 unnumbered">
+<h3>Example: Dollar Sign</h3>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="indexing.html#cb346-1"></a><span class="co"># Isolate column with name (Same as above)</span></span>
+<span id="cb346-2"><a href="indexing.html#cb346-2"></a><span class="co"># Returns a vector, not a data frame with one column</span></span>
+<span id="cb346-3"><a href="indexing.html#cb346-3"></a>iris<span class="op">$</span>Sepal.Length</span></code></pre></div>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
+##  [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0
+##  [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5
+##  [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1
+##  [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5
+##  [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3
+## [109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2
+## [127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8
+## [145] 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+</div>
+</div>
+<div id="features-and-applications" class="section level2">
+<h2><span class="header-section-number">5.5</span> Features and Applications</h2>
+<p>In this section we will go over some features and applications of using indexing techniques. These are special functions and things that we can do with the indexing we dicussed so far.</p>
+<div id="indexing-and-reassignment" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Indexing and Reassignment</h3>
+<p>Recall the vector <code>vec</code> we created above. With all of the indexing techniques we discussed before, we can combine indexing with reassignment. We can reassign values inside of a vector via their index number. This can be done with all the objects and techniques we have learned. For example, recall the vector <code>vec</code> we created above. We can reassign the first three elements of <code>vec</code> to be 62.</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="indexing.html#cb348-1"></a><span class="co"># `vec` from above</span></span>
+<span id="cb348-2"><a href="indexing.html#cb348-2"></a><span class="co"># Generate a random vector with the following code </span></span>
+<span id="cb348-3"><a href="indexing.html#cb348-3"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb348-4"><a href="indexing.html#cb348-4"></a>vec &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">10</span>)  <span class="co"># numeric vector with 10 values</span></span>
+<span id="cb348-5"><a href="indexing.html#cb348-5"></a>vec</span></code></pre></div>
+<pre><code>##  [1]  9 74 76 55 72 54 39 83 88 15</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="indexing.html#cb350-1"></a><span class="co"># reassign first three values of vec using index</span></span>
+<span id="cb350-2"><a href="indexing.html#cb350-2"></a>vec[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">62</span></span>
+<span id="cb350-3"><a href="indexing.html#cb350-3"></a>vec </span></code></pre></div>
+<pre><code>##  [1] 62 62 62 55 72 54 39 83 88 15</code></pre>
+<p>The only values that are changed are the ones we isolated via indexing. Lets see another example with logical values. In this example we use the logical indexing technique to isolate only values that meet a certain condition. So the vector <code>index_to_change</code> contains logical values where <code>TRUE</code> indicates that the values in <code>vec</code> are greater than 50, and <code>FALSE</code> if otherwise. So when we use <code>vec_chr[index_to_change]</code> it changes all elements which correspond to <code>TRUE</code> to be equal to <code>Big</code>. It does not update any other elements in the vector <code>vec_chr</code>.</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="indexing.html#cb352-1"></a><span class="co"># Make a character vector  </span></span>
+<span id="cb352-2"><a href="indexing.html#cb352-2"></a>vec_chr &lt;-<span class="st"> </span><span class="kw">as.character</span>(vec)</span>
+<span id="cb352-3"><a href="indexing.html#cb352-3"></a></span>
+<span id="cb352-4"><a href="indexing.html#cb352-4"></a><span class="co"># Reassign elements to &quot;Big&quot; if they are a big number</span></span>
+<span id="cb352-5"><a href="indexing.html#cb352-5"></a><span class="co"># Do not change other elements</span></span>
+<span id="cb352-6"><a href="indexing.html#cb352-6"></a>index_to_change &lt;-<span class="st"> </span>vec<span class="op">&gt;</span><span class="dv">50</span></span>
+<span id="cb352-7"><a href="indexing.html#cb352-7"></a>vec_chr[index_to_change] &lt;-<span class="st"> &quot;Big&quot;</span></span>
+<span id="cb352-8"><a href="indexing.html#cb352-8"></a>vec_chr</span></code></pre></div>
+<pre><code>##  [1] &quot;Big&quot; &quot;Big&quot; &quot;Big&quot; &quot;Big&quot; &quot;Big&quot; &quot;Big&quot; &quot;39&quot;  &quot;Big&quot; &quot;Big&quot; &quot;15&quot;</code></pre>
+<p>Here is another example where we reassign a column name of the matrix <code>my_m</code> to be “my_c2”.</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="indexing.html#cb354-1"></a><span class="co"># Recall matrix </span></span>
+<span id="cb354-2"><a href="indexing.html#cb354-2"></a>my_m</span></code></pre></div>
+<pre><code>##      C1 C2 C3
+## [1,]  1  4  7
+## [2,]  2  5  8
+## [3,]  3  6  9</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="indexing.html#cb356-1"></a><span class="co"># Reassign just one column name </span></span>
+<span id="cb356-2"><a href="indexing.html#cb356-2"></a><span class="kw">colnames</span>(my_m)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;my_c2&quot;</span></span></code></pre></div>
+<p>Now lets reassign the value in the second row, second column to be <code>NA</code>.</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="indexing.html#cb357-1"></a>my_m[<span class="dv">2</span>, <span class="st">&quot;my_c2&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb357-2"><a href="indexing.html#cb357-2"></a>my_m</span></code></pre></div>
+<pre><code>##      C1 my_c2 C3
+## [1,]  1     4  7
+## [2,]  2    NA  8
+## [3,]  3     6  9</code></pre>
+</div>
+<div id="orderinginteger-indexing" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Ordering/Integer Indexing</h3>
+<p>As we saw above, we can also using indexing with positive integers and names to rearrange values in an object. If we want to do a rearrangement based on smallest to largest value (or vice versa), or alphabetical (or reverse alphabetical), we can do this directly with the <code>order()</code> function. This function returns the ranks of the variable being sorted.</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="indexing.html#cb359-1"></a><span class="co"># Example data frame </span></span>
+<span id="cb359-2"><a href="indexing.html#cb359-2"></a>group =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>)</span>
+<span id="cb359-3"><a href="indexing.html#cb359-3"></a>age =<span class="st"> </span><span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">40</span>)</span>
+<span id="cb359-4"><a href="indexing.html#cb359-4"></a>height =<span class="st"> </span><span class="kw">c</span>(<span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">68</span>)</span>
+<span id="cb359-5"><a href="indexing.html#cb359-5"></a>pets =<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb359-6"><a href="indexing.html#cb359-6"></a>mydata =<span class="st"> </span><span class="kw">data.frame</span>(group, age, height, pets)</span>
+<span id="cb359-7"><a href="indexing.html#cb359-7"></a>mydata</span></code></pre></div>
+<pre><code>##   group age height  pets
+## 1    G1  35     65  TRUE
+## 2    G2  30     70  TRUE
+## 3    G1  31     60 FALSE
+## 4    G1  28     72 FALSE
+## 5    G2  40     68  TRUE</code></pre>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="indexing.html#cb361-1"></a><span class="co"># Indices in smallest to largest order</span></span>
+<span id="cb361-2"><a href="indexing.html#cb361-2"></a><span class="kw">order</span>(mydata<span class="op">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 4 2 3 1 5</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="indexing.html#cb363-1"></a><span class="co"># Rearrange data frame to be from shortest to tallest</span></span>
+<span id="cb363-2"><a href="indexing.html#cb363-2"></a>mydata[<span class="kw">order</span>(mydata<span class="op">$</span>age),]</span></code></pre></div>
+<pre><code>##   group age height  pets
+## 4    G1  28     72 FALSE
+## 2    G2  30     70  TRUE
+## 3    G1  31     60 FALSE
+## 1    G1  35     65  TRUE
+## 5    G2  40     68  TRUE</code></pre>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="indexing.html#cb365-1"></a>mydata[<span class="kw">order</span>(mydata<span class="op">$</span>group, mydata<span class="op">$</span>age),]</span></code></pre></div>
+<pre><code>##   group age height  pets
+## 4    G1  28     72 FALSE
+## 3    G1  31     60 FALSE
+## 1    G1  35     65  TRUE
+## 2    G2  30     70  TRUE
+## 5    G2  40     68  TRUE</code></pre>
+<p>We can sort by more than one variable. Including more than one variable allows a “nested sort,” where the second variable, third variable, etc., is used when there are ties in the sorting based on the previous variables. Let’s first sort by <code>group</code> alone, and then by <code>group</code> followed by <code>age</code> and see what we get.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="indexing.html#cb367-1"></a><span class="co"># Sort just by &quot;group&quot; </span></span>
+<span id="cb367-2"><a href="indexing.html#cb367-2"></a>mydata[<span class="kw">order</span>(mydata<span class="op">$</span>group), ]</span></code></pre></div>
+<pre><code>##   group age height  pets
+## 1    G1  35     65  TRUE
+## 3    G1  31     60 FALSE
+## 4    G1  28     72 FALSE
+## 2    G2  30     70  TRUE
+## 5    G2  40     68  TRUE</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="indexing.html#cb369-1"></a><span class="co"># Rearrange data frame FIRST by &quot;group&quot;, SECOND by &quot;age&quot;</span></span>
+<span id="cb369-2"><a href="indexing.html#cb369-2"></a>mydata[<span class="kw">order</span>(mydata<span class="op">$</span>group, mydata<span class="op">$</span>age), ]</span></code></pre></div>
+<pre><code>##   group age height  pets
+## 4    G1  28     72 FALSE
+## 3    G1  31     60 FALSE
+## 1    G1  35     65  TRUE
+## 2    G2  30     70  TRUE
+## 5    G2  40     68  TRUE</code></pre>
+<p>To reorder a vector from smallest to largest we can also consider the <code>sort()</code> function.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="indexing.html#cb371-1"></a><span class="kw">sort</span>(mydata<span class="op">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 28 30 31 35 40</code></pre>
+</div>
+<div id="adding-elementsrowscolumns" class="section level3">
+<h3><span class="header-section-number">5.5.3</span> Adding Elements/Rows/Columns</h3>
+<p>To add an element/row/column to an object we can also use indexing and the assignment operator. To do so, we put the new index number or index name with our indexing operator, and assign a value. This only works when the new index number is only one more then current length or dimensions.</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="indexing.html#cb373-1"></a><span class="co"># Adding an element to vec</span></span>
+<span id="cb373-2"><a href="indexing.html#cb373-2"></a>vec[<span class="kw">length</span>(vec)<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb373-3"><a href="indexing.html#cb373-3"></a>vec</span></code></pre></div>
+<pre><code>##  [1]   62   62   62   55   72   54   39   83   88   15 1000</code></pre>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="indexing.html#cb375-1"></a><span class="co"># Adding a column to data frame Iris </span></span>
+<span id="cb375-2"><a href="indexing.html#cb375-2"></a>iris<span class="op">$</span>new_column &lt;-<span class="st"> &quot;Hello&quot;</span></span>
+<span id="cb375-3"><a href="indexing.html#cb375-3"></a>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]  <span class="co"># Output first ten rows to preview </span></span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species new_column
+## 1           5.1         3.5          1.4         0.2  setosa      Hello
+## 2           4.9         3.0          1.4         0.2  setosa      Hello
+## 3           4.7         3.2          1.3         0.2  setosa      Hello
+## 4           4.6         3.1          1.5         0.2  setosa      Hello
+## 5           5.0         3.6          1.4         0.2  setosa      Hello
+## 6           5.4         3.9          1.7         0.4  setosa      Hello
+## 7           4.6         3.4          1.4         0.3  setosa      Hello
+## 8           5.0         3.4          1.5         0.2  setosa      Hello
+## 9           4.4         2.9          1.4         0.2  setosa      Hello
+## 10          4.9         3.1          1.5         0.1  setosa      Hello</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="indexing.html#cb377-1"></a><span class="co"># Adding another new column to Iris </span></span>
+<span id="cb377-2"><a href="indexing.html#cb377-2"></a>iris[, (<span class="kw">ncol</span>(iris)<span class="op">+</span><span class="dv">1</span>)] &lt;-<span class="st"> &quot;Goodby&quot;</span></span>
+<span id="cb377-3"><a href="indexing.html#cb377-3"></a>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]  <span class="co"># Output first ten rows to preview </span></span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species new_column     V7
+## 1           5.1         3.5          1.4         0.2  setosa      Hello Goodby
+## 2           4.9         3.0          1.4         0.2  setosa      Hello Goodby
+## 3           4.7         3.2          1.3         0.2  setosa      Hello Goodby
+## 4           4.6         3.1          1.5         0.2  setosa      Hello Goodby
+## 5           5.0         3.6          1.4         0.2  setosa      Hello Goodby
+## 6           5.4         3.9          1.7         0.4  setosa      Hello Goodby
+## 7           4.6         3.4          1.4         0.3  setosa      Hello Goodby
+## 8           5.0         3.4          1.5         0.2  setosa      Hello Goodby
+## 9           4.4         2.9          1.4         0.2  setosa      Hello Goodby
+## 10          4.9         3.1          1.5         0.1  setosa      Hello Goodby</code></pre>
+</div>
+<div id="delete-elementsrowscolumns" class="section level3">
+<h3><span class="header-section-number">5.5.4</span> Delete Elements/Rows/Columns</h3>
+<p>If we wanted to completely delete a element in a vector we can use the assignment operator.</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="indexing.html#cb379-1"></a><span class="co"># Recall the vector </span></span>
+<span id="cb379-2"><a href="indexing.html#cb379-2"></a>vec</span></code></pre></div>
+<pre><code>##  [1]   62   62   62   55   72   54   39   83   88   15 1000</code></pre>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="indexing.html#cb381-1"></a>vec_copy &lt;-<span class="st"> </span>vec</span>
+<span id="cb381-2"><a href="indexing.html#cb381-2"></a></span>
+<span id="cb381-3"><a href="indexing.html#cb381-3"></a><span class="co"># Strategy 2 - Redefine Object: Delete the third element of vec</span></span>
+<span id="cb381-4"><a href="indexing.html#cb381-4"></a>vec_copy &lt;-<span class="st"> </span>vec_copy[<span class="op">-</span><span class="dv">3</span>]</span>
+<span id="cb381-5"><a href="indexing.html#cb381-5"></a>vec_copy</span></code></pre></div>
+<pre><code>##  [1]   62   62   55   72   54   39   83   88   15 1000</code></pre>
+<p>This method also works the same way with 2D objects and lists. In addition we can also use <code>NULL</code>. Recall that <code>NULL</code> is used to completely delete an object, in contrast to <code>NA</code>, which removes the value but saves the space.</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="indexing.html#cb383-1"></a><span class="co"># Strategy 1 - NULL: Delete a column </span></span>
+<span id="cb383-2"><a href="indexing.html#cb383-2"></a>iris<span class="op">$</span>new_column &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb383-3"><a href="indexing.html#cb383-3"></a>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ] <span class="co"># Preview first 10 rows </span></span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species     V7
+## 1           5.1         3.5          1.4         0.2  setosa Goodby
+## 2           4.9         3.0          1.4         0.2  setosa Goodby
+## 3           4.7         3.2          1.3         0.2  setosa Goodby
+## 4           4.6         3.1          1.5         0.2  setosa Goodby
+## 5           5.0         3.6          1.4         0.2  setosa Goodby
+## 6           5.4         3.9          1.7         0.4  setosa Goodby
+## 7           4.6         3.4          1.4         0.3  setosa Goodby
+## 8           5.0         3.4          1.5         0.2  setosa Goodby
+## 9           4.4         2.9          1.4         0.2  setosa Goodby
+## 10          4.9         3.1          1.5         0.1  setosa Goodby</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="indexing.html#cb385-1"></a><span class="co"># Strategy 2 - Redefine Object: Delete a column </span></span>
+<span id="cb385-2"><a href="indexing.html#cb385-2"></a>iris &lt;-<span class="st"> </span>iris[, <span class="op">-</span><span class="kw">ncol</span>(iris)]</span>
+<span id="cb385-3"><a href="indexing.html#cb385-3"></a>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ] <span class="co"># Preview first 10 rows </span></span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+</div>
+<div id="select-based-on-condition" class="section level3">
+<h3><span class="header-section-number">5.5.5</span> Select Based on Condition</h3>
+<p>So far we have not used logical vectors to index that much yet. Logical indexing is actually very helpful and common! One of the big reasons we use logical vectors for indexing is to select elements that meet a certain condition. For example, maybe we want only want to display elements of a vector that are larger than 50.</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="indexing.html#cb387-1"></a><span class="co"># diplays elements of vec that are larger than 50</span></span>
+<span id="cb387-2"><a href="indexing.html#cb387-2"></a>vec[vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>]</span></code></pre></div>
+<pre><code>## [1]   62   62   62   55   72   54   83   88 1000</code></pre>
+<p>We can also reassignment elements of a vector that meet a certain condition. This uses ideas from 5.5.1.</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="indexing.html#cb389-1"></a><span class="co"># Reassign values in vec2 to be NA if they are greater than 50. </span></span>
+<span id="cb389-2"><a href="indexing.html#cb389-2"></a>vec2 &lt;-<span class="st"> </span>vec </span>
+<span id="cb389-3"><a href="indexing.html#cb389-3"></a>vec2[vec2<span class="op">&gt;</span><span class="dv">50</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb389-4"><a href="indexing.html#cb389-4"></a>vec2</span></code></pre></div>
+<pre><code>##  [1] NA NA NA NA NA NA 39 NA NA 15 NA</code></pre>
+<p>We can of course also use this strategy on all other objects that support the <code>[]</code> operator, which is everything so far!</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="indexing.html#cb391-1"></a><span class="co"># display rows of iris that have species == &quot;setosa&quot;</span></span>
+<span id="cb391-2"><a href="indexing.html#cb391-2"></a>iris[iris<span class="op">$</span>Species<span class="op">==</span><span class="st">&quot;setosa&quot;</span>, ]</span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## 11          5.4         3.7          1.5         0.2  setosa
+## 12          4.8         3.4          1.6         0.2  setosa
+## 13          4.8         3.0          1.4         0.1  setosa
+## 14          4.3         3.0          1.1         0.1  setosa
+## 15          5.8         4.0          1.2         0.2  setosa
+## 16          5.7         4.4          1.5         0.4  setosa
+## 17          5.4         3.9          1.3         0.4  setosa
+## 18          5.1         3.5          1.4         0.3  setosa
+## 19          5.7         3.8          1.7         0.3  setosa
+## 20          5.1         3.8          1.5         0.3  setosa
+## 21          5.4         3.4          1.7         0.2  setosa
+## 22          5.1         3.7          1.5         0.4  setosa
+## 23          4.6         3.6          1.0         0.2  setosa
+## 24          5.1         3.3          1.7         0.5  setosa
+## 25          4.8         3.4          1.9         0.2  setosa
+## 26          5.0         3.0          1.6         0.2  setosa
+## 27          5.0         3.4          1.6         0.4  setosa
+## 28          5.2         3.5          1.5         0.2  setosa
+## 29          5.2         3.4          1.4         0.2  setosa
+## 30          4.7         3.2          1.6         0.2  setosa
+## 31          4.8         3.1          1.6         0.2  setosa
+## 32          5.4         3.4          1.5         0.4  setosa
+## 33          5.2         4.1          1.5         0.1  setosa
+## 34          5.5         4.2          1.4         0.2  setosa
+## 35          4.9         3.1          1.5         0.2  setosa
+## 36          5.0         3.2          1.2         0.2  setosa
+## 37          5.5         3.5          1.3         0.2  setosa
+## 38          4.9         3.6          1.4         0.1  setosa
+## 39          4.4         3.0          1.3         0.2  setosa
+## 40          5.1         3.4          1.5         0.2  setosa
+## 41          5.0         3.5          1.3         0.3  setosa
+## 42          4.5         2.3          1.3         0.3  setosa
+## 43          4.4         3.2          1.3         0.2  setosa
+## 44          5.0         3.5          1.6         0.6  setosa
+## 45          5.1         3.8          1.9         0.4  setosa
+## 46          4.8         3.0          1.4         0.3  setosa
+## 47          5.1         3.8          1.6         0.2  setosa
+## 48          4.6         3.2          1.4         0.2  setosa
+## 49          5.3         3.7          1.5         0.2  setosa
+## 50          5.0         3.3          1.4         0.2  setosa</code></pre>
+</div>
+<div id="convert-indexing-techniques" class="section level3">
+<h3><span class="header-section-number">5.5.6</span> Convert Indexing Techniques</h3>
+<p>With all these methods it can sometimes be difficult to remember which is which. However, we will often find ourselves naturally gravitating to one technique over another. There are different operators and functions in R that help us convert the different techniques. For example, the <code>which()</code> function helps us switch from logical indexing to positive integer indexing.</p>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="indexing.html#cb393-1"></a><span class="co"># Switch from logical strategy, to positive integer strategy </span></span>
+<span id="cb393-2"><a href="indexing.html#cb393-2"></a>index =<span class="st"> </span><span class="kw">which</span>(vec <span class="op">&gt;</span><span class="dv">50</span>)</span>
+<span id="cb393-3"><a href="indexing.html#cb393-3"></a>index</span></code></pre></div>
+<pre><code>## [1]  1  2  3  4  5  6  8  9 11</code></pre>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="indexing.html#cb395-1"></a>vec[index]</span></code></pre></div>
+<pre><code>## [1]   62   62   62   55   72   54   83   88 1000</code></pre>
+<p>The <code>%in%</code> operator helps us make a check if elements in the object <code>values</code> are in the set <code>keep</code>, i.e. <code>values %in% keep</code>.</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="indexing.html#cb397-1"></a><span class="co"># Returns logical vector of column names to keep </span></span>
+<span id="cb397-2"><a href="indexing.html#cb397-2"></a>keep &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;Sepal.Length&quot;</span>)</span>
+<span id="cb397-3"><a href="indexing.html#cb397-3"></a><span class="kw">colnames</span>(iris) <span class="op">%in%</span><span class="st"> </span>keep</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+</div>
+<div id="summary-3" class="section level2 unnumbered">
+<h2>Summary</h2>
+<ul>
+<li><p>Indexing operators <code>[]</code>, <code>[[]]</code>, <code>$</code></p></li>
+<li><p><code>[]</code>: Used with 1d and 2d objects</p>
+<ul>
+<li>Positive Integers</li>
+<li>Negative Integers</li>
+<li>Name</li>
+<li>Logical</li>
+</ul></li>
+<li><p><code>[[]]</code>: Used with lists or Data frames. Can only isolate one element or column.</p>
+<ul>
+<li>Positive Integers</li>
+<li>Name</li>
+</ul></li>
+<li><p><code>$</code>: Used with lists or Data frames. Can only isolate one element or column.</p>
+<ul>
+<li>Name</li>
+</ul></li>
+<li><p>Indexing can be combined with reassignment.</p></li>
+<li><p>Some important functions and operators to remember: <code>order()</code>, <code>sort()</code>, <code>which()</code>, <code>%in%</code>.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="matrices-data-frames-and-more.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="write.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jules32/bookdown-tutorial/edit/master/05-indexing.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

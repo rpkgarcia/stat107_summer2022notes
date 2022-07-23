@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Factors and Lists | STAT 107 Outline of Class Notes</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Factors and Lists | STAT 107 Outline of Class Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Factors and Lists | STAT 107 Outline of Class Notes" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Rebecca Kurtz-Garcia" />
+
+
+<meta name="date" content="2022-07-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="atomic-vectors.html"/>
+<link rel="next" href="matrices-data-frames-and-more.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT 107 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#download-and-install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download and Install R and Rstudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-rstudio-interface"><i class="fa fa-check"></i><b>1.2</b> The <strong>RStudio</strong> Interface</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#bottom-left-pane"><i class="fa fa-check"></i>Bottom Left Pane</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#bottom-right-pane"><i class="fa fa-check"></i>Bottom Right Pane</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#top-right-pane"><i class="fa fa-check"></i>Top Right Pane</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#top-left-pane"><i class="fa fa-check"></i>Top Left Pane</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#comments"><i class="fa fa-check"></i><b>1.3</b> Comments</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#operators"><i class="fa fa-check"></i><b>1.4</b> Operators</a><ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#arithmetic-operators"><i class="fa fa-check"></i>Arithmetic Operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#relational-operators"><i class="fa fa-check"></i>Relational Operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#logical-operators"><i class="fa fa-check"></i>Logical operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#assignment-operators"><i class="fa fa-check"></i>Assignment Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#naming-conventions"><i class="fa fa-check"></i><b>1.5</b> Naming Conventions</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#additional-resources"><i class="fa fa-check"></i>Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="atomic-vectors.html"><a href="atomic-vectors.html"><i class="fa fa-check"></i><b>2</b> Atomic Vectors</a><ul>
+<li class="chapter" data-level="2.1" data-path="atomic-vectors.html"><a href="atomic-vectors.html#examples"><i class="fa fa-check"></i><b>2.1</b> Examples</a><ul>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#double"><i class="fa fa-check"></i>Double</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#integer"><i class="fa fa-check"></i>Integer</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#logical"><i class="fa fa-check"></i>Logical</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#character"><i class="fa fa-check"></i>Character</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="atomic-vectors.html"><a href="atomic-vectors.html#basic-features"><i class="fa fa-check"></i><b>2.2</b> Basic Features</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="atomic-vectors.html"><a href="atomic-vectors.html#length"><i class="fa fa-check"></i><b>2.2.1</b> Length</a></li>
+<li class="chapter" data-level="2.2.2" data-path="atomic-vectors.html"><a href="atomic-vectors.html#vectorized-operations-and-recylcing"><i class="fa fa-check"></i><b>2.2.2</b> Vectorized Operations and Recylcing</a></li>
+<li class="chapter" data-level="2.2.3" data-path="atomic-vectors.html"><a href="atomic-vectors.html#coercion"><i class="fa fa-check"></i><b>2.2.3</b> Coercion</a></li>
+<li class="chapter" data-level="2.2.4" data-path="atomic-vectors.html"><a href="atomic-vectors.html#testing"><i class="fa fa-check"></i><b>2.2.4</b> Testing</a></li>
+<li class="chapter" data-level="2.2.5" data-path="atomic-vectors.html"><a href="atomic-vectors.html#names"><i class="fa fa-check"></i><b>2.2.5</b> Names</a></li>
+<li class="chapter" data-level="2.2.6" data-path="atomic-vectors.html"><a href="atomic-vectors.html#typeof-and-class"><i class="fa fa-check"></i><b>2.2.6</b> typeof() and class()</a></li>
+<li class="chapter" data-level="2.2.7" data-path="atomic-vectors.html"><a href="atomic-vectors.html#index"><i class="fa fa-check"></i><b>2.2.7</b> Accessing Elements of a Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="atomic-vectors.html"><a href="atomic-vectors.html#additional-resources-1"><i class="fa fa-check"></i>Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="factors-and-lists.html"><a href="factors-and-lists.html"><i class="fa fa-check"></i><b>3</b> Factors and Lists</a><ul>
+<li class="chapter" data-level="3.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#factors"><i class="fa fa-check"></i><b>3.1</b> Factors</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#levels"><i class="fa fa-check"></i><b>3.1.1</b> Levels</a></li>
+<li class="chapter" data-level="3.1.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#ordered-factor"><i class="fa fa-check"></i><b>3.1.2</b> Ordered Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#factors---basic-features"><i class="fa fa-check"></i><b>3.2</b> Factors - Basic Features</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#length-1"><i class="fa fa-check"></i><b>3.2.1</b> Length</a></li>
+<li class="chapter" data-level="3.2.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#coercion-1"><i class="fa fa-check"></i><b>3.2.2</b> Coercion</a></li>
+<li class="chapter" data-level="3.2.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#testingclass"><i class="fa fa-check"></i><b>3.2.3</b> Testing/Class</a></li>
+<li class="chapter" data-level="3.2.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#names-1"><i class="fa fa-check"></i><b>3.2.4</b> Names</a></li>
+<li class="chapter" data-level="3.2.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements"><i class="fa fa-check"></i><b>3.2.5</b> Accessing Elements</a></li>
+<li class="chapter" data-level="3.2.6" data-path="factors-and-lists.html"><a href="factors-and-lists.html#frequency-tables"><i class="fa fa-check"></i><b>3.2.6</b> Frequency Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#nested-lists"><i class="fa fa-check"></i><b>3.3.1</b> Nested Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#list---basic-features"><i class="fa fa-check"></i><b>3.4</b> List - Basic Features</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#length-2"><i class="fa fa-check"></i><b>3.4.1</b> Length</a></li>
+<li class="chapter" data-level="3.4.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#coercion-2"><i class="fa fa-check"></i><b>3.4.2</b> Coercion</a></li>
+<li class="chapter" data-level="3.4.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#testingclass-1"><i class="fa fa-check"></i><b>3.4.3</b> Testing/Class</a></li>
+<li class="chapter" data-level="3.4.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#names-2"><i class="fa fa-check"></i><b>3.4.4</b> Names</a></li>
+<li class="chapter" data-level="3.4.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements-1"><i class="fa fa-check"></i><b>3.4.5</b> Accessing Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="factors-and-lists.html"><a href="factors-and-lists.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html"><i class="fa fa-check"></i><b>4</b> Matrices, Data Frames, and More</a><ul>
+<li class="chapter" data-level="4.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#matrices"><i class="fa fa-check"></i><b>4.1</b> Matrices</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#vectorized-operations"><i class="fa fa-check"></i><b>4.1.1</b> Vectorized Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#data-frames"><i class="fa fa-check"></i><b>4.2</b> Data Frames</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#column-names"><i class="fa fa-check"></i><b>4.2.1</b> Column Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#basic-features-of-matricesdata-frames"><i class="fa fa-check"></i><b>4.3</b> Basic Features of Matrices/Data-Frames</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#dimensions"><i class="fa fa-check"></i><b>4.3.1</b> Dimensions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#accesing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accesing Elements</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#coercion-3"><i class="fa fa-check"></i><b>4.3.3</b> Coercion</a></li>
+<li class="chapter" data-level="4.3.4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#testingclass-2"><i class="fa fa-check"></i><b>4.3.4</b> Testing/Class</a></li>
+<li class="chapter" data-level="4.3.5" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#names-3"><i class="fa fa-check"></i><b>4.3.5</b> Names</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#other-object-types-and-the-global-environment"><i class="fa fa-check"></i><b>4.4</b> Other Object Types and the Global Environment</a></li>
+<li class="chapter" data-level="" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>5</b> Indexing</a><ul>
+<li class="chapter" data-level="5.1" data-path="indexing.html"><a href="indexing.html#VectorIndex"><i class="fa fa-check"></i><b>5.1</b> Atomic Vectors and Factors</a><ul>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-positive-integers"><i class="fa fa-check"></i>Example: Positive Integers</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-negative-integers"><i class="fa fa-check"></i>Example: Negative Integers</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-logical-values"><i class="fa fa-check"></i>Example: Logical Values</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-names"><i class="fa fa-check"></i>Example: Names</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="indexing.html"><a href="indexing.html#lists-1"><i class="fa fa-check"></i><b>5.2</b> Lists</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="indexing.html"><a href="indexing.html#double-brackets"><i class="fa fa-check"></i><b>5.2.1</b> Double Brackets</a></li>
+<li class="chapter" data-level="5.2.2" data-path="indexing.html"><a href="indexing.html#dollar-sign"><i class="fa fa-check"></i><b>5.2.2</b> Dollar Sign</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="indexing.html"><a href="indexing.html#matrices-1"><i class="fa fa-check"></i><b>5.3</b> Matrices</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="indexing.html"><a href="indexing.html#two-vectors"><i class="fa fa-check"></i><b>5.3.1</b> Two Vectors</a></li>
+<li class="chapter" data-level="5.3.2" data-path="indexing.html"><a href="indexing.html#single-vector"><i class="fa fa-check"></i><b>5.3.2</b> Single Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="indexing.html"><a href="indexing.html#data-frames-1"><i class="fa fa-check"></i><b>5.4</b> Data frames</a><ul>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-double-brackets"><i class="fa fa-check"></i>Example: Double brackets</a></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#example-dollar-sign"><i class="fa fa-check"></i>Example: Dollar Sign</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indexing.html"><a href="indexing.html#features-and-applications"><i class="fa fa-check"></i><b>5.5</b> Features and Applications</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="indexing.html"><a href="indexing.html#indexing-and-reassignment"><i class="fa fa-check"></i><b>5.5.1</b> Indexing and Reassignment</a></li>
+<li class="chapter" data-level="5.5.2" data-path="indexing.html"><a href="indexing.html#orderinginteger-indexing"><i class="fa fa-check"></i><b>5.5.2</b> Ordering/Integer Indexing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="indexing.html"><a href="indexing.html#adding-elementsrowscolumns"><i class="fa fa-check"></i><b>5.5.3</b> Adding Elements/Rows/Columns</a></li>
+<li class="chapter" data-level="5.5.4" data-path="indexing.html"><a href="indexing.html#delete-elementsrowscolumns"><i class="fa fa-check"></i><b>5.5.4</b> Delete Elements/Rows/Columns</a></li>
+<li class="chapter" data-level="5.5.5" data-path="indexing.html"><a href="indexing.html#select-based-on-condition"><i class="fa fa-check"></i><b>5.5.5</b> Select Based on Condition</a></li>
+<li class="chapter" data-level="5.5.6" data-path="indexing.html"><a href="indexing.html#convert-indexing-techniques"><i class="fa fa-check"></i><b>5.5.6</b> Convert Indexing Techniques</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="indexing.html"><a href="indexing.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>6</b> Writing in Bookdown</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 107 Outline of Class Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="factors-and-lists" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Factors and Lists</h1>
+<p>Factor objects and lists are vectors with special properties. Factors and lists are vectors because they a 1-dimensional sequence of elements. Factors are primarily used for categorical data, and are technically a special form of an integer type vector. However, we will simply refer to a factor vector a as a factor object. Lists are vectors where type of each element can differ. In this chapter we introduce some of the unique properties of factors and lists.</p>
+<div id="factors" class="section level2">
+<h2><span class="header-section-number">3.1</span> Factors</h2>
+<p>In real-world problems, you often encounter data that can be classified in categories. For example, suppose a survey was conducted of a group of seven individuals, who were asked to identify their hair color and if they own a pet.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="factors-and-lists.html#cb159-1"></a>hair =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Blonde&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Blonde&quot;</span>, <span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Black&quot;</span>)</span></code></pre></div>
+<p>Here, the hair color and pet ownership are examples of categorical data. For the hair color variable we will typically want to store it as a factor, as opposed to a character vector. The different values that the factor can take are called levels. In R, you can create a factor with the <code>factor()</code>, or the <code>as.factor()</code> functions.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="factors-and-lists.html#cb160-1"></a>f =<span class="st"> </span><span class="kw">factor</span>(hair)</span>
+<span id="cb160-2"><a href="factors-and-lists.html#cb160-2"></a>f</span></code></pre></div>
+<pre><code>## [1] Blonde Black  Black  Red    Blonde Brown  Black 
+## Levels: Black Blonde Brown Red</code></pre>
+<div id="levels" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Levels</h3>
+<p>Levels are one of the special properties of a factor object. Notice that when you print the factor, R displays the distinct levels below the factor. R keeps track of all the possible values in a vector, and each value is called a level of the associated factor. The <code>levels()</code> function shows all the levels from a factor.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="factors-and-lists.html#cb162-1"></a><span class="kw">levels</span>(f)</span></code></pre></div>
+<pre><code>## [1] &quot;Black&quot;  &quot;Blonde&quot; &quot;Brown&quot;  &quot;Red&quot;</code></pre>
+<p>If your vector contains only a subset of all the possible levels, then R will have an incomplete picture of the possible levels. Consider the following example of a vector consisting of directions. Notice that “South” is noticeably missing.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="factors-and-lists.html#cb164-1"></a>directions =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;North&quot;</span>, <span class="st">&quot;West&quot;</span>, <span class="st">&quot;North&quot;</span>, <span class="st">&quot;East&quot;</span>, <span class="st">&quot;North&quot;</span>, <span class="st">&quot;West&quot;</span>, <span class="st">&quot;East&quot;</span>)</span>
+<span id="cb164-2"><a href="factors-and-lists.html#cb164-2"></a>f =<span class="st"> </span><span class="kw">factor</span>(directions)</span>
+<span id="cb164-3"><a href="factors-and-lists.html#cb164-3"></a>f</span></code></pre></div>
+<pre><code>## [1] North West  North East  North West  East 
+## Levels: East North West</code></pre>
+<p>Notice that the levels of your new factor do not contain the value “South”. R thinks that North, West, and East are the only possible levels. However, in practice, it makes sense to have all the possible directions as levels of your factor. To add all the possible levels explicitly, you specify the <code>levels</code> argument of the function <code>factor()</code>.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="factors-and-lists.html#cb166-1"></a>directions =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;North&quot;</span>, <span class="st">&quot;West&quot;</span>, <span class="st">&quot;North&quot;</span>, <span class="st">&quot;East&quot;</span>, <span class="st">&quot;North&quot;</span>, <span class="st">&quot;West&quot;</span>, <span class="st">&quot;East&quot;</span>)</span>
+<span id="cb166-2"><a href="factors-and-lists.html#cb166-2"></a></span>
+<span id="cb166-3"><a href="factors-and-lists.html#cb166-3"></a><span class="co"># Make sure all possible categories are listed using the levels argument</span></span>
+<span id="cb166-4"><a href="factors-and-lists.html#cb166-4"></a>f =<span class="st"> </span><span class="kw">factor</span>(directions,</span>
+<span id="cb166-5"><a href="factors-and-lists.html#cb166-5"></a>            <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;North&quot;</span>, <span class="st">&quot;East&quot;</span>, <span class="st">&quot;South&quot;</span>, <span class="st">&quot;West&quot;</span>))</span>
+<span id="cb166-6"><a href="factors-and-lists.html#cb166-6"></a>f</span></code></pre></div>
+<pre><code>## [1] North West  North East  North West  East 
+## Levels: North East South West</code></pre>
+<p>R lets you assign abbreviated names for the levels. You can do this by specifying the <code>labels</code> argument of <code>factor()</code>.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="factors-and-lists.html#cb168-1"></a>directions =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;North&quot;</span>, <span class="st">&quot;West&quot;</span>, <span class="st">&quot;South&quot;</span>, <span class="st">&quot;East&quot;</span>, <span class="st">&quot;West&quot;</span>, <span class="st">&quot;North&quot;</span>, <span class="st">&quot;South&quot;</span>)</span>
+<span id="cb168-2"><a href="factors-and-lists.html#cb168-2"></a>f =<span class="st"> </span><span class="kw">factor</span>(directions,</span>
+<span id="cb168-3"><a href="factors-and-lists.html#cb168-3"></a>            <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;North&quot;</span>, <span class="st">&quot;East&quot;</span>, <span class="st">&quot;South&quot;</span>, <span class="st">&quot;West&quot;</span>),</span>
+<span id="cb168-4"><a href="factors-and-lists.html#cb168-4"></a>            <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;W&quot;</span>))</span>
+<span id="cb168-5"><a href="factors-and-lists.html#cb168-5"></a>f</span></code></pre></div>
+<pre><code>## [1] N W S E W N S
+## Levels: N E S W</code></pre>
+</div>
+<div id="ordered-factor" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Ordered Factor</h3>
+<p>Sometimes data has some kind of natural order between elements. For example, sports analysts use a three-point scale to determine how well a sports team is competing:</p>
+<p><strong>loss &lt; tie &lt; win</strong>.</p>
+<p>In market research, it’s very common to use a five point scale to measure perceptions:</p>
+<p><strong>strongly disagree &lt; disagree &lt; neutral &lt; agree &lt; strongly agree</strong>.</p>
+<p>Such kind of data that is possible to place in order or scale is known as <strong>ordinal data</strong>. We can store ordinal data as an ordered factor. To create an ordered factor, use the <code>factor()</code> function with the argument <code>ordered=TRUE</code>.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="factors-and-lists.html#cb170-1"></a>record =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;tie&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;tie&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>, <span class="st">&quot;win&quot;</span>)</span>
+<span id="cb170-2"><a href="factors-and-lists.html#cb170-2"></a>f =<span class="st"> </span><span class="kw">factor</span>(record, </span>
+<span id="cb170-3"><a href="factors-and-lists.html#cb170-3"></a>            <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb170-4"><a href="factors-and-lists.html#cb170-4"></a>f</span></code></pre></div>
+<pre><code>## [1] win  tie  loss tie  loss win  win 
+## Levels: loss &lt; tie &lt; win</code></pre>
+<p>You can manually change which levels are lower and higher based on the order that the levels are listed.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="factors-and-lists.html#cb172-1"></a>record =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;tie&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;tie&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>, <span class="st">&quot;win&quot;</span>)</span>
+<span id="cb172-2"><a href="factors-and-lists.html#cb172-2"></a>f =<span class="st"> </span><span class="kw">factor</span>(record, </span>
+<span id="cb172-3"><a href="factors-and-lists.html#cb172-3"></a>           <span class="dt">ordered =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb172-4"><a href="factors-and-lists.html#cb172-4"></a>           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;tie&quot;</span>, <span class="st">&quot;loss&quot;</span>))</span>
+<span id="cb172-5"><a href="factors-and-lists.html#cb172-5"></a>f</span></code></pre></div>
+<pre><code>## [1] win  tie  loss tie  loss win  win 
+## Levels: win &lt; tie &lt; loss</code></pre>
+<p>If you have no observations in one of the levels, you can drop it using the <code>droplevels()</code> function.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="factors-and-lists.html#cb174-1"></a>record =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>)</span>
+<span id="cb174-2"><a href="factors-and-lists.html#cb174-2"></a>f =<span class="st"> </span><span class="kw">factor</span>(record,</span>
+<span id="cb174-3"><a href="factors-and-lists.html#cb174-3"></a>           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;loss&quot;</span>, <span class="st">&quot;tie&quot;</span>, <span class="st">&quot;win&quot;</span>))</span>
+<span id="cb174-4"><a href="factors-and-lists.html#cb174-4"></a></span>
+<span id="cb174-5"><a href="factors-and-lists.html#cb174-5"></a><span class="kw">droplevels</span>(f)</span></code></pre></div>
+<pre><code>## [1] win  loss loss win  loss win 
+## Levels: loss win</code></pre>
+</div>
+</div>
+<div id="factors---basic-features" class="section level2">
+<h2><span class="header-section-number">3.2</span> Factors - Basic Features</h2>
+<div id="length-1" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Length</h3>
+<p>Factor objects have a lot of the same features as atomic vectors. In general, most of the features and functions we had for atomic vectors work with factors. For example, we still use the <code>length()</code> function to see how many elements are in a factor.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="factors-and-lists.html#cb176-1"></a>record &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>)</span>
+<span id="cb176-2"><a href="factors-and-lists.html#cb176-2"></a>f &lt;-<span class="st"> </span><span class="kw">factor</span>(record)</span>
+<span id="cb176-3"><a href="factors-and-lists.html#cb176-3"></a></span>
+<span id="cb176-4"><a href="factors-and-lists.html#cb176-4"></a><span class="kw">length</span>(f)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+</div>
+<div id="coercion-1" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Coercion</h3>
+<p>Coercion also works similarly. We can use <code>as.factor()</code> to create a factor object from a pre-existing vector. As we have seen in the previous examples, the <code>factor()</code> function also works.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="factors-and-lists.html#cb178-1"></a>record &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>)</span>
+<span id="cb178-2"><a href="factors-and-lists.html#cb178-2"></a>f &lt;-<span class="st"> </span><span class="kw">as.factor</span>(record)</span>
+<span id="cb178-3"><a href="factors-and-lists.html#cb178-3"></a>f</span></code></pre></div>
+<pre><code>## [1] win  loss loss win  loss win 
+## Levels: loss win</code></pre>
+<p>To convert a factor object to a non-factor object we still use the <code>as.*()</code> function. In general, it is usually easiest to convert character vectors to factor vectors, and vice versa. When we convert a factor to an integer or double vector the different levels of the factor are converted to integers in order for each level. That is, the first level listed is converted to a 1, the second level listed is converted to a 2, and so on.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="factors-and-lists.html#cb180-1"></a><span class="co"># Convert to a character vector </span></span>
+<span id="cb180-2"><a href="factors-and-lists.html#cb180-2"></a><span class="kw">as.character</span>(f)</span></code></pre></div>
+<pre><code>## [1] &quot;win&quot;  &quot;loss&quot; &quot;loss&quot; &quot;win&quot;  &quot;loss&quot; &quot;win&quot;</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="factors-and-lists.html#cb182-1"></a><span class="co"># Convert to an integer vector </span></span>
+<span id="cb182-2"><a href="factors-and-lists.html#cb182-2"></a><span class="kw">as.integer</span>(f)</span></code></pre></div>
+<pre><code>## [1] 2 1 1 2 1 2</code></pre>
+</div>
+<div id="testingclass" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Testing/Class</h3>
+<p>We can also test if we have factor or an ordered factor using <code>is.*()</code> as we did before.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="factors-and-lists.html#cb184-1"></a>record =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>, <span class="st">&quot;loss&quot;</span>, <span class="st">&quot;win&quot;</span>)</span>
+<span id="cb184-2"><a href="factors-and-lists.html#cb184-2"></a>f =<span class="st"> </span><span class="kw">factor</span>(record, <span class="dt">ordered =</span> T)</span>
+<span id="cb184-3"><a href="factors-and-lists.html#cb184-3"></a></span>
+<span id="cb184-4"><a href="factors-and-lists.html#cb184-4"></a></span>
+<span id="cb184-5"><a href="factors-and-lists.html#cb184-5"></a><span class="co"># Test if the character vector is a factor</span></span>
+<span id="cb184-6"><a href="factors-and-lists.html#cb184-6"></a><span class="kw">is.factor</span>(record)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="factors-and-lists.html#cb186-1"></a><span class="co"># Test if we have a factor (includes both ordered and not ordered factors)</span></span>
+<span id="cb186-2"><a href="factors-and-lists.html#cb186-2"></a><span class="kw">is.factor</span>(f)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="factors-and-lists.html#cb188-1"></a><span class="co"># Test if we have an ordered factor (only includes ordered factors)</span></span>
+<span id="cb188-2"><a href="factors-and-lists.html#cb188-2"></a><span class="kw">is.ordered</span>(f)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>With all types of objects we can use the <code>class()</code> function. As mentioned in the previous section, this function returns the name of the type of object that you have, unlike <code>typeof()</code> which returns the storage mode. The output of <code>class()</code> returns name of a object with particular properties. For instance, a factor object. A factor object is stored like an integer vector but it has “levels” which can be utilized in special ways.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="factors-and-lists.html#cb190-1"></a><span class="co"># Returns storage mode (not recommended)</span></span>
+<span id="cb190-2"><a href="factors-and-lists.html#cb190-2"></a><span class="kw">typeof</span>(f)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="factors-and-lists.html#cb192-1"></a><span class="co"># Returns class, which is the name of a collection of objects with similar properties </span></span>
+<span id="cb192-2"><a href="factors-and-lists.html#cb192-2"></a><span class="co"># (Recommended)</span></span>
+<span id="cb192-3"><a href="factors-and-lists.html#cb192-3"></a><span class="kw">class</span>(f)</span></code></pre></div>
+<pre><code>## [1] &quot;ordered&quot; &quot;factor&quot;</code></pre>
+</div>
+<div id="names-1" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Names</h3>
+<p>Like standard vectors, we can name the elements in a factor using the same three techniques discussed in <a href="atomic-vectors.html#names">2.2.5</a>.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="factors-and-lists.html#cb194-1"></a><span class="co"># Using Technique 1 for creating a named vector. </span></span>
+<span id="cb194-2"><a href="factors-and-lists.html#cb194-2"></a>named1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">sally =</span> <span class="st">&quot;win&quot;</span>, <span class="dt">tom =</span> <span class="st">&quot;win&quot;</span>, <span class="dt">ed =</span> <span class="st">&quot;lost&quot;</span>, <span class="dt">jane =</span> <span class="st">&quot;tie&quot;</span>)</span>
+<span id="cb194-3"><a href="factors-and-lists.html#cb194-3"></a>named1 &lt;-<span class="st"> </span><span class="kw">factor</span>(named1)</span>
+<span id="cb194-4"><a href="factors-and-lists.html#cb194-4"></a>named1</span></code></pre></div>
+<pre><code>## sally   tom    ed  jane 
+##   win   win  lost   tie 
+## Levels: lost tie win</code></pre>
+</div>
+<div id="accessing-elements" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> Accessing Elements</h3>
+<p>We can also access elements of a factor object using the same standard techniques described for accessing elements in a vector <a href="atomic-vectors.html#index">2.2.7</a>.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="factors-and-lists.html#cb196-1"></a><span class="co"># Obtain the first element</span></span>
+<span id="cb196-2"><a href="factors-and-lists.html#cb196-2"></a>named1[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## sally 
+##   win 
+## Levels: lost tie win</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="factors-and-lists.html#cb198-1"></a><span class="co"># Obtain the forth and second elements</span></span>
+<span id="cb198-2"><a href="factors-and-lists.html#cb198-2"></a>named1[<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## jane  tom 
+##  tie  win 
+## Levels: lost tie win</code></pre>
+</div>
+<div id="frequency-tables" class="section level3">
+<h3><span class="header-section-number">3.2.6</span> Frequency Tables</h3>
+<p>The <code>summary()</code> function will give you a quick overview of the contents of a factor.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="factors-and-lists.html#cb200-1"></a>hair &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Blonde&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Blonde&quot;</span>, <span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Black&quot;</span>)</span>
+<span id="cb200-2"><a href="factors-and-lists.html#cb200-2"></a>hair &lt;-<span class="st"> </span><span class="kw">factor</span>(hair)</span>
+<span id="cb200-3"><a href="factors-and-lists.html#cb200-3"></a><span class="kw">summary</span>(hair)</span></code></pre></div>
+<pre><code>##  Black Blonde  Brown    Red 
+##      3      2      1      1</code></pre>
+<p>The function <code>table()</code> tabulates observations.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="factors-and-lists.html#cb202-1"></a><span class="kw">table</span>(hair)</span></code></pre></div>
+<pre><code>## hair
+##  Black Blonde  Brown    Red 
+##      3      2      1      1</code></pre>
+<p>We can also use the <code>table()</code> and <code>summary()</code> functions on atomic vectors, and they will operate in a similar way. However, these functions are particularly utilized for factor objects.</p>
+<p>The <code>table()</code> function can also tabulate two-way frequency tables.</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="factors-and-lists.html#cb204-1"></a>hair &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Blonde&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Blonde&quot;</span>, <span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Black&quot;</span>)</span>
+<span id="cb204-2"><a href="factors-and-lists.html#cb204-2"></a>own_pets &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</span>
+<span id="cb204-3"><a href="factors-and-lists.html#cb204-3"></a></span>
+<span id="cb204-4"><a href="factors-and-lists.html#cb204-4"></a>hair &lt;-<span class="st"> </span><span class="kw">factor</span>(hair)</span>
+<span id="cb204-5"><a href="factors-and-lists.html#cb204-5"></a>own_pets &lt;-<span class="st"> </span><span class="kw">factor</span>(own_pets)</span>
+<span id="cb204-6"><a href="factors-and-lists.html#cb204-6"></a></span>
+<span id="cb204-7"><a href="factors-and-lists.html#cb204-7"></a><span class="kw">table</span>(hair, own_pets)</span></code></pre></div>
+<pre><code>##         own_pets
+## hair     FALSE TRUE
+##   Black      2    1
+##   Blonde     1    1
+##   Brown      1    0
+##   Red        0    1</code></pre>
+</div>
+</div>
+<div id="lists" class="section level2">
+<h2><span class="header-section-number">3.3</span> Lists</h2>
+<p>A <em>list</em> is an array of objects. Unlike other types of vectors, the elements in a list can belong to different classes. Lists are useful for packaging together a set of related objects. We can create a list of objects in our environment by using the <code>list()</code> function.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="factors-and-lists.html#cb206-1"></a><span class="co"># A list of mixed datatypes</span></span>
+<span id="cb206-2"><a href="factors-and-lists.html#cb206-2"></a>lst =<span class="st"> </span><span class="kw">list</span>(1L, <span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="fl">1.23</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb206-3"><a href="factors-and-lists.html#cb206-3"></a>lst</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] &quot;abc&quot; &quot;ABC&quot;
+## 
+## [[3]]
+## [1] 1.23
+## 
+## [[4]]
+## [1] TRUE</code></pre>
+<p>Looking at the output above we can see that this output is structured differently than a standard vector. The location of each element of a list is denoted by [[]] instead of [].</p>
+<p>The best way to understand the contents of a list is to use the structure function <code>str()</code>. It provides a compact display of the internal structure of a list.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="factors-and-lists.html#cb208-1"></a>lst =<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="fl">1.23</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb208-2"><a href="factors-and-lists.html#cb208-2"></a><span class="kw">str</span>(lst)</span></code></pre></div>
+<pre><code>## List of 4
+##  $ : num 1
+##  $ : chr [1:2] &quot;abc&quot; &quot;ABC&quot;
+##  $ : num 1.23
+##  $ : logi TRUE</code></pre>
+<p>Above we see that we have a list with 4 elements. The first element is of class “numeric” and contains a single number, 1. The second element is of “character” and contains two elements, which is indicated by [1:2]. The third and fourth elements are of class “numeric” and “logical”, and each contain a single element.</p>
+<p>To see the class of each indivdiual element of a list we can use the following command.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="factors-and-lists.html#cb210-1"></a><span class="kw">sapply</span>(lst, class)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;   &quot;character&quot; &quot;numeric&quot;   &quot;logical&quot;</code></pre>
+<div id="nested-lists" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Nested Lists</h3>
+<p>A list can contain sublists, which in turn can contain sublists themselves, and so on. This is known as <em>nested list</em> or <em>recursive vectors</em>.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="factors-and-lists.html#cb212-1"></a>lst =<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="kw">list</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="ot">TRUE</span>)</span>
+<span id="cb212-2"><a href="factors-and-lists.html#cb212-2"></a><span class="kw">str</span>(lst)</span></code></pre></div>
+<pre><code>## List of 5
+##  $ : num 1
+##  $ : num 3
+##  $ : chr [1:2] &quot;abc&quot; &quot;ABC&quot;
+##  $ :List of 3
+##   ..$ : chr &quot;a&quot;
+##   ..$ : chr &quot;b&quot;
+##   ..$ : chr &quot;c&quot;
+##  $ : logi TRUE</code></pre>
+</div>
+</div>
+<div id="list---basic-features" class="section level2">
+<h2><span class="header-section-number">3.4</span> List - Basic Features</h2>
+<div id="length-2" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Length</h3>
+<p>Despite looking different and being stored differently than atomic vectors and factors, lists have many of the same properties and features. For example, we still can use the <code>length()</code> function to determine how many elements are in a list.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="factors-and-lists.html#cb214-1"></a>lst =<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="kw">list</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="ot">TRUE</span>)</span>
+<span id="cb214-2"><a href="factors-and-lists.html#cb214-2"></a><span class="kw">length</span>(lst)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>In the example of both there are 5 items in a list. The first two elements are double vectors of length 1, the third element is a character vector of length two, the fourth element is a list of length three, and the fifth element is a logical vector of length 1.
+Add elements to a list using <code>c()</code> as we did before with atomic vectors.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="factors-and-lists.html#cb216-1"></a>lst_char &lt;-<span class="st">  </span><span class="kw">list</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)</span>
+<span id="cb216-2"><a href="factors-and-lists.html#cb216-2"></a>lst_num &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">100</span>, <span class="dv">99</span>, <span class="dv">0</span>)</span>
+<span id="cb216-3"><a href="factors-and-lists.html#cb216-3"></a>lst &lt;-<span class="st"> </span><span class="kw">c</span>(lst_num, lst_char)</span>
+<span id="cb216-4"><a href="factors-and-lists.html#cb216-4"></a><span class="kw">str</span>(lst)</span></code></pre></div>
+<pre><code>## List of 6
+##  $ : num 100
+##  $ : num 99
+##  $ : num 0
+##  $ : chr &quot;a&quot;
+##  $ : chr &quot;b&quot;
+##  $ : chr &quot;c&quot;</code></pre>
+</div>
+<div id="coercion-2" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Coercion</h3>
+<p>We can convert atomic vectors and factors into lists by simply using the <code>as.list()</code> function. The <code>as.list()</code> function lets each element in a vector correspond to each element in the list. So the first element of the vector becomes the first element of the list, the second element of the vector becomes the second element of the list, and so on. We could also use the <code>list()</code> function but this will convert a vector into a list in a different way.</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="factors-and-lists.html#cb218-1"></a>num_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb218-2"><a href="factors-and-lists.html#cb218-2"></a>num_lst &lt;-<span class="st"> </span><span class="kw">as.list</span>(num_vec)</span>
+<span id="cb218-3"><a href="factors-and-lists.html#cb218-3"></a><span class="kw">str</span>(num_lst)</span></code></pre></div>
+<pre><code>## List of 3
+##  $ : num 1
+##  $ : num 2
+##  $ : num 3</code></pre>
+<p>We can convert lists to one of the other types of vectors using the <code>as.*()</code> function with the desired vector type as we did earlier. However, if we do not have a desired type in mind we can also use the <code>unlist()</code> function. The <code>unlist()</code> function takes all atomic objects in a list and creates an atomic vector. In this case R will “guess” which type of atomic vector you would like.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="factors-and-lists.html#cb220-1"></a><span class="kw">unlist</span>(num_lst)</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+</div>
+<div id="testingclass-1" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Testing/Class</h3>
+<p>We can determine if an object is a list or not by using <code>is.list()</code> or the <code>class()</code> functions.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="factors-and-lists.html#cb222-1"></a><span class="kw">is.list</span>(num_lst)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="factors-and-lists.html#cb224-1"></a><span class="kw">class</span>(num_lst)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+</div>
+<div id="names-2" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Names</h3>
+<p>Lists can also be named, and often are. It is very common to created named lists because lists can have a mix of different types objects. We can create a named list using all the same techniques that we used for creating named vectors (<a href="atomic-vectors.html#names">2.2.5</a>) . Notice, we do not have to create a name for every element in a list. Below we see the first two elements are named, and the last is not.</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="factors-and-lists.html#cb226-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first =</span> <span class="st">&quot;Abraham&quot;</span>, <span class="dt">last =</span> <span class="st">&quot;Lincoln&quot;</span>, <span class="dv">1860</span>)</span>
+<span id="cb226-2"><a href="factors-and-lists.html#cb226-2"></a>lst</span></code></pre></div>
+<pre><code>## $first
+## [1] &quot;Abraham&quot;
+## 
+## $last
+## [1] &quot;Lincoln&quot;
+## 
+## [[3]]
+## [1] 1860</code></pre>
+</div>
+<div id="accessing-elements-1" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> Accessing Elements</h3>
+<p>Accessing elements in a list is a little different than accessing elements in a vector. As you may have already noticed, when a list is outputted into our console the elements in the list are denoted by their index number inside of double brackets, i.e. [[2]]. To access this individual element in a list we use double brackets. This isolates that individual element, and the class of this element is no longer a list but the class of the original element.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="factors-and-lists.html#cb228-1"></a>lst[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;Abraham&quot;</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="factors-and-lists.html#cb230-1"></a><span class="kw">class</span>(lst[[<span class="dv">1</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>We can still use single brackets to access elements in a list, but this method of indexing simply subsets the list. That is, it still returns us a list, just a smaller one based on the indices called.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="factors-and-lists.html#cb232-1"></a>lst[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## $first
+## [1] &quot;Abraham&quot;</code></pre>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="factors-and-lists.html#cb234-1"></a><span class="kw">class</span>(lst[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="factors-and-lists.html#cb236-1"></a>lst =<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="kw">list</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="ot">TRUE</span>)</span>
+<span id="cb236-2"><a href="factors-and-lists.html#cb236-2"></a>lst[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;abc&quot; &quot;ABC&quot;
+## 
+## [[2]]
+## [1] 1</code></pre>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="factors-and-lists.html#cb238-1"></a><span class="kw">class</span>(lst[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+</div>
+</div>
+<div id="summary-1" class="section level2 unnumbered">
+<h2>Summary</h2>
+<ul>
+<li><p>Factors are special types of vectors which are primarily used for categorical data.</p></li>
+<li><p>Factors can be ordered or unordered.</p></li>
+<li><p>We create factor objects using the <code>factor()</code> function.</p></li>
+<li><p>Lists are vectors which can have a mix of classes/types of objects.</p></li>
+<li><p>We create a factor or list using the functions <code>factor()</code> or <code>list()</code></p></li>
+<li><p>We can use the same basic functions with factors and lists as we do with atomic vectors: <code>length()</code>, <code>as.*()</code>, <code>is.*()</code>, <code>class()</code></p></li>
+<li><p>We have the same basic properties with factors and lists as we do with atomic vectors:</p>
+<ul>
+<li><p><code>length()</code> determine how long an object is</p></li>
+<li><p><code>c()</code> combine two objects of the same class together</p></li>
+<li><p>same naming techniques</p></li>
+<li><p>same indexing strategies</p></li>
+</ul></li>
+<li><p>We can also access individual elements of a list using [[]], which isolates an element and takes it out of the list structure.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="atomic-vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrices-data-frames-and-more.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jules32/bookdown-tutorial/edit/master/03-factors-and-lists.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
