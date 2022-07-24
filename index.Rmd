@@ -5,12 +5,10 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
+url: yhttps://rpkgarcia.github.io/stat107_summer2022notes/
+cover-image: images/logo_stats.png
 description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
+  Course notes for UCR's STAT 107.  An introduction to programming in R.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 mainfont: Arial
