@@ -1,12 +1,12 @@
 bookdown::gitbook:
+  highlight: tango
   css:
-    - lib/css/bootstrap.min.css
-    - lib/css/style.css
-    - lib/css/lesson.css
+    - assets/style.css
   includes:
   config:
     toc:
       before: |
+        <li class="toc-logo"><a href="./"><img src="images/ucr_logo2.png"></a></li>
         <li><a href="./">STAT 107 Notes</a></li>
       after: |
         <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>

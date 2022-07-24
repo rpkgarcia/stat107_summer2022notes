@@ -1,0 +1,88 @@
+\contentsline {chapter}{Welcome}{5}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Introduction to R}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Download and Install R and Rstudio}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The \textbf {RStudio} Interface}{8}{section.1.2}%
+\contentsline {subsection}{Bottom Left Pane}{9}{section*.3}%
+\contentsline {subsection}{Bottom Right Pane}{9}{section*.4}%
+\contentsline {subsection}{Top Right Pane}{10}{section*.5}%
+\contentsline {subsection}{Top Left Pane}{10}{section*.6}%
+\contentsline {section}{\numberline {1.3}Comments}{12}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Operators}{12}{section.1.4}%
+\contentsline {subsection}{Arithmetic Operators}{12}{section*.7}%
+\contentsline {subsection}{Relational Operators}{13}{section*.8}%
+\contentsline {subsection}{Logical operators}{14}{section*.9}%
+\contentsline {subsection}{Assignment Operators}{15}{section*.10}%
+\contentsline {section}{\numberline {1.5}Naming Conventions}{16}{section.1.5}%
+\contentsline {section}{Additional Resources}{16}{section*.11}%
+\contentsline {chapter}{\numberline {2}Atomic Vectors}{17}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Examples}{18}{section.2.1}%
+\contentsline {subsection}{Double}{18}{section*.12}%
+\contentsline {subsection}{Integer}{18}{section*.13}%
+\contentsline {subsection}{Logical}{19}{section*.14}%
+\contentsline {subsection}{Character}{19}{section*.15}%
+\contentsline {section}{\numberline {2.2}Basic Features}{20}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Length}{20}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Vectorized Operations and Recylcing}{21}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Coercion}{22}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Testing}{23}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Names}{23}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}typeof() and class()}{25}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Accessing Elements of a Vector}{25}{subsection.2.2.7}%
+\contentsline {section}{Summary}{26}{section*.16}%
+\contentsline {section}{Additional Resources}{27}{section*.17}%
+\contentsline {chapter}{\numberline {3}Factors and Lists}{29}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Factors}{29}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Levels}{30}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Ordered Factor}{31}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Factors - Basic Features}{32}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Length}{32}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Coercion}{32}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Testing/Class}{33}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Names}{33}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Accessing Elements}{34}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Frequency Tables}{34}{subsection.3.2.6}%
+\contentsline {section}{\numberline {3.3}Lists}{35}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Nested Lists}{36}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}List - Basic Features}{36}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Length}{36}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Coercion}{37}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Testing/Class}{38}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Names}{38}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Accessing Elements}{38}{subsection.3.4.5}%
+\contentsline {section}{Summary}{39}{section*.18}%
+\contentsline {chapter}{\numberline {4}Matrices, Data Frames, and More}{41}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Matrices}{41}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Vectorized Operations}{42}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Data Frames}{42}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Column Names}{43}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Basic Features of Matrices/Data-Frames}{43}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Dimensions}{43}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Accesing Elements}{44}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Coercion}{44}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Testing/Class}{45}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Names}{45}{subsection.4.3.5}%
+\contentsline {section}{\numberline {4.4}Other Object Types and the Global Environment}{46}{section.4.4}%
+\contentsline {section}{Summary}{47}{section*.19}%
+\contentsline {chapter}{\numberline {5}Indexing}{49}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Atomic Vectors and Factors}{49}{section.5.1}%
+\contentsline {subsection}{Example: Positive Integers}{50}{section*.20}%
+\contentsline {subsection}{Example: Negative Integers}{51}{section*.21}%
+\contentsline {subsection}{Example: Logical Values}{51}{section*.22}%
+\contentsline {subsection}{Example: Names}{51}{section*.23}%
+\contentsline {section}{\numberline {5.2}Lists}{52}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Double Brackets}{52}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Dollar Sign}{53}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Matrices}{53}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Two Vectors}{53}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Single Vector}{54}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Data frames}{55}{section.5.4}%
+\contentsline {subsection}{Example: Double brackets}{55}{section*.24}%
+\contentsline {subsection}{Example: Dollar Sign}{56}{section*.25}%
+\contentsline {section}{\numberline {5.5}Features and Applications}{57}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Indexing and Reassignment}{57}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Ordering/Integer Indexing}{58}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Adding Elements/Rows/Columns}{60}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Delete Elements/Rows/Columns}{61}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Select Based on Condition}{62}{subsection.5.5.5}%
+\contentsline {subsection}{\numberline {5.5.6}Convert Indexing Techniques}{64}{subsection.5.5.6}%
+\contentsline {section}{Summary}{64}{section*.26}%
