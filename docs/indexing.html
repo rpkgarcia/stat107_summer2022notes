@@ -11,7 +11,7 @@
   <meta property="og:title" content="Chapter 5 Indexing | STAT 107 Outline of Class Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="yhttps://rpkgarcia.github.io/stat107_summer2022notes/" />
-  <meta property="og:image" content="yhttps://rpkgarcia.github.io/stat107_summer2022notes//images/logo_stats.png" />
+  
   <meta property="og:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Chapter 5 Indexing | STAT 107 Outline of Class Notes" />
   
   <meta name="twitter:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
-  <meta name="twitter:image" content="yhttps://rpkgarcia.github.io/stat107_summer2022notes//images/logo_stats.png" />
+  
 
 <meta name="author" content="Rebecca Kurtz-Garcia" />
 
 
-<meta name="date" content="2022-07-24" />
+<meta name="date" content="2022-07-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="matrices-data-frames-and-more.html"/>
-
+<link rel="next" href="working-with-data-sets.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -134,7 +134,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="toc-logo"><a href="./"><img src="images/ucr_logo2.png"></a></li>
 <li><a href="./">STAT 107 Notes</a></li>
 
 <li class="divider"></li>
@@ -200,6 +199,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements-1"><i class="fa fa-check"></i><b>3.4.5</b> Accessing Elements<span></span></a></li>
 </ul></li>
 <li><a href="factors-and-lists.html#summary-1">Summary<span></span></a></li>
+<li><a href="factors-and-lists.html#additional-resources-2">Additional Resources<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html"><i class="fa fa-check"></i><b>4</b> Matrices, Data Frames, and More<span></span></a><ul>
 <li class="chapter" data-level="4.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#matrices"><i class="fa fa-check"></i><b>4.1</b> Matrices<span></span></a><ul>
@@ -246,6 +246,30 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.6" data-path="indexing.html"><a href="indexing.html#convert-indexing-techniques"><i class="fa fa-check"></i><b>5.5.6</b> Convert Indexing Techniques<span></span></a></li>
 </ul></li>
 <li><a href="indexing.html#summary-3">Summary<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="working-with-data-sets.html"><a href="working-with-data-sets.html"><i class="fa fa-check"></i><b>6</b> Working with Data Sets<span></span></a><ul>
+<li class="chapter" data-level="6.1" data-path="working-with-data-sets.html"><a href="working-with-data-sets.html#LoadData"><i class="fa fa-check"></i><b>6.1</b> Getting Data Sets in Our Working Environment<span></span></a><ul>
+<li><a href="working-with-data-sets.html#built-in-data">Built-In Data<span></span></a></li>
+<li><a href="working-with-data-sets.html#importing-from-your-computer">Importing From Your Computer<span></span></a></li>
+<li><a href="working-with-data-sets.html#import-from-online">Import From Online<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="working-with-data-sets.html"><a href="working-with-data-sets.html#basic-data-manipulation"><i class="fa fa-check"></i><b>6.2</b> Basic Data Manipulation<span></span></a><ul>
+<li><a href="working-with-data-sets.html#subset">Subset<span></span></a></li>
+<li><a href="working-with-data-sets.html#adding-columns">Adding Columns<span></span></a></li>
+<li><a href="working-with-data-sets.html#na-values">NA values<span></span></a></li>
+<li><a href="working-with-data-sets.html#null">NULL<span></span></a></li>
+<li><a href="working-with-data-sets.html#adding-rows">Adding Rows<span></span></a></li>
+</ul></li>
+<li><a href="working-with-data-sets.html#summary-4">Summary<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>7</b> Functions<span></span></a><ul>
+<li class="chapter" data-level="7.1" data-path="functions.html"><a href="functions.html#build-your-own-function"><i class="fa fa-check"></i><b>7.1</b> Build Your Own Function<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="functions.html"><a href="functions.html#lexical-scoping"><i class="fa fa-check"></i><b>7.2</b> Lexical Scoping<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="functions.html"><a href="functions.html#built-in-functions"><i class="fa fa-check"></i><b>7.3</b> Built-In Functions<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="functions.html"><a href="functions.html#help-files"><i class="fa fa-check"></i><b>7.4</b> Help Files<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="functions.html"><a href="functions.html#the-argument"><i class="fa fa-check"></i><b>7.5</b> The … Argument<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="functions.html"><a href="functions.html#generic-functions"><i class="fa fa-check"></i><b>7.6</b> Generic Functions<span></span></a></li>
+<li><a href="functions.html#additional-resources-3">Additional Resources<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -790,8 +814,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="matrices-data-frames-and-more.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="matrices-data-frames-and-more.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-data-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

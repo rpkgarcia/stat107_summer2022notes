@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Functions | STAT 107 Outline of Class Notes</title>
+  <meta name="description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Functions | STAT 107 Outline of Class Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="yhttps://rpkgarcia.github.io/stat107_summer2022notes/" />
+  
+  <meta property="og:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Functions | STAT 107 Outline of Class Notes" />
+  
+  <meta name="twitter:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
+  
+
+<meta name="author" content="Rebecca Kurtz-Garcia" />
+
+
+<meta name="date" content="2022-07-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="working-with-data-sets.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT 107 Notes</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#welcome">Welcome<span></span></a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to R<span></span></a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#download-and-install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download and Install R and Rstudio<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-rstudio-interface"><i class="fa fa-check"></i><b>1.2</b> The <strong>RStudio</strong> Interface<span></span></a><ul>
+<li><a href="introduction-to-r.html#bottom-left-pane">Bottom Left Pane<span></span></a></li>
+<li><a href="introduction-to-r.html#bottom-right-pane">Bottom Right Pane<span></span></a></li>
+<li><a href="introduction-to-r.html#top-right-pane">Top Right Pane<span></span></a></li>
+<li><a href="introduction-to-r.html#top-left-pane">Top Left Pane<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#comments"><i class="fa fa-check"></i><b>1.3</b> Comments<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#operators"><i class="fa fa-check"></i><b>1.4</b> Operators<span></span></a><ul>
+<li><a href="introduction-to-r.html#arithmetic-operators">Arithmetic Operators<span></span></a></li>
+<li><a href="introduction-to-r.html#relational-operators">Relational Operators<span></span></a></li>
+<li><a href="introduction-to-r.html#logical-operators">Logical operators<span></span></a></li>
+<li><a href="introduction-to-r.html#assignment-operators">Assignment Operators<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#naming-conventions"><i class="fa fa-check"></i><b>1.5</b> Naming Conventions<span></span></a></li>
+<li><a href="introduction-to-r.html#additional-resources">Additional Resources<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="atomic-vectors.html"><a href="atomic-vectors.html"><i class="fa fa-check"></i><b>2</b> Atomic Vectors<span></span></a><ul>
+<li class="chapter" data-level="2.1" data-path="atomic-vectors.html"><a href="atomic-vectors.html#examples"><i class="fa fa-check"></i><b>2.1</b> Examples<span></span></a><ul>
+<li><a href="atomic-vectors.html#double">Double<span></span></a></li>
+<li><a href="atomic-vectors.html#integer">Integer<span></span></a></li>
+<li><a href="atomic-vectors.html#logical">Logical<span></span></a></li>
+<li><a href="atomic-vectors.html#character">Character<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="atomic-vectors.html"><a href="atomic-vectors.html#basic-features"><i class="fa fa-check"></i><b>2.2</b> Basic Features<span></span></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="atomic-vectors.html"><a href="atomic-vectors.html#length"><i class="fa fa-check"></i><b>2.2.1</b> Length<span></span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="atomic-vectors.html"><a href="atomic-vectors.html#vectorized-operations-and-recylcing"><i class="fa fa-check"></i><b>2.2.2</b> Vectorized Operations and Recylcing<span></span></a></li>
+<li class="chapter" data-level="2.2.3" data-path="atomic-vectors.html"><a href="atomic-vectors.html#coercion"><i class="fa fa-check"></i><b>2.2.3</b> Coercion<span></span></a></li>
+<li class="chapter" data-level="2.2.4" data-path="atomic-vectors.html"><a href="atomic-vectors.html#testing"><i class="fa fa-check"></i><b>2.2.4</b> Testing<span></span></a></li>
+<li class="chapter" data-level="2.2.5" data-path="atomic-vectors.html"><a href="atomic-vectors.html#names"><i class="fa fa-check"></i><b>2.2.5</b> Names<span></span></a></li>
+<li class="chapter" data-level="2.2.6" data-path="atomic-vectors.html"><a href="atomic-vectors.html#typeof-and-class"><i class="fa fa-check"></i><b>2.2.6</b> typeof() and class()<span></span></a></li>
+<li class="chapter" data-level="2.2.7" data-path="atomic-vectors.html"><a href="atomic-vectors.html#index"><i class="fa fa-check"></i><b>2.2.7</b> Accessing Elements of a Vector<span></span></a></li>
+</ul></li>
+<li><a href="atomic-vectors.html#summary">Summary<span></span></a></li>
+<li><a href="atomic-vectors.html#additional-resources-1">Additional Resources<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="factors-and-lists.html"><a href="factors-and-lists.html"><i class="fa fa-check"></i><b>3</b> Factors and Lists<span></span></a><ul>
+<li class="chapter" data-level="3.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#factors"><i class="fa fa-check"></i><b>3.1</b> Factors<span></span></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#levels"><i class="fa fa-check"></i><b>3.1.1</b> Levels<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#ordered-factor"><i class="fa fa-check"></i><b>3.1.2</b> Ordered Factor<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#factors---basic-features"><i class="fa fa-check"></i><b>3.2</b> Factors - Basic Features<span></span></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#length-1"><i class="fa fa-check"></i><b>3.2.1</b> Length<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#coercion-1"><i class="fa fa-check"></i><b>3.2.2</b> Coercion<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#testingclass"><i class="fa fa-check"></i><b>3.2.3</b> Testing/Class<span></span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#names-1"><i class="fa fa-check"></i><b>3.2.4</b> Names<span></span></a></li>
+<li class="chapter" data-level="3.2.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements"><i class="fa fa-check"></i><b>3.2.5</b> Accessing Elements<span></span></a></li>
+<li class="chapter" data-level="3.2.6" data-path="factors-and-lists.html"><a href="factors-and-lists.html#frequency-tables"><i class="fa fa-check"></i><b>3.2.6</b> Frequency Tables<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists<span></span></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#nested-lists"><i class="fa fa-check"></i><b>3.3.1</b> Nested Lists<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#list---basic-features"><i class="fa fa-check"></i><b>3.4</b> List - Basic Features<span></span></a><ul>
+<li class="chapter" data-level="3.4.1" data-path="factors-and-lists.html"><a href="factors-and-lists.html#length-2"><i class="fa fa-check"></i><b>3.4.1</b> Length<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="factors-and-lists.html"><a href="factors-and-lists.html#coercion-2"><i class="fa fa-check"></i><b>3.4.2</b> Coercion<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="factors-and-lists.html"><a href="factors-and-lists.html#testingclass-1"><i class="fa fa-check"></i><b>3.4.3</b> Testing/Class<span></span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="factors-and-lists.html"><a href="factors-and-lists.html#names-2"><i class="fa fa-check"></i><b>3.4.4</b> Names<span></span></a></li>
+<li class="chapter" data-level="3.4.5" data-path="factors-and-lists.html"><a href="factors-and-lists.html#accessing-elements-1"><i class="fa fa-check"></i><b>3.4.5</b> Accessing Elements<span></span></a></li>
+</ul></li>
+<li><a href="factors-and-lists.html#summary-1">Summary<span></span></a></li>
+<li><a href="factors-and-lists.html#additional-resources-2">Additional Resources<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html"><i class="fa fa-check"></i><b>4</b> Matrices, Data Frames, and More<span></span></a><ul>
+<li class="chapter" data-level="4.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#matrices"><i class="fa fa-check"></i><b>4.1</b> Matrices<span></span></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#vectorized-operations"><i class="fa fa-check"></i><b>4.1.1</b> Vectorized Operations<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#data-frames"><i class="fa fa-check"></i><b>4.2</b> Data Frames<span></span></a><ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#column-names"><i class="fa fa-check"></i><b>4.2.1</b> Column Names<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#basic-features-of-matricesdata-frames"><i class="fa fa-check"></i><b>4.3</b> Basic Features of Matrices/Data-Frames<span></span></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#dimensions"><i class="fa fa-check"></i><b>4.3.1</b> Dimensions<span></span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#accesing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accesing Elements<span></span></a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#coercion-3"><i class="fa fa-check"></i><b>4.3.3</b> Coercion<span></span></a></li>
+<li class="chapter" data-level="4.3.4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#testingclass-2"><i class="fa fa-check"></i><b>4.3.4</b> Testing/Class<span></span></a></li>
+<li class="chapter" data-level="4.3.5" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#names-3"><i class="fa fa-check"></i><b>4.3.5</b> Names<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-data-frames-and-more.html"><a href="matrices-data-frames-and-more.html#other-object-types-and-the-global-environment"><i class="fa fa-check"></i><b>4.4</b> Other Object Types and the Global Environment<span></span></a></li>
+<li><a href="matrices-data-frames-and-more.html#summary-2">Summary<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>5</b> Indexing<span></span></a><ul>
+<li class="chapter" data-level="5.1" data-path="indexing.html"><a href="indexing.html#VectorIndex"><i class="fa fa-check"></i><b>5.1</b> Atomic Vectors and Factors<span></span></a><ul>
+<li><a href="indexing.html#example-positive-integers">Example: Positive Integers<span></span></a></li>
+<li><a href="indexing.html#example-negative-integers">Example: Negative Integers<span></span></a></li>
+<li><a href="indexing.html#example-logical-values">Example: Logical Values<span></span></a></li>
+<li><a href="indexing.html#example-names">Example: Names<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="indexing.html"><a href="indexing.html#lists-1"><i class="fa fa-check"></i><b>5.2</b> Lists<span></span></a><ul>
+<li class="chapter" data-level="5.2.1" data-path="indexing.html"><a href="indexing.html#double-brackets"><i class="fa fa-check"></i><b>5.2.1</b> Double Brackets<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="indexing.html"><a href="indexing.html#dollar-sign"><i class="fa fa-check"></i><b>5.2.2</b> Dollar Sign<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="indexing.html"><a href="indexing.html#matrices-1"><i class="fa fa-check"></i><b>5.3</b> Matrices<span></span></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="indexing.html"><a href="indexing.html#two-vectors"><i class="fa fa-check"></i><b>5.3.1</b> Two Vectors<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="indexing.html"><a href="indexing.html#single-vector"><i class="fa fa-check"></i><b>5.3.2</b> Single Vector<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="indexing.html"><a href="indexing.html#data-frames-1"><i class="fa fa-check"></i><b>5.4</b> Data frames<span></span></a><ul>
+<li><a href="indexing.html#example-double-brackets">Example: Double brackets<span></span></a></li>
+<li><a href="indexing.html#example-dollar-sign">Example: Dollar Sign<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="indexing.html"><a href="indexing.html#features-and-applications"><i class="fa fa-check"></i><b>5.5</b> Features and Applications<span></span></a><ul>
+<li class="chapter" data-level="5.5.1" data-path="indexing.html"><a href="indexing.html#indexing-and-reassignment"><i class="fa fa-check"></i><b>5.5.1</b> Indexing and Reassignment<span></span></a></li>
+<li class="chapter" data-level="5.5.2" data-path="indexing.html"><a href="indexing.html#orderinginteger-indexing"><i class="fa fa-check"></i><b>5.5.2</b> Ordering/Integer Indexing<span></span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="indexing.html"><a href="indexing.html#adding-elementsrowscolumns"><i class="fa fa-check"></i><b>5.5.3</b> Adding Elements/Rows/Columns<span></span></a></li>
+<li class="chapter" data-level="5.5.4" data-path="indexing.html"><a href="indexing.html#delete-elementsrowscolumns"><i class="fa fa-check"></i><b>5.5.4</b> Delete Elements/Rows/Columns<span></span></a></li>
+<li class="chapter" data-level="5.5.5" data-path="indexing.html"><a href="indexing.html#select-based-on-condition"><i class="fa fa-check"></i><b>5.5.5</b> Select Based on Condition<span></span></a></li>
+<li class="chapter" data-level="5.5.6" data-path="indexing.html"><a href="indexing.html#convert-indexing-techniques"><i class="fa fa-check"></i><b>5.5.6</b> Convert Indexing Techniques<span></span></a></li>
+</ul></li>
+<li><a href="indexing.html#summary-3">Summary<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="working-with-data-sets.html"><a href="working-with-data-sets.html"><i class="fa fa-check"></i><b>6</b> Working with Data Sets<span></span></a><ul>
+<li class="chapter" data-level="6.1" data-path="working-with-data-sets.html"><a href="working-with-data-sets.html#LoadData"><i class="fa fa-check"></i><b>6.1</b> Getting Data Sets in Our Working Environment<span></span></a><ul>
+<li><a href="working-with-data-sets.html#built-in-data">Built-In Data<span></span></a></li>
+<li><a href="working-with-data-sets.html#importing-from-your-computer">Importing From Your Computer<span></span></a></li>
+<li><a href="working-with-data-sets.html#import-from-online">Import From Online<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="working-with-data-sets.html"><a href="working-with-data-sets.html#basic-data-manipulation"><i class="fa fa-check"></i><b>6.2</b> Basic Data Manipulation<span></span></a><ul>
+<li><a href="working-with-data-sets.html#subset">Subset<span></span></a></li>
+<li><a href="working-with-data-sets.html#adding-columns">Adding Columns<span></span></a></li>
+<li><a href="working-with-data-sets.html#na-values">NA values<span></span></a></li>
+<li><a href="working-with-data-sets.html#null">NULL<span></span></a></li>
+<li><a href="working-with-data-sets.html#adding-rows">Adding Rows<span></span></a></li>
+</ul></li>
+<li><a href="working-with-data-sets.html#summary-4">Summary<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>7</b> Functions<span></span></a><ul>
+<li class="chapter" data-level="7.1" data-path="functions.html"><a href="functions.html#build-your-own-function"><i class="fa fa-check"></i><b>7.1</b> Build Your Own Function<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="functions.html"><a href="functions.html#lexical-scoping"><i class="fa fa-check"></i><b>7.2</b> Lexical Scoping<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="functions.html"><a href="functions.html#built-in-functions"><i class="fa fa-check"></i><b>7.3</b> Built-In Functions<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="functions.html"><a href="functions.html#help-files"><i class="fa fa-check"></i><b>7.4</b> Help Files<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="functions.html"><a href="functions.html#the-argument"><i class="fa fa-check"></i><b>7.5</b> The … Argument<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="functions.html"><a href="functions.html#generic-functions"><i class="fa fa-check"></i><b>7.6</b> Generic Functions<span></span></a></li>
+<li><a href="functions.html#additional-resources-3">Additional Resources<span></span></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 107 Outline of Class Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 7</span> Functions<a href="functions.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In R we have functions, functions are another type of object in R. We use functions in order to preform a series of tasks repeatedly, or preform these tasks in different settings. They can make our code much more efficient. We can build our own functions or we can use built in functions. Here we describe both types and their properties. Parts of this chapter where adapted by <span class="citation">John Blischak, Daniel Chen, Harriet Dashnow, and Denis Haine (<a href="#ref-r-func" role="doc-biblioref">2016</a>)</span> and <span class="citation">Vries and Meys (<a href="#ref-dummies2015" role="doc-biblioref">2015</a>)</span>.</p>
+<div id="build-your-own-function" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.1</span> Build Your Own Function<a href="functions.html#build-your-own-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To define a function, a name is assigned and the keyword <code>function</code> is used to denote the start of the function and its argument list. Functions are created using the <code>function()</code> directive and are stored as R objects just like anything else. In particular, they are R objects of class <em>function</em>. Functions can be passed as arguments to other functions. Functions can be nested, so that you can define a function inside another function.</p>
+<p>Below is the <strong>general template</strong></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="functions.html#cb436-1"></a>function_name =<span class="st"> </span><span class="cf">function</span>(arg){</span>
+<span id="cb436-2"><a href="functions.html#cb436-2"></a>  <span class="co"># Function Body </span></span>
+<span id="cb436-3"><a href="functions.html#cb436-3"></a>  ....</span>
+<span id="cb436-4"><a href="functions.html#cb436-4"></a>  <span class="kw">return</span>(return_value)</span>
+<span id="cb436-5"><a href="functions.html#cb436-5"></a>}</span></code></pre></div>
+<p>In this template we have the following key components</p>
+<ul>
+<li><code>function_name</code>: This is the actual name of the function. It is stored in R environment as an object with this name.</li>
+<li><code>function</code>: A directive which tells R a function is being created.</li>
+<li><code>arg</code>: An argument is a placeholder. When a function is invoked, you pass a value to the argument. Arguments are optional; that is, a function may contain no arguments. Also arguments can have default values.</li>
+<li><code>function body</code>: The function body contains a collection of statements that defines what the function does.</li>
+<li><code>return_value</code>: The output value of the function. If <code>return(return_value)</code> is not supplied then the return value of a function is the last expression in the function body to be evaluated. Your function can only return one object. This object can be any class of object you desire, like a vector, list or data frame, but you may only return one object.</li>
+</ul>
+<p>Below is an example of converting a temperature from Fahrenheit to Celsius.</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="functions.html#cb437-1"></a><span class="co"># Convert temperature from Fahrenheit (F) to Celsius (C)</span></span>
+<span id="cb437-2"><a href="functions.html#cb437-2"></a><span class="co"># ARGUMENTS: temp_F, a numeric vector of length 1 in F units</span></span>
+<span id="cb437-3"><a href="functions.html#cb437-3"></a><span class="co"># RETURNS:   temp_C, a numeric vector of length 1 in C units</span></span>
+<span id="cb437-4"><a href="functions.html#cb437-4"></a>fahrenheit_to_celsius =<span class="st"> </span><span class="cf">function</span>(temp_F){</span>
+<span id="cb437-5"><a href="functions.html#cb437-5"></a>  temp_C =<span class="st"> </span>(temp_F <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">/</span><span class="st"> </span><span class="dv">9</span></span>
+<span id="cb437-6"><a href="functions.html#cb437-6"></a>  <span class="kw">return</span>(temp_C)</span>
+<span id="cb437-7"><a href="functions.html#cb437-7"></a>}</span></code></pre></div>
+<p>In this example the function name is <code>fahrenheit_to_celsius</code>, there is only one input or argument, <code>temp_F</code>, and the output is the object <code>temp_C</code>.</p>
+<p>Now if we would like to “call” this function we can simply put into the command console the function name and desired input.</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="functions.html#cb438-1"></a><span class="co"># Convert 87F to Celsius</span></span>
+<span id="cb438-2"><a href="functions.html#cb438-2"></a><span class="kw">fahrenheit_to_celsius</span>(<span class="dt">temp_F =</span> <span class="dv">87</span>)</span></code></pre></div>
+<pre><code>## [1] 30.55556</code></pre>
+<p>What would happen if we tried to call this function without supplying an input? This would result in an error.</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="functions.html#cb440-1"></a><span class="co"># temp_F not defined. </span></span>
+<span id="cb440-2"><a href="functions.html#cb440-2"></a><span class="kw">fahrenheit_to_celsius</span>()</span></code></pre></div>
+<pre><code>Error in fahrenheit_to_celsius() : 
+  argument &quot;temp_F&quot; is missing, with no default</code></pre>
+<p>With functions we can define function arguments to have default values. These default values are used only if the user did not supply an argument value. Observe the example below.</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="functions.html#cb442-1"></a><span class="co"># An example function, does simply algebra </span></span>
+<span id="cb442-2"><a href="functions.html#cb442-2"></a><span class="co"># ARGUMENTS: a = 1 (default), a numeric vector of length 1 </span></span>
+<span id="cb442-3"><a href="functions.html#cb442-3"></a><span class="co">#            b, a numeric vector of length 1</span></span>
+<span id="cb442-4"><a href="functions.html#cb442-4"></a><span class="co"># RETURNS:   d, a numeric vector of length 1</span></span>
+<span id="cb442-5"><a href="functions.html#cb442-5"></a>example_func =<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, b){</span>
+<span id="cb442-6"><a href="functions.html#cb442-6"></a>  c =<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>b</span>
+<span id="cb442-7"><a href="functions.html#cb442-7"></a>  d =<span class="st"> </span>c <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb442-8"><a href="functions.html#cb442-8"></a>  </span>
+<span id="cb442-9"><a href="functions.html#cb442-9"></a>  <span class="co"># returns a+b+1</span></span>
+<span id="cb442-10"><a href="functions.html#cb442-10"></a>  <span class="kw">return</span>(d)</span>
+<span id="cb442-11"><a href="functions.html#cb442-11"></a>}</span>
+<span id="cb442-12"><a href="functions.html#cb442-12"></a></span>
+<span id="cb442-13"><a href="functions.html#cb442-13"></a><span class="co"># Call example function</span></span>
+<span id="cb442-14"><a href="functions.html#cb442-14"></a><span class="kw">example_func</span>(<span class="dt">a=</span> <span class="dv">2</span>, <span class="dt">b=</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="functions.html#cb444-1"></a><span class="kw">example_func</span>(<span class="dt">b =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>Further notice that R has three ways to match function inputs to the formal arguments of the function definition. R attempts to match inputs to arguements in the following order.</p>
+<ol style="list-style-type: decimal">
+<li><p>by complete name</p></li>
+<li><p>by partial name (matching on initial <em>n</em> characters of the argument name)</p></li>
+<li><p>by position</p></li>
+</ol>
+<p>After running a function command R first attempts to match arguments by complete name, then by partial name, and then by position. If it unable to match inputs to an argument it then uses the default argument value, if one exists.</p>
+<p>Observe:</p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="functions.html#cb446-1"></a><span class="kw">example_func</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="functions.html#cb448-1"></a><span class="kw">example_func</span>(<span class="dt">b =</span> <span class="dv">3</span>, <span class="dt">a =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="functions.html#cb450-1"></a><span class="kw">example_func</span>(<span class="dt">a =</span> <span class="dv">2</span>, <span class="dt">b =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+</div>
+<div id="lexical-scoping" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.2</span> Lexical Scoping<a href="functions.html#lexical-scoping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>With all these examples of functions, notice that in your global environment, only the function name was added. The function arguments, return values, and all objects defined inside the function are not a part of the global environment. This is not a mistake. We can define objects locally, or temporarily, when using functions. These objects are created and used only when the function is running, and quickly discarded once the function finishes. They never are listed in the global environment.</p>
+<p>Sometimes you may have an object defined in multiple places. When this happens, R uses a system of rules to determine which definition it will use. In other words, how and where we define an object determines the objects <em>scope</em>, or range of places that we can use this object. The system of rules R uses for searching for objects is called <em>lexical scoping</em>, as opposed to other types of scoping. With this system R looks for objects that are called in a function within the itself, then any enclosing environments, then the global environment, and lastly looking at objects in packages or built-in objects. This is the same searching method that we see in Python and Java.</p>
+<p><img src="images/Scoping.png" width="1314" style="display: block; margin: auto;" /></p>
+</div>
+<div id="built-in-functions" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.3</span> Built-In Functions<a href="functions.html#built-in-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R has functions built-in to it just like excel. You can call these built-in function at any time. We have already seen a few of these functions.</p>
+<ul>
+<li><code>c()</code></li>
+<li><code>class()</code></li>
+<li><code>matrix()</code></li>
+<li><code>data.frame()</code></li>
+</ul>
+<p>Below are a few more examples using the built-in dataset <code>mtcars</code>, we will use <code>mtcars$mpg</code> as a vector of data to analyze.</p>
+<ul>
+<li><code>mean()</code>: Takes in a vector, and returns the mean of the values in the vector.</li>
+</ul>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="functions.html#cb452-1"></a><span class="kw">mean</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
+<pre><code>## [1] 20.09062</code></pre>
+<ul>
+<li><code>median()</code>: Takes in a vector, and returns the median of the values in the vector.</li>
+</ul>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="functions.html#cb454-1"></a><span class="kw">median</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
+<pre><code>## [1] 19.2</code></pre>
+<ul>
+<li><code>var()</code>: Takes in a vector, and returns the variance of the values in the vector.</li>
+</ul>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="functions.html#cb456-1"></a><span class="kw">var</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
+<pre><code>## [1] 36.3241</code></pre>
+<ul>
+<li><code>sqrt()</code>: If you give it a vector, it returns the square root of each element in the vector. If you give it a single number, it returns the square root of the number.</li>
+</ul>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="functions.html#cb458-1"></a><span class="kw">sqrt</span>(mtcars<span class="op">$</span>mpg) </span></code></pre></div>
+<pre><code>##  [1] 4.582576 4.582576 4.774935 4.626013 4.324350 4.254409 3.781534 4.939636
+##  [9] 4.774935 4.381780 4.219005 4.049691 4.159327 3.898718 3.224903 3.224903
+## [17] 3.834058 5.692100 5.513620 5.822371 4.636809 3.937004 3.898718 3.646917
+## [25] 4.381780 5.224940 5.099020 5.513620 3.974921 4.438468 3.872983 4.626013</code></pre>
+<ul>
+<li><code>sd()</code>: Takes in a vector, and returns the standard deviation of the values in the vector.</li>
+</ul>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="functions.html#cb460-1"></a><span class="kw">sd</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
+<pre><code>## [1] 6.026948</code></pre>
+<ul>
+<li><code>range()</code>: Takes in a vector, and returns the minimum AND maximum of the values in the vector.</li>
+</ul>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="functions.html#cb462-1"></a><span class="kw">range</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
+<pre><code>## [1] 10.4 33.9</code></pre>
+<ul>
+<li><code>quantile()</code>: Takes in a vector as the first argument, and a vector of values between 0 and 1 (any number of values) for the second argument. It will return the corresponding quantiles of the values in the first vector specified by the second vector.</li>
+</ul>
+<p>To get the <span class="math inline">\(10^{th}\)</span> and <span class="math inline">\(90^{th}\)</span> percentiles:</p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="functions.html#cb464-1"></a><span class="kw">quantile</span>(mtcars<span class="op">$</span>mpg,<span class="kw">c</span>(<span class="fl">0.10</span>,<span class="fl">0.90</span>))</span></code></pre></div>
+<pre><code>##   10%   90% 
+## 14.34 30.09</code></pre>
+<ul>
+<li><code>summary()</code>: You can give this a dataset OR a vector. It returns some summary information about the values in the dataset or vector.</li>
+</ul>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="functions.html#cb466-1"></a><span class="kw">summary</span>(cars<span class="op">$</span>speed)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     4.0    12.0    15.0    15.4    19.0    25.0</code></pre>
+<p>One of the great advantages of using R is that there is a ton of resources available to learn about it. However, this can also be a disadvantage because of the vast amount of information available. The best and first resource you should look at when trying learn more about R functions is the <strong>Help files</strong>.</p>
+</div>
+<div id="help-files" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.4</span> Help Files<a href="functions.html#help-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Help files are in R and can be viewed from the lower right window by clicking the <em>Help</em> tab. Here you can search by function name to read about it. Each built in function has a help files, sometimes similar functions are grouped together in the same file. The R Help Files are typically the best resource to get help.</p>
+<p>The R Help files follow a fairly standard outline. You find most of the following sections in every R Help file:</p>
+<ul>
+<li><p><strong>Title</strong>: A one-sentence overview of the function.</p></li>
+<li><p><strong>Description</strong>: An introduction to the high-level objectives of the function, typically about one paragraph long.</p></li>
+<li><p><strong>Usage</strong>: A description of the syntax of the function (in other words, how the function is called). This is where you find all the arguments that you can supply to the function, as well as any default values of these arguments.</p></li>
+<li><p><strong>Arguments</strong>: A description of each argument. Usually this includes a specification of the class (for example, character, numeric, list, and so on). This section is an important one to understand, because arguments are frequently a cause of errors in R.</p></li>
+<li><p><strong>Details</strong>: Extended details about how the function works, provides longer descriptions of the various ways to call the function (if applicable), and a longer discussion of the arguments.</p></li>
+<li><p><strong>Value</strong>: A description of the class of the value returned by the function.</p></li>
+<li><p><strong>See also</strong>: Links to other relevant functions. In most of the R editors, you can click these links to read the Help files for these functions.</p></li>
+<li><p><strong>Examples</strong>: Worked examples of real R code that you can paste into your console and run.</p></li>
+</ul>
+<p>An alternative way to view a functions help file is by typing <code>?</code> followed by the function name, or by typing <code>help(function_name)</code>.</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="functions.html#cb468-1"></a><span class="co"># Find a help file for the function `rep`</span></span>
+<span id="cb468-2"><a href="functions.html#cb468-2"></a>?rep</span>
+<span id="cb468-3"><a href="functions.html#cb468-3"></a><span class="kw">help</span>(rep)</span></code></pre></div>
+<p>If you are not sure exactly which function you want, you can use <code>??</code> followed by what you believe the function name is to look at a list of functions.</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="functions.html#cb469-1"></a>??rep</span></code></pre></div>
+</div>
+<div id="the-argument" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.5</span> The … Argument<a href="functions.html#the-argument" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There is a special argument function <code>...</code> that can be used. Sometimes we call a function within a function that has a different set of arguments. We can use the <code>...</code> argument as a general placeholder for passing along any additional arguments in a function call.</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="functions.html#cb470-1"></a><span class="co"># An example function, uses the ... argument and calls fun2()</span></span>
+<span id="cb470-2"><a href="functions.html#cb470-2"></a><span class="co"># ARGUMENTS: x , a numeric vector of length 1 </span></span>
+<span id="cb470-3"><a href="functions.html#cb470-3"></a><span class="co">#            ..., all additional arguments to be passed to fun2()</span></span>
+<span id="cb470-4"><a href="functions.html#cb470-4"></a><span class="co"># RETURNS:   z, a numeric vector of length 1</span></span>
+<span id="cb470-5"><a href="functions.html#cb470-5"></a>fun1 =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
+<span id="cb470-6"><a href="functions.html#cb470-6"></a>  y =<span class="st"> </span><span class="kw">fun2</span>(...)</span>
+<span id="cb470-7"><a href="functions.html#cb470-7"></a>  z =<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y </span>
+<span id="cb470-8"><a href="functions.html#cb470-8"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb470-9"><a href="functions.html#cb470-9"></a>}</span>
+<span id="cb470-10"><a href="functions.html#cb470-10"></a></span>
+<span id="cb470-11"><a href="functions.html#cb470-11"></a><span class="co"># Support function for fun1()</span></span>
+<span id="cb470-12"><a href="functions.html#cb470-12"></a><span class="co"># ARGUMENTS: a , a numeric vector of length 1 </span></span>
+<span id="cb470-13"><a href="functions.html#cb470-13"></a><span class="co"># RETURNS:   b, a numeric vector of length 1</span></span>
+<span id="cb470-14"><a href="functions.html#cb470-14"></a>fun2 =<span class="st"> </span><span class="cf">function</span>(a){</span>
+<span id="cb470-15"><a href="functions.html#cb470-15"></a>  b =<span class="st"> </span>a<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb470-16"><a href="functions.html#cb470-16"></a>  <span class="kw">return</span>(b)</span>
+<span id="cb470-17"><a href="functions.html#cb470-17"></a>}</span>
+<span id="cb470-18"><a href="functions.html#cb470-18"></a></span>
+<span id="cb470-19"><a href="functions.html#cb470-19"></a><span class="co"># Returns 1 + 2^2 = 5</span></span>
+<span id="cb470-20"><a href="functions.html#cb470-20"></a><span class="kw">fun1</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>We can also use the <code>...</code> arguement in a nested fashion.</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="functions.html#cb472-1"></a><span class="co"># An example function, uses the ... argument and calls fun2()</span></span>
+<span id="cb472-2"><a href="functions.html#cb472-2"></a><span class="co"># ARGUMENTS: x , a numeric vector of length 1 </span></span>
+<span id="cb472-3"><a href="functions.html#cb472-3"></a><span class="co">#            ..., all additional arguments to be passed to fun2()</span></span>
+<span id="cb472-4"><a href="functions.html#cb472-4"></a><span class="co"># RETURNS:   z, a numeric vector of length 1</span></span>
+<span id="cb472-5"><a href="functions.html#cb472-5"></a>fun1 =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
+<span id="cb472-6"><a href="functions.html#cb472-6"></a>  y =<span class="st"> </span><span class="kw">fun2</span>(...)</span>
+<span id="cb472-7"><a href="functions.html#cb472-7"></a>  z =<span class="st"> </span>x<span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb472-8"><a href="functions.html#cb472-8"></a>  <span class="kw">return</span>(z)</span>
+<span id="cb472-9"><a href="functions.html#cb472-9"></a>}</span>
+<span id="cb472-10"><a href="functions.html#cb472-10"></a></span>
+<span id="cb472-11"><a href="functions.html#cb472-11"></a><span class="co"># Support function for fun1(), calls fun3()</span></span>
+<span id="cb472-12"><a href="functions.html#cb472-12"></a><span class="co"># ARGUMENTS: a , a numeric vector of length 1 </span></span>
+<span id="cb472-13"><a href="functions.html#cb472-13"></a><span class="co">#            ..., all additional arguments to be passed to fun3()</span></span>
+<span id="cb472-14"><a href="functions.html#cb472-14"></a><span class="co"># RETURNS:   c, a numeric vector of length 1</span></span>
+<span id="cb472-15"><a href="functions.html#cb472-15"></a>fun2 =<span class="st"> </span><span class="cf">function</span>(a, ... ){</span>
+<span id="cb472-16"><a href="functions.html#cb472-16"></a>  b =<span class="st"> </span><span class="kw">fun3</span>(...)</span>
+<span id="cb472-17"><a href="functions.html#cb472-17"></a>  c =<span class="st"> </span>a<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>b </span>
+<span id="cb472-18"><a href="functions.html#cb472-18"></a>  <span class="kw">return</span>(c)</span>
+<span id="cb472-19"><a href="functions.html#cb472-19"></a>}</span>
+<span id="cb472-20"><a href="functions.html#cb472-20"></a></span>
+<span id="cb472-21"><a href="functions.html#cb472-21"></a><span class="co"># Support function for fun1() and fun2(), called by fun2()</span></span>
+<span id="cb472-22"><a href="functions.html#cb472-22"></a><span class="co"># ARGUMENTS: n , a numeric vector of length 1 </span></span>
+<span id="cb472-23"><a href="functions.html#cb472-23"></a><span class="co"># RETURNS:   n, a numeric vector of length 1</span></span>
+<span id="cb472-24"><a href="functions.html#cb472-24"></a>fun3 =<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb472-25"><a href="functions.html#cb472-25"></a>  n =<span class="st"> </span><span class="kw">sqrt</span>(n)</span>
+<span id="cb472-26"><a href="functions.html#cb472-26"></a>  <span class="kw">return</span>(n)</span>
+<span id="cb472-27"><a href="functions.html#cb472-27"></a>}</span>
+<span id="cb472-28"><a href="functions.html#cb472-28"></a></span>
+<span id="cb472-29"><a href="functions.html#cb472-29"></a><span class="co">#  Returns:  1 + 2^2 + sqrt(4) = 7 </span></span>
+<span id="cb472-30"><a href="functions.html#cb472-30"></a><span class="kw">fun1</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="functions.html#cb474-1"></a><span class="co"># Returns:  1 + 2^2 + sqrt(4) = 7 </span></span>
+<span id="cb474-2"><a href="functions.html#cb474-2"></a><span class="co"># Define each input explicitly </span></span>
+<span id="cb474-3"><a href="functions.html#cb474-3"></a><span class="kw">fun1</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">2</span>, <span class="dt">n =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>When using the <code>...</code> argument it is customary to always place <code>...</code> at the end of a function argument list, as it can be difficult for R to determine which arguments are to be passed to the next function. If possible, it is good practice to explicitly define the arguments to avoid an error.</p>
+</div>
+<div id="generic-functions" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.6</span> Generic Functions<a href="functions.html#generic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R we have something called <em>generic functions</em> which are functions that behave differently depending on the class type of one of the arguments. Typically generic functions depend on the class of the first argument. The functions <code>mean()</code>, <code>summary()</code>, and <code>plot()</code> are all generic functions. These functions act as a “middle man” or a “dispatcher”. The generic function calls the actual function you desire. For example, when we call <code>summary()</code> and the first argument is a <code>lm</code> object, then the summary function that is actually run is <code>summary.lm()</code> which may have its own help file.</p>
+</div>
+<div id="additional-resources-3" class="section level2 unnumbered hasAnchor">
+<h2>Additional Resources<a href="functions.html#additional-resources-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://bookdown.org/rdpeng/rprogdatascience/functions.html#the-...-argument">Chapter 14 of “R for Programming in Data Science”</a></li>
+<li><a href="https://adv-r.hadley.nz/s3.html">Chapter 13 of “Advanced R”</a></li>
+<li>Videos:
+<ul>
+<li><a href="https://ucr.yuja.com/V/Video?v=2390137&amp;node=8588230&amp;a=1409376127&amp;autoplay=1">R Functions 1 | Anatomy of a Function</a></li>
+<li><a href="https://ucr.yuja.com/V/Video?v=2368890&amp;node=8488096&amp;a=1477744713&amp;autoplay=1">R Functions 2 | Getting Help</a></li>
+<li><a href="https://ucr.yuja.com/V/Video?v=2368889&amp;node=8488095&amp;a=762120086&amp;autoplay=1">R Functions 3 | Argument Order and Default Values</a></li>
+<li><a href="https://ucr.yuja.com/V/Video?v=2700489&amp;node=9649685&amp;a=1404409900&amp;autoplay=1">Writing Functions 1 | Introduction</a></li>
+<li><a href="https://ucr.yuja.com/V/Video?v=2700492&amp;node=9649688&amp;a=604881114&amp;autoplay=1">Writing Functions 2 | 4 Fundamental Steps</a></li>
+</ul></li>
+</ul>
+
+<div id="refs" class="references">
+<div>
+<p> Dr. Robert Desharnais. 2020. <em>Biology3000</em>. Los Angeles, CA: California State University, Los Angeles.</p>
+</div>
+<div>
+<p>John Blischak, Daniel Chen, Harriet Dashnow, and Denis Haine. 2016. “Software Carpentry: Programming with R.version 2016.06.” 2016. <a href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html">https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html</a>.</p>
+</div>
+<div>
+<p>Vries, Andrie de, and Joris Meys. 2015. <em>R for Dummies</em>. Hoboken, New Jersey: John Wiley &amp; Sons, Inc. <a href="https://www.dummies.com/programming/r/how-to-use-the-r-help-files/">https://www.dummies.com/programming/r/how-to-use-the-r-help-files/</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-r-func">
+<p>John Blischak, Daniel Chen, Harriet Dashnow, and Denis Haine. 2016. “Software Carpentry: Programming with R.version 2016.06.” 2016. <a href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html">https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html</a>.</p>
+</div>
+<div id="ref-dummies2015">
+<p>Vries, Andrie de, and Joris Meys. 2015. <em>R for Dummies</em>. Hoboken, New Jersey: John Wiley &amp; Sons, Inc. <a href="https://www.dummies.com/programming/r/how-to-use-the-r-help-files/">https://www.dummies.com/programming/r/how-to-use-the-r-help-files/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="working-with-data-sets.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

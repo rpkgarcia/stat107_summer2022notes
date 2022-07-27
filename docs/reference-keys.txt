@@ -61,3 +61,13 @@ adding-elementsrowscolumns
 delete-elementsrowscolumns
 select-based-on-condition
 convert-indexing-techniques
+working-with-data-sets
+LoadData
+basic-data-manipulation
+functions
+build-your-own-function
+lexical-scoping
+built-in-functions
+help-files
+the-argument
+generic-functions

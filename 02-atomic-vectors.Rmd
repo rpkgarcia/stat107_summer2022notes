@@ -20,7 +20,7 @@ Vectors are among the most common types that are used.  All of the different typ
 ## Examples 
 ### Double {-}
 
-Double vectors are perhaps the most common. These objects are comparable to `doubles` in `C`. Both the variables `a` and `b` are `double` vectors. When you type a number R will default to creating a double vector. 
+Vectors containing double vectors are perhaps the most common. These objects are comparable to doubles in the programming language C. Both the variables `a` and `b` are `double` vectors. When you type a number R will default to creating a double vector. 
 
 ```{r}
 a <- 17.45
@@ -207,7 +207,7 @@ You can name elements of a vector as well.  This will produce a *named vector*. 
 
 1) When creating it. 
 
-2) By Assigning a character vector to `names()`
+2) By assigning a character vector to `names()`
 
 3) Inline with `setNames()`
 
@@ -328,4 +328,5 @@ knitr::include_graphics("images/Vector_chart.png")
     + [Variables 1 | Types and Assignments](https://ucr.yuja.com/V/Video?v=2368642&node=8487537&a=1529691043&autoplay=1)
     + [Variables 2 | Nameing Conventions and Best Practices](https://ucr.yuja.com/V/Video?v=2368641&node=8487536&a=957339369&autoplay=1)
     + [Vectors 1 | Introduction](https://ucr.yuja.com/V/Video?v=2368859&node=8488053&a=283774152&autoplay=1)
-
+- Chapters 4.6-4.8 of [Chapter 13 of "R for Programming in Data Science"](https://bookdown.org/rdpeng/rprogdatascience/) 
+- Chapter 4 of [Adanvced R](https://adv-r.hadley.nz/index.html)

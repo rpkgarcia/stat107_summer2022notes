@@ -4,17 +4,17 @@ Factor objects and lists are vectors with special properties.  Factors and lists
 
 ## Factors 
 
-In real-world problems, you often encounter data that can be classified in categories. For example, suppose a survey was conducted of a group of seven individuals, who were asked to identify their hair color and if they own a pet.
+In real-world problems, you often encounter data that can be classified in categories. For example, suppose a survey was conducted of a group of seven individuals, who were asked to identify their hair color.
 
 ```{r}
-hair = c("Blonde", "Black", "Black", "Red", "Blonde", "Brown", "Black")
+hair <- c("Blonde", "Black", "Black", "Red", "Blonde", "Brown", "Black")
 ```
 
 
-Here, the hair color and pet ownership are examples of categorical data. For the hair color variable we will typically want to store it as a factor, as opposed to a character vector. The different values that the factor can take are called levels. In R, you can create a factor with the `factor()`, or the `as.factor()` functions. 
+Here, the hair color is an example of categorical data. For the hair color variable we will typically want to store it as a factor, as opposed to a character vector. The different values that the factor can take are called levels. In R, you can create a factor with the `factor()`, or the `as.factor()` functions. 
 
 ```{r}
-f = factor(hair)
+f <- factor(hair)
 f
 ```
 
@@ -30,18 +30,16 @@ levels(f)
 If your vector contains only a subset of all the possible levels, then R will have an incomplete picture of the possible levels. Consider the following example of a vector consisting of directions.  Notice that "South" is noticeably missing. 
 
 ```{r}
-directions = c("North", "West", "North", "East", "North", "West", "East")
-f = factor(directions)
+directions <- c("North", "West", "North", "East", "North", "West", "East")
+f <- factor(directions)
 f
 ```
 
 Notice that the levels of your new factor do not contain the value “South”. R thinks that North, West, and East are the only possible levels. However, in practice, it makes sense to have all the possible directions as levels of your factor. To add all the possible levels explicitly, you specify the `levels` argument of the function `factor()`.
 
 ```{r}
-directions = c("North", "West", "North", "East", "North", "West", "East")
-
 # Make sure all possible categories are listed using the levels argument
-f = factor(directions,
+f <- factor(directions,
             levels = c("North", "East", "South", "West"))
 f
 ```
@@ -49,8 +47,7 @@ f
 R lets you assign abbreviated names for the levels. You can do this by specifying the `labels` argument of `factor()`.
 
 ```{r}
-directions = c("North", "West", "South", "East", "West", "North", "South")
-f = factor(directions,
+f <- factor(directions,
             levels = c("North", "East", "South", "West"),
             labels = c("N", "E", "S", "W"))
 f
@@ -69,8 +66,8 @@ In market research, it’s very common to use a five point scale to measure perc
 Such kind of data that is possible to place in order or scale is known as **ordinal data**. We can store ordinal data as an ordered factor. To create an ordered factor, use the `factor()` function with the argument `ordered=TRUE`.  
 
 ```{r}
-record = c("win", "tie", "loss", "tie", "loss", "win", "win")
-f = factor(record, 
+record <- c("win", "tie", "loss", "tie", "loss", "win", "win")
+f <- factor(record, 
             ordered = TRUE)
 f
 ```
@@ -79,8 +76,8 @@ f
 You can manually change which levels are lower and higher based on the order that the levels are listed. 
 
 ```{r}
-record = c("win", "tie", "loss", "tie", "loss", "win", "win")
-f = factor(record, 
+record <- c("win", "tie", "loss", "tie", "loss", "win", "win")
+f <- factor(record, 
            ordered = TRUE, 
            levels = c("win", "tie", "loss"))
 f
@@ -106,9 +103,6 @@ droplevels(f)
 Factor objects have a lot of the same features as atomic vectors.  In general, most of the features and functions we had for atomic vectors work with factors.  For example, we still use the `length()` function to see how many elements are in a factor. 
 
 ```{r}
-record <- c("win", "loss", "loss", "win", "loss", "win")
-f <- factor(record)
-
 length(f)
 ```
 
@@ -141,8 +135,8 @@ as.integer(f)
 We can also test if we have factor or an ordered factor using `is.*()` as we did before. 
 
 ```{r}
-record = c("win", "loss", "loss", "win", "loss", "win")
-f = factor(record, ordered = T)
+record <- c("win", "loss", "loss", "win", "loss", "win")
+f <- factor(record, ordered = T)
 
 
 # Test if the character vector is a factor
@@ -221,10 +215,10 @@ own_pets <- c(TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE)
 hair <- factor(hair)
 own_pets <- factor(own_pets)
 
+
+# Two way table
 table(hair, own_pets)
 ```
-
-
 
 
 
@@ -234,7 +228,7 @@ A *list* is an array of objects. Unlike other types of vectors, the elements in 
 
 ```{r}
 # A list of mixed datatypes
-lst = list(1L, c("abc", "ABC"), 1.23, TRUE)
+lst <- list(1L, c("abc", "ABC"), 1.23, TRUE)
 lst
 ```
 Looking at the output above we can see that this output is structured differently than a standard vector.  The location of each element of a list is denoted by [[]] instead of [].  
@@ -243,7 +237,7 @@ Looking at the output above we can see that this output is structured differentl
 The best way to understand the contents of a list is to use the structure function `str()`. It provides a compact display of the internal structure of a list.
 
 ```{r}
-lst = list(1, c("abc", "ABC"), 1.23, TRUE)
+lst <- list(1, c("abc", "ABC"), 1.23, TRUE)
 str(lst)
 ```
 
@@ -262,7 +256,7 @@ sapply(lst, class)
 A list can contain sublists, which in turn can contain sublists themselves, and so on. This is known as *nested list* or *recursive vectors*.
 
 ```{r}
-lst = list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
+lst <- list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
 str(lst)
 ```
 
@@ -275,7 +269,7 @@ Despite looking different and being stored differently than atomic vectors and f
 
 
 ```{r}
-lst = list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
+lst <- list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
 length(lst)
 ```
 
@@ -346,7 +340,7 @@ We can still use single brackets to access elements in a list, but this method o
 lst[1]
 class(lst[1])
 
-lst = list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
+lst <- list(1, 3, c("abc", "ABC"), list("a","b","c"), TRUE)
 lst[c(3, 1)]
 class(lst[c(3,1)])
 ```
@@ -379,3 +373,32 @@ class(lst[c(3,1)])
     
 - We can also access individual elements of a list using [[]], which isolates an element and takes it out of the list structure. 
 
+
+## Additional Resources {-}
+
+- Chapters 4.10, 4.11 of [Chapter 13 of "R for Programming in Data Science"](https://bookdown.org/rdpeng/rprogdatascience/) 
+- Chapters 
+
+
+
+<div class="webnots-question webnots-notification-box">
+**Excercises**
+
+1) Build a factor object with 3 levels, and 5 elements. 
+
+2) Convert the `directions` vector above to a factor with the levels `North, west, East, South`.  What happened to the values for `West`?
+
+3) Can we convert a logical vector into a factor vector?  What about the other way around?
+
+4) Create a list with four elements:
+
+    - a character vector of length 2 that contains your first and last name
+    
+    - a numeric vector of length 1 that contains your age
+    
+    - a factor object from somewhere in this chapter
+    
+    - an object of your choice
+    
+5) Adjust/redefine your list in (4) so that way it is a named list. 
+</div>
