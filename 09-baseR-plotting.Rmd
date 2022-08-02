@@ -93,8 +93,8 @@ Often you want to compare the distributions of different variables within your d
 
 ```{r}
 # random numbers
-h1 = rnorm(1000,6)
-h2 = rnorm(1000,4)
+h1 <- rnorm(1000,6)
+h2 <- rnorm(1000,4)
 
 # Overlay two histograms
 hist(h1,
