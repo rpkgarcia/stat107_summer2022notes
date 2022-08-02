@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Matrices, Data Frames, and More | STAT 107 Outline of Class Notes</title>
+  <title>Chapter 10 Packages | STAT 107 Outline of Class Notes</title>
   <meta name="description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Matrices, Data Frames, and More | STAT 107 Outline of Class Notes" />
+  <meta property="og:title" content="Chapter 10 Packages | STAT 107 Outline of Class Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="yhttps://rpkgarcia.github.io/stat107_summer2022notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Matrices, Data Frames, and More | STAT 107 Outline of Class Notes" />
+  <meta name="twitter:title" content="Chapter 10 Packages | STAT 107 Outline of Class Notes" />
   
   <meta name="twitter:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="factors-and-lists.html"/>
-<link rel="next" href="indexing.html"/>
+<link rel="prev" href="base-r-plotting.html"/>
+<link rel="next" href="extending-base-r-graphics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -319,174 +319,41 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="matrices-data-frames-and-more" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 4</span> Matrices, Data Frames, and More<a href="matrices-data-frames-and-more.html#matrices-data-frames-and-more" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="matrices" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.1</span> Matrices<a href="matrices-data-frames-and-more.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A matrix is a two dimensional array of data of <strong>the same type</strong>. The matrix function, <code>matrix()</code>, can be used to create a new matrix.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="matrices-data-frames-and-more.html#cb240-1"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">4</span>), </span>
-<span id="cb240-2"><a href="matrices-data-frames-and-more.html#cb240-2"></a>           <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">3</span>)</span>
-<span id="cb240-3"><a href="matrices-data-frames-and-more.html#cb240-3"></a>m</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    0    3
-## [2,]    9    5    8
-## [3,]    2    7    4</code></pre>
-<p>R labels the rows and columns for us in the output. The matrix is filled column-by-column using the elements of the vector created by the concatenate function. The matrix <code>m</code> above is a matrix composed of doubles (the atomic object). This is the default type of matrix R creates, and it is by far the most common matrix used. However, we can also create integer matrices, logical matrices, and character matrices.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="matrices-data-frames-and-more.html#cb242-1"></a><span class="co"># Example of a matrix with logical values</span></span>
-<span id="cb242-2"><a href="matrices-data-frames-and-more.html#cb242-2"></a>m_logical &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(T, T, T, F, F, F, T, T), </span>
-<span id="cb242-3"><a href="matrices-data-frames-and-more.html#cb242-3"></a>                    <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb242-4"><a href="matrices-data-frames-and-more.html#cb242-4"></a>m_logical </span></code></pre></div>
-<pre><code>##       [,1]  [,2]
-## [1,]  TRUE FALSE
-## [2,]  TRUE FALSE
-## [3,]  TRUE  TRUE
-## [4,] FALSE  TRUE</code></pre>
-<div id="vectorized-operations" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.1.1</span> Vectorized Operations<a href="matrices-data-frames-and-more.html#vectorized-operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As with vectors, matrices can be used in arithmetic operations with scalars and other matrices of the same size. We still have all the same basic vectorized operations.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="matrices-data-frames-and-more.html#cb244-1"></a>m2 &lt;-<span class="st"> </span>m<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb244-2"><a href="matrices-data-frames-and-more.html#cb244-2"></a>m2</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]  0.5  0.0  1.5
-## [2,]  4.5  2.5  4.0
-## [3,]  1.0  3.5  2.0</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="matrices-data-frames-and-more.html#cb246-1"></a>m <span class="op">*</span>m2</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]  0.5  0.0  4.5
-## [2,] 40.5 12.5 32.0
-## [3,]  2.0 24.5  8.0</code></pre>
-</div>
-</div>
-<div id="data-frames" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.2</span> Data Frames<a href="matrices-data-frames-and-more.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Like a matrix, a data frame is a rectangular array of values where each column is a vector. However, unlike a matrix, the columns can be different data types. We can create a set of vectors of the same length and use the <code>data.frame()</code> function to make a data frame object.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="matrices-data-frames-and-more.html#cb248-1"></a>age &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">31</span>)</span>
-<span id="cb248-2"><a href="matrices-data-frames-and-more.html#cb248-2"></a>gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>,<span class="st">&quot;Male&quot;</span>)</span>
-<span id="cb248-3"><a href="matrices-data-frames-and-more.html#cb248-3"></a>married &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)</span>
-<span id="cb248-4"><a href="matrices-data-frames-and-more.html#cb248-4"></a>simpsons &lt;-<span class="st"> </span><span class="kw">data.frame</span>(age, gender, married)</span>
-<span id="cb248-5"><a href="matrices-data-frames-and-more.html#cb248-5"></a>simpsons</span></code></pre></div>
-<pre><code>##   age gender married
-## 1   1 Female   FALSE
-## 2   8 Female   FALSE
-## 3  10   Male   FALSE
-## 4  30 Female    TRUE
-## 5  31   Male    TRUE</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="matrices-data-frames-and-more.html#cb250-1"></a><span class="kw">class</span>(simpsons)</span></code></pre></div>
-<pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<p>To see all the class of each column in a data frame we can use the following command.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="matrices-data-frames-and-more.html#cb252-1"></a><span class="kw">sapply</span>(simpsons, class)</span></code></pre></div>
-<pre><code>##         age      gender     married 
-##   &quot;numeric&quot; &quot;character&quot;   &quot;logical&quot;</code></pre>
-<div id="column-names" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.2.1</span> Column Names<a href="matrices-data-frames-and-more.html#column-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Data frames always have column names. In the example above we used vectors to create a data frame. When we use this technique then the name of the vector is automatically selected as the column name. If we have inputted a vector like <code>c(1, 2, 3, 4, 5)</code> as an argument in the <code>data.frame()</code> function instead of an object name, then R would have guessed what to name the column. Matrices do not have this property. Matrices do not usually have column or row names (but they can, as we will see below). In contrast, data frames always have column names, and often have row names too. In the following section we discuss how to change the row and column names of both matrices and data frames explicitly.</p>
-</div>
-</div>
-<div id="basic-features-of-matricesdata-frames" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.3</span> Basic Features of Matrices/Data-Frames<a href="matrices-data-frames-and-more.html#basic-features-of-matricesdata-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="dimensions" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.3.1</span> Dimensions<a href="matrices-data-frames-and-more.html#dimensions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To access and determine the size or dimensions of a matrix and data frame there are three important functions. We no longer would want to use the <code>length()</code> function because that is for 1-dimsional objects. Since matrices and data frames are 2-dimensional objects we now must consider both dimensions. The three functions we can use to do this are <code>dim()</code>, <code>nrow()</code>, and <code>ncol()</code>. The <code>dim()</code> function returns the number of rows and the number of columns. The <code>nrow()</code> just returns the number of rows, and <code>ncol()</code> just returns the number of columns.</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="matrices-data-frames-and-more.html#cb254-1"></a><span class="kw">dim</span>(simpsons)</span></code></pre></div>
-<pre><code>## [1] 5 3</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="matrices-data-frames-and-more.html#cb256-1"></a><span class="kw">nrow</span>(simpsons)</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="matrices-data-frames-and-more.html#cb258-1"></a><span class="kw">ncol</span>(simpsons)</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-</div>
-<div id="accesing-elements" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.3.2</span> Accesing Elements<a href="matrices-data-frames-and-more.html#accesing-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Indices can be used to obtain the elements of a matrix and data frame, but now we must consider both the row and column. We can access an individual point in a matrix or data frame using <code>[row, colum]</code>, where <code>row</code> is the row index and <code>column</code> is the column index.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="matrices-data-frames-and-more.html#cb260-1"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">4</span>), </span>
-<span id="cb260-2"><a href="matrices-data-frames-and-more.html#cb260-2"></a>           <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">3</span>)</span>
-<span id="cb260-3"><a href="matrices-data-frames-and-more.html#cb260-3"></a>m[<span class="dv">2</span>,<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>We can access multiple elements using the <code>c()</code> function. Note we must use the <code>c()</code> function to separate the rows and columns we are trying isolate because the common inside the single brackets separates the dimensions.</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="matrices-data-frames-and-more.html#cb262-1"></a><span class="co"># Isolate multiple individual points. </span></span>
-<span id="cb262-2"><a href="matrices-data-frames-and-more.html#cb262-2"></a>m[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span></code></pre></div>
-<pre><code>##      [,1] [,2]
-## [1,]    1    3
-## [2,]    2    4</code></pre>
-<p>We can also isolate entire rows or columns by leaving one of the dimensions blank.</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="matrices-data-frames-and-more.html#cb264-1"></a><span class="co"># Isolate the second row</span></span>
-<span id="cb264-2"><a href="matrices-data-frames-and-more.html#cb264-2"></a>m[<span class="dv">2</span>,]</span></code></pre></div>
-<pre><code>## [1] 9 5 8</code></pre>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="matrices-data-frames-and-more.html#cb266-1"></a><span class="co"># Isolate the third column </span></span>
-<span id="cb266-2"><a href="matrices-data-frames-and-more.html#cb266-2"></a>m[,<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## [1] 3 8 4</code></pre>
-<p>We can think of these individual rows or columns as an individual vector.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="matrices-data-frames-and-more.html#cb268-1"></a>vec &lt;-<span class="st"> </span>simpsons[,<span class="dv">2</span>]</span>
-<span id="cb268-2"><a href="matrices-data-frames-and-more.html#cb268-2"></a>vec</span></code></pre></div>
-<pre><code>## [1] &quot;Female&quot; &quot;Female&quot; &quot;Male&quot;   &quot;Female&quot; &quot;Male&quot;</code></pre>
-</div>
-<div id="coercion-3" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.3.3</span> Coercion<a href="matrices-data-frames-and-more.html#coercion-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We often do not need to convert matrices and data frames, but if we do we can use the <code>as.matrix()</code> or <code>as.data.frame()</code> on a pre-existing object to convert it into a matrix or data frame. The most common type of coercion that we have for 2-dimensional objects is changing the class of a column in a data frame. To do this we can redefine this class explicitly using indexing.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="matrices-data-frames-and-more.html#cb270-1"></a><span class="co"># Changing the class of a single column </span></span>
-<span id="cb270-2"><a href="matrices-data-frames-and-more.html#cb270-2"></a>simpsons[, <span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">as.factor</span>(simpsons[, <span class="dv">1</span>])</span>
-<span id="cb270-3"><a href="matrices-data-frames-and-more.html#cb270-3"></a></span>
-<span id="cb270-4"><a href="matrices-data-frames-and-more.html#cb270-4"></a><span class="kw">sapply</span>(simpsons, class)</span></code></pre></div>
-<pre><code>##         age      gender     married 
-##    &quot;factor&quot; &quot;character&quot;   &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="matrices-data-frames-and-more.html#cb272-1"></a>simpsons</span></code></pre></div>
-<pre><code>##   age gender married
-## 1   1 Female   FALSE
-## 2   8 Female   FALSE
-## 3  10   Male   FALSE
-## 4  30 Female    TRUE
-## 5  31   Male    TRUE</code></pre>
-</div>
-<div id="testingclass-2" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.3.4</span> Testing/Class<a href="matrices-data-frames-and-more.html#testingclass-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We can test or determine what type of object we have using the <code>class()</code> function. Again, this function will always return something for a given object. If we have a data frame or matrix it will return “data.frame” or “matrix”, respectively. We can also use the <code>is.matrix()</code> or <code>is.data.frame()</code> functions which will return <code>TRUE/FALSE</code> values.</p>
-</div>
-<div id="names-3" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.3.5</span> Names<a href="matrices-data-frames-and-more.html#names-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>With both matrices and data frames we can name the rows and columns. Data frames will always have column names, but matrices do not have to have them. It is very commmon to name the rows and columns for a data frame, but not as common for matrices. Matrices are most often used for linear algebra calculations. To see the row or column names of a 2-dimensional object we can use the <code>rownames()</code> and <code>colnames()</code> functions.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="matrices-data-frames-and-more.html#cb274-1"></a><span class="kw">rownames</span>(simpsons)</span></code></pre></div>
-<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="matrices-data-frames-and-more.html#cb276-1"></a><span class="kw">colnames</span>(simpsons)</span></code></pre></div>
-<pre><code>## [1] &quot;age&quot;     &quot;gender&quot;  &quot;married&quot;</code></pre>
-<p>To change these names we use the same functions, and just manually reassign the values for them.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="matrices-data-frames-and-more.html#cb278-1"></a><span class="kw">rownames</span>(simpsons) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Maggie&quot;</span>, <span class="st">&quot;Lisa&quot;</span>, <span class="st">&quot;Bart&quot;</span>, <span class="st">&quot;Marge&quot;</span>, <span class="st">&quot;Homer&quot;</span>)</span>
-<span id="cb278-2"><a href="matrices-data-frames-and-more.html#cb278-2"></a>simpsons</span></code></pre></div>
-<pre><code>##        age gender married
-## Maggie   1 Female   FALSE
-## Lisa     8 Female   FALSE
-## Bart    10   Male   FALSE
-## Marge   30 Female    TRUE
-## Homer   31   Male    TRUE</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="matrices-data-frames-and-more.html#cb280-1"></a><span class="kw">colnames</span>(simpsons) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;Married&quot;</span>)</span>
-<span id="cb280-2"><a href="matrices-data-frames-and-more.html#cb280-2"></a>simpsons</span></code></pre></div>
-<pre><code>##        Age Gender Married
-## Maggie   1 Female   FALSE
-## Lisa     8 Female   FALSE
-## Bart    10   Male   FALSE
-## Marge   30 Female    TRUE
-## Homer   31   Male    TRUE</code></pre>
-</div>
-</div>
-<div id="other-object-types-and-the-global-environment" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.4</span> Other Object Types and the Global Environment<a href="matrices-data-frames-and-more.html#other-object-types-and-the-global-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are more objects then what we have discussed above. For example, many of the advanced functions create specific objects generated by that specific function. There are hundreds, and possibly thousands, of such objects. These objects generally are special cases of lists, factors, and other various types of objects that we have defined in this section. The objects we have described here are the building blocks of most values we will be working with. Functions like <code>class()</code> and <code>length()</code> are also considered as objects, but are of a different type. We discuss functions in more detail in section <a href="functions.html#functions">7</a>.</p>
-<p>There are also built-in, or special objects in R. For example, the object <code>pi</code> is an object already defined. These built-in values and functions can be written over, but that is not advised.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="matrices-data-frames-and-more.html#cb282-1"></a>pi</span></code></pre></div>
-<pre><code>## [1] 3.141593</code></pre>
-<p>Every time we create an object we see that the Global Environment tab in the top right pane updates. The object we have created is now listed in the Global Environment. This is a collection of all <em>user created</em> objects in R, that R knows about, and that R can easily call. Built-in objects, such as <code>pi</code>, will not be listed here.</p>
-</div>
-<div id="summary-2" class="section level2 unnumbered hasAnchor">
-<h2>Summary<a href="matrices-data-frames-and-more.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><p>The basic and most common 2-dimensional objects are matrices and data frames.</p></li>
-<li><p>Matrices must contain all data of the same type.</p></li>
-<li><p>Data frames can have different classes between columns, and always have column names.</p></li>
-<li><p>We can create a matrix or data frame using the <code>matrix()</code> and <code>data.frame()</code> functions.</p></li>
-<li><p>Many vectorized operations still work for 2-dimensional objects.</p></li>
-<li><p>We can look at and name both rows and columns using <code>rownames()</code> and <code>colnames()</code>.</p></li>
-<li><p>To see the dimensions of a 2-dimensional object we use <code>dim()</code>, <code>nrow()</code> and <code>ncol()</code>.</p></li>
-<li><p>We can check if we have a matrix or data frame by using <code>class()</code> or <code>is.*()</code>.</p></li>
-<li><p>To access elements of a 2-dimsional object we use <code>[row, column]</code>.</p></li>
-</ul>
+<div id="packages" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 10</span> Packages<a href="packages.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><code>R</code> packages are a collection of <code>R</code> functions, complied code and sample data. They are stored under a directory called “library” in the <code>R</code> environment. By default, <code>R</code> installs a set of packages during installation. More packages are added later, when they are needed for some specific purpose. When we start the <code>R</code> console, only the default packages are available by default. Other packages which are already installed have to be loaded explicitly to be used by the <code>R</code> program that is going to use them.</p>
+<p>All the packages available in <code>R</code> language are listed at <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">R Packages</a>.</p>
+<p>To see a list of all packages installed on your device.</p>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="packages.html#cb535-1"></a><span class="kw">library</span>()</span></code></pre></div>
+<p>To see a list of all packages that are currently loaded (note that yours will likely look different).</p>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="packages.html#cb536-1"></a><span class="kw">search</span>()</span></code></pre></div>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:knitr&quot;     &quot;package:stats&quot;    
+##  [4] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;    
+##  [7] &quot;package:datasets&quot;  &quot;package:methods&quot;   &quot;Autoloads&quot;        
+## [10] &quot;package:base&quot;</code></pre>
+<p>When adding a new package to our library we only have to install it once. We can do so with the following command.</p>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="packages.html#cb538-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;library name&quot;</span>)</span></code></pre></div>
+<p>Alternatively, we can also go to the lower left hand window and select the <em>Packages</em> tab. Then hit the button <strong>Install</strong>. A dropdown menu will appear where we can search for the package name.</p>
+<p>Before a package can be used in the code, it must be loaded to the current R environment. You also need to load a package that is already installed previously but not available in the current environment.</p>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="packages.html#cb539-1"></a><span class="kw">library</span>(<span class="st">&quot;library name&quot;</span>)</span></code></pre></div>
+<p>For example, suppose we wanted to install and load the package “ggplot2”, (a very popular package for making plots). We would type the following commands.</p>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="packages.html#cb540-1"></a><span class="co"># Install package (only need to do this once)</span></span>
+<span id="cb540-2"><a href="packages.html#cb540-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb540-3"><a href="packages.html#cb540-3"></a></span>
+<span id="cb540-4"><a href="packages.html#cb540-4"></a><span class="co"># Load into working environment (need to do this for each new R session)</span></span>
+<span id="cb540-5"><a href="packages.html#cb540-5"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>It might seem strange to (1) have to download packages tto use features and (2) have to load these packages each time we wish to use them; however, there are several good reasons for doing packages in this way, and this system is considered a feature. We don’t have all possible packages available to us at all times because that is a lot of information that R would need to store at once which could make our computer lag. These packages are also always being updated at different rates with different features. Most users will only utilize packages in CRAN, so having to update R each session for features you may never use would be tedious. Furthermore, there are several packages which contain objects and functions with the same name.</p>
+<div id="namespace-collisions" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.1</span> Namespace Collisions<a href="packages.html#namespace-collisions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Every time we load a package into our environment the results for the <code>search()</code> function changes. The most recently added package is always listed after the global environment, followed by the second most recent, and so on.
+The <code>search()</code> function tells us how R searches for an object that we called. For example, consider the following command.</p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="packages.html#cb541-1"></a>v =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb541-2"><a href="packages.html#cb541-2"></a><span class="kw">mean</span>(v)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>In this case R is searching for the function mean first in the global environment, and then in the package in the order that appears in the output of the <code>search()</code> function. The package <code>base</code> is always last. In our case the function <code>mean()</code> is only defined in the base package. If you want to call a function from a specific package explicitly and want to be sure there is no confusion you can type the package name followed by <code>::</code> and the desired command.</p>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="packages.html#cb543-1"></a>base<span class="op">::</span><span class="kw">mean</span>(v)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>This can be useful, but is not usually necessary.</p>
 
 </div>
 </div>
@@ -495,8 +362,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="factors-and-lists.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="indexing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="base-r-plotting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="extending-base-r-graphics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
