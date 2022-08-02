@@ -159,10 +159,10 @@ The `replicate()` function repeats a function call `n` times in a very efficient
 
 
 ```{r}
-coin_flip_heads3 = function(){
-        coin_flip = sample(c("Heads", "Tails"), size=10 , 
+coin_flip_heads3 <- function(){
+        coin_flip <- sample(c("Heads", "Tails"), size=10 , 
                            prob = c(0.5, 0.5), replace = TRUE)
-        num_heads = length(which(coin_flip == "Heads"))
+        num_heads <- length(which(coin_flip == "Heads"))
         
         if(num_heads == 3){
                 heads3 = TRUE
@@ -182,7 +182,7 @@ coin_flip_heads3()
 
 
 # Replicate the experiment 10,000 times
-see_heads3 = replicate(10000, coin_flip_heads3())
+see_heads3 <- replicate(10000, coin_flip_heads3())
 
 # How many of these experiments results in 3 heads???
 # Probability of seeing exactly 3 heads is approximately 12%
@@ -208,7 +208,7 @@ curve(dnorm(x, 3.5, 1.14), add = TRUE)
 Now lets generate 272 normal random variables with mean 3.5 and standard deviation of 1.14 and see how well are generated data matches the density function. 
 
 ```{r}
-gen_data = rnorm(272, mean = 3.5, sd = 1.14)
+gen_data <- rnorm(272, mean = 3.5, sd = 1.14)
 
 hist(gen_data, 
      main = "Simulated Data", 
@@ -231,7 +231,7 @@ curve(dnorm(x, 3.5, 1.14), 0, 7, add = FALSE)
 In addition, we can make our own functions to plot using `curve()`. 
 
 ```{r}
-my_fun = function(x){
+my_fun <- function(x){
         y = x^2 + 2*x - 3
         return(y)
 }
@@ -286,7 +286,7 @@ gen_unif_mean = function(the_min, the_max){
 # Simulate 10000 samples, each of size 50, where the minumum value is -5
 # And the maximum value is 5
 set.seed(123)
-sim_means = replicate(10000, gen_unif_mean(the_min = -5, the_max=5)$mean)
+sim_means <- replicate(10000, gen_unif_mean(the_min = -5, the_max=5)$mean)
 
 
 # histogram of results

@@ -46,7 +46,7 @@ Description of the required `apply()` arguments:
 
 ```{r}
 # Get column means 
-data = matrix(1:9, nrow=3, ncol=3)
+data <- matrix(1:9, nrow=3, ncol=3)
 data
 
 
@@ -67,7 +67,7 @@ You can use user-defined functions as well.
 apply(data, 2, function(x){
   
   # Standard deviation formula 
-  y = sum(x -mean(x))^2/(length(x)-1)
+  y <- sum(x -mean(x))^2/(length(x)-1)
   
   return(y)
   })
@@ -188,7 +188,7 @@ Description of the required `sapply()` arguments:
 - `FUN`: The function to be applied
 
 ```{r}
-data_lst = list(item1 = 1:5,
+data_lst <- list(item1 = 1:5,
                  item2 = seq(4,36,8),
                  item3 = c(1,3,5,7,9))
 data_lst
@@ -207,7 +207,7 @@ Description of the required `sapply()` arguments:
 - `FUN`: The function to be applied
 
 ```{r}
-data = data.frame(name=c("Amy","Max","Ray","Kim","Sam","Eve","Bob"), 
+data <- data.frame(name=c("Amy","Max","Ray","Kim","Sam","Eve","Bob"), 
                   age=c(24, 22, 21, 23, 20, 24, 21),
                   gender=factor(c("F","M","M","F","M","F","M"))) 
 
@@ -273,15 +273,15 @@ summary(iris)
 Find the maximum value for the numeric variables for each observation. 
 
 ```{r}
-numeric_iris = iris[,-5]
-max_in_row = apply(numeric_iris, 1, max)
+numeric_iris <- iris[,-5]
+max_in_row <- apply(numeric_iris, 1, max)
 head(max_in_row)
 ```
 
 Determine the (arithmetic) mean of the sepal width for each species. 
 
 ```{r}
-mean_species = tapply(iris$Sepal.Width, INDEX = iris$Species, mean)
+mean_species <- tapply(iris$Sepal.Width, INDEX = iris$Species, mean)
 mean_species
 ```
 
@@ -289,15 +289,15 @@ mean_species
 Determine the (arithmetic) mean and the median of sepal width for each species. 
 
 ```{r}
-my_avgs = function(vec){
-  the_mean = mean(vec)
-  the_median = median(vec)
-  return_object=c(the_mean, the_median)
-  names(return_object) = c("mean", "median")
+my_avgs <- function(vec){
+  the_mean <- mean(vec)
+  the_median <- median(vec)
+  return_object <- c(the_mean, the_median)
+  names(return_object) <- c("mean", "median")
   return(return_object)
 }
 
-species_avgs = tapply(iris$Sepal.Width, 
+species_avgs <- tapply(iris$Sepal.Width, 
                       iris$Species,
                       my_avgs)
 species_avgs
@@ -313,7 +313,7 @@ plot(iris$Sepal.Length, iris$Sepal.Width, col = "white")
 
 
 # Custom function to add the points
-add_points = function(the_data, ...){
+add_points <- function(the_data, ...){
   
   if(the_data[5]=="setosa"){
     points(x = the_data[1], 
@@ -368,15 +368,15 @@ Now there is more efficient ways to do this in R, but lets practice how we would
 
 
 ```{r}
-my_formula = function(a, b, c){
-  num = (-b + sqrt(b^2 + 4*a*c))
-  den = 2*a
+my_formula <- function(a, b, c){
+  num <- (-b + sqrt(b^2 + 4*a*c))
+  den <- 2*a
   
-  answer = num/den
+  answer <- num/den
   return(answer)
 }
 
-formula_results = mapply(my_formula, 
+formula_results <- mapply(my_formula, 
                          a = iris$Sepal.Length, 
                          b = iris$Sepal.Width, 
                          c = iris$Petal.Length)

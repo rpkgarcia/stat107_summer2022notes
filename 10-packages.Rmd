@@ -53,7 +53,7 @@ Every time we load a package into our environment the results for the `search()`
 The `search()` function tells us how R searches for an object that we called.  For example, consider the following command. 
 
 ```{r}
-v = c(1,2,3)
+v <- c(1,2,3)
 mean(v)
 ```
 
