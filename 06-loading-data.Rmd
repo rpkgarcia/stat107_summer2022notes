@@ -55,8 +55,8 @@ We can also download data sets from online in a variety of different ways. Below
 
 ```{r}
 
-the_url = "https://raw.githubusercontent.com/rpkgarcia/LearnRBook/main/data_sets/InsectData.csv"
-the_data = read.csv(the_url)
+the_url <- "https://raw.githubusercontent.com/rpkgarcia/LearnRBook/main/data_sets/InsectData.csv"
+the_data <- read.csv(the_url)
 ```
 
 
@@ -65,12 +65,12 @@ the_data = read.csv(the_url)
 Lets recall a few useful things about data frames. As we learned already, data sets are contained in an object called a data frame. One can view this as a specialized table or matrix of rows and columns, where each column is a data variable, such as height or age, and each row is a single observation. All of the values within a column must be the same data type (numeric,factor, logical, etc.). Data frames can be created or called within R, imported from text or spreadsheet files, or imported from the web. 
 
 ```{r}
-group = c("G1", "G2", "G1", "G1", "G2")
-age = c(35, 30, 31, 28, 40)
-height = c(65, 70, 60, 72, 68)
-pets = c(TRUE, TRUE, FALSE, FALSE, TRUE)
+group <- c("G1", "G2", "G1", "G1", "G2")
+age <- c(35, 30, 31, 28, 40)
+height <- c(65, 70, 60, 72, 68)
+pets <- c(TRUE, TRUE, FALSE, FALSE, TRUE)
 
-mydata = data.frame(group, age, height, pets)
+mydata <- data.frame(group, age, height, pets)
 mydata
 ```
 
@@ -101,14 +101,14 @@ table(mydata$group, mydata$pets)
 We already discussed how powerful indexing techniques can be, and various different ways to use indexing to subset a data set. We also have the `subset()` function which accomplishes much of the same tasks, and can be used as an alternative to many indexing operations. For example, we can subset a data frame by isolating all rows that belong to group "G1". 
 
 ```{r}
-group1 = subset(mydata, mydata$group == "G1")
+group1 <- subset(mydata, mydata$group == "G1")
 group1
 ```
 
 
 To subset by all values which are NOT equal to a condition we can use the logical operator `!=`.
 ```{r}
-group2 = subset(mydata, mydata$group != "G1")
+group2 <- subset(mydata, mydata$group != "G1")
 group2
 ```
 
@@ -117,17 +117,17 @@ group2
 One can add a new variable (column) to a data frame by defining a new variable and assigning values to it. Below we add a `weight` variable to the data frame.
 
 ```{r}
-wghts = c(169, 161, 149, 165, 155)
+wghts <- c(169, 161, 149, 165, 155)
 wghts
 
-mydata$weight = wghts
+mydata$weight <- wghts
 mydata
 ```
 
 We can also add a new column using the `cbind()` function. 
 
 ```{r}
-mydata = cbind(mydata, wghts)
+mydata <- cbind(mydata, wghts)
 mydata
 ```
 
@@ -136,9 +136,9 @@ mydata
 In addition, if we have a missing value, or a blank value, we can use the object `NA` to indicate the lack of a value. 
 
 ```{r}
-fav_color = c("Red", NA, "Purple", NA, "Red")
+fav_color <- c("Red", NA, "Purple", NA, "Red")
 
-mydata = cbind(mydata, fav_color)
+mydata <- cbind(mydata, fav_color)
 mydata
 ```
 
@@ -159,7 +159,7 @@ na.omit(mydata)
 One can drop a variable (column) by setting it equal to the `R` value `NULL`.
 
 ```{r}
-mydata$wghts = NULL
+mydata$wghts <- NULL
 mydata
 ```
 
@@ -171,8 +171,8 @@ Rows can be added to a data frame using the `rbind()` (row bind) function. Becau
 
 
 ```{r}
-newobs = list("G1", 23, 62, FALSE, 160, "Blue")
-newdata = rbind(mydata, newobs)
+newobs <- list("G1", 23, 62, FALSE, 160, "Blue")
+newdata <- rbind(mydata, newobs)
 newdata
 ```
 

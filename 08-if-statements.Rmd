@@ -75,7 +75,7 @@ If the previous `if` statement and all previous `else if` statements are `FALSE`
 
 Here is another example with an `if else` chain.
 ```{r}
-Toyfun = function(X,Y,Do){
+Toyfun <- function(X,Y,Do){
   if(Do == "Add"){
     Z = X+Y
 
@@ -107,8 +107,8 @@ Toyfun(2,4, "Typo")
 We have a shortcut function that can help us keep our code more succinct using the `ifelse()` function.  The first argument of this function is a logical value.  the second and third arguments are what to do if the value is `TRUE` or `FALSE`, respectively.   
 
 ```{r}
-x = 3
-type = ifelse(x>0,  "positive", "nonpositive")
+x <- 3
+type <- ifelse(x>0,  "positive", "nonpositive")
 type 
 ```
 
@@ -116,7 +116,7 @@ type
 We can also pass `ifelse()` a vector, and it will check the logical condition for each element of the vector. For example, in the `mtcars` data set, we can find the proportion of cars have `mpg > 25` and `hp > 60`
 
 ```{r}
-fast_efficient = ifelse(mtcars$mpg > 25 & mtcars$hp>60, TRUE, FALSE)
+fast_efficient <- ifelse(mtcars$mpg > 25 & mtcars$hp>60, TRUE, FALSE)
 sum(fast_efficient)/length(fast_efficient)
 ```
 
@@ -126,7 +126,7 @@ sum(fast_efficient)/length(fast_efficient)
 We can make `if-else` chains nested within each other. 
 
 ```{r}
-x = 105
+x <- 105
 if(x>0){
   if(x>100){
      type = "large positive number"

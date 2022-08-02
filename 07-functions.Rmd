@@ -12,7 +12,7 @@ In R we have functions, functions are another type of object in R.  We use funct
 Below is the **general template**
 
 ```{r, eval = F}
-function_name = function(arg){
+function_name <- function(arg){
   # Function Body 
   ....
   return(return_value)
@@ -34,7 +34,7 @@ Below is an example of converting a temperature from Fahrenheit to Celsius.
 # Convert temperature from Fahrenheit (F) to Celsius (C)
 # ARGUMENTS: temp_F, a numeric vector of length 1 in F units
 # RETURNS:   temp_C, a numeric vector of length 1 in C units
-fahrenheit_to_celsius = function(temp_F){
+fahrenheit_to_celsius <- function(temp_F){
   temp_C = (temp_F - 32) * 5 / 9
   return(temp_C)
 }
@@ -72,7 +72,7 @@ With functions we can define function arguments to have default values.  These d
 # ARGUMENTS: a = 1 (default), a numeric vector of length 1 
 #            b, a numeric vector of length 1
 # RETURNS:   d, a numeric vector of length 1
-example_func = function(a = 1, b){
+example_func <- function(a = 1, b){
   c = a + b
   d = c + 1
   
@@ -236,7 +236,7 @@ There is a special argument function `...` that can be used.  Sometimes we call 
 # ARGUMENTS: x , a numeric vector of length 1 
 #            ..., all additional arguments to be passed to fun2()
 # RETURNS:   z, a numeric vector of length 1
-fun1 = function(x, ...){
+fun1 <- function(x, ...){
   y = fun2(...)
   z = x + y 
   return(z)
@@ -245,7 +245,7 @@ fun1 = function(x, ...){
 # Support function for fun1()
 # ARGUMENTS: a , a numeric vector of length 1 
 # RETURNS:   b, a numeric vector of length 1
-fun2 = function(a){
+fun2 <- function(a){
   b = a^2
   return(b)
 }
@@ -263,7 +263,7 @@ We can also use the `...` arguement in a nested fashion.
 # ARGUMENTS: x , a numeric vector of length 1 
 #            ..., all additional arguments to be passed to fun2()
 # RETURNS:   z, a numeric vector of length 1
-fun1 = function(x, ...){
+fun1 <- function(x, ...){
   y = fun2(...)
   z = x+ y
   return(z)
@@ -273,7 +273,7 @@ fun1 = function(x, ...){
 # ARGUMENTS: a , a numeric vector of length 1 
 #            ..., all additional arguments to be passed to fun3()
 # RETURNS:   c, a numeric vector of length 1
-fun2 = function(a, ... ){
+fun2 <- function(a, ... ){
   b = fun3(...)
   c = a^2 + b 
   return(c)
@@ -282,7 +282,7 @@ fun2 = function(a, ... ){
 # Support function for fun1() and fun2(), called by fun2()
 # ARGUMENTS: n , a numeric vector of length 1 
 # RETURNS:   n, a numeric vector of length 1
-fun3 = function(n){
+fun3 <- function(n){
   n = sqrt(n)
   return(n)
 }

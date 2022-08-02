@@ -374,7 +374,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>The second <code>else if</code> commands will only execute if the previous <code>else if</code> and <code>if</code> statements were <code>FALSE</code> and <code>x==0</code>.</p>
 <p>If the previous <code>if</code> statement and all previous <code>else if</code> statements are <code>FALSE</code> then the <code>else</code> code will be executed.</p>
 <p>Here is another example with an <code>if else</code> chain.</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="if-statements.html#cb483-1"></a>Toyfun =<span class="st"> </span><span class="cf">function</span>(X,Y,Do){</span>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="if-statements.html#cb483-1"></a>Toyfun &lt;-<span class="st"> </span><span class="cf">function</span>(X,Y,Do){</span>
 <span id="cb483-2"><a href="if-statements.html#cb483-2"></a>  <span class="cf">if</span>(Do <span class="op">==</span><span class="st"> &quot;Add&quot;</span>){</span>
 <span id="cb483-3"><a href="if-statements.html#cb483-3"></a>    Z =<span class="st"> </span>X<span class="op">+</span>Y</span>
 <span id="cb483-4"><a href="if-statements.html#cb483-4"></a></span>
@@ -406,19 +406,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="ifelse" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.4</span> Ifelse<a href="if-statements.html#ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have a shortcut function that can help us keep our code more succinct using the <code>ifelse()</code> function. The first argument of this function is a logical value. the second and third arguments are what to do if the value is <code>TRUE</code> or <code>FALSE</code>, respectively.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="if-statements.html#cb491-1"></a>x =<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb491-2"><a href="if-statements.html#cb491-2"></a>type =<span class="st"> </span><span class="kw">ifelse</span>(x<span class="op">&gt;</span><span class="dv">0</span>,  <span class="st">&quot;positive&quot;</span>, <span class="st">&quot;nonpositive&quot;</span>)</span>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="if-statements.html#cb491-1"></a>x &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb491-2"><a href="if-statements.html#cb491-2"></a>type &lt;-<span class="st"> </span><span class="kw">ifelse</span>(x<span class="op">&gt;</span><span class="dv">0</span>,  <span class="st">&quot;positive&quot;</span>, <span class="st">&quot;nonpositive&quot;</span>)</span>
 <span id="cb491-3"><a href="if-statements.html#cb491-3"></a>type </span></code></pre></div>
 <pre><code>## [1] &quot;positive&quot;</code></pre>
 <p>We can also pass <code>ifelse()</code> a vector, and it will check the logical condition for each element of the vector. For example, in the <code>mtcars</code> data set, we can find the proportion of cars have <code>mpg &gt; 25</code> and <code>hp &gt; 60</code></p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="if-statements.html#cb493-1"></a>fast_efficient =<span class="st"> </span><span class="kw">ifelse</span>(mtcars<span class="op">$</span>mpg <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>mtcars<span class="op">$</span>hp<span class="op">&gt;</span><span class="dv">60</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</span>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="if-statements.html#cb493-1"></a>fast_efficient &lt;-<span class="st"> </span><span class="kw">ifelse</span>(mtcars<span class="op">$</span>mpg <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>mtcars<span class="op">$</span>hp<span class="op">&gt;</span><span class="dv">60</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</span>
 <span id="cb493-2"><a href="if-statements.html#cb493-2"></a><span class="kw">sum</span>(fast_efficient)<span class="op">/</span><span class="kw">length</span>(fast_efficient)</span></code></pre></div>
 <pre><code>## [1] 0.15625</code></pre>
 </div>
 <div id="nested-if-chains" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.5</span> Nested If Chains<a href="if-statements.html#nested-if-chains" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can make <code>if-else</code> chains nested within each other.</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="if-statements.html#cb495-1"></a>x =<span class="st"> </span><span class="dv">105</span></span>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="if-statements.html#cb495-1"></a>x &lt;-<span class="st"> </span><span class="dv">105</span></span>
 <span id="cb495-2"><a href="if-statements.html#cb495-2"></a><span class="cf">if</span>(x<span class="op">&gt;</span><span class="dv">0</span>){</span>
 <span id="cb495-3"><a href="if-statements.html#cb495-3"></a>  <span class="cf">if</span>(x<span class="op">&gt;</span><span class="dv">100</span>){</span>
 <span id="cb495-4"><a href="if-statements.html#cb495-4"></a>     type =<span class="st"> &quot;large positive number&quot;</span></span>

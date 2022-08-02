@@ -71,10 +71,10 @@ vec[index]
 ### Example: Names {-}
 ```{r}
 # Give names to each element in `vec`
-names(vec) = LETTERS[1:10]
+names(vec) <- LETTERS[1:10]
 
 # Return Elements: A, B, D
-index = c("A", "B", "D")
+index <- c("A", "B", "D")
 vec[index]
 
 ```
@@ -91,10 +91,10 @@ With the double brackets operator `[[index]]` we can put the index number for th
 ```{r}
 # Create a named list
 # Recall: name = value 
-lst1 = list(first = c("Hello", "Goodbye"), second = c(1, 2, 3), third = c(T, F, T))
+lst1 <- list(first = c("Hello", "Goodbye"), second = c(1, 2, 3), third = c(T, F, T))
 
 # Create a nested list with names 
-lst2 = list(e1 = lst1, e2 = "Stat 107 Rules")
+lst2 <- list(e1 = lst1, e2 = "Stat 107 Rules")
 
 # See structure of the list 
 str(lst2)
@@ -143,8 +143,8 @@ Using two vectors when indexing a list is by far the most common, and the recomm
 
 ```{r}
 
-my_m = matrix(1:9, nrow = 3, ncol = 3)
-colnames(my_m) = c("C1", "C2", "C3")
+my_m <- matrix(1:9, nrow = 3, ncol = 3)
+colnames(my_m) <- c("C1", "C2", "C3")
 my_m
 
 # Obtain a full row 
@@ -266,11 +266,11 @@ As we saw above, we can also using indexing with positive integers and names to 
 
 ```{r}
 # Example data frame 
-group = c("G1", "G2", "G1", "G1", "G2")
-age = c(35, 30, 31, 28, 40)
-height = c(65, 70, 60, 72, 68)
-pets = c(TRUE, TRUE, FALSE, FALSE, TRUE)
-mydata = data.frame(group, age, height, pets)
+group <- c("G1", "G2", "G1", "G1", "G2")
+age <- c(35, 30, 31, 28, 40)
+height <- c(65, 70, 60, 72, 68)
+pets <- c(TRUE, TRUE, FALSE, FALSE, TRUE)
+mydata <- data.frame(group, age, height, pets)
 mydata
 
 # Indices in smallest to largest order
@@ -390,7 +390,7 @@ With all these methods it can sometimes be difficult to remember which is which.
 
 ```{r}
 # Switch from logical strategy, to positive integer strategy 
-index = which(vec >50)
+index <- which(vec >50)
 index
 vec[index]
 ```

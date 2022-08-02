@@ -326,7 +326,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Build Your Own Function<a href="functions.html#build-your-own-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To define a function, a name is assigned and the keyword <code>function</code> is used to denote the start of the function and its argument list. Functions are created using the <code>function()</code> directive and are stored as R objects just like anything else. In particular, they are R objects of class <em>function</em>. Functions can be passed as arguments to other functions. Functions can be nested, so that you can define a function inside another function.</p>
 <p>Below is the <strong>general template</strong></p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="functions.html#cb436-1"></a>function_name =<span class="st"> </span><span class="cf">function</span>(arg){</span>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="functions.html#cb436-1"></a>function_name &lt;-<span class="st"> </span><span class="cf">function</span>(arg){</span>
 <span id="cb436-2"><a href="functions.html#cb436-2"></a>  <span class="co"># Function Body </span></span>
 <span id="cb436-3"><a href="functions.html#cb436-3"></a>  ....</span>
 <span id="cb436-4"><a href="functions.html#cb436-4"></a>  <span class="kw">return</span>(return_value)</span>
@@ -343,7 +343,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="functions.html#cb437-1"></a><span class="co"># Convert temperature from Fahrenheit (F) to Celsius (C)</span></span>
 <span id="cb437-2"><a href="functions.html#cb437-2"></a><span class="co"># ARGUMENTS: temp_F, a numeric vector of length 1 in F units</span></span>
 <span id="cb437-3"><a href="functions.html#cb437-3"></a><span class="co"># RETURNS:   temp_C, a numeric vector of length 1 in C units</span></span>
-<span id="cb437-4"><a href="functions.html#cb437-4"></a>fahrenheit_to_celsius =<span class="st"> </span><span class="cf">function</span>(temp_F){</span>
+<span id="cb437-4"><a href="functions.html#cb437-4"></a>fahrenheit_to_celsius &lt;-<span class="st"> </span><span class="cf">function</span>(temp_F){</span>
 <span id="cb437-5"><a href="functions.html#cb437-5"></a>  temp_C =<span class="st"> </span>(temp_F <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">/</span><span class="st"> </span><span class="dv">9</span></span>
 <span id="cb437-6"><a href="functions.html#cb437-6"></a>  <span class="kw">return</span>(temp_C)</span>
 <span id="cb437-7"><a href="functions.html#cb437-7"></a>}</span></code></pre></div>
@@ -362,7 +362,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb442-2"><a href="functions.html#cb442-2"></a><span class="co"># ARGUMENTS: a = 1 (default), a numeric vector of length 1 </span></span>
 <span id="cb442-3"><a href="functions.html#cb442-3"></a><span class="co">#            b, a numeric vector of length 1</span></span>
 <span id="cb442-4"><a href="functions.html#cb442-4"></a><span class="co"># RETURNS:   d, a numeric vector of length 1</span></span>
-<span id="cb442-5"><a href="functions.html#cb442-5"></a>example_func =<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, b){</span>
+<span id="cb442-5"><a href="functions.html#cb442-5"></a>example_func &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="dv">1</span>, b){</span>
 <span id="cb442-6"><a href="functions.html#cb442-6"></a>  c =<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>b</span>
 <span id="cb442-7"><a href="functions.html#cb442-7"></a>  d =<span class="st"> </span>c <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
 <span id="cb442-8"><a href="functions.html#cb442-8"></a>  </span>
@@ -482,7 +482,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb470-2"><a href="functions.html#cb470-2"></a><span class="co"># ARGUMENTS: x , a numeric vector of length 1 </span></span>
 <span id="cb470-3"><a href="functions.html#cb470-3"></a><span class="co">#            ..., all additional arguments to be passed to fun2()</span></span>
 <span id="cb470-4"><a href="functions.html#cb470-4"></a><span class="co"># RETURNS:   z, a numeric vector of length 1</span></span>
-<span id="cb470-5"><a href="functions.html#cb470-5"></a>fun1 =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
+<span id="cb470-5"><a href="functions.html#cb470-5"></a>fun1 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
 <span id="cb470-6"><a href="functions.html#cb470-6"></a>  y =<span class="st"> </span><span class="kw">fun2</span>(...)</span>
 <span id="cb470-7"><a href="functions.html#cb470-7"></a>  z =<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y </span>
 <span id="cb470-8"><a href="functions.html#cb470-8"></a>  <span class="kw">return</span>(z)</span>
@@ -491,7 +491,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb470-11"><a href="functions.html#cb470-11"></a><span class="co"># Support function for fun1()</span></span>
 <span id="cb470-12"><a href="functions.html#cb470-12"></a><span class="co"># ARGUMENTS: a , a numeric vector of length 1 </span></span>
 <span id="cb470-13"><a href="functions.html#cb470-13"></a><span class="co"># RETURNS:   b, a numeric vector of length 1</span></span>
-<span id="cb470-14"><a href="functions.html#cb470-14"></a>fun2 =<span class="st"> </span><span class="cf">function</span>(a){</span>
+<span id="cb470-14"><a href="functions.html#cb470-14"></a>fun2 &lt;-<span class="st"> </span><span class="cf">function</span>(a){</span>
 <span id="cb470-15"><a href="functions.html#cb470-15"></a>  b =<span class="st"> </span>a<span class="op">^</span><span class="dv">2</span></span>
 <span id="cb470-16"><a href="functions.html#cb470-16"></a>  <span class="kw">return</span>(b)</span>
 <span id="cb470-17"><a href="functions.html#cb470-17"></a>}</span>
@@ -504,7 +504,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb472-2"><a href="functions.html#cb472-2"></a><span class="co"># ARGUMENTS: x , a numeric vector of length 1 </span></span>
 <span id="cb472-3"><a href="functions.html#cb472-3"></a><span class="co">#            ..., all additional arguments to be passed to fun2()</span></span>
 <span id="cb472-4"><a href="functions.html#cb472-4"></a><span class="co"># RETURNS:   z, a numeric vector of length 1</span></span>
-<span id="cb472-5"><a href="functions.html#cb472-5"></a>fun1 =<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
+<span id="cb472-5"><a href="functions.html#cb472-5"></a>fun1 &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...){</span>
 <span id="cb472-6"><a href="functions.html#cb472-6"></a>  y =<span class="st"> </span><span class="kw">fun2</span>(...)</span>
 <span id="cb472-7"><a href="functions.html#cb472-7"></a>  z =<span class="st"> </span>x<span class="op">+</span><span class="st"> </span>y</span>
 <span id="cb472-8"><a href="functions.html#cb472-8"></a>  <span class="kw">return</span>(z)</span>
@@ -514,7 +514,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb472-12"><a href="functions.html#cb472-12"></a><span class="co"># ARGUMENTS: a , a numeric vector of length 1 </span></span>
 <span id="cb472-13"><a href="functions.html#cb472-13"></a><span class="co">#            ..., all additional arguments to be passed to fun3()</span></span>
 <span id="cb472-14"><a href="functions.html#cb472-14"></a><span class="co"># RETURNS:   c, a numeric vector of length 1</span></span>
-<span id="cb472-15"><a href="functions.html#cb472-15"></a>fun2 =<span class="st"> </span><span class="cf">function</span>(a, ... ){</span>
+<span id="cb472-15"><a href="functions.html#cb472-15"></a>fun2 &lt;-<span class="st"> </span><span class="cf">function</span>(a, ... ){</span>
 <span id="cb472-16"><a href="functions.html#cb472-16"></a>  b =<span class="st"> </span><span class="kw">fun3</span>(...)</span>
 <span id="cb472-17"><a href="functions.html#cb472-17"></a>  c =<span class="st"> </span>a<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>b </span>
 <span id="cb472-18"><a href="functions.html#cb472-18"></a>  <span class="kw">return</span>(c)</span>
@@ -523,7 +523,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb472-21"><a href="functions.html#cb472-21"></a><span class="co"># Support function for fun1() and fun2(), called by fun2()</span></span>
 <span id="cb472-22"><a href="functions.html#cb472-22"></a><span class="co"># ARGUMENTS: n , a numeric vector of length 1 </span></span>
 <span id="cb472-23"><a href="functions.html#cb472-23"></a><span class="co"># RETURNS:   n, a numeric vector of length 1</span></span>
-<span id="cb472-24"><a href="functions.html#cb472-24"></a>fun3 =<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb472-24"><a href="functions.html#cb472-24"></a>fun3 &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
 <span id="cb472-25"><a href="functions.html#cb472-25"></a>  n =<span class="st"> </span><span class="kw">sqrt</span>(n)</span>
 <span id="cb472-26"><a href="functions.html#cb472-26"></a>  <span class="kw">return</span>(n)</span>
 <span id="cb472-27"><a href="functions.html#cb472-27"></a>}</span>
