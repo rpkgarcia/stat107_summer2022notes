@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-url: yhttps://rpkgarcia.github.io/stat107_summer2022notes/
+url: https://rpkgarcia.github.io/stat107_summer2022notes/
 #cover-image: images/logo_stats.png
 description: |
   Course notes for UCR's STAT 107.  An introduction to programming in R.
