@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 Simulation | STAT 107 Outline of Class Notes</title>
+  <title>Chapter 13 Simulation | STAT 107 Outline of Class Notes</title>
   <meta name="description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 Simulation | STAT 107 Outline of Class Notes" />
+  <meta property="og:title" content="Chapter 13 Simulation | STAT 107 Outline of Class Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rpkgarcia.github.io/stat107_summer2022notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 Simulation | STAT 107 Outline of Class Notes" />
+  <meta name="twitter:title" content="Chapter 13 Simulation | STAT 107 Outline of Class Notes" />
   
   <meta name="twitter:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Rebecca Kurtz-Garcia" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="apply.html"/>
-
+<link rel="prev" href="loops.html"/>
+<link rel="next" href="tidyverse.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,38 +312,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="loops.html"><a href="loops.html#additional-resources-5"><i class="fa fa-check"></i><b>12.7</b> Additional Resources<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="apply.html"><a href="apply.html"><i class="fa fa-check"></i><b>13</b> Apply Family of Functions<span></span></a><ul>
-<li class="chapter" data-level="13.1" data-path="apply.html"><a href="apply.html#apply-1"><i class="fa fa-check"></i><b>13.1</b> apply()<span></span></a><ul>
-<li><a href="apply.html#example-built-in-function">Example: Built In Function<span></span></a></li>
-<li><a href="apply.html#example-user-defined-function">Example: User Defined Function<span></span></a></li>
-<li class="chapter" data-level="13.1.1" data-path="apply.html"><a href="apply.html#returned-objects"><i class="fa fa-check"></i><b>13.1.1</b> Returned Objects<span></span></a></li>
-<li class="chapter" data-level="13.1.2" data-path="apply.html"><a href="apply.html#example-extra-arguments-array-output"><i class="fa fa-check"></i><b>13.1.2</b> Example: Extra Arguments, Array Output<span></span></a></li>
-<li class="chapter" data-level="13.1.3" data-path="apply.html"><a href="apply.html#example-list-output"><i class="fa fa-check"></i><b>13.1.3</b> Example: List Output<span></span></a></li>
+<li class="chapter" data-level="13" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>13</b> Simulation<span></span></a><ul>
+<li class="chapter" data-level="13.1" data-path="simulation.html"><a href="simulation.html#what-are-simulation-studies"><i class="fa fa-check"></i><b>13.1</b> What Are Simulation Studies<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="simulation.html"><a href="simulation.html#review-random-variables"><i class="fa fa-check"></i><b>13.2</b> Review Random Variables<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="simulation.html"><a href="simulation.html#generating-random-variables"><i class="fa fa-check"></i><b>13.3</b> Generating Random Variables<span></span></a></li>
+<li class="chapter" data-level="13.4" data-path="simulation.html"><a href="simulation.html#setting-a-seed"><i class="fa fa-check"></i><b>13.4</b> Setting a Seed<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="simulation.html"><a href="simulation.html#sample"><i class="fa fa-check"></i><b>13.5</b> sample()<span></span></a></li>
+<li class="chapter" data-level="13.6" data-path="simulation.html"><a href="simulation.html#replicate"><i class="fa fa-check"></i><b>13.6</b> replicate()<span></span></a></li>
+<li class="chapter" data-level="13.7" data-path="simulation.html"><a href="simulation.html#adding-curves-to-graphs"><i class="fa fa-check"></i><b>13.7</b> Adding curves to graphs<span></span></a></li>
+<li class="chapter" data-level="13.8" data-path="simulation.html"><a href="simulation.html#example-central-limit-theorem-clt"><i class="fa fa-check"></i><b>13.8</b> Example: Central Limit Theorem (CLT)<span></span></a><ul>
+<li class="chapter" data-level="13.8.1" data-path="simulation.html"><a href="simulation.html#recall-clt"><i class="fa fa-check"></i><b>13.8.1</b> Recall CLT<span></span></a></li>
+<li class="chapter" data-level="13.8.2" data-path="simulation.html"><a href="simulation.html#assumption-violations-of-clt"><i class="fa fa-check"></i><b>13.8.2</b> Assumption Violations of CLT<span></span></a></li>
+<li class="chapter" data-level="13.8.3" data-path="simulation.html"><a href="simulation.html#the-data"><i class="fa fa-check"></i><b>13.8.3</b> The Data<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="apply.html"><a href="apply.html#lapply"><i class="fa fa-check"></i><b>13.2</b> lapply()<span></span></a></li>
-<li class="chapter" data-level="13.3" data-path="apply.html"><a href="apply.html#sapply"><i class="fa fa-check"></i><b>13.3</b> sapply()<span></span></a></li>
-<li class="chapter" data-level="13.4" data-path="apply.html"><a href="apply.html#tapply"><i class="fa fa-check"></i><b>13.4</b> tapply()<span></span></a></li>
-<li class="chapter" data-level="13.5" data-path="apply.html"><a href="apply.html#mapply"><i class="fa fa-check"></i><b>13.5</b> mapply()<span></span></a></li>
-<li class="chapter" data-level="13.6" data-path="apply.html"><a href="apply.html#replicate"><i class="fa fa-check"></i><b>13.6</b> replicate()<span></span></a></li>
-<li class="chapter" data-level="13.7" data-path="apply.html"><a href="apply.html#how-to-pick-a-method"><i class="fa fa-check"></i><b>13.7</b> How to Pick a Method<span></span></a></li>
-<li class="chapter" data-level="13.8" data-path="apply.html"><a href="apply.html#more-examples"><i class="fa fa-check"></i><b>13.8</b> More Examples<span></span></a><ul>
-<li class="chapter" data-level="13.8.1" data-path="apply.html"><a href="apply.html#create-a-new-variable"><i class="fa fa-check"></i><b>13.8.1</b> Create a New Variable<span></span></a></li>
 </ul></li>
-<li><a href="apply.html#additional-resources-6">Additional Resources<span></span></a></li>
+<li class="chapter" data-level="14" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>14</b> Tidyverse<span></span></a><ul>
+<li class="chapter" data-level="14.1" data-path="tidyverse.html"><a href="tidyverse.html#piping-operator"><i class="fa fa-check"></i><b>14.1</b> Piping Operator<span></span></a></li>
+<li class="chapter" data-level="14.2" data-path="tidyverse.html"><a href="tidyverse.html#tibbles-vs-data-frames"><i class="fa fa-check"></i><b>14.2</b> Tibbles vs Data Frames<span></span></a></li>
+<li class="chapter" data-level="14.3" data-path="tidyverse.html"><a href="tidyverse.html#key-functions"><i class="fa fa-check"></i><b>14.3</b> Key Functions<span></span></a><ul>
+<li class="chapter" data-level="14.3.1" data-path="tidyverse.html"><a href="tidyverse.html#general-properties"><i class="fa fa-check"></i><b>14.3.1</b> General properties<span></span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="tidyverse.html"><a href="tidyverse.html#select"><i class="fa fa-check"></i><b>14.3.2</b> select()<span></span></a></li>
+<li class="chapter" data-level="14.3.3" data-path="tidyverse.html"><a href="tidyverse.html#filter"><i class="fa fa-check"></i><b>14.3.3</b> filter()<span></span></a></li>
+<li class="chapter" data-level="14.3.4" data-path="tidyverse.html"><a href="tidyverse.html#arrange"><i class="fa fa-check"></i><b>14.3.4</b> arrange()<span></span></a></li>
+<li class="chapter" data-level="14.3.5" data-path="tidyverse.html"><a href="tidyverse.html#rename"><i class="fa fa-check"></i><b>14.3.5</b> rename()<span></span></a></li>
+<li class="chapter" data-level="14.3.6" data-path="tidyverse.html"><a href="tidyverse.html#mutate"><i class="fa fa-check"></i><b>14.3.6</b> mutate()<span></span></a></li>
+<li class="chapter" data-level="14.3.7" data-path="tidyverse.html"><a href="tidyverse.html#group_by"><i class="fa fa-check"></i><b>14.3.7</b> group_by()<span></span></a></li>
+<li class="chapter" data-level="14.3.8" data-path="tidyverse.html"><a href="tidyverse.html#summarizesummarise"><i class="fa fa-check"></i><b>14.3.8</b> summarize()/summarise()<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>14</b> Simulation<span></span></a><ul>
-<li class="chapter" data-level="14.1" data-path="simulation.html"><a href="simulation.html#what-are-simulation-studies"><i class="fa fa-check"></i><b>14.1</b> What Are Simulation Studies<span></span></a></li>
-<li class="chapter" data-level="14.2" data-path="simulation.html"><a href="simulation.html#review-random-variables"><i class="fa fa-check"></i><b>14.2</b> Review Random Variables<span></span></a></li>
-<li class="chapter" data-level="14.3" data-path="simulation.html"><a href="simulation.html#generating-random-variables"><i class="fa fa-check"></i><b>14.3</b> Generating Random Variables<span></span></a></li>
-<li class="chapter" data-level="14.4" data-path="simulation.html"><a href="simulation.html#setting-a-seed"><i class="fa fa-check"></i><b>14.4</b> Setting a Seed<span></span></a></li>
-<li class="chapter" data-level="14.5" data-path="simulation.html"><a href="simulation.html#sample"><i class="fa fa-check"></i><b>14.5</b> sample()<span></span></a></li>
-<li class="chapter" data-level="14.6" data-path="simulation.html"><a href="simulation.html#replicate-1"><i class="fa fa-check"></i><b>14.6</b> replicate()<span></span></a></li>
-<li class="chapter" data-level="14.7" data-path="simulation.html"><a href="simulation.html#adding-curves-to-graphs"><i class="fa fa-check"></i><b>14.7</b> Adding curves to graphs<span></span></a></li>
-<li class="chapter" data-level="14.8" data-path="simulation.html"><a href="simulation.html#example-central-limit-theorem-clt"><i class="fa fa-check"></i><b>14.8</b> Example: Central Limit Theorem (CLT)<span></span></a><ul>
-<li class="chapter" data-level="14.8.1" data-path="simulation.html"><a href="simulation.html#recall-clt"><i class="fa fa-check"></i><b>14.8.1</b> Recall CLT<span></span></a></li>
-<li class="chapter" data-level="14.8.2" data-path="simulation.html"><a href="simulation.html#assumption-violations-of-clt"><i class="fa fa-check"></i><b>14.8.2</b> Assumption Violations of CLT<span></span></a></li>
-<li class="chapter" data-level="14.8.3" data-path="simulation.html"><a href="simulation.html#the-data"><i class="fa fa-check"></i><b>14.8.3</b> The Data<span></span></a></li>
+<li class="chapter" data-level="14.4" data-path="tidyverse.html"><a href="tidyverse.html#examples-2"><i class="fa fa-check"></i><b>14.4</b> Examples<span></span></a><ul>
+<li class="chapter" data-level="14.4.1" data-path="tidyverse.html"><a href="tidyverse.html#example-1-1"><i class="fa fa-check"></i><b>14.4.1</b> Example 1<span></span></a></li>
+<li class="chapter" data-level="14.4.2" data-path="tidyverse.html"><a href="tidyverse.html#example-2-1"><i class="fa fa-check"></i><b>14.4.2</b> Example 2<span></span></a></li>
+<li class="chapter" data-level="14.4.3" data-path="tidyverse.html"><a href="tidyverse.html#example-3"><i class="fa fa-check"></i><b>14.4.3</b> Example 3<span></span></a></li>
 </ul></li>
+<li><a href="tidyverse.html#additional-resources-6">Additional Resources<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>15</b> ggplot2<span></span></a><ul>
+<li class="chapter" data-level="15.1" data-path="ggplot2.html"><a href="ggplot2.html#tidyverse-and-ggplot2"><i class="fa fa-check"></i><b>15.1</b> Tidyverse and ggplot2<span></span></a></li>
+<li class="chapter" data-level="15.2" data-path="ggplot2.html"><a href="ggplot2.html#intro-to-ggplot2"><i class="fa fa-check"></i><b>15.2</b> Intro to ggplot2<span></span></a><ul>
+<li><a href="ggplot2.html#what-is-the-grammar-of-graphics">What is the grammar of graphics?<span></span></a></li>
+<li><a href="ggplot2.html#ggplot2-versus-other-r-graphics">ggplot2 versus other R Graphics<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="ggplot2.html"><a href="ggplot2.html#getting-started-kep-components"><i class="fa fa-check"></i><b>15.3</b> Getting started: Kep Components<span></span></a></li>
+<li class="chapter" data-level="15.4" data-path="ggplot2.html"><a href="ggplot2.html#adjust-aesthetic-attributes-by-variable"><i class="fa fa-check"></i><b>15.4</b> Adjust aesthetic attributes by variable<span></span></a></li>
+<li class="chapter" data-level="15.5" data-path="ggplot2.html"><a href="ggplot2.html#adjust-aesthetic-attributes-for-the-entire-plot"><i class="fa fa-check"></i><b>15.5</b> Adjust aesthetic attributes for the entire plot<span></span></a></li>
+<li class="chapter" data-level="15.6" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>15.6</b> Faceting<span></span></a></li>
+<li class="chapter" data-level="15.7" data-path="ggplot2.html"><a href="ggplot2.html#some-example-plots"><i class="fa fa-check"></i><b>15.7</b> Some example plots<span></span></a></li>
+<li class="chapter" data-level="15.8" data-path="ggplot2.html"><a href="ggplot2.html#where-can-i-learn-more"><i class="fa fa-check"></i><b>15.8</b> Where can I learn more?<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -366,28 +380,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="simulation" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 14</span> Simulation<a href="simulation.html#simulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 13</span> Simulation<a href="simulation.html#simulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="what-are-simulation-studies" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.1</span> What Are Simulation Studies<a href="simulation.html#what-are-simulation-studies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.1</span> What Are Simulation Studies<a href="simulation.html#what-are-simulation-studies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulation studies are used in statistics to verify theoretical results, and to do “what-if” experiments. The are commonly used in a variety of applications and fields. Often times we have a particular theory or an idea about how things work. In order to verify that our theory is correct we can simulate a data set with known properties, and then check if the data set matches our theory. For example, suppose you want to calculate a 95% confidence interval for the heights of all college students. Our theory on confidence intervals says that we expect that a 95% confidence interval will capture the true mean about 95% of the time. If we simply go out and take a sample of data from “real-life” and then calculate the a confidence interval we have no idea if that confidence interval captures the truth because the true average height of all college students is unknown! It is not feasible to sample every college students, so we will never know if the true mean actually falls within our interval. Furthermore, in this example we only calculated one confidence interval. If we did know the true mean then our results would simply indicate that the confidence interval captured the mean or not, but nothing about the <em>rate</em> that confidence intervals capture the mean, which should be 95%. What we can do instead is simulate this process. We can randomly generate data that has a true mean of <span class="math inline">\(\mu\)</span> using a computer. Then we can estimate a 95% confidence interval using the appropriate methods and see if this confidence interval contains <span class="math inline">\(\mu\)</span>. We then can repeat this process as many times as we would like because we are using a computer, which makes the process much simpler. If our theory about confidence intervals is correct we would expect that 95% of our confidence intervals captured the true mean (<span class="math inline">\(\mu\)</span>), and the rest did not.</p>
 <p>Simulations are very important, and can range greatly in complexity. We will focus on simple techniques in this section. For a more complete discussion on simulation studies in statistics, and best practices see this freely available online at <a href="https://onlinelibrary.wiley.com/doi/10.1002/sim.8086">https://onlinelibrary.wiley.com/doi/10.1002/sim.8086</a>.</p>
 </div>
 <div id="review-random-variables" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.2</span> Review Random Variables<a href="simulation.html#review-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.2</span> Review Random Variables<a href="simulation.html#review-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before discussing how to simulate data with specific properties we review the concept of a random variable. This discussion is adapted primarily from Chapter 3 and 4 of <span class="citation">Diez, Cetinkaya-Rundel, and Barr (<a href="#ref-OpenIntro" role="doc-biblioref">2020</a>)</span>. A <strong>random variable</strong> is a random process or variable with a numeric outcome. Random variables in general have a typical value which is called the <strong>expected value</strong>. However, in practice random variables also have variability, that is we do not expect to obtain the expected value for every random variable. Instead we expect to observe a range of values according to some sort of pattern, which is usually centered around the expected value.</p>
 <p>For example, in Yellowstone National Park, Wyoming there is a famous geyser called Old Faithful. A geyser is a natural hot spring that periodically erupts water. The amount of time (in minutes) the eruption lasts varies each time, but not by a dramatic amount. The eruption time in minutes is the random variable, and the expected value is the average eruption length, and we can measure the variability using a measure of dispersion, like the variance. Below is a histogram of a random sample of eruptions times of 272 different eruptions.</p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="simulation.html#cb644-1"></a><span class="kw">hist</span>(faithful<span class="op">$</span>eruptions, </span>
-<span id="cb644-2"><a href="simulation.html#cb644-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Eruption Times of Old Faithful&quot;</span>, </span>
-<span id="cb644-3"><a href="simulation.html#cb644-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (in minutes)&quot;</span>, </span>
-<span id="cb644-4"><a href="simulation.html#cb644-4"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="simulation.html#cb580-1"></a><span class="kw">hist</span>(faithful<span class="op">$</span>eruptions, </span>
+<span id="cb580-2"><a href="simulation.html#cb580-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Eruption Times of Old Faithful&quot;</span>, </span>
+<span id="cb580-3"><a href="simulation.html#cb580-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (in minutes)&quot;</span>, </span>
+<span id="cb580-4"><a href="simulation.html#cb580-4"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
 <p>As mentioned previously, random variables generate observations according to some sort of pattern. These patterns are referred to as <strong>densities</strong>, and can be analyzed visually, and analytically (i.e. through formulas). One of the most common ways to look at how often we would expect certain values for data that we find from the “real-world” is to use a histogram. Histogram order observations into mutually exclusive bins, where the height of each bin indicates how common a particular range of values is. For example, in the histogram above each bin is a 30 second (0.5 minute) range, and we can see the frequency of observations within the data set that are in this range on the y-axis. When thinking about random variables though, it is often more helpful to look at the proportion of observed values within a bin, instead of the frequency. We can modify our histogram to accomplish this.</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="simulation.html#cb645-1"></a><span class="kw">hist</span>(faithful<span class="op">$</span>eruptions, </span>
-<span id="cb645-2"><a href="simulation.html#cb645-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Eruption Times of Old Faithful&quot;</span>, </span>
-<span id="cb645-3"><a href="simulation.html#cb645-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (in minutes)&quot;</span>, </span>
-<span id="cb645-4"><a href="simulation.html#cb645-4"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </span>
-<span id="cb645-5"><a href="simulation.html#cb645-5"></a>     <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="simulation.html#cb581-1"></a><span class="kw">hist</span>(faithful<span class="op">$</span>eruptions, </span>
+<span id="cb581-2"><a href="simulation.html#cb581-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Eruption Times of Old Faithful&quot;</span>, </span>
+<span id="cb581-3"><a href="simulation.html#cb581-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (in minutes)&quot;</span>, </span>
+<span id="cb581-4"><a href="simulation.html#cb581-4"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </span>
+<span id="cb581-5"><a href="simulation.html#cb581-5"></a>     <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
 <p>Notice that the y-axis now says “Density”. This is the relative probability that an observed data point will be a particular value. In “real-world” data, we can only estimate the density. We will never know the truth. Hence, we will never know the true expected value, or the true variance. This is why we have statistics!! We have statistics in order to make educated guesses about these values and properties from which the data arises from.</p>
 <p>Analyzing the density or pattern of a random variable visually with histograms is intuitive, but limiting. Using a formula as a representation for a density is much more versatile and useful. For these functions we have <strong>parameters</strong> which are values that let us further customize the function representation of a density to the specific random variable that we have. Let <span class="math inline">\(X\)</span> be a random variable, and <span class="math inline">\(x\)</span> be some observed value. In practice, if <span class="math inline">\(X\)</span> is a random variable that can only take on values that are discrete (usually integers) then we say the probability of observing some a particular value, say <span class="math inline">\(x\)</span>, is denoted <span class="math inline">\(p(x)\)</span>. There are extremely well known discrete densities that random variables tend to follow and that are available in R. A few of them are listed below.</p>
 <ul>
@@ -422,140 +436,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To see a complete list of well known distribution functions (or densities) that R already has see the help file <code>?Distributions</code>.</p>
 </div>
 <div id="generating-random-variables" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.3</span> Generating Random Variables<a href="simulation.html#generating-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.3</span> Generating Random Variables<a href="simulation.html#generating-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Each distribution available in base R is listed in <code>?Distributions</code>. Each of the distributions has a link to their corresponding help file which lists four main functions: <code>dxxx()</code>, <code>pxxx()</code>, <code>qxxx()</code> and <code>rxxx()</code>. These are the density function, cumulative distribution function, quantile function, and a random number generator for the particular random variable of interest. The letters <code>xxx</code> are replaced by an code for the particular random variable. The density function (<code>dxxx()</code>) generates the relative probability of observing a particular value. The cumulative distribution function (<code>pxxx()</code>) generates the probability of observing a particular value, and anything smaller than this value. The quantile function (<code>qxxx()</code>) generates what value corresponds to a given percentile. Lastly, the random number generator (<code>rxxx()</code>) will generate a random variable according to the given distribuiton/density. We will focus only on <code>dxxx()</code> and <code>rxxx()</code>.</p>
 <p>For example, go to <code>?Distributions</code> and click on <code>dnorm</code> which corresponds to the normal distribution (in the bottom third of the list). Here you will see the functions <code>dnorm()</code>, <code>pnorm()</code>, <code>qnorm()</code>, and <code>rnorm()</code>. To generate a normal random variable with mean 0 and standard deviation 1 we can use the following command.</p>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="simulation.html#cb646-1"></a><span class="co"># Generate a single normal random variable with mean 0 and standard deviation 1</span></span>
-<span id="cb646-2"><a href="simulation.html#cb646-2"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] -0.1049144</code></pre>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="simulation.html#cb648-1"></a><span class="co"># Generate 20 normal random variables with mean 0 and standard deviation 1</span></span>
-<span id="cb648-2"><a href="simulation.html#cb648-2"></a><span class="kw">rnorm</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] -1.392449727  1.018245804  0.826401081  1.289595050 -0.643231482
-##  [6] -0.001173311 -1.948468606  0.680949495  0.274233523 -1.905682922
-## [11] -1.207395634  0.379645715 -0.832700980 -1.480467865  1.045205002
-## [16]  1.203374466  1.143497941 -0.798450844  0.713542224  0.014509402</code></pre>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="simulation.html#cb582-1"></a><span class="co"># Generate a single normal random variable with mean 0 and standard deviation 1</span></span>
+<span id="cb582-2"><a href="simulation.html#cb582-2"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] -0.9734186</code></pre>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="simulation.html#cb584-1"></a><span class="co"># Generate 20 normal random variables with mean 0 and standard deviation 1</span></span>
+<span id="cb584-2"><a href="simulation.html#cb584-2"></a><span class="kw">rnorm</span>(<span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##  [1] -0.044839783  1.100497403  0.643893414  1.158084038 -0.104914360
+##  [6] -1.392449727  1.018245804  0.826401081  1.289595050 -0.643231482
+## [11] -0.001173311 -1.948468606  0.680949495  0.274233523 -1.905682922
+## [16] -1.207395634  0.379645715 -0.832700980 -1.480467865  1.045205002</code></pre>
 <p>However, as we saw in the previous section, these common distribution functions have parameters which let us further customize the behavior of the random variable. We can change the parameters of any of the distributions in R using the function arguments.</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="simulation.html#cb650-1"></a><span class="co"># Normal random variable with mean 10, and standard deviation 0.5 </span></span>
-<span id="cb650-2"><a href="simulation.html#cb650-2"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)</span></code></pre></div>
-<pre><code>## [1] 10.53266</code></pre>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="simulation.html#cb652-1"></a><span class="co"># Normal random variable with mean 10, and standard deviation 0.5 </span></span>
-<span id="cb652-2"><a href="simulation.html#cb652-2"></a><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)</span></code></pre></div>
-<pre><code>##  [1]  9.918810  9.633491 10.141749  9.903283 10.774333 10.138772  9.615449
-##  [8] 10.785818 10.650341 10.024944  9.791361 10.094124 10.505912 10.409901
-## [15] 10.263248  9.263302  9.656979  9.812624 10.574604 10.154701</code></pre>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="simulation.html#cb586-1"></a><span class="co"># Normal random variable with mean 10, and standard deviation 0.5 </span></span>
+<span id="cb586-2"><a href="simulation.html#cb586-2"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 10.60169</code></pre>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="simulation.html#cb588-1"></a><span class="co"># Normal random variable with mean 10, and standard deviation 0.5 </span></span>
+<span id="cb588-2"><a href="simulation.html#cb588-2"></a><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>##  [1] 10.571749  9.600775 10.356771 10.007255 10.532656  9.918810  9.633491
+##  [8] 10.141749  9.903283 10.774333 10.138772  9.615449 10.785818 10.650341
+## [15] 10.024944  9.791361 10.094124 10.505912 10.409901 10.263248</code></pre>
 <p>To find the relative probability of observing a particular value for a normal distribution we use <code>dnorm()</code>.</p>
-<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="simulation.html#cb654-1"></a><span class="co"># Relative probability of observing the value 0.25</span></span>
-<span id="cb654-2"><a href="simulation.html#cb654-2"></a><span class="co"># for a normal random variable with mean 0 and standard devation 1</span></span>
-<span id="cb654-3"><a href="simulation.html#cb654-3"></a><span class="kw">dnorm</span>(<span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="simulation.html#cb590-1"></a><span class="co"># Relative probability of observing the value 0.25</span></span>
+<span id="cb590-2"><a href="simulation.html#cb590-2"></a><span class="co"># for a normal random variable with mean 0 and standard devation 1</span></span>
+<span id="cb590-3"><a href="simulation.html#cb590-3"></a><span class="kw">dnorm</span>(<span class="fl">0.25</span>)</span></code></pre></div>
 <pre><code>## [1] 0.3866681</code></pre>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="simulation.html#cb656-1"></a><span class="co"># Relative probability of observing the value 0.25, -0.5, 2</span></span>
-<span id="cb656-2"><a href="simulation.html#cb656-2"></a><span class="co"># for a normal random variable with mean 0 and standard devation 1</span></span>
-<span id="cb656-3"><a href="simulation.html#cb656-3"></a><span class="kw">dnorm</span>(<span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">-0.5</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="simulation.html#cb592-1"></a><span class="co"># Relative probability of observing the value 0.25, -0.5, 2</span></span>
+<span id="cb592-2"><a href="simulation.html#cb592-2"></a><span class="co"># for a normal random variable with mean 0 and standard devation 1</span></span>
+<span id="cb592-3"><a href="simulation.html#cb592-3"></a><span class="kw">dnorm</span>(<span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">-0.5</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 0.38666812 0.35206533 0.05399097</code></pre>
 </div>
 <div id="setting-a-seed" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.4</span> Setting a Seed<a href="simulation.html#setting-a-seed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.4</span> Setting a Seed<a href="simulation.html#setting-a-seed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Often times when running a simulation we will want to use the same numbers over and over again. The function <code>rxxx()</code> generates values randomly though, which means each time we call this function we will get new and different values. In order to make sure our values are consistent each time we run R, or across computers we can set the seed. The seed determines the way the computer generates our random numbers. Normally the seed is random, so each time <code>rxxx()</code> is called we get a new random sequence. Using the <code>set.seed()</code> function will make sure that the sequence stays the same each time we run <code>rxxx()</code>.</p>
 <p>See the example below were generate a sequence of 10 uniform random variables that are between -5 and 5. If you copy this code directly into your computer you will get the same sequence. However, if you do not set the seed you will get a different sequence.</p>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="simulation.html#cb658-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb658-2"><a href="simulation.html#cb658-2"></a><span class="kw">runif</span>(<span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">-5</span>, <span class="dt">max =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="simulation.html#cb594-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb594-2"><a href="simulation.html#cb594-2"></a><span class="kw">runif</span>(<span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">-5</span>, <span class="dt">max =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##  [1] -2.3449134 -1.2787610  0.7285336  4.0820779 -2.9831807  3.9838968
 ##  [7]  4.4467527  1.6079779  1.2911404 -4.3821373</code></pre>
 </div>
 <div id="sample" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.5</span> sample()<a href="simulation.html#sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.5</span> sample()<a href="simulation.html#sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>sample()</code> function is a powerful tool that can let you create your own unique random sequence. You can sample values with replacement, or without replacement. You can also assign certain probabilities to certain events. This is a particularly helpful function for rearranging rows, and for generating a sequence of categorical variables. For example, we can simulate a coin flip.</p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="simulation.html#cb660-1"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">1</span> , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="simulation.html#cb596-1"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">1</span> , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Tails&quot;</code></pre>
 <p>Below is the code for simulating 10 coin flips.</p>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="simulation.html#cb662-1"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">10</span> , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="simulation.html#cb598-1"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">10</span> , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot;
 ## [10] &quot;Heads&quot;</code></pre>
 <p>We can set the seed like we did before in order to insure we keep getting the same sample each time we run this code.</p>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="simulation.html#cb664-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb664-2"><a href="simulation.html#cb664-2"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">10</span> , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="simulation.html#cb600-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb600-2"><a href="simulation.html#cb600-2"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">10</span> , <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot;
 ## [10] &quot;Tails&quot;</code></pre>
 </div>
-<div id="replicate-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.6</span> replicate()<a href="simulation.html#replicate-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="replicate" class="section level2 hasAnchor">
+<h2><span class="header-section-number">13.6</span> replicate()<a href="simulation.html#replicate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>replicate()</code> function repeats a function call <code>n</code> times in a very efficient way. Suppose we wish to find the probability we get exactly 3 heads if we flip a coin 10 times. We can replicate flipping a coin 10 times, and count how many of these times we see exactly 3 heads.</p>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="simulation.html#cb666-1"></a>coin_flip_heads3 &lt;-<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb666-2"><a href="simulation.html#cb666-2"></a>        coin_flip &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">10</span> , </span>
-<span id="cb666-3"><a href="simulation.html#cb666-3"></a>                           <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb666-4"><a href="simulation.html#cb666-4"></a>        num_heads &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(coin_flip <span class="op">==</span><span class="st"> &quot;Heads&quot;</span>))</span>
-<span id="cb666-5"><a href="simulation.html#cb666-5"></a>        </span>
-<span id="cb666-6"><a href="simulation.html#cb666-6"></a>        <span class="cf">if</span>(num_heads <span class="op">==</span><span class="st"> </span><span class="dv">3</span>){</span>
-<span id="cb666-7"><a href="simulation.html#cb666-7"></a>                heads3 =<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb666-8"><a href="simulation.html#cb666-8"></a>        } <span class="cf">else</span>{</span>
-<span id="cb666-9"><a href="simulation.html#cb666-9"></a>                heads3 =<span class="st"> </span><span class="ot">FALSE</span></span>
-<span id="cb666-10"><a href="simulation.html#cb666-10"></a>        }</span>
-<span id="cb666-11"><a href="simulation.html#cb666-11"></a>        <span class="kw">return</span>(heads3)</span>
-<span id="cb666-12"><a href="simulation.html#cb666-12"></a>}</span>
-<span id="cb666-13"><a href="simulation.html#cb666-13"></a></span>
-<span id="cb666-14"><a href="simulation.html#cb666-14"></a></span>
-<span id="cb666-15"><a href="simulation.html#cb666-15"></a></span>
-<span id="cb666-16"><a href="simulation.html#cb666-16"></a><span class="co"># Generates flipping a coin 3 times</span></span>
-<span id="cb666-17"><a href="simulation.html#cb666-17"></a><span class="co"># Returns TRUE if exactly 3 flips resulted in heads</span></span>
-<span id="cb666-18"><a href="simulation.html#cb666-18"></a><span class="co"># Returns FALSE if otherwise </span></span>
-<span id="cb666-19"><a href="simulation.html#cb666-19"></a><span class="kw">coin_flip_heads3</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="simulation.html#cb602-1"></a>coin_flip_heads3 &lt;-<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb602-2"><a href="simulation.html#cb602-2"></a>        coin_flip &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>), <span class="dt">size=</span><span class="dv">10</span> , </span>
+<span id="cb602-3"><a href="simulation.html#cb602-3"></a>                           <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb602-4"><a href="simulation.html#cb602-4"></a>        num_heads &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(coin_flip <span class="op">==</span><span class="st"> &quot;Heads&quot;</span>))</span>
+<span id="cb602-5"><a href="simulation.html#cb602-5"></a>        </span>
+<span id="cb602-6"><a href="simulation.html#cb602-6"></a>        <span class="cf">if</span>(num_heads <span class="op">==</span><span class="st"> </span><span class="dv">3</span>){</span>
+<span id="cb602-7"><a href="simulation.html#cb602-7"></a>                heads3 =<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb602-8"><a href="simulation.html#cb602-8"></a>        } <span class="cf">else</span>{</span>
+<span id="cb602-9"><a href="simulation.html#cb602-9"></a>                heads3 =<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb602-10"><a href="simulation.html#cb602-10"></a>        }</span>
+<span id="cb602-11"><a href="simulation.html#cb602-11"></a>        <span class="kw">return</span>(heads3)</span>
+<span id="cb602-12"><a href="simulation.html#cb602-12"></a>}</span>
+<span id="cb602-13"><a href="simulation.html#cb602-13"></a></span>
+<span id="cb602-14"><a href="simulation.html#cb602-14"></a></span>
+<span id="cb602-15"><a href="simulation.html#cb602-15"></a></span>
+<span id="cb602-16"><a href="simulation.html#cb602-16"></a><span class="co"># Generates flipping a coin 3 times</span></span>
+<span id="cb602-17"><a href="simulation.html#cb602-17"></a><span class="co"># Returns TRUE if exactly 3 flips resulted in heads</span></span>
+<span id="cb602-18"><a href="simulation.html#cb602-18"></a><span class="co"># Returns FALSE if otherwise </span></span>
+<span id="cb602-19"><a href="simulation.html#cb602-19"></a><span class="kw">coin_flip_heads3</span>()</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="simulation.html#cb668-1"></a><span class="co"># Replicate the experiment 10,000 times</span></span>
-<span id="cb668-2"><a href="simulation.html#cb668-2"></a>see_heads3 &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">coin_flip_heads3</span>())</span>
-<span id="cb668-3"><a href="simulation.html#cb668-3"></a></span>
-<span id="cb668-4"><a href="simulation.html#cb668-4"></a><span class="co"># How many of these experiments results in 3 heads???</span></span>
-<span id="cb668-5"><a href="simulation.html#cb668-5"></a><span class="co"># Probability of seeing exactly 3 heads is approximately 12%</span></span>
-<span id="cb668-6"><a href="simulation.html#cb668-6"></a><span class="kw">table</span>(see_heads3)<span class="op">/</span><span class="dv">10000</span></span></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="simulation.html#cb604-1"></a><span class="co"># Replicate the experiment 10,000 times</span></span>
+<span id="cb604-2"><a href="simulation.html#cb604-2"></a>see_heads3 &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">coin_flip_heads3</span>())</span>
+<span id="cb604-3"><a href="simulation.html#cb604-3"></a></span>
+<span id="cb604-4"><a href="simulation.html#cb604-4"></a><span class="co"># How many of these experiments results in 3 heads???</span></span>
+<span id="cb604-5"><a href="simulation.html#cb604-5"></a><span class="co"># Probability of seeing exactly 3 heads is approximately 12%</span></span>
+<span id="cb604-6"><a href="simulation.html#cb604-6"></a><span class="kw">table</span>(see_heads3)<span class="op">/</span><span class="dv">10000</span></span></code></pre></div>
 <pre><code>## see_heads3
 ##  FALSE   TRUE 
 ## 0.8861 0.1139</code></pre>
 </div>
 <div id="adding-curves-to-graphs" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.7</span> Adding curves to graphs<a href="simulation.html#adding-curves-to-graphs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.7</span> Adding curves to graphs<a href="simulation.html#adding-curves-to-graphs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Often times when generating data or using a real-world data set we might want to see how well a well known distribution fits a particular data set. We can do so by adding the proposed density function on to a histogram which contains the data set of interest. For example, suppose we wish to see if a normal distribution with mean of 3.5 and standard deviation of 1.14 fits the old faithful data set for eruption times. We can add this density function on top and see if it approximately fits the data.</p>
-<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="simulation.html#cb670-1"></a><span class="kw">hist</span>(faithful<span class="op">$</span>eruptions, </span>
-<span id="cb670-2"><a href="simulation.html#cb670-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Eruption Times of Old Faithful&quot;</span>, </span>
-<span id="cb670-3"><a href="simulation.html#cb670-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (in minutes)&quot;</span>, </span>
-<span id="cb670-4"><a href="simulation.html#cb670-4"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </span>
-<span id="cb670-5"><a href="simulation.html#cb670-5"></a>     <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb670-6"><a href="simulation.html#cb670-6"></a></span>
-<span id="cb670-7"><a href="simulation.html#cb670-7"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="fl">3.5</span>, <span class="fl">1.14</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="simulation.html#cb606-1"></a><span class="kw">hist</span>(faithful<span class="op">$</span>eruptions, </span>
+<span id="cb606-2"><a href="simulation.html#cb606-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Eruption Times of Old Faithful&quot;</span>, </span>
+<span id="cb606-3"><a href="simulation.html#cb606-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (in minutes)&quot;</span>, </span>
+<span id="cb606-4"><a href="simulation.html#cb606-4"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </span>
+<span id="cb606-5"><a href="simulation.html#cb606-5"></a>     <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb606-6"><a href="simulation.html#cb606-6"></a></span>
+<span id="cb606-7"><a href="simulation.html#cb606-7"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="fl">3.5</span>, <span class="fl">1.14</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
 <p>Now lets generate 272 normal random variables with mean 3.5 and standard deviation of 1.14 and see how well are generated data matches the density function.</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="simulation.html#cb671-1"></a>gen_data &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">272</span>, <span class="dt">mean =</span> <span class="fl">3.5</span>, <span class="dt">sd =</span> <span class="fl">1.14</span>)</span>
-<span id="cb671-2"><a href="simulation.html#cb671-2"></a></span>
-<span id="cb671-3"><a href="simulation.html#cb671-3"></a><span class="kw">hist</span>(gen_data, </span>
-<span id="cb671-4"><a href="simulation.html#cb671-4"></a>     <span class="dt">main =</span> <span class="st">&quot;Simulated Data&quot;</span>, </span>
-<span id="cb671-5"><a href="simulation.html#cb671-5"></a>     <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, </span>
-<span id="cb671-6"><a href="simulation.html#cb671-6"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="fl">0.5</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </span>
-<span id="cb671-7"><a href="simulation.html#cb671-7"></a>     <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb671-8"><a href="simulation.html#cb671-8"></a></span>
-<span id="cb671-9"><a href="simulation.html#cb671-9"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="fl">3.5</span>, <span class="fl">1.14</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="simulation.html#cb607-1"></a>gen_data &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">272</span>, <span class="dt">mean =</span> <span class="fl">3.5</span>, <span class="dt">sd =</span> <span class="fl">1.14</span>)</span>
+<span id="cb607-2"><a href="simulation.html#cb607-2"></a></span>
+<span id="cb607-3"><a href="simulation.html#cb607-3"></a><span class="kw">hist</span>(gen_data, </span>
+<span id="cb607-4"><a href="simulation.html#cb607-4"></a>     <span class="dt">main =</span> <span class="st">&quot;Simulated Data&quot;</span>, </span>
+<span id="cb607-5"><a href="simulation.html#cb607-5"></a>     <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, </span>
+<span id="cb607-6"><a href="simulation.html#cb607-6"></a>     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="fl">0.5</span>, <span class="dv">7</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </span>
+<span id="cb607-7"><a href="simulation.html#cb607-7"></a>     <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb607-8"><a href="simulation.html#cb607-8"></a></span>
+<span id="cb607-9"><a href="simulation.html#cb607-9"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="fl">3.5</span>, <span class="fl">1.14</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 <p>We do not see a perfect fit, but this is what happens with random samples. The fit for the simulated data is what we expect approximately if we had a sample with this distribution. It should be approximately the same as the curve, which we see for the simulated data. Our old faithful data is significantly less fitted the simulated data. Thus it appears that the old faithful eruption times is probably not normally distributed with mean 3.5 and standard deviation 1.14. How similar is “similar enough” is not a hard and fast rule, and it is ultimately up to the researcher. The simulated data set gives us a general idea of what is “similar enough”.</p>
 <p>Note that the <code>curve()</code> function does not need to be added to graph but can stand alone.</p>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="simulation.html#cb672-1"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="fl">3.5</span>, <span class="fl">1.14</span>), <span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">add =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="simulation.html#cb608-1"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="fl">3.5</span>, <span class="fl">1.14</span>), <span class="dv">0</span>, <span class="dv">7</span>, <span class="dt">add =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p>In addition, we can make our own functions to plot using <code>curve()</code>.</p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="simulation.html#cb673-1"></a>my_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb673-2"><a href="simulation.html#cb673-2"></a>        y =<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">-</span><span class="st"> </span><span class="dv">3</span></span>
-<span id="cb673-3"><a href="simulation.html#cb673-3"></a>        <span class="kw">return</span>(y)</span>
-<span id="cb673-4"><a href="simulation.html#cb673-4"></a>}</span>
-<span id="cb673-5"><a href="simulation.html#cb673-5"></a></span>
-<span id="cb673-6"><a href="simulation.html#cb673-6"></a><span class="kw">curve</span>(<span class="kw">my_fun</span>(x), <span class="dv">-10</span>, <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="simulation.html#cb609-1"></a>my_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb609-2"><a href="simulation.html#cb609-2"></a>        y =<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">-</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb609-3"><a href="simulation.html#cb609-3"></a>        <span class="kw">return</span>(y)</span>
+<span id="cb609-4"><a href="simulation.html#cb609-4"></a>}</span>
+<span id="cb609-5"><a href="simulation.html#cb609-5"></a></span>
+<span id="cb609-6"><a href="simulation.html#cb609-6"></a><span class="kw">curve</span>(<span class="kw">my_fun</span>(x), <span class="dv">-10</span>, <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 </div>
 <div id="example-central-limit-theorem-clt" class="section level2 hasAnchor">
-<h2><span class="header-section-number">14.8</span> Example: Central Limit Theorem (CLT)<a href="simulation.html#example-central-limit-theorem-clt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">13.8</span> Example: Central Limit Theorem (CLT)<a href="simulation.html#example-central-limit-theorem-clt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="recall-clt" class="section level3 hasAnchor">
-<h3><span class="header-section-number">14.8.1</span> Recall CLT<a href="simulation.html#recall-clt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.8.1</span> Recall CLT<a href="simulation.html#recall-clt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let <span class="math inline">\(X_1, ..., X_n\)</span> be independent and identically distributed random variables with mean and variance, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>. If the sample size is sufficiently large (<span class="math inline">\(n \geq 30\)</span>), the sample mean <span class="math inline">\(\bar{x}\)</span> will tend to follow a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>.</p>
 <p>In other words, for any set of data <span class="math inline">\(X_1, ..., X_n\)</span> that is independent and comes from the same distribution, and that distribution has a finite mean and variance, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>. Then</p>
 <p><span class="math display">\[\bar{x} \sim N \left ( \mu, \frac{\sigma}{\sqrt{n}} \right ) \]</span></p>
 <p>The distribution above is a <em>sampling distribution</em>. It is the distribution of a <em>sample mean</em>. That is, if we take <span class="math inline">\(k\)</span> samples, and for each sample we calculated the mean, the central limit theorem tells us about the distribution of these means (<span class="math inline">\(\bar{x}_1, \dots, \bar{x}_k\)</span>).</p>
 </div>
 <div id="assumption-violations-of-clt" class="section level3 hasAnchor">
-<h3><span class="header-section-number">14.8.2</span> Assumption Violations of CLT<a href="simulation.html#assumption-violations-of-clt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.8.2</span> Assumption Violations of CLT<a href="simulation.html#assumption-violations-of-clt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The central limit theorem has a few key assumptions. Some of these assumptions are fairly easy to meet, and others are more susceptible to being violated. For example, typically it is reasonable to assume that mean and variance are finite. Other assumptions are easier to violate, and the consequences of violating these assumptions vary greatly. Sometimes we may have data that comes from a mix of multiple distributions, this violate the assumption that data is identically distributed. Another assumption violation could be independence. For example, in time series data we typically observe a random variable over a sequence of time and measure it repeatedly. This would violate the independence assumption because earlier observations are typically related to future observations. Another assumption that is often violated is the minimum sample size. The central limit theorem says we need at least 30 observations, or else we should use the t-distribution instead. Historically this is usually not a very big problem. The requirement that our sample size is at least 30 is a “rule of thumb” and not based on rigorous statistical theory.</p>
 <p>Below are a summary of these assumptions restated:</p>
 <ul>
@@ -566,49 +580,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Once we have verified these assumptions, we still need to determine what the mean (<span class="math inline">\(\mu\)</span>) and variance (<span class="math inline">\(\sigma^2\)</span>) are. If we know that our distribution is one of the really common ones above, then this task becomes much eaiser.</p>
 </div>
 <div id="the-data" class="section level3 hasAnchor">
-<h3><span class="header-section-number">14.8.3</span> The Data<a href="simulation.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">13.8.3</span> The Data<a href="simulation.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will see how well the CLT theorem applies to a data set that has a uniform distribution. That is, say we have a sample of 50 observations which we believe are all uniformly distributed between -5 and 5. We want to determine if the mean of a sample of this type would be normally distributed according to the CLT. To do so, we simulate a sample of this type 10,000 times and assess if it matches the CLT results.</p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="simulation.html#cb674-1"></a><span class="co"># Simulate a sample of 50 observations that are uniformly distributed </span></span>
-<span id="cb674-2"><a href="simulation.html#cb674-2"></a>gen_unif_mean =<span class="st"> </span><span class="cf">function</span>(the_min, the_max){</span>
-<span id="cb674-3"><a href="simulation.html#cb674-3"></a>        gen_data =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">50</span>, the_min, the_max)</span>
-<span id="cb674-4"><a href="simulation.html#cb674-4"></a>        the_mean =<span class="st"> </span><span class="kw">mean</span>(gen_data)</span>
-<span id="cb674-5"><a href="simulation.html#cb674-5"></a>        the_parameters =<span class="st"> </span><span class="kw">c</span>(the_min, the_max)</span>
-<span id="cb674-6"><a href="simulation.html#cb674-6"></a>        results =<span class="st"> </span><span class="kw">list</span>(the_mean, the_parameters)</span>
-<span id="cb674-7"><a href="simulation.html#cb674-7"></a>        <span class="kw">names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;parameters&quot;</span>)</span>
-<span id="cb674-8"><a href="simulation.html#cb674-8"></a>        <span class="kw">return</span>(results)</span>
-<span id="cb674-9"><a href="simulation.html#cb674-9"></a>}</span>
-<span id="cb674-10"><a href="simulation.html#cb674-10"></a></span>
-<span id="cb674-11"><a href="simulation.html#cb674-11"></a><span class="co"># Simulate 10000 samples, each of size 50, where the minumum value is -5</span></span>
-<span id="cb674-12"><a href="simulation.html#cb674-12"></a><span class="co"># And the maximum value is 5</span></span>
-<span id="cb674-13"><a href="simulation.html#cb674-13"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb674-14"><a href="simulation.html#cb674-14"></a>sim_means &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">gen_unif_mean</span>(<span class="dt">the_min =</span> <span class="dv">-5</span>, <span class="dt">the_max=</span><span class="dv">5</span>)<span class="op">$</span>mean)</span>
-<span id="cb674-15"><a href="simulation.html#cb674-15"></a></span>
-<span id="cb674-16"><a href="simulation.html#cb674-16"></a></span>
-<span id="cb674-17"><a href="simulation.html#cb674-17"></a><span class="co"># histogram of results</span></span>
-<span id="cb674-18"><a href="simulation.html#cb674-18"></a><span class="kw">hist</span>(sim_means, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="simulation.html#cb610-1"></a><span class="co"># Simulate a sample of 50 observations that are uniformly distributed </span></span>
+<span id="cb610-2"><a href="simulation.html#cb610-2"></a>gen_unif_mean =<span class="st"> </span><span class="cf">function</span>(the_min, the_max){</span>
+<span id="cb610-3"><a href="simulation.html#cb610-3"></a>        gen_data =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">50</span>, the_min, the_max)</span>
+<span id="cb610-4"><a href="simulation.html#cb610-4"></a>        the_mean =<span class="st"> </span><span class="kw">mean</span>(gen_data)</span>
+<span id="cb610-5"><a href="simulation.html#cb610-5"></a>        the_parameters =<span class="st"> </span><span class="kw">c</span>(the_min, the_max)</span>
+<span id="cb610-6"><a href="simulation.html#cb610-6"></a>        results =<span class="st"> </span><span class="kw">list</span>(the_mean, the_parameters)</span>
+<span id="cb610-7"><a href="simulation.html#cb610-7"></a>        <span class="kw">names</span>(results) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;parameters&quot;</span>)</span>
+<span id="cb610-8"><a href="simulation.html#cb610-8"></a>        <span class="kw">return</span>(results)</span>
+<span id="cb610-9"><a href="simulation.html#cb610-9"></a>}</span>
+<span id="cb610-10"><a href="simulation.html#cb610-10"></a></span>
+<span id="cb610-11"><a href="simulation.html#cb610-11"></a><span class="co"># Simulate 10000 samples, each of size 50, where the minumum value is -5</span></span>
+<span id="cb610-12"><a href="simulation.html#cb610-12"></a><span class="co"># And the maximum value is 5</span></span>
+<span id="cb610-13"><a href="simulation.html#cb610-13"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb610-14"><a href="simulation.html#cb610-14"></a>sim_means &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">gen_unif_mean</span>(<span class="dt">the_min =</span> <span class="dv">-5</span>, <span class="dt">the_max=</span><span class="dv">5</span>)<span class="op">$</span>mean)</span>
+<span id="cb610-15"><a href="simulation.html#cb610-15"></a></span>
+<span id="cb610-16"><a href="simulation.html#cb610-16"></a></span>
+<span id="cb610-17"><a href="simulation.html#cb610-17"></a><span class="co"># histogram of results</span></span>
+<span id="cb610-18"><a href="simulation.html#cb610-18"></a><span class="kw">hist</span>(sim_means, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
 <p>To add a curve to the graph we need to know the mean and the standard deviation of the data we generated. For a uniform distribution with a minimum of -5 and a maximum of 5, the mean is 0 and the standard deviation is <span class="math inline">\(10/\sqrt{12} \approx 2.89\)</span>. Thus according to CLT, we expect our histogram above to correspond to a normal density with mean 0 and standard deviation <span class="math inline">\(2.89/\sqrt{50} \approx 0.41\)</span>.</p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="simulation.html#cb675-1"></a><span class="co"># histogram of results</span></span>
-<span id="cb675-2"><a href="simulation.html#cb675-2"></a><span class="kw">hist</span>(sim_means, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb675-3"><a href="simulation.html#cb675-3"></a></span>
-<span id="cb675-4"><a href="simulation.html#cb675-4"></a><span class="co"># Add normal curve according to CLT</span></span>
-<span id="cb675-5"><a href="simulation.html#cb675-5"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.41</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="simulation.html#cb611-1"></a><span class="co"># histogram of results</span></span>
+<span id="cb611-2"><a href="simulation.html#cb611-2"></a><span class="kw">hist</span>(sim_means, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb611-3"><a href="simulation.html#cb611-3"></a></span>
+<span id="cb611-4"><a href="simulation.html#cb611-4"></a><span class="co"># Add normal curve according to CLT</span></span>
+<span id="cb611-5"><a href="simulation.html#cb611-5"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.41</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
 
-<div id="refs" class="references">
-<div>
-<p>Diez, David, Mine Cetinkaya-Rundel, and Christopher D Barr. 2020. <em>OpenIntro Statistics, Fourth Edition</em>. OpenIntro. <a href="https://www.openintro.org/book/os/">https://www.openintro.org/book/os/</a>.</p>
-</div>
-<div>
-<p> Dr. Robert Desharnais. 2020. <em>Biology3000</em>. Los Angeles, CA: California State University, Los Angeles.</p>
-</div>
-<div>
-<p>John Blischak, Daniel Chen, Harriet Dashnow, and Denis Haine. 2016. “Software Carpentry: Programming with R.version 2016.06.” 2016. <a href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html">https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html</a>.</p>
-</div>
-<div>
-<p>Vries, Andrie de, and Joris Meys. 2015. <em>R for Dummies</em>. Hoboken, New Jersey: John Wiley &amp; Sons, Inc. <a href="https://www.dummies.com/programming/r/how-to-use-the-r-help-files/">https://www.dummies.com/programming/r/how-to-use-the-r-help-files/</a>.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -623,8 +623,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="apply.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="loops.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -656,7 +656,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-simulation.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-simulation.Rmd",
 "text": "Edit"
 },
 "history": {
