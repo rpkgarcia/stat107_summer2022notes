@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Loops | STAT 107 Outline of Class Notes</title>
+  <title>Chapter 16 Text Data | STAT 107 Outline of Class Notes</title>
   <meta name="description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Loops | STAT 107 Outline of Class Notes" />
+  <meta property="og:title" content="Chapter 16 Text Data | STAT 107 Outline of Class Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rpkgarcia.github.io/stat107_summer2022notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Loops | STAT 107 Outline of Class Notes" />
+  <meta name="twitter:title" content="Chapter 16 Text Data | STAT 107 Outline of Class Notes" />
   
   <meta name="twitter:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="extending-base-r-graphics.html"/>
-<link rel="next" href="simulation.html"/>
+<link rel="prev" href="ggplot2.html"/>
+<link rel="next" href="apply.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -432,257 +432,281 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loops" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 12</span> Loops<a href="loops.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Loops are another type of control flow structure. They dictate how many times a series of commands should be run. There are two type of loops, a <code>while</code> loop and a <code>for</code> loop. These two loops operate similarly and are found in other programming languages such as <code>C</code> and <code>Python</code>.</p>
-<div id="while-loop" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.1</span> While Loop<a href="loops.html#while-loop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A <code>while</code> loop is used when you want to perform a task indefinitely, until a particular condition is met. It’s a condition-controlled loop.</p>
-<p><img src="images/WhileLoop.png" width="522" style="display: block; margin: auto;" /></p>
-<p>The loop will continue until the condition is <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="loops.html#cb555-1"></a>x =<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb555-2"><a href="loops.html#cb555-2"></a></span>
-<span id="cb555-3"><a href="loops.html#cb555-3"></a><span class="co"># If statement is true, keep running the loop </span></span>
-<span id="cb555-4"><a href="loops.html#cb555-4"></a><span class="cf">while</span> (x <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) {</span>
-<span id="cb555-5"><a href="loops.html#cb555-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb555-6"><a href="loops.html#cb555-6"></a>  x =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb555-7"><a href="loops.html#cb555-7"></a>}</span></code></pre></div>
-<pre><code>## [1] 5
-## [1] 4
-## [1] 3
-## [1] 2
-## [1] 1</code></pre>
-<p>If the condition is false at the start, the while loop will never be executed at all.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="loops.html#cb557-1"></a>x =<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb557-2"><a href="loops.html#cb557-2"></a></span>
-<span id="cb557-3"><a href="loops.html#cb557-3"></a><span class="co"># If statement starts as TRUE,  the loop will never run </span></span>
-<span id="cb557-4"><a href="loops.html#cb557-4"></a><span class="cf">while</span> (x <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) {</span>
-<span id="cb557-5"><a href="loops.html#cb557-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb557-6"><a href="loops.html#cb557-6"></a>  x =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb557-7"><a href="loops.html#cb557-7"></a>}</span></code></pre></div>
-</div>
-<div id="for-loops" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.2</span> For Loops<a href="loops.html#for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>for</code> statement in R is a bit different from what you usually use in other programming languages. Rather than iterating over a numeric progression, R’s <code>for</code> statement iterates over the items of a vector or a list. The items are iterated in the order that they appear in the vector.</p>
-<p><img src="images/ForLoop.png" width="580" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="loops.html#cb558-1"></a><span class="co"># Iterate through a vector</span></span>
-<span id="cb558-2"><a href="loops.html#cb558-2"></a>colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>)</span>
-<span id="cb558-3"><a href="loops.html#cb558-3"></a></span>
-<span id="cb558-4"><a href="loops.html#cb558-4"></a><span class="cf">for</span> (x <span class="cf">in</span> colors) {</span>
-<span id="cb558-5"><a href="loops.html#cb558-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb558-6"><a href="loops.html#cb558-6"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;red&quot;
-## [1] &quot;green&quot;
-## [1] &quot;blue&quot;
-## [1] &quot;yellow&quot;</code></pre>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="loops.html#cb560-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="fl">3.14</span>, <span class="st">&quot;Hi&quot;</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb560-2"><a href="loops.html#cb560-2"></a></span>
-<span id="cb560-3"><a href="loops.html#cb560-3"></a><span class="cf">for</span> (i <span class="cf">in</span> lst) {</span>
-<span id="cb560-4"><a href="loops.html#cb560-4"></a>  <span class="kw">print</span>(i)</span>
-<span id="cb560-5"><a href="loops.html#cb560-5"></a>}</span></code></pre></div>
-<pre><code>## [1] 3.14
-## [1] &quot;Hi&quot;
-## [1] 1 2 3</code></pre>
-<p>If you need to execute a group of statements for a specified number of times, use sequence operator : or built-in function <code>seq()</code>.</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="loops.html#cb562-1"></a><span class="co"># Print &#39;Hello!&#39; 3 times</span></span>
-<span id="cb562-2"><a href="loops.html#cb562-2"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
-<span id="cb562-3"><a href="loops.html#cb562-3"></a>  <span class="kw">print</span>(<span class="st">&quot;Hello!&quot;</span>)</span>
-<span id="cb562-4"><a href="loops.html#cb562-4"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;Hello!&quot;
-## [1] &quot;Hello!&quot;
-## [1] &quot;Hello!&quot;</code></pre>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="loops.html#cb564-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">2</span>,<span class="dt">to=</span><span class="dv">8</span>,<span class="dt">by=</span><span class="dv">2</span>)) {</span>
-<span id="cb564-2"><a href="loops.html#cb564-2"></a>  <span class="kw">print</span>(x<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb564-3"><a href="loops.html#cb564-3"></a>}</span></code></pre></div>
-<pre><code>## [1] 4
-## [1] 16
-## [1] 36
-## [1] 64</code></pre>
-</div>
-<div id="break" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.3</span> Break<a href="loops.html#break" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>break</code> statement is used to exit the loop immediately. It simply jumps out of the loop altogether, and the program continues after the loop.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="loops.html#cb566-1"></a>x &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb566-2"><a href="loops.html#cb566-2"></a></span>
-<span id="cb566-3"><a href="loops.html#cb566-3"></a><span class="co"># If statement starts as TRUE,  the loop will never run </span></span>
-<span id="cb566-4"><a href="loops.html#cb566-4"></a><span class="cf">while</span> (x <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) {</span>
-<span id="cb566-5"><a href="loops.html#cb566-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb566-6"><a href="loops.html#cb566-6"></a>  x =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb566-7"><a href="loops.html#cb566-7"></a>  </span>
-<span id="cb566-8"><a href="loops.html#cb566-8"></a>  <span class="cf">if</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>){</span>
-<span id="cb566-9"><a href="loops.html#cb566-9"></a>    <span class="kw">print</span>(<span class="st">&quot;Entered IF statement, stop loop&quot;</span>)</span>
-<span id="cb566-10"><a href="loops.html#cb566-10"></a>    <span class="cf">break</span> </span>
-<span id="cb566-11"><a href="loops.html#cb566-11"></a>  }</span>
-<span id="cb566-12"><a href="loops.html#cb566-12"></a>  </span>
-<span id="cb566-13"><a href="loops.html#cb566-13"></a>}</span></code></pre></div>
-<pre><code>## [1] 5
-## [1] 4
-## [1] 3
-## [1] &quot;Entered IF statement, stop loop&quot;</code></pre>
-<p><strong>If not given an adequate stopping criteria or break statement the loop will continue forever.</strong> For example, if we started the above examples at <code>x = -2</code>. The <code>break</code> statement is particularly important for the <code>while</code> loop.</p>
-<p>The <code>break</code> statement can also be used in a <code>for</code> loop. It simply jumps out of the loop altogether, and the program continues after the loop.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="loops.html#cb568-1"></a>colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>)</span>
-<span id="cb568-2"><a href="loops.html#cb568-2"></a><span class="cf">for</span> (x <span class="cf">in</span> colors) {</span>
-<span id="cb568-3"><a href="loops.html#cb568-3"></a>  <span class="cf">if</span> (x <span class="op">==</span><span class="st"> &quot;blue&quot;</span>){</span>
-<span id="cb568-4"><a href="loops.html#cb568-4"></a>       <span class="cf">break</span> </span>
-<span id="cb568-5"><a href="loops.html#cb568-5"></a>  }</span>
-<span id="cb568-6"><a href="loops.html#cb568-6"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb568-7"><a href="loops.html#cb568-7"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;red&quot;
-## [1] &quot;green&quot;</code></pre>
-<p>The <code>for</code> loops do not have the same risk of “running forever”, like <code>while</code> loops have.</p>
-</div>
-<div id="next" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.4</span> Next<a href="loops.html#next" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can also use the <code>next</code> command in both <code>for</code> loops and <code>while</code> loops in order to skip executing a command.</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="loops.html#cb570-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb570-2"><a href="loops.html#cb570-2"></a>  </span>
-<span id="cb570-3"><a href="loops.html#cb570-3"></a>  i &lt;-<span class="st"> </span>i<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb570-4"><a href="loops.html#cb570-4"></a>  </span>
-<span id="cb570-5"><a href="loops.html#cb570-5"></a>  <span class="cf">if</span>(i <span class="op">&lt;</span><span class="dv">5</span>){</span>
-<span id="cb570-6"><a href="loops.html#cb570-6"></a>    <span class="cf">next</span></span>
-<span id="cb570-7"><a href="loops.html#cb570-7"></a>  }</span>
-<span id="cb570-8"><a href="loops.html#cb570-8"></a>  </span>
-<span id="cb570-9"><a href="loops.html#cb570-9"></a>  <span class="kw">print</span>(i)</span>
-<span id="cb570-10"><a href="loops.html#cb570-10"></a>}</span></code></pre></div>
-<pre><code>## [1] 9
-## [1] 16
-## [1] 25
-## [1] 36
-## [1] 49
-## [1] 64
-## [1] 81
-## [1] 100</code></pre>
-<p>The code inside the loop will run until it reaches the <code>next</code> statement. Once</p>
-</div>
-<div id="nested-loops" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.5</span> Nested Loops<a href="loops.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can also create loops within loops. We refer to creating loops within other loops as a nested loop.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="loops.html#cb572-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb572-2"><a href="loops.html#cb572-2"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</span>
-<span id="cb572-3"><a href="loops.html#cb572-3"></a>    statement =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;i=&quot;</span>, i, <span class="st">&quot;, j=&quot;</span>, j)</span>
-<span id="cb572-4"><a href="loops.html#cb572-4"></a>    <span class="kw">print</span>(statement)</span>
-<span id="cb572-5"><a href="loops.html#cb572-5"></a>  }</span>
-<span id="cb572-6"><a href="loops.html#cb572-6"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;i= 1 , j= 1&quot;
-## [1] &quot;i= 1 , j= 2&quot;
-## [1] &quot;i= 1 , j= 3&quot;
-## [1] &quot;i= 2 , j= 1&quot;
-## [1] &quot;i= 2 , j= 2&quot;
-## [1] &quot;i= 2 , j= 3&quot;
-## [1] &quot;i= 3 , j= 1&quot;
-## [1] &quot;i= 3 , j= 2&quot;
-## [1] &quot;i= 3 , j= 3&quot;
-## [1] &quot;i= 4 , j= 1&quot;
-## [1] &quot;i= 4 , j= 2&quot;
-## [1] &quot;i= 4 , j= 3&quot;
-## [1] &quot;i= 5 , j= 1&quot;
-## [1] &quot;i= 5 , j= 2&quot;
-## [1] &quot;i= 5 , j= 3&quot;
-## [1] &quot;i= 6 , j= 1&quot;
-## [1] &quot;i= 6 , j= 2&quot;
-## [1] &quot;i= 6 , j= 3&quot;
-## [1] &quot;i= 7 , j= 1&quot;
-## [1] &quot;i= 7 , j= 2&quot;
-## [1] &quot;i= 7 , j= 3&quot;
-## [1] &quot;i= 8 , j= 1&quot;
-## [1] &quot;i= 8 , j= 2&quot;
-## [1] &quot;i= 8 , j= 3&quot;
-## [1] &quot;i= 9 , j= 1&quot;
-## [1] &quot;i= 9 , j= 2&quot;
-## [1] &quot;i= 9 , j= 3&quot;
-## [1] &quot;i= 10 , j= 1&quot;
-## [1] &quot;i= 10 , j= 2&quot;
-## [1] &quot;i= 10 , j= 3&quot;</code></pre>
-<p>Here is an example of a nested loop which changes the elements of matrix to be the product of the row and column location.</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="loops.html#cb574-1"></a>my_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb574-2"><a href="loops.html#cb574-2"></a></span>
-<span id="cb574-3"><a href="loops.html#cb574-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(my_matrix)){</span>
-<span id="cb574-4"><a href="loops.html#cb574-4"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(my_matrix)){</span>
-<span id="cb574-5"><a href="loops.html#cb574-5"></a>    my_matrix[i,j] =<span class="st"> </span>i<span class="op">*</span>j</span>
-<span id="cb574-6"><a href="loops.html#cb574-6"></a>  }</span>
-<span id="cb574-7"><a href="loops.html#cb574-7"></a>}</span>
-<span id="cb574-8"><a href="loops.html#cb574-8"></a></span>
-<span id="cb574-9"><a href="loops.html#cb574-9"></a>my_matrix</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    2    3    4    5
-## [2,]    2    4    6    8   10
-## [3,]    3    6    9   12   15
-## [4,]    4    8   12   16   20
-## [5,]    5   10   15   20   25</code></pre>
-</div>
-<div id="examples-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.6</span> Examples<a href="loops.html#examples-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A few more examples.</p>
-<div id="example-1" class="section level3 hasAnchor">
-<h3><span class="header-section-number">12.6.1</span> Example 1<a href="loops.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Below we create a function that has only one argument, <code>vec</code>, an arbitrary numeric vector. This function create a new vector containing all elements in <code>vec</code> whole numbers, and returns this new vector. If there are no whole numbers in <code>vec</code>, then it returns <code>NA</code>.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="loops.html#cb576-1"></a><span class="co"># Create a subset of x which only contains whole numbers</span></span>
-<span id="cb576-2"><a href="loops.html#cb576-2"></a><span class="co"># ARGUMENTS: vec, a numeric vector </span></span>
-<span id="cb576-3"><a href="loops.html#cb576-3"></a><span class="co"># RETURNS: whole_vec, a vector containing all whole numbers</span></span>
-<span id="cb576-4"><a href="loops.html#cb576-4"></a><span class="co">#                   will equal NA if there are no whole numbers</span></span>
-<span id="cb576-5"><a href="loops.html#cb576-5"></a>whole_num &lt;-<span class="st"> </span><span class="cf">function</span>(vec){</span>
-<span id="cb576-6"><a href="loops.html#cb576-6"></a>  </span>
-<span id="cb576-7"><a href="loops.html#cb576-7"></a>  <span class="co"># Initialize whole_vec</span></span>
-<span id="cb576-8"><a href="loops.html#cb576-8"></a>  whole_vec &lt;-<span class="ot">NULL</span></span>
-<span id="cb576-9"><a href="loops.html#cb576-9"></a>  </span>
-<span id="cb576-10"><a href="loops.html#cb576-10"></a>  <span class="co"># For loop, go through each element in vec </span></span>
-<span id="cb576-11"><a href="loops.html#cb576-11"></a>  <span class="cf">for</span>(i <span class="cf">in</span> vec){</span>
-<span id="cb576-12"><a href="loops.html#cb576-12"></a>    <span class="cf">if</span>( i <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(i)){</span>
-<span id="cb576-13"><a href="loops.html#cb576-13"></a>      whole_vec &lt;-<span class="st"> </span><span class="kw">c</span>(whole_vec, i)</span>
-<span id="cb576-14"><a href="loops.html#cb576-14"></a>    } </span>
-<span id="cb576-15"><a href="loops.html#cb576-15"></a>  }</span>
-<span id="cb576-16"><a href="loops.html#cb576-16"></a>  </span>
-<span id="cb576-17"><a href="loops.html#cb576-17"></a>  <span class="co"># Check to make sure there was at least one whole number</span></span>
-<span id="cb576-18"><a href="loops.html#cb576-18"></a>  <span class="cf">if</span>(<span class="kw">length</span>(whole_vec)<span class="op">==</span><span class="dv">0</span>){</span>
-<span id="cb576-19"><a href="loops.html#cb576-19"></a>    whole_vec =<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb576-20"><a href="loops.html#cb576-20"></a>  }</span>
-<span id="cb576-21"><a href="loops.html#cb576-21"></a>  </span>
-<span id="cb576-22"><a href="loops.html#cb576-22"></a>  <span class="kw">return</span>(whole_vec)</span>
-<span id="cb576-23"><a href="loops.html#cb576-23"></a>}</span>
-<span id="cb576-24"><a href="loops.html#cb576-24"></a></span>
-<span id="cb576-25"><a href="loops.html#cb576-25"></a></span>
-<span id="cb576-26"><a href="loops.html#cb576-26"></a><span class="co"># Test case </span></span>
-<span id="cb576-27"><a href="loops.html#cb576-27"></a>tester &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="fl">5.5</span>, <span class="fl">10.8</span>, pi, <span class="dv">62</span>)</span>
-<span id="cb576-28"><a href="loops.html#cb576-28"></a><span class="kw">whole_num</span>(tester)  <span class="co"># Should return 1, 3, 62</span></span></code></pre></div>
-<pre><code>## [1]  1  3 62</code></pre>
-</div>
-<div id="example-2" class="section level3 hasAnchor">
-<h3><span class="header-section-number">12.6.2</span> Example 2<a href="loops.html#example-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Below we create a function that has only one argument, <code>bound</code>, a numeric object of length one. This function returns the minimum number of subsequent whole numbers (starting from 1) that must be added together in order to reach (or surpass) <code>bound</code>. For example, suppose <code>bound=16</code>. Then <code>1+2+3+4+5 = 15</code>, and <code>1+2+3+4+5+6 = 21</code>. Thus, the function would return <code>6</code>.</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="loops.html#cb578-1"></a>get_num &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">bound =</span> <span class="dv">16</span>){</span>
-<span id="cb578-2"><a href="loops.html#cb578-2"></a>  </span>
-<span id="cb578-3"><a href="loops.html#cb578-3"></a>  <span class="co"># Initialize values</span></span>
-<span id="cb578-4"><a href="loops.html#cb578-4"></a>  total &lt;-<span class="st"> </span><span class="dv">0</span> </span>
-<span id="cb578-5"><a href="loops.html#cb578-5"></a>  i &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb578-6"><a href="loops.html#cb578-6"></a>  </span>
-<span id="cb578-7"><a href="loops.html#cb578-7"></a>  <span class="co"># Use while loop to reach bound </span></span>
-<span id="cb578-8"><a href="loops.html#cb578-8"></a>  <span class="cf">while</span>(total <span class="op">&lt;=</span><span class="st"> </span>bound){</span>
-<span id="cb578-9"><a href="loops.html#cb578-9"></a>    i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb578-10"><a href="loops.html#cb578-10"></a>    total &lt;-<span class="st"> </span>total <span class="op">+</span><span class="st"> </span>i </span>
-<span id="cb578-11"><a href="loops.html#cb578-11"></a>  }</span>
-<span id="cb578-12"><a href="loops.html#cb578-12"></a>  <span class="kw">return</span>(i)</span>
-<span id="cb578-13"><a href="loops.html#cb578-13"></a>}</span>
-<span id="cb578-14"><a href="loops.html#cb578-14"></a></span>
-<span id="cb578-15"><a href="loops.html#cb578-15"></a><span class="kw">get_num</span>(<span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-</div>
-</div>
-<div id="additional-resources-5" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.7</span> Additional Resources<a href="loops.html#additional-resources-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="text-data" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 16</span> Text Data<a href="text-data.html#text-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this section we give an introduction to strings and string operations, how to extracting and manipulating string objects, and an introduction to general search methods.</p>
+<p>We have focus on character objects in particular because a lot of the “messy” data comes in character form. For example, web pages can be scraped, email can be analyzed for network properties and survey responses must be processed and compared. Even if you only care about numbers, it helps to be able to extract them from text and manipulate them easily.</p>
+<p>In general we will try to stick to the following distinction. However, many people will use the term “character” and “string” interchangeably.</p>
 <ul>
-<li><a href="https://bookdown.org/rdpeng/rprogdatascience/functions.html#the-...-argument">Chapter 13 of “R for Programming in Data Science”</a></li>
-<li>Videos:
-<ul>
-<li><a href="https://ucr.yuja.com/V/Video?v=2369000&amp;node=8488272&amp;a=151697133&amp;autoplay=1">Control Flow 6 | while loops</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368999&amp;node=8488271&amp;a=621919520&amp;autoplay=1">Control Flow 7 | while loops Bisection Method</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368998&amp;node=8488270&amp;a=1160986069&amp;autoplay=1">Control Flow 8 | infinite while loops</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368997&amp;node=8488269&amp;a=148930850&amp;autoplay=1">Control Flow 9 | for loop Intro</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368996&amp;node=8488268&amp;a=160173707&amp;autoplay=1">Control Flow 10 | break and next</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368995&amp;node=8488267&amp;a=316843892&amp;autoplay=1">Control Flow 11 | nested for loops</a></li>
-<li><a href="https://www.youtube.com/watch?v=HXNhEYqFo0o">Programming Loops vs. Recursion - Computerphile</a></li>
-</ul></li>
+<li><strong><em>Character</em></strong>: a symbol in a written language, specifically what you can enter at a keyboard: letters, numerals, punctuation, space, newlines, etc.</li>
 </ul>
+<pre><code>&#39;L&#39;, &#39;i&#39;, &#39;n&#39;, &#39;c&#39;, &#39;o&#39;, &#39;l&#39;</code></pre>
+<ul>
+<li><strong><em>String</em></strong>: a sequence of characters bound together</li>
+</ul>
+<pre><code>Lincoln</code></pre>
+<p>Note: R does not have a separate type for characters and strings</p>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="text-data.html#cb696-1"></a><span class="kw">class</span>(<span class="st">&quot;L&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="text-data.html#cb698-1"></a><span class="kw">class</span>(<span class="st">&quot;Lincoln&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div id="making-strings" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.1</span> Making Strings<a href="text-data.html#making-strings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use single or double quotes to construct a string, but in general its recommeded to use double quotes. This is because the R console showcases character strings in double quotes regardless of how the string was created, and sometimes we might have single or double quotes in the string itself.</p>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="text-data.html#cb700-1"></a><span class="st">&#39;Lincoln&#39;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Lincoln&quot;</code></pre>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="text-data.html#cb702-1"></a><span class="st">&quot;Lincoln&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Lincoln&quot;</code></pre>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="text-data.html#cb704-1"></a><span class="st">&quot;Abraham Lincoln&#39;s Hat&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Abraham Lincoln&#39;s Hat&quot;</code></pre>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="text-data.html#cb706-1"></a><span class="st">&quot;As Lincoln never said, &#39;Four score and seven beers ago&#39;&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;As Lincoln never said, &#39;Four score and seven beers ago&#39;&quot;</code></pre>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="text-data.html#cb708-1"></a><span class="st">&#39;As Lincoln never said, &quot;Four score and seven beers ago&quot;&#39;</span></span></code></pre></div>
+<pre><code>## [1] &quot;As Lincoln never said, \&quot;Four score and seven beers ago\&quot;&quot;</code></pre>
+<p>The space, <code>" "</code> is a character; so are multiple spaces <code>"   "</code> and the empty string, <code>""</code>.</p>
+<p>Some characters are special, so we have “escape characters” to specify them in strings.
+- quotes within strings: <code>\"</code>
+- tab: <code>\t</code>
+- new line <code>\n</code> and carriage return <code>\r</code> – use the former rather than the latter when possible.</p>
+<p>Recall that strings (or character objects) are one of the atomic data types, like <code>numeric</code> or <code>logical</code>. Thus strings can go into scalars, vectors, arrays, lists, or be the type of a column in a data frame. We can use the <code>nchar()</code> to get the length of a single string.</p>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="text-data.html#cb710-1"></a><span class="kw">length</span>(<span class="st">&quot;Abraham Lincoln&#39;s beard&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="text-data.html#cb712-1"></a><span class="kw">length</span>(<span class="kw">c</span>(<span class="st">&quot;Abraham&quot;</span>, <span class="st">&quot;Lincoln&#39;s&quot;</span>, <span class="st">&quot;beard&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="text-data.html#cb714-1"></a><span class="kw">nchar</span>(<span class="st">&quot;Abraham&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="text-data.html#cb716-1"></a><span class="kw">nchar</span>(<span class="st">&quot;Abraham Lincoln&#39;s beard&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 23</code></pre>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="text-data.html#cb718-1"></a><span class="kw">nchar</span>(<span class="kw">c</span>(<span class="st">&quot;Abraham&quot;</span>, <span class="st">&quot;Lincoln&#39;s&quot;</span>, <span class="st">&quot;beard&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] 7 9 5</code></pre>
+<p>We can use <code>print()</code> to display the string, and <code>cat()</code> is used to write the string directly to the console. If you’re debugging, <code>message()</code> is R’s preferred syntax.</p>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="text-data.html#cb720-1"></a>presidents =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Fillmore&quot;</span>,<span class="st">&quot;Pierce&quot;</span>,<span class="st">&quot;Buchanan&quot;</span>,<span class="st">&quot;Davis&quot;</span>,<span class="st">&quot;Johnson&quot;</span>)</span>
+<span id="cb720-2"><a href="text-data.html#cb720-2"></a></span>
+<span id="cb720-3"><a href="text-data.html#cb720-3"></a><span class="kw">print</span>(<span class="st">&quot;Abraham Lincoln&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Abraham Lincoln&quot;</code></pre>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="text-data.html#cb722-1"></a><span class="kw">cat</span>(<span class="st">&quot;Abraham Lincoln&quot;</span>)</span></code></pre></div>
+<pre><code>## Abraham Lincoln</code></pre>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="text-data.html#cb724-1"></a><span class="kw">cat</span>(presidents)</span></code></pre></div>
+<pre><code>## Fillmore Pierce Buchanan Davis Johnson</code></pre>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="text-data.html#cb726-1"></a><span class="kw">message</span>(presidents)</span></code></pre></div>
+<pre><code>## FillmorePierceBuchananDavisJohnson</code></pre>
+</div>
+<div id="substring-operations" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.2</span> Substring Operations<a href="text-data.html#substring-operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong><em>Substring</em></strong>: a smaller string from the big string, but still a string in its own right.</p>
+<p>A string is not a vector or a list, so we <strong><em>cannot</em></strong> use subscripts like <code>[[ ]]</code> or <code>[ ]</code> to extract substrings; we use <code>substr()</code> instead.</p>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="text-data.html#cb728-1"></a>phrase &lt;-<span class="st"> &quot;Christmas Bonus&quot;</span></span>
+<span id="cb728-2"><a href="text-data.html#cb728-2"></a><span class="kw">substr</span>(phrase, <span class="dt">start=</span><span class="dv">8</span>, <span class="dt">stop=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;as Bo&quot;</code></pre>
+<p>We can also use <code>substr</code> to replace elements:</p>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="text-data.html#cb730-1"></a><span class="kw">substr</span>(phrase, <span class="dv">13</span>, <span class="dv">13</span>) =<span class="st"> &quot;g&quot;</span></span>
+<span id="cb730-2"><a href="text-data.html#cb730-2"></a>phrase</span></code></pre></div>
+<pre><code>## [1] &quot;Christmas Bogus&quot;</code></pre>
+<p>The function <code>substr()</code> can also be used for vectors.</p>
+<p><code>substr()</code> vectorizes over all its arguments:</p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="text-data.html#cb732-1"></a>presidents</span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore&quot; &quot;Pierce&quot;   &quot;Buchanan&quot; &quot;Davis&quot;    &quot;Johnson&quot;</code></pre>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="text-data.html#cb734-1"></a><span class="kw">substr</span>(presidents,<span class="dv">1</span>,<span class="dv">2</span>)   <span class="co"># First two characters</span></span></code></pre></div>
+<pre><code>## [1] &quot;Fi&quot; &quot;Pi&quot; &quot;Bu&quot; &quot;Da&quot; &quot;Jo&quot;</code></pre>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="text-data.html#cb736-1"></a><span class="kw">substr</span>(presidents,<span class="kw">nchar</span>(presidents)<span class="op">-</span><span class="dv">1</span>,<span class="kw">nchar</span>(presidents))   <span class="co"># Last two</span></span></code></pre></div>
+<pre><code>## [1] &quot;re&quot; &quot;ce&quot; &quot;an&quot; &quot;is&quot; &quot;on&quot;</code></pre>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="text-data.html#cb738-1"></a><span class="kw">substr</span>(presidents,<span class="dv">20</span>,<span class="dv">21</span>)    <span class="co"># No such substrings so return the null string</span></span></code></pre></div>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="text-data.html#cb740-1"></a><span class="kw">substr</span>(presidents,<span class="dv">7</span>,<span class="dv">7</span>)      <span class="co"># Explain!</span></span></code></pre></div>
+<pre><code>## [1] &quot;r&quot; &quot;&quot;  &quot;a&quot; &quot;&quot;  &quot;n&quot;</code></pre>
+</div>
+<div id="dividing-strings-into-vectors" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.3</span> Dividing Strings into Vectors<a href="text-data.html#dividing-strings-into-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>strsplit()</code> divides a string according to key characters, by splitting each element of the character vector <code>x</code> at appearances of the pattern <code>split</code>.</p>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="text-data.html#cb742-1"></a>scarborough.fair =<span class="st"> &quot;parsley, sage, rosemary, thyme&quot;</span></span>
+<span id="cb742-2"><a href="text-data.html#cb742-2"></a><span class="kw">strsplit</span>(scarborough.fair, <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;parsley&quot;   &quot; sage&quot;     &quot; rosemary&quot; &quot; thyme&quot;</code></pre>
+<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="text-data.html#cb744-1"></a><span class="kw">strsplit</span>(scarborough.fair, <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;parsley&quot;  &quot;sage&quot;     &quot;rosemary&quot; &quot;thyme&quot;</code></pre>
+<p>Pattern is recycled over elements of the input vector:</p>
+<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="text-data.html#cb746-1"></a><span class="kw">strsplit</span> (<span class="kw">c</span>(scarborough.fair, <span class="st">&quot;Garfunkel, Oates&quot;</span>, <span class="st">&quot;Clement, McKenzie&quot;</span>), <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;parsley&quot;  &quot;sage&quot;     &quot;rosemary&quot; &quot;thyme&quot;   
+## 
+## [[2]]
+## [1] &quot;Garfunkel&quot; &quot;Oates&quot;    
+## 
+## [[3]]
+## [1] &quot;Clement&quot;  &quot;McKenzie&quot;</code></pre>
+<p>Note that it outputs a <code>list</code> of character vectors.</p>
+</div>
+<div id="converting-objects-into-strings" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.4</span> Converting Objects into Strings<a href="text-data.html#converting-objects-into-strings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Explicitly converting one variable type to another is called <strong><em>casting</em></strong>. Notice that the number “7.2e12” is printed as supplied, but “7.2e5” is not. This is because if a number is exceeding large, small, or close to zero, then R will by default use scientific notation for that number.</p>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="text-data.html#cb748-1"></a><span class="kw">as.character</span>(<span class="fl">7.2</span>)            <span class="co"># Obvious</span></span></code></pre></div>
+<pre><code>## [1] &quot;7.2&quot;</code></pre>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="text-data.html#cb750-1"></a><span class="kw">as.character</span>(<span class="fl">7.2e12</span>)         <span class="co"># Obvious</span></span></code></pre></div>
+<pre><code>## [1] &quot;7.2e+12&quot;</code></pre>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="text-data.html#cb752-1"></a><span class="kw">as.character</span>(<span class="kw">c</span>(<span class="fl">7.2</span>,<span class="fl">7.2e12</span>))  <span class="co"># Obvious</span></span></code></pre></div>
+<pre><code>## [1] &quot;7.2&quot;     &quot;7.2e+12&quot;</code></pre>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="text-data.html#cb754-1"></a><span class="kw">as.character</span>(<span class="fl">7.2e5</span>)          <span class="co"># Not quite so obvious</span></span></code></pre></div>
+<pre><code>## [1] &quot;720000&quot;</code></pre>
+</div>
+<div id="versatility-of-the-paste-function" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.5</span> Versatility of the paste() Function<a href="text-data.html#versatility-of-the-paste-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>paste()</code> function is very flexible. With one vector argument, works like <code>as.character()</code>.</p>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="text-data.html#cb756-1"></a><span class="kw">paste</span>(<span class="dv">41</span><span class="op">:</span><span class="dv">45</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;41&quot; &quot;42&quot; &quot;43&quot; &quot;44&quot; &quot;45&quot;</code></pre>
+<p>With 2 or more vector arguments, it combines them with recycling.</p>
+<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="text-data.html#cb758-1"></a><span class="kw">paste</span>(presidents,<span class="dv">41</span><span class="op">:</span><span class="dv">45</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore 41&quot; &quot;Pierce 42&quot;   &quot;Buchanan 43&quot; &quot;Davis 44&quot;    &quot;Johnson 45&quot;</code></pre>
+<div class="sourceCode" id="cb760"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb760-1"><a href="text-data.html#cb760-1"></a><span class="kw">paste</span>(presidents,<span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;D&quot;</span>))  <span class="co"># Not historically accurate!</span></span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore R&quot; &quot;Pierce D&quot;   &quot;Buchanan R&quot; &quot;Davis D&quot;    &quot;Johnson R&quot;</code></pre>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="text-data.html#cb762-1"></a><span class="kw">paste</span>(presidents,<span class="st">&quot;(&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;D&quot;</span>),<span class="dv">41</span><span class="op">:</span><span class="dv">45</span>,<span class="st">&quot;)&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore ( R 41 )&quot; &quot;Pierce ( D 42 )&quot;   &quot;Buchanan ( R 43 )&quot;
+## [4] &quot;Davis ( D 44 )&quot;    &quot;Johnson ( R 45 )&quot;</code></pre>
+<p>We can changing the separator between pasted-together terms.</p>
+<div class="sourceCode" id="cb764"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb764-1"><a href="text-data.html#cb764-1"></a><span class="kw">paste</span>(presidents, <span class="st">&quot; (&quot;</span>, <span class="dv">41</span><span class="op">:</span><span class="dv">45</span>, <span class="st">&quot;)&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore_ (_41_)&quot; &quot;Pierce_ (_42_)&quot;   &quot;Buchanan_ (_43_)&quot; &quot;Davis_ (_44_)&quot;   
+## [5] &quot;Johnson_ (_45_)&quot;</code></pre>
+<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="text-data.html#cb766-1"></a><span class="kw">paste</span>(presidents, <span class="st">&quot; (&quot;</span>, <span class="dv">41</span><span class="op">:</span><span class="dv">45</span>, <span class="st">&quot;)&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore (41)&quot; &quot;Pierce (42)&quot;   &quot;Buchanan (43)&quot; &quot;Davis (44)&quot;   
+## [5] &quot;Johnson (45)&quot;</code></pre>
+<p>We can also condense multiple strings together using the <code>collapse</code> argument.</p>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="text-data.html#cb768-1"></a><span class="kw">paste</span>(presidents, <span class="st">&quot; (&quot;</span>, <span class="dv">41</span><span class="op">:</span><span class="dv">45</span>, <span class="st">&quot;)&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>, <span class="dt">collapse=</span><span class="st">&quot;; &quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Fillmore (41); Pierce (42); Buchanan (43); Davis (44); Johnson (45)&quot;</code></pre>
+<p>Default value of <code>collapse</code> is <code>NULL</code> – that is, it won’t use it.</p>
+</div>
+<div id="gsub-sub" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.6</span> gsub , sub<a href="text-data.html#gsub-sub" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>gsub is all occurances, and sub is first occurance.</p>
+</div>
+<div id="text-of-some-importance" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.7</span> Text of Some Importance<a href="text-data.html#text-of-some-importance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider the following quote from Abraham Lincoln. Often times we will want to study or analyze a block of text. To</p>
+<blockquote>
+<p>“If we shall suppose that American slavery is one of those
+offenses which, in the providence of God, must needs come, but which, having
+continued through His appointed time, He now wills to remove, and that He
+gives to both North and South this terrible war as the woe due to those by
+whom the offense came, shall we discern therein any departure from those
+divine attributes which the believers in a living God always ascribe to Him?
+Fondly do we hope, fervently do we pray, that this mighty scourge of war may
+speedily pass away. Yet, if God wills that it continue until all the wealth
+piled by the bondsman’s two hundred and fifty years of unrequited toil shall
+be sunk, and until every drop of blood drawn with the lash shall be paid by
+another drawn with the sword, as was said three thousand years ago, so still
+it must be said”the judgments of the Lord are true and righteous
+altogether."</p>
+</blockquote>
+<p>We can read in the file with the following commands.</p>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb770-1"><a href="text-data.html#cb770-1"></a>the_url &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/rpkgarcia/LearnRBook/main/data_sets/al1.txt&quot;</span></span>
+<span id="cb770-2"><a href="text-data.html#cb770-2"></a>al1 &lt;-<span class="st"> </span><span class="kw">readLines</span>(the_url, <span class="dt">warn =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb770-3"><a href="text-data.html#cb770-3"></a></span>
+<span id="cb770-4"><a href="text-data.html#cb770-4"></a><span class="co"># How many lines in the file </span></span>
+<span id="cb770-5"><a href="text-data.html#cb770-5"></a><span class="kw">length</span>(al1)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="text-data.html#cb772-1"></a><span class="co"># See the object</span></span>
+<span id="cb772-2"><a href="text-data.html#cb772-2"></a>al1</span></code></pre></div>
+<pre><code>## [1] &quot;If we shall suppose that American slavery is one of those offenses which, in the providence of God, must needs come, but which, having continued through His appointed time, He now wills to remove, and that He gives to both North and South this terrible war as the woe due to those by whom the offense came, shall we discern therein any departure from those divine attributes which the believers in a living God always ascribe to Him? Fondly do we hope, fervently do we pray, that this mighty scourge of war may speedily pass away. Yet, if God wills that it continue until all the wealth piled by the bondsman’s two hundred and fifty years of unrequited toil shall be sunk, and until every drop of blood drawn with the lash shall be paid by another drawn with the sword, as was said three thousand years ago, so still it must be said “the judgments of the Lord are true and righteous altogether”.&quot;</code></pre>
+<p>Lets create a new vector where each element is a portion of text seperated by a comman “,”.</p>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="text-data.html#cb774-1"></a>al1.phrases &lt;-<span class="st"> </span><span class="kw">strsplit</span>(al1, <span class="st">&quot;,&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb774-2"><a href="text-data.html#cb774-2"></a>al1.phrases </span></code></pre></div>
+<pre><code>##  [1] &quot;If we shall suppose that American slavery is one of those offenses which&quot;                                                                         
+##  [2] &quot; in the providence of God&quot;                                                                                                                        
+##  [3] &quot; must needs come&quot;                                                                                                                                 
+##  [4] &quot; but which&quot;                                                                                                                                       
+##  [5] &quot; having continued through His appointed time&quot;                                                                                                     
+##  [6] &quot; He now wills to remove&quot;                                                                                                                          
+##  [7] &quot; and that He gives to both North and South this terrible war as the woe due to those by whom the offense came&quot;                                    
+##  [8] &quot; shall we discern therein any departure from those divine attributes which the believers in a living God always ascribe to Him? Fondly do we hope&quot;
+##  [9] &quot; fervently do we pray&quot;                                                                                                                            
+## [10] &quot; that this mighty scourge of war may speedily pass away. Yet&quot;                                                                                     
+## [11] &quot; if God wills that it continue until all the wealth piled by the bondsman’s two hundred and fifty years of unrequited toil shall be sunk&quot;         
+## [12] &quot; and until every drop of blood drawn with the lash shall be paid by another drawn with the sword&quot;                                                 
+## [13] &quot; as was said three thousand years ago&quot;                                                                                                            
+## [14] &quot; so still it must be said “the judgments of the Lord are true and righteous altogether”.&quot;</code></pre>
+</div>
+<div id="search" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.8</span> Search<a href="text-data.html#search" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can search through text strings for certain patterns. Some particularly helpful functions for doing this are <code>grep()</code> and <code>grepl()</code>. The <code>grep()</code> function</p>
+<p>Narrowing down entries: use <code>grep()</code> to find which strings have a matching search term</p>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="text-data.html#cb776-1"></a><span class="co"># Returns indices for which element in al1 has the term &quot;God&quot;</span></span>
+<span id="cb776-2"><a href="text-data.html#cb776-2"></a><span class="kw">grep</span>(<span class="st">&quot;God&quot;</span>, al1.phrases)</span></code></pre></div>
+<pre><code>## [1]  2  8 11</code></pre>
+<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="text-data.html#cb778-1"></a><span class="co"># Returns T/F values for which indices have the term &quot;God&quot; </span></span>
+<span id="cb778-2"><a href="text-data.html#cb778-2"></a><span class="kw">grepl</span>(<span class="st">&quot;God&quot;</span>, al1.phrases)</span></code></pre></div>
+<pre><code>##  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
+## [13] FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="text-data.html#cb780-1"></a><span class="co"># Returns the the elements in al1 that have the term &quot;God&quot; </span></span>
+<span id="cb780-2"><a href="text-data.html#cb780-2"></a>al1.phrases[<span class="kw">grep</span>(<span class="st">&quot;God&quot;</span>, al1.phrases)]</span></code></pre></div>
+<pre><code>## [1] &quot; in the providence of God&quot;                                                                                                                        
+## [2] &quot; shall we discern therein any departure from those divine attributes which the believers in a living God always ascribe to Him? Fondly do we hope&quot;
+## [3] &quot; if God wills that it continue until all the wealth piled by the bondsman’s two hundred and fifty years of unrequited toil shall be sunk&quot;</code></pre>
+</div>
+<div id="word-count-tables" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.9</span> Word Count Tables<a href="text-data.html#word-count-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now lets break up the data set by spaces. We do this in hopes that it will separate each word as an element.</p>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="text-data.html#cb782-1"></a>al1.words &lt;-<span class="st"> </span><span class="kw">strsplit</span>(al1, <span class="dt">split=</span><span class="st">&quot; &quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb782-2"><a href="text-data.html#cb782-2"></a><span class="kw">head</span>(al1.words)</span></code></pre></div>
+<pre><code>## [1] &quot;If&quot;       &quot;we&quot;       &quot;shall&quot;    &quot;suppose&quot;  &quot;that&quot;     &quot;American&quot;</code></pre>
+<p>We can now tabulate how often each word appears using the <code>table()</code> function. Then we can sort the frequencies in order using <code>sort()</code>.</p>
+<div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="text-data.html#cb784-1"></a>wc &lt;-<span class="st"> </span><span class="kw">table</span>(al1.words)</span>
+<span id="cb784-2"><a href="text-data.html#cb784-2"></a>wc &lt;-<span class="st"> </span><span class="kw">sort</span>(wc, <span class="dt">decreasing=</span><span class="ot">TRUE</span>)</span>
+<span id="cb784-3"><a href="text-data.html#cb784-3"></a><span class="kw">head</span>(wc, <span class="dv">250</span>)</span></code></pre></div>
+<pre><code>## al1.words
+##          the           of          and        shall         that           to 
+##            9            6            5            4            4            4 
+##           we           be           by        those           as           do 
+##            4            3            3            3            2            2 
+##        drawn          God           He           in           it         must 
+##            2            2            2            2            2            2 
+##         said         this        until          war       which,        wills 
+##            2            2            2            2            2            2 
+##         with        years         “the            a         ago,          all 
+##            2            2            1            1            1            1 
+## altogether”.       always     American      another          any    appointed 
+##            1            1            1            1            1            1 
+##          are      ascribe   attributes        away.    believers        blood 
+##            1            1            1            1            1            1 
+##   bondsman’s         both          but        came,        come,     continue 
+##            1            1            1            1            1            1 
+##    continued    departure      discern       divine         drop          due 
+##            1            1            1            1            1            1 
+##        every    fervently        fifty       Fondly         from        gives 
+##            1            1            1            1            1            1 
+##         God,       having         Him?          His        hope,      hundred 
+##            1            1            1            1            1            1 
+##           if           If           is    judgments         lash       living 
+##            1            1            1            1            1            1 
+##         Lord          may       mighty        needs        North          now 
+##            1            1            1            1            1            1 
+##      offense     offenses          one         paid         pass        piled 
+##            1            1            1            1            1            1 
+##        pray,   providence      remove,    righteous      scourge      slavery 
+##            1            1            1            1            1            1 
+##           so        South     speedily        still        sunk,      suppose 
+##            1            1            1            1            1            1 
+##       sword,     terrible      therein     thousand        three      through 
+##            1            1            1            1            1            1 
+##        time,         toil         true          two   unrequited          was 
+##            1            1            1            1            1            1 
+##       wealth        which         whom          woe         Yet, 
+##            1            1            1            1            1</code></pre>
+<p>Notice that punctuation using these methods is still present.</p>
+<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb786-1"><a href="text-data.html#cb786-1"></a><span class="co"># These are different</span></span>
+<span id="cb786-2"><a href="text-data.html#cb786-2"></a>wc[<span class="st">&quot;He&quot;</span>] <span class="co"># exists</span></span></code></pre></div>
+<pre><code>## He 
+##  2</code></pre>
+<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="text-data.html#cb788-1"></a>wc[<span class="st">&quot;he&quot;</span>] <span class="co"># does not exist</span></span></code></pre></div>
+<pre><code>## &lt;NA&gt; 
+##   NA</code></pre>
+<p>In addition, all our words and string subsets are case sensitive.</p>
+<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="text-data.html#cb790-1"></a><span class="co"># What happens when we look for a word that is not in our </span></span>
+<span id="cb790-2"><a href="text-data.html#cb790-2"></a><span class="co"># word count table? </span></span>
+<span id="cb790-3"><a href="text-data.html#cb790-3"></a></span>
+<span id="cb790-4"><a href="text-data.html#cb790-4"></a><span class="kw">which</span>(<span class="kw">names</span>(wc)  <span class="op">==</span><span class="st"> &quot;That&quot;</span>)</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="text-data.html#cb792-1"></a>wc[<span class="st">&quot;That&quot;</span>]</span></code></pre></div>
+<pre><code>## &lt;NA&gt; 
+##   NA</code></pre>
 
 </div>
 </div>
@@ -691,8 +715,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="extending-base-r-graphics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="simulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="apply.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -724,7 +748,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-loops.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/16-text-analysis.Rmd",
 "text": "Edit"
 },
 "history": {

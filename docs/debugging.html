@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Loops | STAT 107 Outline of Class Notes</title>
+  <title>Chapter 18 Debugging | STAT 107 Outline of Class Notes</title>
   <meta name="description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Loops | STAT 107 Outline of Class Notes" />
+  <meta property="og:title" content="Chapter 18 Debugging | STAT 107 Outline of Class Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rpkgarcia.github.io/stat107_summer2022notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Loops | STAT 107 Outline of Class Notes" />
+  <meta name="twitter:title" content="Chapter 18 Debugging | STAT 107 Outline of Class Notes" />
   
   <meta name="twitter:description" content="Course notes for UCR’s STAT 107. An introduction to programming in R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="extending-base-r-graphics.html"/>
-<link rel="next" href="simulation.html"/>
+<link rel="prev" href="apply.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -432,258 +432,286 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loops" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 12</span> Loops<a href="loops.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Loops are another type of control flow structure. They dictate how many times a series of commands should be run. There are two type of loops, a <code>while</code> loop and a <code>for</code> loop. These two loops operate similarly and are found in other programming languages such as <code>C</code> and <code>Python</code>.</p>
-<div id="while-loop" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.1</span> While Loop<a href="loops.html#while-loop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A <code>while</code> loop is used when you want to perform a task indefinitely, until a particular condition is met. It’s a condition-controlled loop.</p>
-<p><img src="images/WhileLoop.png" width="522" style="display: block; margin: auto;" /></p>
-<p>The loop will continue until the condition is <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="loops.html#cb555-1"></a>x =<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb555-2"><a href="loops.html#cb555-2"></a></span>
-<span id="cb555-3"><a href="loops.html#cb555-3"></a><span class="co"># If statement is true, keep running the loop </span></span>
-<span id="cb555-4"><a href="loops.html#cb555-4"></a><span class="cf">while</span> (x <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) {</span>
-<span id="cb555-5"><a href="loops.html#cb555-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb555-6"><a href="loops.html#cb555-6"></a>  x =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb555-7"><a href="loops.html#cb555-7"></a>}</span></code></pre></div>
-<pre><code>## [1] 5
-## [1] 4
-## [1] 3
-## [1] 2
-## [1] 1</code></pre>
-<p>If the condition is false at the start, the while loop will never be executed at all.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="loops.html#cb557-1"></a>x =<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb557-2"><a href="loops.html#cb557-2"></a></span>
-<span id="cb557-3"><a href="loops.html#cb557-3"></a><span class="co"># If statement starts as TRUE,  the loop will never run </span></span>
-<span id="cb557-4"><a href="loops.html#cb557-4"></a><span class="cf">while</span> (x <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) {</span>
-<span id="cb557-5"><a href="loops.html#cb557-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb557-6"><a href="loops.html#cb557-6"></a>  x =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb557-7"><a href="loops.html#cb557-7"></a>}</span></code></pre></div>
-</div>
-<div id="for-loops" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.2</span> For Loops<a href="loops.html#for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>for</code> statement in R is a bit different from what you usually use in other programming languages. Rather than iterating over a numeric progression, R’s <code>for</code> statement iterates over the items of a vector or a list. The items are iterated in the order that they appear in the vector.</p>
-<p><img src="images/ForLoop.png" width="580" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="loops.html#cb558-1"></a><span class="co"># Iterate through a vector</span></span>
-<span id="cb558-2"><a href="loops.html#cb558-2"></a>colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>)</span>
-<span id="cb558-3"><a href="loops.html#cb558-3"></a></span>
-<span id="cb558-4"><a href="loops.html#cb558-4"></a><span class="cf">for</span> (x <span class="cf">in</span> colors) {</span>
-<span id="cb558-5"><a href="loops.html#cb558-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb558-6"><a href="loops.html#cb558-6"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;red&quot;
-## [1] &quot;green&quot;
-## [1] &quot;blue&quot;
-## [1] &quot;yellow&quot;</code></pre>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="loops.html#cb560-1"></a>lst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="fl">3.14</span>, <span class="st">&quot;Hi&quot;</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb560-2"><a href="loops.html#cb560-2"></a></span>
-<span id="cb560-3"><a href="loops.html#cb560-3"></a><span class="cf">for</span> (i <span class="cf">in</span> lst) {</span>
-<span id="cb560-4"><a href="loops.html#cb560-4"></a>  <span class="kw">print</span>(i)</span>
-<span id="cb560-5"><a href="loops.html#cb560-5"></a>}</span></code></pre></div>
-<pre><code>## [1] 3.14
-## [1] &quot;Hi&quot;
-## [1] 1 2 3</code></pre>
-<p>If you need to execute a group of statements for a specified number of times, use sequence operator : or built-in function <code>seq()</code>.</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="loops.html#cb562-1"></a><span class="co"># Print &#39;Hello!&#39; 3 times</span></span>
-<span id="cb562-2"><a href="loops.html#cb562-2"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
-<span id="cb562-3"><a href="loops.html#cb562-3"></a>  <span class="kw">print</span>(<span class="st">&quot;Hello!&quot;</span>)</span>
-<span id="cb562-4"><a href="loops.html#cb562-4"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;Hello!&quot;
-## [1] &quot;Hello!&quot;
-## [1] &quot;Hello!&quot;</code></pre>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="loops.html#cb564-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">2</span>,<span class="dt">to=</span><span class="dv">8</span>,<span class="dt">by=</span><span class="dv">2</span>)) {</span>
-<span id="cb564-2"><a href="loops.html#cb564-2"></a>  <span class="kw">print</span>(x<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb564-3"><a href="loops.html#cb564-3"></a>}</span></code></pre></div>
-<pre><code>## [1] 4
-## [1] 16
-## [1] 36
-## [1] 64</code></pre>
-</div>
-<div id="break" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.3</span> Break<a href="loops.html#break" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>break</code> statement is used to exit the loop immediately. It simply jumps out of the loop altogether, and the program continues after the loop.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="loops.html#cb566-1"></a>x &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb566-2"><a href="loops.html#cb566-2"></a></span>
-<span id="cb566-3"><a href="loops.html#cb566-3"></a><span class="co"># If statement starts as TRUE,  the loop will never run </span></span>
-<span id="cb566-4"><a href="loops.html#cb566-4"></a><span class="cf">while</span> (x <span class="op">!=</span><span class="st"> </span><span class="dv">0</span> ) {</span>
-<span id="cb566-5"><a href="loops.html#cb566-5"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb566-6"><a href="loops.html#cb566-6"></a>  x =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb566-7"><a href="loops.html#cb566-7"></a>  </span>
-<span id="cb566-8"><a href="loops.html#cb566-8"></a>  <span class="cf">if</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>){</span>
-<span id="cb566-9"><a href="loops.html#cb566-9"></a>    <span class="kw">print</span>(<span class="st">&quot;Entered IF statement, stop loop&quot;</span>)</span>
-<span id="cb566-10"><a href="loops.html#cb566-10"></a>    <span class="cf">break</span> </span>
-<span id="cb566-11"><a href="loops.html#cb566-11"></a>  }</span>
-<span id="cb566-12"><a href="loops.html#cb566-12"></a>  </span>
-<span id="cb566-13"><a href="loops.html#cb566-13"></a>}</span></code></pre></div>
-<pre><code>## [1] 5
-## [1] 4
-## [1] 3
-## [1] &quot;Entered IF statement, stop loop&quot;</code></pre>
-<p><strong>If not given an adequate stopping criteria or break statement the loop will continue forever.</strong> For example, if we started the above examples at <code>x = -2</code>. The <code>break</code> statement is particularly important for the <code>while</code> loop.</p>
-<p>The <code>break</code> statement can also be used in a <code>for</code> loop. It simply jumps out of the loop altogether, and the program continues after the loop.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="loops.html#cb568-1"></a>colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>)</span>
-<span id="cb568-2"><a href="loops.html#cb568-2"></a><span class="cf">for</span> (x <span class="cf">in</span> colors) {</span>
-<span id="cb568-3"><a href="loops.html#cb568-3"></a>  <span class="cf">if</span> (x <span class="op">==</span><span class="st"> &quot;blue&quot;</span>){</span>
-<span id="cb568-4"><a href="loops.html#cb568-4"></a>       <span class="cf">break</span> </span>
-<span id="cb568-5"><a href="loops.html#cb568-5"></a>  }</span>
-<span id="cb568-6"><a href="loops.html#cb568-6"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb568-7"><a href="loops.html#cb568-7"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;red&quot;
-## [1] &quot;green&quot;</code></pre>
-<p>The <code>for</code> loops do not have the same risk of “running forever”, like <code>while</code> loops have.</p>
-</div>
-<div id="next" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.4</span> Next<a href="loops.html#next" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can also use the <code>next</code> command in both <code>for</code> loops and <code>while</code> loops in order to skip executing a command.</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="loops.html#cb570-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb570-2"><a href="loops.html#cb570-2"></a>  </span>
-<span id="cb570-3"><a href="loops.html#cb570-3"></a>  i &lt;-<span class="st"> </span>i<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb570-4"><a href="loops.html#cb570-4"></a>  </span>
-<span id="cb570-5"><a href="loops.html#cb570-5"></a>  <span class="cf">if</span>(i <span class="op">&lt;</span><span class="dv">5</span>){</span>
-<span id="cb570-6"><a href="loops.html#cb570-6"></a>    <span class="cf">next</span></span>
-<span id="cb570-7"><a href="loops.html#cb570-7"></a>  }</span>
-<span id="cb570-8"><a href="loops.html#cb570-8"></a>  </span>
-<span id="cb570-9"><a href="loops.html#cb570-9"></a>  <span class="kw">print</span>(i)</span>
-<span id="cb570-10"><a href="loops.html#cb570-10"></a>}</span></code></pre></div>
-<pre><code>## [1] 9
-## [1] 16
-## [1] 25
-## [1] 36
-## [1] 49
-## [1] 64
-## [1] 81
-## [1] 100</code></pre>
-<p>The code inside the loop will run until it reaches the <code>next</code> statement. Once</p>
-</div>
-<div id="nested-loops" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.5</span> Nested Loops<a href="loops.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can also create loops within loops. We refer to creating loops within other loops as a nested loop.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="loops.html#cb572-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb572-2"><a href="loops.html#cb572-2"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</span>
-<span id="cb572-3"><a href="loops.html#cb572-3"></a>    statement =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;i=&quot;</span>, i, <span class="st">&quot;, j=&quot;</span>, j)</span>
-<span id="cb572-4"><a href="loops.html#cb572-4"></a>    <span class="kw">print</span>(statement)</span>
-<span id="cb572-5"><a href="loops.html#cb572-5"></a>  }</span>
-<span id="cb572-6"><a href="loops.html#cb572-6"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;i= 1 , j= 1&quot;
-## [1] &quot;i= 1 , j= 2&quot;
-## [1] &quot;i= 1 , j= 3&quot;
-## [1] &quot;i= 2 , j= 1&quot;
-## [1] &quot;i= 2 , j= 2&quot;
-## [1] &quot;i= 2 , j= 3&quot;
-## [1] &quot;i= 3 , j= 1&quot;
-## [1] &quot;i= 3 , j= 2&quot;
-## [1] &quot;i= 3 , j= 3&quot;
-## [1] &quot;i= 4 , j= 1&quot;
-## [1] &quot;i= 4 , j= 2&quot;
-## [1] &quot;i= 4 , j= 3&quot;
-## [1] &quot;i= 5 , j= 1&quot;
-## [1] &quot;i= 5 , j= 2&quot;
-## [1] &quot;i= 5 , j= 3&quot;
-## [1] &quot;i= 6 , j= 1&quot;
-## [1] &quot;i= 6 , j= 2&quot;
-## [1] &quot;i= 6 , j= 3&quot;
-## [1] &quot;i= 7 , j= 1&quot;
-## [1] &quot;i= 7 , j= 2&quot;
-## [1] &quot;i= 7 , j= 3&quot;
-## [1] &quot;i= 8 , j= 1&quot;
-## [1] &quot;i= 8 , j= 2&quot;
-## [1] &quot;i= 8 , j= 3&quot;
-## [1] &quot;i= 9 , j= 1&quot;
-## [1] &quot;i= 9 , j= 2&quot;
-## [1] &quot;i= 9 , j= 3&quot;
-## [1] &quot;i= 10 , j= 1&quot;
-## [1] &quot;i= 10 , j= 2&quot;
-## [1] &quot;i= 10 , j= 3&quot;</code></pre>
-<p>Here is an example of a nested loop which changes the elements of matrix to be the product of the row and column location.</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="loops.html#cb574-1"></a>my_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb574-2"><a href="loops.html#cb574-2"></a></span>
-<span id="cb574-3"><a href="loops.html#cb574-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(my_matrix)){</span>
-<span id="cb574-4"><a href="loops.html#cb574-4"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(my_matrix)){</span>
-<span id="cb574-5"><a href="loops.html#cb574-5"></a>    my_matrix[i,j] =<span class="st"> </span>i<span class="op">*</span>j</span>
-<span id="cb574-6"><a href="loops.html#cb574-6"></a>  }</span>
-<span id="cb574-7"><a href="loops.html#cb574-7"></a>}</span>
-<span id="cb574-8"><a href="loops.html#cb574-8"></a></span>
-<span id="cb574-9"><a href="loops.html#cb574-9"></a>my_matrix</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    2    3    4    5
-## [2,]    2    4    6    8   10
-## [3,]    3    6    9   12   15
-## [4,]    4    8   12   16   20
-## [5,]    5   10   15   20   25</code></pre>
-</div>
-<div id="examples-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.6</span> Examples<a href="loops.html#examples-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A few more examples.</p>
-<div id="example-1" class="section level3 hasAnchor">
-<h3><span class="header-section-number">12.6.1</span> Example 1<a href="loops.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Below we create a function that has only one argument, <code>vec</code>, an arbitrary numeric vector. This function create a new vector containing all elements in <code>vec</code> whole numbers, and returns this new vector. If there are no whole numbers in <code>vec</code>, then it returns <code>NA</code>.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="loops.html#cb576-1"></a><span class="co"># Create a subset of x which only contains whole numbers</span></span>
-<span id="cb576-2"><a href="loops.html#cb576-2"></a><span class="co"># ARGUMENTS: vec, a numeric vector </span></span>
-<span id="cb576-3"><a href="loops.html#cb576-3"></a><span class="co"># RETURNS: whole_vec, a vector containing all whole numbers</span></span>
-<span id="cb576-4"><a href="loops.html#cb576-4"></a><span class="co">#                   will equal NA if there are no whole numbers</span></span>
-<span id="cb576-5"><a href="loops.html#cb576-5"></a>whole_num &lt;-<span class="st"> </span><span class="cf">function</span>(vec){</span>
-<span id="cb576-6"><a href="loops.html#cb576-6"></a>  </span>
-<span id="cb576-7"><a href="loops.html#cb576-7"></a>  <span class="co"># Initialize whole_vec</span></span>
-<span id="cb576-8"><a href="loops.html#cb576-8"></a>  whole_vec &lt;-<span class="ot">NULL</span></span>
-<span id="cb576-9"><a href="loops.html#cb576-9"></a>  </span>
-<span id="cb576-10"><a href="loops.html#cb576-10"></a>  <span class="co"># For loop, go through each element in vec </span></span>
-<span id="cb576-11"><a href="loops.html#cb576-11"></a>  <span class="cf">for</span>(i <span class="cf">in</span> vec){</span>
-<span id="cb576-12"><a href="loops.html#cb576-12"></a>    <span class="cf">if</span>( i <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(i)){</span>
-<span id="cb576-13"><a href="loops.html#cb576-13"></a>      whole_vec &lt;-<span class="st"> </span><span class="kw">c</span>(whole_vec, i)</span>
-<span id="cb576-14"><a href="loops.html#cb576-14"></a>    } </span>
-<span id="cb576-15"><a href="loops.html#cb576-15"></a>  }</span>
-<span id="cb576-16"><a href="loops.html#cb576-16"></a>  </span>
-<span id="cb576-17"><a href="loops.html#cb576-17"></a>  <span class="co"># Check to make sure there was at least one whole number</span></span>
-<span id="cb576-18"><a href="loops.html#cb576-18"></a>  <span class="cf">if</span>(<span class="kw">length</span>(whole_vec)<span class="op">==</span><span class="dv">0</span>){</span>
-<span id="cb576-19"><a href="loops.html#cb576-19"></a>    whole_vec =<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb576-20"><a href="loops.html#cb576-20"></a>  }</span>
-<span id="cb576-21"><a href="loops.html#cb576-21"></a>  </span>
-<span id="cb576-22"><a href="loops.html#cb576-22"></a>  <span class="kw">return</span>(whole_vec)</span>
-<span id="cb576-23"><a href="loops.html#cb576-23"></a>}</span>
-<span id="cb576-24"><a href="loops.html#cb576-24"></a></span>
-<span id="cb576-25"><a href="loops.html#cb576-25"></a></span>
-<span id="cb576-26"><a href="loops.html#cb576-26"></a><span class="co"># Test case </span></span>
-<span id="cb576-27"><a href="loops.html#cb576-27"></a>tester &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="fl">5.5</span>, <span class="fl">10.8</span>, pi, <span class="dv">62</span>)</span>
-<span id="cb576-28"><a href="loops.html#cb576-28"></a><span class="kw">whole_num</span>(tester)  <span class="co"># Should return 1, 3, 62</span></span></code></pre></div>
-<pre><code>## [1]  1  3 62</code></pre>
-</div>
-<div id="example-2" class="section level3 hasAnchor">
-<h3><span class="header-section-number">12.6.2</span> Example 2<a href="loops.html#example-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Below we create a function that has only one argument, <code>bound</code>, a numeric object of length one. This function returns the minimum number of subsequent whole numbers (starting from 1) that must be added together in order to reach (or surpass) <code>bound</code>. For example, suppose <code>bound=16</code>. Then <code>1+2+3+4+5 = 15</code>, and <code>1+2+3+4+5+6 = 21</code>. Thus, the function would return <code>6</code>.</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="loops.html#cb578-1"></a>get_num &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">bound =</span> <span class="dv">16</span>){</span>
-<span id="cb578-2"><a href="loops.html#cb578-2"></a>  </span>
-<span id="cb578-3"><a href="loops.html#cb578-3"></a>  <span class="co"># Initialize values</span></span>
-<span id="cb578-4"><a href="loops.html#cb578-4"></a>  total &lt;-<span class="st"> </span><span class="dv">0</span> </span>
-<span id="cb578-5"><a href="loops.html#cb578-5"></a>  i &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb578-6"><a href="loops.html#cb578-6"></a>  </span>
-<span id="cb578-7"><a href="loops.html#cb578-7"></a>  <span class="co"># Use while loop to reach bound </span></span>
-<span id="cb578-8"><a href="loops.html#cb578-8"></a>  <span class="cf">while</span>(total <span class="op">&lt;=</span><span class="st"> </span>bound){</span>
-<span id="cb578-9"><a href="loops.html#cb578-9"></a>    i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb578-10"><a href="loops.html#cb578-10"></a>    total &lt;-<span class="st"> </span>total <span class="op">+</span><span class="st"> </span>i </span>
-<span id="cb578-11"><a href="loops.html#cb578-11"></a>  }</span>
-<span id="cb578-12"><a href="loops.html#cb578-12"></a>  <span class="kw">return</span>(i)</span>
-<span id="cb578-13"><a href="loops.html#cb578-13"></a>}</span>
-<span id="cb578-14"><a href="loops.html#cb578-14"></a></span>
-<span id="cb578-15"><a href="loops.html#cb578-15"></a><span class="kw">get_num</span>(<span class="dv">15</span>)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-</div>
-</div>
-<div id="additional-resources-5" class="section level2 hasAnchor">
-<h2><span class="header-section-number">12.7</span> Additional Resources<a href="loops.html#additional-resources-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="debugging" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 18</span> Debugging<a href="debugging.html#debugging" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="images/moth.png" width="25%" style="display: block; margin: auto;" /></p>
+<div id="debugging-background-history-types-of-bugs-challenges-to-consider" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.1</span> Debugging Background (History, Types of Bugs, Challenges to Consider)<a href="debugging.html#debugging-background-history-types-of-bugs-challenges-to-consider" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Debugging is the process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system.</p>
+<p>History of the term:</p>
 <ul>
-<li><a href="https://bookdown.org/rdpeng/rprogdatascience/functions.html#the-...-argument">Chapter 13 of “R for Programming in Data Science”</a></li>
-<li>Videos:
+<li><p>Admiral Grace Hopper used the term while working on a Mark II computer at Harvard University in the 1940s , her associates discovered a moth stuck in a relay which prevented it from working, whereupon she remarked that they were ‘debugging’ the system.</p></li>
+<li><p>The term ‘bug’, in the sense of ‘technical error’, dates back at least to 1878 with Thomas Edison.</p></li>
+<li><p>‘Debugging’ used in reference to airplane engine testing in 1945.</p></li>
+</ul>
+<p>Debugging ranges in complexity from fixing simple errors to performing lengthy and tiresome tasks. Certain programs make debugging easier with built in functions, warning messages, and error messages. Warning/error messages often only reveal the presence of problems, but doesn’t tell us what the problems are, or how the code needs to be fixed. <strong>In other words, testing reveals the effects (or symptoms) of errors, not the cause of errors.</strong></p>
+<p>When a human or animal is sick or in pain, they go see a doctor. They tell the doctor what are the issues they are experiencing: a headache, a pain in their leg, sneezing, etc. The doctor takes this information, they may do additional tests or an exam, and then the doctor determines the problem. Once the doctor determines the problem, a treatment is recommended. Debugging is similar to this process, where R (or your computer) is the patient, and you (the programmer) are the doctor. R will give the programmer an error or warning message telling you were the compiler had an issue executing the commands. This message may not actually be the route of the problem though. For example, sometimes a patient goes to the doctor complaining of a pain in their leg, but the doctor determines that it is their back that is injured and a muscle connected to their back is causing the pain. When R gives you this warning or error message, it is describing a <strong>symptom</strong>, not the actual problem. It is your job to determine the problem, and then determine the solution (or the treatment). Often times knowing the symptom is not enough to determine the problem or the solution, which we see in the medical practice as well. Additional tests or further analysis is needed. We can use the debugging strategies described below which can help us further determine what the problem is.</p>
+<p>We will focus on techniques in R, but several of these techniques and be generalized to other languages.</p>
+<div id="types-of-bugs" class="section level3 unnumbered hasAnchor">
+<h3>Types of bugs<a href="debugging.html#types-of-bugs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><a href="https://ucr.yuja.com/V/Video?v=2369000&amp;node=8488272&amp;a=151697133&amp;autoplay=1">Control Flow 6 | while loops</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368999&amp;node=8488271&amp;a=621919520&amp;autoplay=1">Control Flow 7 | while loops Bisection Method</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368998&amp;node=8488270&amp;a=1160986069&amp;autoplay=1">Control Flow 8 | infinite while loops</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368997&amp;node=8488269&amp;a=148930850&amp;autoplay=1">Control Flow 9 | for loop Intro</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368996&amp;node=8488268&amp;a=160173707&amp;autoplay=1">Control Flow 10 | break and next</a></li>
-<li><a href="https://ucr.yuja.com/V/Video?v=2368995&amp;node=8488267&amp;a=316843892&amp;autoplay=1">Control Flow 11 | nested for loops</a></li>
-<li><a href="https://www.youtube.com/watch?v=HXNhEYqFo0o">Programming Loops vs. Recursion - Computerphile</a></li>
-</ul></li>
+<li><p><strong>Syntax or type errors</strong>. Wrong spelling or punctuation. Example: forgetting a semi-colon or not starting a new line of code.</p></li>
+<li><p><strong>Typos</strong>. Missing parentheses, order of operations, wrong object name. Often caught by compilers.</p></li>
+<li><p><strong>Implementation errors</strong>. Inputting the wrong data type into a function.</p></li>
+<li><p><strong>Logical errors</strong>. Algorithm/function does not work on all cases. Logical flaw in design or structure. Hard to detect.</p></li>
+</ul>
+</div>
+<div id="debugging-process-difficulties" class="section level3 unnumbered hasAnchor">
+<h3>Debugging Process Difficulties<a href="debugging.html#debugging-process-difficulties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><strong>The symptoms may not give clear indications about the cause</strong>. Error/Warning messages may not give a clear indication of true problem.</p></li>
+<li><p><strong>Symptoms may be difficult to reproduce</strong>. Symptoms or errors maybe different or nonexistent in different settings.</p></li>
+<li><p><strong>Errors may be correlated</strong>. Same error may have multiple symptoms. Addressing one symptom without addressing the error, results in more symptoms.</p></li>
+<li><p><strong>Fixing an error may introduce new errors</strong>. Your subsequent code may be dependent on the line with the error.</p></li>
+</ul>
+</div>
+</div>
+<div id="debugging-strategies-in-general" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.2</span> Debugging Strategies In General<a href="debugging.html#debugging-strategies-in-general" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What to do when a bug is suspected:</p>
+<ol style="list-style-type: decimal">
+<li>Find where the bug is.</li>
+<li>Determine what the bug is.</li>
+<li>Fix the bug.</li>
+</ol>
+<p>Finding the bug is often the hardest step.</p>
+<p>Strategies to find a bug that do not require any addition functions or code.</p>
+<ul>
+<li><p><strong>Back Tracking/Bottom-Up</strong>: Walk through your program from the last item you created and work your way back up to the top. Observe each point in the program and see which points are not working correctly, and stop when the program is working correctly. This is a good strategy for long chunks of code it is known or clear that most of it is working correctly.</p></li>
+<li><p><strong>Incremental/Top-down development</strong>: In this method we walk through each line of code, and check each step from “the top down”. Only moving forward to subsequent steps once it is insured that the current steps is operating appropriately.</p></li>
+<li><p><strong>Problem simplification</strong>: Isolate the location where you suspect a problem. Simplify this section of code as much as possible and try test cases to reproduce the problem. This is a good method in general to try.</p></li>
+<li><p><strong>Series of Print Statements</strong>: Put a series of print statement in the program to make sure that the code is doing what you suspect at various locations.</p></li>
+<li><p><strong>“Wolf fence” algorithm/Binary Search</strong>: Put a print statement in the middle of the code with a custom message. If the code runs and prints the statement, then it is likely your error is in the bottom 50% of your code. If the print statement never gets printed, then it is likely your problem is in the top half. If you conclude that the error is in the bottom half then add another print statment that seperates the bottom 25% of your code, from the top 75% of your code. If this print statement is not present, then you can conlude that the problem is most likely between the bottom 50% -75% of your code. You can keep adding print statements further splitting the data in halfs in order to isolate the problem further. This method is helpful for determining where the problem is.</p></li>
+</ul>
+<div id="example-of-the-binary-search-algorithm" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.2.1</span> Example of the Binary Search Algorithm<a href="debugging.html#example-of-the-binary-search-algorithm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Below is an example of the binary search algorithm. For this example, one of the lines of code in the <code>LongComplexFunction()</code> will generate an error. We will pretend that we do not know where the error is.</p>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="debugging.html#cb858-1"></a>SimpleFun_Plus =<span class="st"> </span><span class="cf">function</span>(y){</span>
+<span id="cb858-2"><a href="debugging.html#cb858-2"></a>         y =<span class="st"> </span>y <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb858-3"><a href="debugging.html#cb858-3"></a>        <span class="kw">return</span>(y) </span>
+<span id="cb858-4"><a href="debugging.html#cb858-4"></a>}</span>
+<span id="cb858-5"><a href="debugging.html#cb858-5"></a>SimpleFun_Minus =<span class="st"> </span><span class="cf">function</span>(y){</span>
+<span id="cb858-6"><a href="debugging.html#cb858-6"></a>         y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb858-7"><a href="debugging.html#cb858-7"></a>        <span class="kw">return</span>(y) </span>
+<span id="cb858-8"><a href="debugging.html#cb858-8"></a>}</span>
+<span id="cb858-9"><a href="debugging.html#cb858-9"></a>SimpleFun_A &lt;-<span class="st"> </span><span class="cf">function</span>(y){</span>
+<span id="cb858-10"><a href="debugging.html#cb858-10"></a>         y =<span class="st"> </span>y <span class="op">+</span><span class="st"> &quot;a&quot;</span></span>
+<span id="cb858-11"><a href="debugging.html#cb858-11"></a>        <span class="kw">return</span>(y) </span>
+<span id="cb858-12"><a href="debugging.html#cb858-12"></a>}</span>
+<span id="cb858-13"><a href="debugging.html#cb858-13"></a></span>
+<span id="cb858-14"><a href="debugging.html#cb858-14"></a></span>
+<span id="cb858-15"><a href="debugging.html#cb858-15"></a></span>
+<span id="cb858-16"><a href="debugging.html#cb858-16"></a><span class="co"># Hypothetical long complicated function</span></span>
+<span id="cb858-17"><a href="debugging.html#cb858-17"></a>LongComplexFunction =<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb858-18"><a href="debugging.html#cb858-18"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb858-19"><a href="debugging.html#cb858-19"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb858-20"><a href="debugging.html#cb858-20"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb858-21"><a href="debugging.html#cb858-21"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb858-22"><a href="debugging.html#cb858-22"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb858-23"><a href="debugging.html#cb858-23"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb858-24"><a href="debugging.html#cb858-24"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb858-25"><a href="debugging.html#cb858-25"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb858-26"><a href="debugging.html#cb858-26"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_A</span>(x)          <span class="co"># The Problem </span></span>
+<span id="cb858-27"><a href="debugging.html#cb858-27"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb858-28"><a href="debugging.html#cb858-28"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb858-29"><a href="debugging.html#cb858-29"></a>}</span>
+<span id="cb858-30"><a href="debugging.html#cb858-30"></a></span>
+<span id="cb858-31"><a href="debugging.html#cb858-31"></a><span class="co"># Function call produces an error</span></span>
+<span id="cb858-32"><a href="debugging.html#cb858-32"></a><span class="kw">LongComplexFunction</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p>The first step is to add a print statement half way through the program of function that is producing the error message. Then we call the function again and see if it produces the print statement before the error is generated.</p>
+<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="debugging.html#cb859-1"></a>LongComplexFunction =<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb859-2"><a href="debugging.html#cb859-2"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb859-3"><a href="debugging.html#cb859-3"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb859-4"><a href="debugging.html#cb859-4"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb859-5"><a href="debugging.html#cb859-5"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb859-6"><a href="debugging.html#cb859-6"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb859-7"><a href="debugging.html#cb859-7"></a>  </span>
+<span id="cb859-8"><a href="debugging.html#cb859-8"></a>  <span class="kw">print</span>(<span class="st">&quot;50%-ish through the function&quot;</span>)</span>
+<span id="cb859-9"><a href="debugging.html#cb859-9"></a>  </span>
+<span id="cb859-10"><a href="debugging.html#cb859-10"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb859-11"><a href="debugging.html#cb859-11"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb859-12"><a href="debugging.html#cb859-12"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb859-13"><a href="debugging.html#cb859-13"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_A</span>(x)          <span class="co"># The Problem </span></span>
+<span id="cb859-14"><a href="debugging.html#cb859-14"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb859-15"><a href="debugging.html#cb859-15"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb859-16"><a href="debugging.html#cb859-16"></a>}</span>
+<span id="cb859-17"><a href="debugging.html#cb859-17"></a></span>
+<span id="cb859-18"><a href="debugging.html#cb859-18"></a><span class="co"># Call the function again</span></span>
+<span id="cb859-19"><a href="debugging.html#cb859-19"></a><span class="kw">LongComplexFunction</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p>The print statement was produced, so we conclude that the top 50% of the code was likely fine and focus on the bottom half. We add another print statement that splits the end of the function in half.</p>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="debugging.html#cb860-1"></a>LongComplexFunction =<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb860-2"><a href="debugging.html#cb860-2"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb860-3"><a href="debugging.html#cb860-3"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb860-4"><a href="debugging.html#cb860-4"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb860-5"><a href="debugging.html#cb860-5"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb860-6"><a href="debugging.html#cb860-6"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb860-7"><a href="debugging.html#cb860-7"></a>  </span>
+<span id="cb860-8"><a href="debugging.html#cb860-8"></a>  <span class="kw">print</span>(<span class="st">&quot;50%-ish through the function&quot;</span>)</span>
+<span id="cb860-9"><a href="debugging.html#cb860-9"></a>  </span>
+<span id="cb860-10"><a href="debugging.html#cb860-10"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb860-11"><a href="debugging.html#cb860-11"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb860-12"><a href="debugging.html#cb860-12"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb860-13"><a href="debugging.html#cb860-13"></a>  </span>
+<span id="cb860-14"><a href="debugging.html#cb860-14"></a>  <span class="kw">print</span>(<span class="st">&quot;75%-ish through the function&quot;</span>)</span>
+<span id="cb860-15"><a href="debugging.html#cb860-15"></a>  </span>
+<span id="cb860-16"><a href="debugging.html#cb860-16"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_A</span>(x)          <span class="co"># The Problem </span></span>
+<span id="cb860-17"><a href="debugging.html#cb860-17"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb860-18"><a href="debugging.html#cb860-18"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb860-19"><a href="debugging.html#cb860-19"></a>}</span>
+<span id="cb860-20"><a href="debugging.html#cb860-20"></a></span>
+<span id="cb860-21"><a href="debugging.html#cb860-21"></a><span class="co"># Call the function again</span></span>
+<span id="cb860-22"><a href="debugging.html#cb860-22"></a><span class="kw">LongComplexFunction</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p>Again the print statement was produced, so we conclude that the top 75% of the code was likely fine and focus on the bottom 25%. We can add another print statement that splits this portion in half.</p>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="debugging.html#cb861-1"></a>LongComplexFunction =<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb861-2"><a href="debugging.html#cb861-2"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb861-3"><a href="debugging.html#cb861-3"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb861-4"><a href="debugging.html#cb861-4"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb861-5"><a href="debugging.html#cb861-5"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb861-6"><a href="debugging.html#cb861-6"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb861-7"><a href="debugging.html#cb861-7"></a>  </span>
+<span id="cb861-8"><a href="debugging.html#cb861-8"></a>  <span class="kw">print</span>(<span class="st">&quot;50%-ish through the function&quot;</span>)</span>
+<span id="cb861-9"><a href="debugging.html#cb861-9"></a>  </span>
+<span id="cb861-10"><a href="debugging.html#cb861-10"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb861-11"><a href="debugging.html#cb861-11"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Plus</span>(x)</span>
+<span id="cb861-12"><a href="debugging.html#cb861-12"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb861-13"><a href="debugging.html#cb861-13"></a>  </span>
+<span id="cb861-14"><a href="debugging.html#cb861-14"></a>  <span class="kw">print</span>(<span class="st">&quot;75%-ish through the function&quot;</span>)</span>
+<span id="cb861-15"><a href="debugging.html#cb861-15"></a>  </span>
+<span id="cb861-16"><a href="debugging.html#cb861-16"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_A</span>(x)          <span class="co"># The Problem </span></span>
+<span id="cb861-17"><a href="debugging.html#cb861-17"></a>  </span>
+<span id="cb861-18"><a href="debugging.html#cb861-18"></a>  <span class="kw">print</span>(<span class="st">&quot;90%-ish through the function&quot;</span>)</span>
+<span id="cb861-19"><a href="debugging.html#cb861-19"></a>  </span>
+<span id="cb861-20"><a href="debugging.html#cb861-20"></a>  x =<span class="st"> </span><span class="kw">SimpleFun_Minus</span>(x)</span>
+<span id="cb861-21"><a href="debugging.html#cb861-21"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb861-22"><a href="debugging.html#cb861-22"></a>}</span>
+<span id="cb861-23"><a href="debugging.html#cb861-23"></a></span>
+<span id="cb861-24"><a href="debugging.html#cb861-24"></a><span class="co"># Call the function again</span></span>
+<span id="cb861-25"><a href="debugging.html#cb861-25"></a><span class="kw">LongComplexFunction</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p>The last print statement was not produced before the error was generated, we have isolated a section of the function for where to look for the error.</p>
+</div>
+</div>
+<div id="using-debuggers" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.3</span> Using Debuggers<a href="debugging.html#using-debuggers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Some popular debuggers in R:</p>
+<ul>
+<li><code>traceback()</code></li>
+<li><code>browser()</code></li>
+<li><code>debug()</code></li>
+</ul>
+<div id="traceback" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.3.1</span> traceback()<a href="debugging.html#traceback" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>traceback()</code> function is useful to see where a error occurred within a function and when we call functions within functions. It is not particularly helpful for functions that are self-contained. It prints the sequence of calls that lead to the error. It is useful when an error occurs with an unidentifiable error message, or a large series of error messages is produced after calling a function.</p>
+</div>
+<div id="example-with-traceback" class="section level3 unnumbered hasAnchor">
+<h3>Example with traceback()<a href="debugging.html#example-with-traceback" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Run the following chunk of code and observe the output in your console. The command <code>func1(7)</code> results in an error, but we will pretend we do not know where the error occurred.
+We type <code>traceback()</code> in the console to see where this error happened, and what the last function call was.</p>
+<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb862-1"><a href="debugging.html#cb862-1"></a>func1 =<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">func2</span>(x)}</span>
+<span id="cb862-2"><a href="debugging.html#cb862-2"></a>func2 =<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">func3</span>(x<span class="op">+</span><span class="dv">1</span>)}</span>
+<span id="cb862-3"><a href="debugging.html#cb862-3"></a>func3 =<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">func4</span>(x<span class="op">+</span><span class="dv">4</span>)}</span>
+<span id="cb862-4"><a href="debugging.html#cb862-4"></a>func4 =<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb862-5"><a href="debugging.html#cb862-5"></a>  y =<span class="st"> &quot;a&quot;</span></span>
+<span id="cb862-6"><a href="debugging.html#cb862-6"></a>  x =<span class="st"> </span>x<span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb862-7"><a href="debugging.html#cb862-7"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb862-8"><a href="debugging.html#cb862-8"></a>}</span>
+<span id="cb862-9"><a href="debugging.html#cb862-9"></a></span>
+<span id="cb862-10"><a href="debugging.html#cb862-10"></a><span class="kw">func1</span>(<span class="dv">7</span>)</span>
+<span id="cb862-11"><a href="debugging.html#cb862-11"></a><span class="kw">traceback</span>() </span></code></pre></div>
+<p>The function <code>traceback()</code> tells us that the last function called was <code>func4(x + 4)</code>, so we conclude that the error must be in that function.</p>
+</div>
+<div id="unfamiliar-function-with-traceback" class="section level3 unnumbered hasAnchor">
+<h3>Unfamiliar function with traceback()<a href="debugging.html#unfamiliar-function-with-traceback" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="browswer" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.3.2</span> browswer()<a href="debugging.html#browswer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="debug" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.3.3</span> debug()<a href="debugging.html#debug" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="more-options-to-consider" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.4</span> More options to consider<a href="debugging.html#more-options-to-consider" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R has even more functions and tools to help us “examine” the program to “diagnose” the problem. Here are some other features that can be explored.</p>
+<ul>
+<li><code>Breakpoints</code></li>
+<li><code>trace()</code></li>
+<li><code>recover()</code></li>
+<li><code>system.time()</code></li>
+</ul>
+</div>
+<div id="important-takeaways" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.5</span> Important Takeaways<a href="debugging.html#important-takeaways" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Debugging can take longer then writing the program itself.</p>
+<ul>
+<li><p><strong>Primary Goal</strong>: Do not have bugs in the first place.</p></li>
+<li><p><strong>Secondary Goal</strong>: Have clean readable code where it is easy to spot the bugs quickly.</p></li>
+</ul>
+<p><em>Great programmers are just good programmers with great habits.</em></p>
+<div id="tips-for-writing-good-code" class="section level3 unnumbered hasAnchor">
+<h3>Tips for Writing good code<a href="debugging.html#tips-for-writing-good-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>10 Tips for Writing good code.</p>
+<ul>
+<li><p><strong>Use Descriptive Names</strong>: Have a system for naming variables, functions, etc.</p></li>
+<li><p><strong>Give Each Class/Function One Purpose</strong>: Which is easier to edit, a function that is several hundred lines long? Or several small functions?</p></li>
+<li><p><strong>Delete Unnecessary Code</strong>: If you comment out a chunk of code that you are no longer using, delete it!</p></li>
+<li><p><strong>Readability <span class="math inline">\(&gt;\)</span> Cleverness</strong>: Compacting 10 lines of code sounds appealing, and is likely clever, but it is even more likely to be difficult to read.</p></li>
+<li><p><strong>Keep a Consistent Coding Style</strong>: Have a formatting method? Stick to it.</p></li>
+<li><p><strong>Choose the right program</strong>: You do not need to have the best program, but you will want a program where your project is all in the same place.</p></li>
+<li><p><strong>Master the Language’s Idioms</strong>: If the language has a system and syntax it was built to use, use it. (R and vectorization, Python and lists, C and defining variable types)</p></li>
+<li><p><strong>Study the Code of Others</strong>: Read code from experts and novice. Get a feel for what makes clean code.</p></li>
+<li><p><strong>Write Good Comments</strong>: Comments exist to explain WHY a piece of code exists rather than WHAT the code actually does. (i.e. “Use because X, Y, and Z”, not “This will do W, U, and V.”). Use more rather than less, but too many is problematic.</p></li>
+<li><p><strong>Refactor/Rewrite</strong>: Just because the program works, doesn’t mean it can be adjusted to be more clear. Refactor as you would rewrite an essay.</p></li>
+</ul>
+</div>
+<div id="steps-to-reduce-the-number-of-bugs" class="section level3 unnumbered hasAnchor">
+<h3>Steps to Reduce the Number of Bugs<a href="debugging.html#steps-to-reduce-the-number-of-bugs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The most important way to combat bugs is to write a bug-free program in the first place.</p>
+<ul>
+<li><p>Write your program in such a way that it can stand alone, and be understood by a peer with a similar level of programming knowledge.</p></li>
+<li><p>Sit and make a plan for your program before you begin writing it.</p></li>
+<li><p>Avoid writing the program as fast as possible.</p></li>
+<li><p>Practice defensive programming. This is similar to defensive driving, which means driving under worst-case scenarios. Make your code explicit, have your program print out an error message or make checks for the input.</p></li>
+</ul>
+</div>
+<div id="after-you-located-the-error" class="section level3 unnumbered hasAnchor">
+<h3>After You Located the Error<a href="debugging.html#after-you-located-the-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Often the hardest step is locating <em>where</em> the bug is. The next step is determining <em>what</em> the bug is.</p>
+<ul>
+<li><p>Help Files</p></li>
+<li><p>Google (seriously)</p></li>
+</ul>
+</div>
+</div>
+<div id="resources" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.6</span> Resources<a href="debugging.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="http://www.cs.cornell.edu/courses/cs312/2006fa/lectures/lec26.html" class="uri">http://www.cs.cornell.edu/courses/cs312/2006fa/lectures/lec26.html</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Debugging" class="uri">https://en.wikipedia.org/wiki/Debugging</a></p></li>
+<li><p><a href="https://data-flair.training/blogs/debugging-in-r-programming/" class="uri">https://data-flair.training/blogs/debugging-in-r-programming/</a></p></li>
+<li><p><a href="https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio" class="uri">https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio</a></p></li>
+<li><p><a href="https://adv-r.hadley.nz/debugging.html" class="uri">https://adv-r.hadley.nz/debugging.html</a></p></li>
+<li><p><a href="http://www.math.ncu.edu.tw/~chenwc/R\_note/reference/debug/Rdebug.pdf" class="uri">http://www.math.ncu.edu.tw/~chenwc/R\_note/reference/debug/Rdebug.pdf</a></p></li>
+<li><p><a href="https://www.makeuseof.com/tag/10-tips-writing-cleaner-better-code/" class="uri">https://www.makeuseof.com/tag/10-tips-writing-cleaner-better-code/</a></p></li>
+<li><p><a href="https://owi.usgs.gov/R/training-curriculum/r-package-dev/debugging/" class="uri">https://owi.usgs.gov/R/training-curriculum/r-package-dev/debugging/</a></p></li>
 </ul>
 
+<div id="refs" class="references">
+<div>
+<p>Diez, David, Mine Cetinkaya-Rundel, and Christopher D Barr. 2020. <em>OpenIntro Statistics, Fourth Edition</em>. OpenIntro. <a href="https://www.openintro.org/book/os/">https://www.openintro.org/book/os/</a>.</p>
+</div>
+<div>
+<p> Dr. Robert Desharnais. 2020. <em>Biology3000</em>. Los Angeles, CA: California State University, Los Angeles.</p>
+</div>
+<div>
+<p>John Blischak, Daniel Chen, Harriet Dashnow, and Denis Haine. 2016. “Software Carpentry: Programming with R.version 2016.06.” 2016. <a href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html">https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html</a>.</p>
+</div>
+<div>
+<p>Vries, Andrie de, and Joris Meys. 2015. <em>R for Dummies</em>. Hoboken, New Jersey: John Wiley &amp; Sons, Inc. <a href="https://www.dummies.com/programming/r/how-to-use-the-r-help-files/">https://www.dummies.com/programming/r/how-to-use-the-r-help-files/</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, and others. 2009. “Elegant Graphics for Data Analysis.” <em>Media</em> 35 (211): 10–1007.</p>
+</div>
+</div>
 </div>
 </div>
             </section>
@@ -691,8 +719,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="extending-base-r-graphics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="simulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="apply.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -724,7 +752,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-loops.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/18-debugging.Rmd",
 "text": "Edit"
 },
 "history": {
